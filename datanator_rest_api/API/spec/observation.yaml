@@ -1,0 +1,41 @@
+type: object
+required:
+  - measurment_type
+  - measurment
+  - units 
+  - species
+  - source 
+properties:
+  measurment_type:
+    type: string 
+    enum: [concentration, abundance, mass]
+    description: The type of measurment being made
+
+  measurment: 
+    type: number
+    description: A numerical value corresponding to the observed value of the measurment
+    example: 3.8
+
+  units: 
+    type: string
+    description: The units that the measurment was made in
+    example: "uMolar"
+
+  error: 
+    description: A numerical value corresponding to the error in the measurment, in the same units as the measurment
+    type: number
+    example: "1"
+  
+  experimental_conditions: 
+    type: array
+    items: 
+      type: string
+
+  species:   
+    type: string
+    example: "Homo sapiens"
+
+  source: 
+    type: string 
+    example: "doi:10.1038/nphys1170"
+  

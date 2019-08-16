@@ -1,0 +1,19 @@
+type: object
+required:
+  - uniprot_id
+  - ec_number
+  - protein_name
+  - gene_name
+properties:
+  uniprot_id:
+    type: string
+  ex_number:
+    type: integer
+  abundances:
+    type: array
+    items:
+      $ref: ./observation.yaml
+  protein_name:
+    type: string
+  gene_name:
+    type: string
