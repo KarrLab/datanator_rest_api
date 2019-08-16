@@ -2,6 +2,7 @@
 #
 # Documentation build configuration file, created by karr_lab_build_utils.
 #
+import sphinx_rtd_theme
 import datetime
 import os
 import sys
@@ -28,7 +29,7 @@ extensions = [
     'sphinx_fontawesome',
     'sphinxcontrib.addmetahtml',
     'sphinxcontrib.bibtex',
-    'sphinxcontrib.googleanalytics',
+    # 'sphinxcontrib.googleanalytics',
     'sphinxcontrib.spelling',
     'sphinxprettysearchresults',
 ]
@@ -59,7 +60,8 @@ author = u'Karr Lab'
 # built documents.
 #
 # The short X.Y version.
-filename = os.path.join(os.path.dirname(__file__), '..', 'datanator_rest_api', 'VERSION')
+filename = os.path.join(os.path.dirname(__file__), '..',
+                        'datanator_rest_api', 'VERSION')
 with open(filename, 'r') as file:
     version = file.read()
 # The full version, including alpha/beta/rc tags.
@@ -132,7 +134,7 @@ numfig_format = {
 image_converter_args = [
     '-density', '150',
     '-quality', '00',
-    ]
+]
 
 
 # -- linkcode options -----------------------------------------------------
@@ -163,7 +165,6 @@ napoleon_use_rtype = True
 
 # -- Options for HTML output ----------------------------------------------
 
-import sphinx_rtd_theme
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
@@ -287,21 +288,21 @@ htmlhelp_basename = 'datanator_rest_api-doc'
 # -- Options for LaTeX output ---------------------------------------------
 
 latex_elements = {
-     # The paper size ('letterpaper' or 'a4paper').
-     #
-     # 'papersize': 'letterpaper',
+    # The paper size ('letterpaper' or 'a4paper').
+    #
+    # 'papersize': 'letterpaper',
 
-     # The font size ('10pt', '11pt' or '12pt').
-     #
-     # 'pointsize': '10pt',
+    # The font size ('10pt', '11pt' or '12pt').
+    #
+    # 'pointsize': '10pt',
 
-     # Additional stuff for the LaTeX preamble.
-     #
-     # 'preamble': '',
+    # Additional stuff for the LaTeX preamble.
+    #
+    # 'preamble': '',
 
-     # Latex figure (float) alignment
-     #
-     # 'figure_align': 'htbp',
+    # Latex figure (float) alignment
+    #
+    # 'figure_align': 'htbp',
 }
 
 # Grouping the document tree into LaTeX files. List of tuples

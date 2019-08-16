@@ -108,7 +108,7 @@ components:
     Protein:
       $ref: ./protein.yaml
     Metabolite:
-      $ref: metabolite.yaml
+      $ref: ./metabolite.yaml
     Observation: 
       $ref: ./observation.yaml
     GeneralError:

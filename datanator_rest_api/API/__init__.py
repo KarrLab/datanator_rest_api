@@ -1,5 +1,6 @@
 """ Datanator API Utils
-:Author Bilal Shaikh <bilalshaikh42@gmail.com>
+
+:Author: Bilal Shaikh <bilalshaikh42@gmail.com>
 :Date: 2019-08-16
 :Copyright: 2019, Karr Lab
 :License: MIT
@@ -14,9 +15,9 @@ def parseAPI(api_dir: str, src_file: str, dst_file: str):
         Generates a complete JSON specification of the API 
 
     Args:
-        api_dir  ([string]): [The directory storing the api definition]
-        src_file ([string]): [The name of the root api file]
-        dst_file ([string]): [The name of the file to save the resolved specification to]
+        api_dir: The directory storing the api definition
+        src_file: The name of the root api file
+        dst_file: The name of the output file
     """
     os.chdir(api_dir)
 

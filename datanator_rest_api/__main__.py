@@ -18,7 +18,8 @@ class BaseController(cement.Controller):
         label = 'base'
         description = "datanator_rest_api"
         arguments = [
-            (['-v', '--version'], dict(action='version', version=datanator_rest_api.__version__)),
+            (['-v', '--version'], dict(action='version',
+                                       version=datanator_rest_api.__version__)),
         ]
 
     @cement.ex(help='command_1 description')
@@ -73,6 +74,7 @@ class App(cement.App):
             BaseController,
             Command3WithArgumentsController,
         ]
+
 
 def main():
     with App() as app:
