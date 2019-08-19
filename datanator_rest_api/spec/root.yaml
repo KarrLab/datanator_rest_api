@@ -31,7 +31,7 @@ tags:
 paths:
   /ping:
     get:
-      operationId: ping
+     
       summary: Pings the server to verfy connection
       tags:
         - Datanator
@@ -50,7 +50,7 @@ paths:
 
   /metabolites:
     get:
-      operationId: getMetabs
+     
       summary: Get the list of metabolite objects
       tags:
         - Metabolites
@@ -81,7 +81,7 @@ paths:
             type: string
           required: true
     get: 
-      operationId: getInchiKey
+     
       summary: Get metabolite by inchikey
       tags: 
         - Metabolites
@@ -106,11 +106,13 @@ paths:
 components:
   schemas:
     Protein:
-      $ref: ./protein.yaml
+      $ref: ./schemas/protein.yaml
     Metabolite:
-      $ref: ./metabolite.yaml
+      $ref: ./schemas/metabolite.yaml
     Observation: 
-      $ref: ./observation.yaml
+      $ref: ./schemas/observation.yaml
+    Reaction: 
+      $ref: ./schemas/reaction.yaml
     GeneralError:
       type: object
       properties:

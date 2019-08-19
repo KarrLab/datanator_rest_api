@@ -11,7 +11,7 @@ properties:
   abundances:
     type: array
     items:
-      $ref: ./observation.yaml
+      $ref: ./schemas/observation.yaml
   protein_name:
     type: string
   gene_name:

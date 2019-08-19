@@ -29,7 +29,7 @@ extensions = [
     'sphinx_fontawesome',
     'sphinxcontrib.addmetahtml',
     'sphinxcontrib.bibtex',
-    # 'sphinxcontrib.googleanalytics',
+    'sphinxcontrib.googleanalytics',
     'sphinxcontrib.spelling',
     'sphinxprettysearchresults',
 ]

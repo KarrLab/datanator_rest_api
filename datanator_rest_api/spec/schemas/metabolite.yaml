@@ -11,10 +11,10 @@ properties:
   concentrations: 
     type: array
     items:
-      $ref: ./observation.yaml
+      $ref: ./schemas/observation.yaml
   name:
     type: string
   reactions:
     type: array
     items:
-      $ref: ./reaction.yaml
+      $ref: ./schemas/reaction.yaml

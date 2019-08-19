@@ -1,3 +1,4 @@
+from . import *
 import pkg_resources
 
 # read version

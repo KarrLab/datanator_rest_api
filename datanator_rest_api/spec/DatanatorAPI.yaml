@@ -28,7 +28,6 @@ tags:
 paths:
   /metabolites:
     get:
-      operationId: getMetabs
       responses:
         '200':
           content:
@@ -300,6 +299,13 @@ components:
       - uniprot_id
       - protein_name
       - gene_name
+      type: object
+    Reaction:
+      properties:
+        id:
+          type: string
+      required:
+      - id
       type: object
     Tag:
       properties:

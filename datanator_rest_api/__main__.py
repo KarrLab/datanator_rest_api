@@ -8,7 +8,10 @@
 
 import cement
 import datanator_rest_api
+import datanator_rest_api.server.metabolites
 import datanator_rest_api.core
+import datanator_rest_api.spec
+import datanator_rest_api.server
 
 
 class BaseController(cement.Controller):

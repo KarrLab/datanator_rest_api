@@ -17,9 +17,9 @@ def parseAPI(api_dir: str, src_file: str, dst_file: str):
         Generates a complete JSON specification of the API 
 
     Args:
-        api_dir: The directory storing the api definition
-        src_file: The name of the root api file
-        dst_file: The name of the output file
+        api_dir (str): The directory storing the api definition
+        src_file (str): The name of the root api file
+        dst_file (str): The name of the output file
     """
     os.chdir(api_dir)
     with open(src_file) as api_src, open(dst_file, 'w') as api_dst:
@@ -44,15 +44,9 @@ def validateAPI(api_file: str):
         UnresolvableParamaterError: 
     """
     with open(api_file, 'r') as schema_file:
-        print(os.getcwd())
         schema = yaml.safe_load(schema_file)
         validate_spec(schema)
 
 
 def uploadAPI(api_file):
     pass
-
-
-if __name__ == "__main__":
-
-    parseAPI('./spec', 'openapi.yaml', 'DatanatorAPI.yaml')
