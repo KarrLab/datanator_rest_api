@@ -12,10 +12,12 @@ info:
   title: Datanator API
   version: 1.0.0
 servers:
+- description: Local Host
+  url: /
 - description: SwaggerHub API Auto Mocking
   url: https://virtserver.swaggerhub.com/bilalshaikh42/Datanator/1.0.0
 - description: The public datanator server
-  url: http://api.datanator.info
+  url: http://api.datanator.info/
 tags:
 - description: Requests related to the database itself
   name: Datanator
@@ -50,7 +52,6 @@ paths:
       - Metabolites
   /metabolites/{inchikey}:
     get:
-      operationId: getInchiKey
       responses:
         '200':
           content:
@@ -77,7 +78,6 @@ paths:
       - Metabolites
   /ping:
     get:
-      operationId: ping
       responses:
         '200':
           content:
