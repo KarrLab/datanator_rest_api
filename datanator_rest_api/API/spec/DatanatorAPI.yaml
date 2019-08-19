@@ -1,0 +1,324 @@
+openapi: 3.0.1
+info:
+  contact:
+    email: info@karrlab.org
+    name: Karr Lab
+    url: https://datanator.info/
+  description: An API for interacting with the Datanator Integrated Database. The
+    API can be used to get values for a variety of biological molecules and reactions,
+    such as concentration, abundance, or kinetic parameters. The API complies with
+    the openAPI 3 standard. Use the <a href="/apiDoc"> /apiDoc</a> path to access
+    the api specification
+  title: Datanator API
+  version: 1.0.0
+servers:
+- description: SwaggerHub API Auto Mocking
+  url: https://virtserver.swaggerhub.com/bilalshaikh42/Datanator/1.0.0
+- description: The public datanator server
+  url: http://api.datanator.info
+tags:
+- description: Requests related to the database itself
+  name: Datanator
+- description: Requests for information about metabolites, including conentrations
+  name: Metabolites
+- description: Requests for information about proteins, ezymes, and protein complexes
+  name: Proteins
+- description: Requests for information on reactions, including kinetic paramters
+  name: Reactions
+paths:
+  /metabolites:
+    get:
+      operationId: getMetabs
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Metabolite'
+                type: array
+          description: OK
+      summary: Get the list of metabolite objects
+      tags:
+      - Metabolites
+    put:
+      description: Add a new metabolite
+      responses:
+        '200':
+          description: OK
+      summary: Add a new metabolite
+      tags:
+      - Metabolites
+  /metabolites/{inchikey}:
+    get:
+      operationId: getInchiKey
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Metabolite'
+          description: OK
+      summary: Get metabolite by inchikey
+      tags:
+      - Metabolites
+    parameters:
+    - in: path
+      name: inchikey
+      required: true
+      schema:
+        type: string
+    post:
+      description: Update an existing metabolite
+      responses:
+        '200':
+          description: OK
+      summary: Update an existing metabolite
+      tags:
+      - Metabolites
+  /ping:
+    get:
+      operationId: ping
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    type: string
+                required:
+                - message
+                type: object
+          description: OK
+      summary: Pings the server to verfy connection
+      tags:
+      - Datanator
+components:
+  parameters:
+    limitParam:
+      description: max records to return
+      in: query
+      name: limit
+      required: true
+      schema:
+        format: int32
+        type: integer
+    skipParam:
+      description: number of items to skip
+      in: query
+      name: skip
+      required: true
+      schema:
+        format: int32
+        type: integer
+  responses:
+    GeneralError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/GeneralError'
+      description: General Error
+    IllegalInput:
+      description: Illegal input for operation.
+    NotFound:
+      description: Entity not found.
+  schemas:
+    Category:
+      properties:
+        id:
+          format: int64
+          type: integer
+        name:
+          type: string
+      type: object
+    GeneralError:
+      properties:
+        code:
+          format: int32
+          type: integer
+        message:
+          type: string
+      type: object
+    Metabolite:
+      properties:
+        concentrations:
+          items:
+            properties:
+              error:
+                description: A numerical value corresponding to the error in the measurment,
+                  in the same units as the measurment
+                example: '1'
+                type: number
+              experimental_conditions:
+                items:
+                  type: string
+                type: array
+              measurment:
+                description: A numerical value corresponding to the observed value
+                  of the measurment
+                example: 3.8
+                type: number
+              measurment_type:
+                description: The type of measurment being made
+                enum:
+                - concentration
+                - abundance
+                - mass
+                type: string
+              source:
+                example: doi:10.1038/nphys1170
+                type: string
+              species:
+                example: Homo sapiens
+                type: string
+              units:
+                description: The units that the measurment was made in
+                example: uMolar
+                type: string
+            required:
+            - measurment_type
+            - measurment
+            - units
+            - species
+            - source
+            type: object
+          type: array
+        inchi:
+          type: string
+        inchi_key:
+          type: string
+        name:
+          type: string
+        reactions:
+          items:
+            properties:
+              id:
+                type: string
+            required:
+            - id
+            type: object
+          type: array
+      required:
+      - inchi_key
+      - inchi
+      - name
+      type: object
+    Observation:
+      properties:
+        error:
+          description: A numerical value corresponding to the error in the measurment,
+            in the same units as the measurment
+          example: '1'
+          type: number
+        experimental_conditions:
+          items:
+            type: string
+          type: array
+        measurment:
+          description: A numerical value corresponding to the observed value of the
+            measurment
+          example: 3.8
+          type: number
+        measurment_type:
+          description: The type of measurment being made
+          enum:
+          - concentration
+          - abundance
+          - mass
+          type: string
+        source:
+          example: doi:10.1038/nphys1170
+          type: string
+        species:
+          example: Homo sapiens
+          type: string
+        units:
+          description: The units that the measurment was made in
+          example: uMolar
+          type: string
+      required:
+      - measurment_type
+      - measurment
+      - units
+      - species
+      - source
+      type: object
+    Protein:
+      properties:
+        abundances:
+          items:
+            properties:
+              error:
+                description: A numerical value corresponding to the error in the measurment,
+                  in the same units as the measurment
+                example: '1'
+                type: number
+              experimental_conditions:
+                items:
+                  type: string
+                type: array
+              measurment:
+                description: A numerical value corresponding to the observed value
+                  of the measurment
+                example: 3.8
+                type: number
+              measurment_type:
+                description: The type of measurment being made
+                enum:
+                - concentration
+                - abundance
+                - mass
+                type: string
+              source:
+                example: doi:10.1038/nphys1170
+                type: string
+              species:
+                example: Homo sapiens
+                type: string
+              units:
+                description: The units that the measurment was made in
+                example: uMolar
+                type: string
+            required:
+            - measurment_type
+            - measurment
+            - units
+            - species
+            - source
+            type: object
+          type: array
+        ec_number:
+          type: integer
+        gene_name:
+          type: string
+        protein_name:
+          type: string
+        uniprot_id:
+          type: string
+      required:
+      - uniprot_id
+      - protein_name
+      - gene_name
+      type: object
+    Tag:
+      properties:
+        id:
+          format: int64
+          type: integer
+        name:
+          type: string
+      type: object
+  securitySchemes:
+    api_key:
+      in: header
+      name: api_key
+      type: apiKey
+    petstore_auth:
+      flows:
+        implicit:
+          authorizationUrl: http://example.org/api/oauth/dialog
+          scopes:
+            read:pets: read your pets
+            write:pets: modify pets in your account
+      type: oauth2

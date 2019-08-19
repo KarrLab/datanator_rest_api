@@ -1,13 +1,12 @@
 type: object
 required:
   - uniprot_id
-  - ec_number
   - protein_name
   - gene_name
 properties:
   uniprot_id:
     type: string
-  ex_number:
+  ec_number:
     type: integer
   abundances:
     type: array
