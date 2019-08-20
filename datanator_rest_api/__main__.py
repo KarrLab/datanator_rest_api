@@ -67,7 +67,7 @@ class Command3WithArgumentsController(cement.Controller):
         args.opt_arg_4
 
 
-class App(cement.App):
+class Cli(cement.App):
     """ Command line application """
     class Meta:
         label = 'datanator_rest_api'
@@ -79,5 +79,5 @@ class App(cement.App):
 
 
 def main():
-    with App() as app:
-        app.run()
+    with Cli() as cli:
+        cli.run()

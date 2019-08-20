@@ -56,7 +56,9 @@ class MyResolver(RestyResolver):
         return '{}.{}{}'.format(get_controller_name(), get_path_name(), get_function_name())
 
 
-app = connexion.App(__name__, specification_dir='spec/')
-app.add_api('DatanatorAPI.yaml', resolver=MyResolver(
-    "datanator_rest_api.server"), validate_responses=False)
-app.run(port=8080)
+if __name__ == "__main__":
+
+    app = connexion.App(__name__, specification_dir='spec/')
+    app.add_api('DatanatorAPI.yaml', resolver=MyResolver(
+        "datanator_rest_api.server"), validate_responses=False)
+    app.run(port=8080)
