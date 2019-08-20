@@ -1,3 +1,8 @@
 from swagger_tester import swagger_test
 
-swagger_test('./spec/DatanatorAPI.yaml')
+
+class ApiTestCase(unittest.TestCase):
+
+    def test_1(self):
+        swagger_test('./spec/DatanatorAPI.yaml')
+        self.assertTrue(True)  # example assertion
