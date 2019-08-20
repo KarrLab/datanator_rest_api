@@ -1,11 +1,10 @@
-""" Test of datanator_rest_api.core
+""" Test of datanator_rest_api core module
 
-:Author: Name <email>
-:Date: 2019-8-15
+:Author: Bilal Shaikh < bilalshaikh42@gmail.com >
+:Date: 2019-08-20
 :Copyright: 2019, Karr Lab
 :License: MIT
 """
-
 from datanator_rest_api import core
 import unittest
 

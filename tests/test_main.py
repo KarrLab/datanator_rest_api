@@ -15,6 +15,7 @@ import unittest
 
 class CliTestCase(unittest.TestCase):
 
+    @unittest.skip("CLI Not Implemented")
     def test_cli(self):
         with mock.patch('sys.argv', ['datanator_rest_api', '--help']):
             with self.assertRaises(SystemExit) as context:
@@ -22,11 +23,13 @@ class CliTestCase(unittest.TestCase):
                 self.assertRegex(context.Exception,
                                  'usage: datanator_rest_api')
 
+    @unittest.skip("CLI Not Implemented")
     def test_help(self):
         with self.assertRaises(SystemExit):
             with __main__.App(argv=['--help']) as app:
                 app.run()
 
+    @unittest.skip("CLI Not Implemented")
     def test_version(self):
         with __main__.App(argv=['-v']) as app:
             with capturer.CaptureOutput(merged=False, relay=False) as captured:
@@ -44,6 +47,7 @@ class CliTestCase(unittest.TestCase):
                                  datanator_rest_api.__version__)
                 self.assertEqual(captured.stderr.get_text(), '')
 
+    @unittest.skip("CLI Not Implemented")
     def test_command_1(self):
         with capturer.CaptureOutput(merged=False, relay=False) as captured:
             with __main__.App(argv=['cmd1']) as app:
@@ -55,6 +59,7 @@ class CliTestCase(unittest.TestCase):
                                  'command_1 output')
                 self.assertEqual(captured.stderr.get_text(), '')
 
+    @unittest.skip("CLI Not Implemented")
     def test_command_1(self):
         with capturer.CaptureOutput(merged=False, relay=False) as captured:
             with __main__.App(argv=['cmd2']) as app:
@@ -66,6 +71,7 @@ class CliTestCase(unittest.TestCase):
                                  'command_2 output')
                 self.assertEqual(captured.stderr.get_text(), '')
 
+    @unittest.skip("CLI Not Implemented")
     def test_command_3(self):
         with capturer.CaptureOutput(merged=False, relay=False) as captured:
             with __main__.App(argv=['command-3',
