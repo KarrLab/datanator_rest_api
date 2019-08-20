@@ -12,3 +12,11 @@ def post():
 
 def get(inchikey):
     return("test")
+
+
+class concentrations(object):
+    def get():
+        return ('concentrations test get')
+
+    def search():
+        return("Concentrationstest")
