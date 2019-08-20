@@ -30,12 +30,12 @@ tags:
     description: Requests for information on reactions, including kinetic paramters
 
 paths:
-  /ping:
+  /ping/:
     $ref: paths/ping.yaml
-  /metabolites:
+  /metabolites/:
     $ref: paths/metabolites.yaml#/root
-  /metabolites/{inchikey}:
-    $ref: paths/metabolites.yaml#/inchikey
+  /metabolites/concentrations/:
+    $ref: paths/metabolites.yaml#/concentrations
 components:
   schemas:
     Protein:

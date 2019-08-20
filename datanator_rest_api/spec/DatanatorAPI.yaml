@@ -28,8 +28,14 @@ tags:
 - description: Requests for information on reactions, including kinetic paramters
   name: Reactions
 paths:
-  /metabolites:
+  /metabolites/:
     get:
+      parameters:
+      - in: query
+        name: inchikey
+        required: false
+        schema:
+          type: string
       responses:
         '200':
           content:
@@ -42,6 +48,20 @@ paths:
       summary: Get the list of metabolite objects
       tags:
       - Metabolites
+    post:
+      description: Update an existing metabolite
+      parameters:
+      - in: query
+        name: inchikey
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+      summary: Update an existing metabolite
+      tags:
+      - Metabolites
     put:
       description: Add a new metabolite
       responses:
@@ -50,8 +70,12 @@ paths:
       summary: Add a new metabolite
       tags:
       - Metabolites
-  /metabolites/{inchikey}:
+  /metabolites/conentrations/:
     get:
+      description: Get concentration data for metabolites. The inchikeys parameter
+        takes a list of incjikeys for which to get data. The consensus flag will return
+        a consensus value instead of an array of observations. The species query will
+        provide taxonomic distance information for each result
       responses:
         '200':
           content:
@@ -59,24 +83,34 @@ paths:
               schema:
                 $ref: '#/components/schemas/Metabolite'
           description: OK
-      summary: Get metabolite by inchikey
+      summary: Get concentrations of Metabolites
       tags:
       - Metabolites
     parameters:
-    - in: path
-      name: inchikey
-      required: true
+    - in: query
+      name: inchikeys
+      required: false
+      schema:
+        items:
+          type: string
+        type: array
+    - in: query
+      name: consensus
+      schema:
+        enum:
+        - 'True'
+        type: string
+    - in: query
+      name: species
       schema:
         type: string
-    post:
-      description: Update an existing metabolite
-      responses:
-        '200':
-          description: OK
-      summary: Update an existing metabolite
-      tags:
-      - Metabolites
-  /ping:
+    - in: query
+      name: strict
+      schema:
+        enum:
+        - 'True'
+        type: string
+  /ping/:
     get:
       responses:
         '200':
