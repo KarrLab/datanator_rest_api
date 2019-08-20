@@ -5,7 +5,7 @@
 :Copyright: 2019, Karr Lab
 :License: MIT
 """
-import datanator_rest_api.spec.utils as utils
+from .specUtils import specUtils
 if __name__ == "__main__":
 
-    utils.parseAPI('.', 'root.yaml', 'DatanatorAPI.yaml')
+    specUtils.parseAPI('.', 'root.yaml', 'DatanatorAPI.yaml')
