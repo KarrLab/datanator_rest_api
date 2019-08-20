@@ -8,7 +8,6 @@ Provides an automatic implementation of the rest api using the connexion library
 import connexion
 from connexion.resolver import Resolver as Resolver
 from connexion.resolver import RestyResolver
-import datanator_rest_api.server.metabolites
 import re
 
 
@@ -42,7 +41,7 @@ class MyResolver(RestyResolver):
             return name
 
         def get_path_name():
-            return path_match.group('extend ed_path').replace('/', '.') if path_match.group('extended_path') else ''
+            return path_match.group('extended_path').replace('/', '.') if path_match.group('extended_path') else ''
 
         def get_function_name():
             method = operation.method
@@ -59,5 +58,5 @@ class MyResolver(RestyResolver):
 
 app = connexion.App(__name__, specification_dir='spec/')
 app.add_api('DatanatorAPI.yaml', resolver=MyResolver(
-    "server"), validate_responses=False)
+    "datanator_rest_api.server"), validate_responses=False)
 app.run(port=8080)
