@@ -6,7 +6,7 @@ Contents
 
 .. toctree::
    :maxdepth: 3
-   :numbered:
+   :numbered:  3
 
    installation.rst
    overview.rst
