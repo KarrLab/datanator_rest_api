@@ -2,7 +2,8 @@ openapi: 3.0.1
 info:
   title: Datanator API
   version: 1.0.0
-  description: An API for interacting with the Datanator Integrated Database. The API can
+  description:
+    An API for interacting with the Datanator Integrated Database. The API can
     be used to get values for a variety of biological molecules and reactions,
     such as concentration, abundance, or kinetic parameters. The API complies
     with the openAPI 3 standard. Use the <a href="/apiDoc"> /apiDoc</a> path to
@@ -12,6 +13,8 @@ info:
     email: info@karrlab.org
     url: https://datanator.info/
 servers:
+  - description: Local Host
+    url: /
   - description: SwaggerHub API Auto Mocking
     url: https://virtserver.swaggerhub.com/bilalshaikh42/Datanator/1.0.0
   - description: The public datanator server
@@ -26,92 +29,22 @@ tags:
   - name: Reactions
     description: Requests for information on reactions, including kinetic paramters
 
-
-    
 paths:
   /ping:
-    get:
-     
-      summary: Pings the server to verfy connection
-      tags:
-        - Datanator
-      responses:
-        "200":
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: object
-                required:
-                  - message
-                properties:
-                  message:
-                    type: string
-
+    $ref: paths/ping.yaml
   /metabolites:
-    get:
-     
-      summary: Get the list of metabolite objects
-      tags:
-        - Metabolites
-      responses:
-        "200":
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: array
-                items: 
-                  $ref: "#/components/schemas/Metabolite"
-    put:
-      tags: 
-        - Metabolites
-      summary: Add a new metabolite
-      description: Add a new metabolite
-      responses:
-        '200':
-          description: OK
-
-
+    $ref: paths/metabolites.yaml#/root
   /metabolites/{inchikey}:
-    parameters:
-        - in: path
-          name: inchikey
-          schema:
-            type: string
-          required: true
-    get: 
-     
-      summary: Get metabolite by inchikey
-      tags: 
-        - Metabolites
-      
-      responses:
-        "200":
-          description: OK
-          content: 
-            application/json:
-              schema:
-                $ref:  "#/components/schemas/Metabolite"
-
-    post:
-      tags:
-        - Metabolites
-      summary: Update an existing metabolite
-      description: Update an existing metabolite
-      responses:
-        '200':
-          description: OK
-
+    $ref: paths/metabolites.yaml#/inchikey
 components:
   schemas:
     Protein:
       $ref: ./schemas/protein.yaml
     Metabolite:
       $ref: ./schemas/metabolite.yaml
-    Observation: 
+    Observation:
       $ref: ./schemas/observation.yaml
-    Reaction: 
+    Reaction:
       $ref: ./schemas/reaction.yaml
     GeneralError:
       type: object
@@ -178,4 +111,3 @@ components:
           scopes:
             write:pets: modify pets in your account
             read:pets: read your pets
-            

@@ -1,0 +1,51 @@
+root:
+  get:
+    summary: Get the list of metabolite objects
+    tags:
+      - Metabolites
+    responses:
+      "200":
+        description: OK
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: "#/components/schemas/Metabolite"
+  put:
+    tags:
+      - Metabolites
+    summary: Add a new metabolite
+    description: Add a new metabolite
+    responses:
+      "200":
+        description: OK
+
+inchikey:
+  parameters:
+    - in: path
+      name: inchikey
+      schema:
+        type: string
+      required: true
+  get:
+    summary: Get metabolite by inchikey
+    tags:
+      - Metabolites
+
+    responses:
+      "200":
+        description: OK
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Metabolite"
+
+  post:
+    tags:
+      - Metabolites
+    summary: Update an existing metabolite
+    description: Update an existing metabolite
+    responses:
+      "200":
+        description: OK
