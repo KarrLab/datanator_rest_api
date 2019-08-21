@@ -43,7 +43,7 @@ class SpecUtils(object):
         Returns: 
             str : A string containing the parsed API
         """
-
+        cwd = os.getcwd()
         os.chdir(api_dir)
 
         with open(src_file) as api_src:
@@ -51,6 +51,7 @@ class SpecUtils(object):
             resolver = OpenapiResolver(ret)
             resolver.resolve()
             res = resolver.dump()
+        os.chdir(cwd)
         return res
 
     @staticmethod
