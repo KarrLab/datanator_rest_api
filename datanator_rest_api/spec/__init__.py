@@ -6,3 +6,4 @@
 :License: MIT
 """
 from .specUtils import SpecUtils
+from .SpecUtils import SpecUtils
