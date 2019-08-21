@@ -23,10 +23,12 @@ tags:
   name: Datanator
 - description: Requests for information about metabolites, including conentrations
   name: Metabolites
-- description: Requests for information about proteins, ezymes, and protein complexes
+- description: Requests for information about proteins, enzymes, and protein complexes
   name: Proteins
 - description: Requests for information on reactions, including kinetic paramters
   name: Reactions
+- description: Requests for information on RNA abundance
+  name: RNA
 paths:
   /datanator/:
     get:
