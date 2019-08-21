@@ -5,4 +5,4 @@
 :Copyright: 2019, Karr Lab
 :License: MIT
 """
-from .specUtils import specUtils
+from .specUtils import SpecUtils
