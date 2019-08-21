@@ -33,7 +33,7 @@ class SpecUtils(object):
                 validate_spec(schema)
 
     @staticmethod
-    def parseAPI(api_dir: str, src_file: str):
+    def parseAPI(api_dir: str = "./datanator_rest_api/spec/", src_file: str = "root.yaml"):
         """ Takes the root open api yaml file and resolves the embedded refrences for local and remote yaml files. 
             Generates a complete JSON specification of the API 
 
@@ -43,7 +43,9 @@ class SpecUtils(object):
         Returns: 
             str : A string containing the parsed API
         """
+
         os.chdir(api_dir)
+
         with open(src_file) as api_src:
             ret = yaml.safe_load(api_src)
             resolver = OpenapiResolver(ret)

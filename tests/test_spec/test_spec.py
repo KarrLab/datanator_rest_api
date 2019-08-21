@@ -1,10 +1,13 @@
-import datanator_rest_api.spec.SpecUtils
+import datanator_rest_api.spec as spec
 import unittest
+import os
 
 
 class ApiTestCase(unittest.TestCase):
 
-    def valid_syntax(self):
+    def test_valid_syntax(self):
         """Tests that the yaml files have valid syntax and compile properly
         """
-        self.assertTrue(True)  # example assertion
+        spec.SpecUtils.parseAPI()
+
+ 
