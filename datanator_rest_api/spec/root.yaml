@@ -14,7 +14,7 @@ info:
     url: https://datanator.info/
 servers:
   - description: Local Host
-    url: /
+    url: http://localhost:8080/
   - description: SwaggerHub API Auto Mocking
     url: https://virtserver.swaggerhub.com/bilalshaikh42/Datanator/1.0.0
   - description: The public datanator server

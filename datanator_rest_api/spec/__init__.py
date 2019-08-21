@@ -6,6 +6,3 @@
 :License: MIT
 """
 from .specUtils import specUtils
-if __name__ == "__main__":
-
-    specUtils.parseAPI('.', 'root.yaml', 'DatanatorAPI.yaml')

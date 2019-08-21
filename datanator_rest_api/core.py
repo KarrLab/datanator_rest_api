@@ -8,6 +8,7 @@ Provides an automatic implementation of the rest api using the connexion library
 import connexion
 from connexion.resolver import Resolver as Resolver
 from connexion.resolver import RestyResolver
+from connexion.mock import MockResolver
 import re
 
 
@@ -61,4 +62,4 @@ if __name__ == "__main__":
     app = connexion.App(__name__, specification_dir='spec/')
     app.add_api('DatanatorAPI.yaml', resolver=MyResolver(
         "datanator_rest_api.server"), validate_responses=False)
-    app.run(port=8080)
+    app.run(port=8080, debug=True)
