@@ -10,4 +10,8 @@ class ApiTestCase(unittest.TestCase):
         """
         spec.SpecUtils.parseAPI()
 
- 
+    def test_openapi_spec(self):
+        """Tests that the resolved yaml file adheres to OpenAPI specification
+        """
+        api_spec = spec.SpecUtils.parseAPI()
+        spec.SpecUtils.validateAPI(api_spec)
