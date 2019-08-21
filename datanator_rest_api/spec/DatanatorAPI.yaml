@@ -13,7 +13,7 @@ info:
   version: 1.0.0
 servers:
 - description: Local Host
-  url: /
+  url: http://localhost:8080/
 - description: SwaggerHub API Auto Mocking
   url: https://virtserver.swaggerhub.com/bilalshaikh42/Datanator/1.0.0
 - description: The public datanator server
@@ -28,6 +28,23 @@ tags:
 - description: Requests for information on reactions, including kinetic paramters
   name: Reactions
 paths:
+  /datanator/:
+    get:
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    type: string
+                required:
+                - message
+                type: object
+          description: OK
+      summary: Pings the server to verfy connection
+      tags:
+      - Datanator
   /metabolites/:
     get:
       parameters:
@@ -110,23 +127,6 @@ paths:
         enum:
         - 'True'
         type: string
-  /ping/:
-    get:
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                properties:
-                  message:
-                    type: string
-                required:
-                - message
-                type: object
-          description: OK
-      summary: Pings the server to verfy connection
-      tags:
-      - Datanator
 components:
   parameters:
     limitParam:

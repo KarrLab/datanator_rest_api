@@ -30,8 +30,8 @@ tags:
     description: Requests for information on reactions, including kinetic paramters
 
 paths:
-  /ping/:
-    $ref: paths/ping.yaml
+  /datanator/:
+    $ref: paths/datanator.yaml
   /metabolites/:
     $ref: paths/metabolites.yaml#/root
   /metabolites/concentrations/:

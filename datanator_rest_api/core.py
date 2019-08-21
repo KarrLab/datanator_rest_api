@@ -61,5 +61,5 @@ if __name__ == "__main__":
 
     app = connexion.App(__name__, specification_dir='spec/')
     app.add_api('DatanatorAPI.yaml', resolver=MyResolver(
-        "datanator_rest_api.server"), validate_responses=False)
+        "datanator_rest_api.routes"), validate_responses=False)
     app.run(port=8080, debug=True)
