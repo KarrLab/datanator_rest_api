@@ -10,3 +10,15 @@
 def search():
     dict = {"message": "tests pased"}
     return (dict)
+
+
+def get():
+    return("get")
+
+
+def put(body):
+    return ("put")
+
+
+def post(body):
+    return ("post")
