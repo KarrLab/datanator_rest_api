@@ -3,7 +3,7 @@
     "python.linting.enabled": true,
     "python.linting.mypyEnabled": false,
     "python.linting.pylintEnabled": true,
-    "python.pythonPath": "/home/bilal/env/python/datanatorAPI/bin/python",
+    "python.pythonPath": "/home/zl/.conda/envs/py36/bin/python",
     "python.testing.unittestArgs": [
         "-v",
         "-s",
