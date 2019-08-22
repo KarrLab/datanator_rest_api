@@ -5,3 +5,4 @@ openapi_resolver # to process api files
 openapi_spec_validator
 connexion
 connexion[swagger-ui]
+datanator_query

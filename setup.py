@@ -9,15 +9,15 @@ import os
 
 name = 'datanator_rest_api'
 dirname = os.path.dirname(__file__)
-package_data = {
-    name: [
-        'VERSION',
-    ],
-}
+# package_data = {
+#     name: [
+#         '0.0.1',
+#     ],
+# }
 
+print(dirname)
 # get package metadata
-md = pkg_utils.get_package_metadata(
-    dirname, name, package_data_filename_patterns=package_data)
+md = pkg_utils.get_package_metadata(dirname, name)
 
 # install package
 setuptools.setup(
