@@ -1,9 +1,12 @@
 import datanator_rest_api.spec as spec
+import datanator_rest_api.core as core
 import unittest
 import os
+import connexion
+import pytest
 
 
-class ApiTestCase(unittest.TestCase):
+class SpecTestCase(unittest.TestCase):
 
     def test_valid_syntax(self):
         """Tests that the yaml files have valid syntax and compile properly

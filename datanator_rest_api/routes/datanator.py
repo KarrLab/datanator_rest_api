@@ -13,7 +13,7 @@ def search():
 
 
 def get():
-    return("get")
+    return(search())
 
 
 def put(body):
