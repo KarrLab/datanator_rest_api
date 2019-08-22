@@ -1,4 +1,4 @@
-""" Server.py
+""" API Server
 Provides an automatic implementation of the rest api using the connexion library
 :Author: Bilal Shaikh < bilalshaikh42@gmail.com >
 :Date: 2019-08-19
