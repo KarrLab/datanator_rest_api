@@ -1,3 +1,4 @@
+flask >= 1.1.0
 capturer # to capture standard output in tests
 mock # to mock python classes and methods
 swagger_tester #to confirm api responses meet specification 
