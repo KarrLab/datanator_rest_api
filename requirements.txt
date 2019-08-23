@@ -3,5 +3,4 @@ setuptools # for pkg_resources module
 #git+git@github.com:karrlab/datanator
 openapi_resolver # to process api files
 openapi_spec_validator
-connexion >= 2.3
 datanator_query
