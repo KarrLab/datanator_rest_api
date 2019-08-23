@@ -1,3 +1,10 @@
+""" Test the implementation of the API
+
+:Author: Bilal Shaikh < bilalshaikh42@gmail.com >
+:Date: 2019-08-23
+:Copyright: 2019, Karr Lab
+:License: MIT
+"""
 import connexion
 import pytest
 import datanator_rest_api.core as core
