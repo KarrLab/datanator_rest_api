@@ -5,10 +5,12 @@
 :Copyright: 2019, Karr Lab
 :License: MIT
 """
+from datanator_query.query import query_protein
+from datanator_query.config import config
 
 
 def search():
-    return ("search")
+    return("search")
 
 
 def get():
@@ -21,3 +23,21 @@ def put(body):
 
 def post(body):
     return ("post")
+
+
+class Manager:
+    def __init__(self):
+        username = config.Config.USERNAME
+        password = config.Config.PASSWORD
+        server = config.Config.SERVER
+        self.manager = query_protein.QueryProtein(
+            server=server, username=username, password=password)
+
+
+class Abundance(Resource):
+
+    def get(self):
+        if distance is None:
+            return Manager.manager.get_abundance_by_id(protein_id)
+        else:
+            return Manager.manager.get_equivalent_protein(protein_id, distance, max_depth=depth)

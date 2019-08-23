@@ -1,0 +1,32 @@
+abundance:
+  parameters:
+    - in: query
+      name: depth
+      schema:
+        type: int
+      required: false
+    - in: query
+      name: distance
+      schema:
+        type: int
+      required: false
+    - in: query
+      name: uniprot_id
+      schema:
+        type: array
+        items:
+          type: string
+      required: false
+
+  get:
+    tags:
+      - Proteins
+    summary: Get abundance values for proteins
+    description: If abundance value for the protein is not found, one can search for analog proteins by traversing the taxonomic tree
+    responses:
+      "200":
+        description: OK
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/protein.yaml"
