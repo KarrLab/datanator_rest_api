@@ -1,5 +1,5 @@
 cement >= 3.0.0 # for command line programs
 setuptools # for pkg_resources module
-git+https://github.com/karrlab/datanator_query@master#egg=datanator_query
+git+https://github.com/karrlab/datanator_query@master#egg=datanator_query >=0.0.1
 openapi_resolver # to process api files
 openapi_spec_validator
