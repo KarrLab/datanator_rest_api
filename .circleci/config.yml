@@ -12,9 +12,9 @@ jobs:
       - checkout
 
       # Load packages from cache
-      - restore_cache:
-          keys:
-            - v1-{{ arch }}-{{ .Branch }}-{{ checksum "/etc/docker-image-tag" }}-{{ checksum "requirements.txt" }}
+      #- restore_cache:
+      #    keys:
+      #      - v1-{{ arch }}-{{ .Branch }}-{{ checksum "/etc/docker-image-tag" }}-{{ checksum "requirements.txt" }}
 
       # Python 3 installation tasks      
       - run:
