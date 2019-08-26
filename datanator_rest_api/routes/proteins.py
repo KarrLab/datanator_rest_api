@@ -5,8 +5,9 @@
 :Copyright: 2019, Karr Lab
 :License: MIT
 """
-from datanator_query.query import query_protein
+""" from datanator_query.query import query_protein
 from datanator_query.config import config
+ """
 
 
 def search():
@@ -25,7 +26,7 @@ def post(body):
     return ("post")
 
 
-class Manager:
+""" class Manager:
     def __init__(self):
         username = config.Config.USERNAME
         password = config.Config.PASSWORD
@@ -41,3 +42,4 @@ class Abundance(Resource):
             return Manager.manager.get_abundance_by_id(protein_id)
         else:
             return Manager.manager.get_equivalent_protein(protein_id, distance, max_depth=depth)
+ """
