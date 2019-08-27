@@ -45,15 +45,10 @@ testJob: &testJob
   steps:
     - attach_workspace:
         at: /
-    - restore_cache:
-        keys:
-          - source-v1-{{ .Branch }}-{{ .Revision }}
     - checkout
-    - restore_cache:
-        key: test-dependencies-v1-{{arch}}-{{ .Branch }}-{{ checksum "tests/requirements.txt"}}
     - run:
-        name: Install package (Python 3)
-        command: pip3 install -U -e .
+      name: Install package (Python 3)
+      command: pip3 install -U -e .
     - run:
         name: Run Tests
         command: pytest
@@ -141,11 +136,6 @@ jobs:
   setup:
     executor: setup_env
     steps:
-      - persist_to_workspace:
-          root: /
-          paths:
-            - usr/local/lib/python3.6/site-packages
-            - usr/local/bin
       #Get package
       - restore_cache:
           keys:
@@ -182,6 +172,12 @@ jobs:
           paths:
             - /usr/local/lib/python3.6/site-packages
             - /usr/local/bin/
+      - persist_to_workspace:
+          root: /
+          paths:
+            - usr/local/lib/python3.6/site-packages
+            - usr/local/bin
+            - root/API/
   Test Package:
     working_directory: /root/build
     docker:
