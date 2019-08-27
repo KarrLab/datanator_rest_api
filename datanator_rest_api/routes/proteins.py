@@ -32,5 +32,6 @@ class Manager:
             authSource=authDB)
 
 
-def get_abundance_uniprotid(uniprot_id):
-    return Manager().manager.get_abundance_by_id(uniprot_id)
+class abundance():
+    def get(self, uniprot_id):
+        return Manager().manager.get_abundance_by_id(uniprot_id)

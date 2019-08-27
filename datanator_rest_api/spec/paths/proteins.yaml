@@ -1,6 +1,5 @@
 abundance:
   get:
-    operationId: datanator_rest_api.routes.proteins.get_abundance_uniprotid
     parameters:
       - in: query
         name: uniprot_id

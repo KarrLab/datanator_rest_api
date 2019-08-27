@@ -129,11 +129,10 @@ paths:
         enum:
         - 'True'
         type: string
-  /proteins/abundance:
+  /proteins/abundance/:
     get:
       description: If abundance value for the protein is not found, one can search
         for analog proteins by traversing the taxonomic tree
-      operationId: datanator_rest_api.routes.proteins.get_abundance_uniprotid
       parameters:
       - in: query
         name: uniprot_id

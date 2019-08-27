@@ -38,8 +38,8 @@ paths:
     $ref: paths/metabolites.yaml#/root
   /metabolites/concentrations/:
     $ref: paths/metabolites.yaml#/concentrations
-  /proteins/abundance:
-    $ref: paths/proteins_path.yaml#/abundance
+  /proteins/abundance/:
+    $ref: paths/proteins.yaml#/abundance
 components:
   schemas:
     Metabolite:
