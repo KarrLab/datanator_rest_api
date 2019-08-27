@@ -126,9 +126,10 @@ jobs:
 
       - run:
           name: Install test dependencies
-          command: "if [[ -f tests/requirements.txt ]];
-            then pip3 install -r tests/requirements.txt
-            fi"
+          command: /
+            if [[ -f tests/requirements.txt ]]; then
+            pip3 install -r tests/requirements.txt
+            fi
       - save_cache:
           key: test-dependencies-v1-{{arch}}-{{ .Branch }}-{{ checksum "tests/requirements.txt"}}
           paths:
