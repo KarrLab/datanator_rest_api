@@ -1,4 +1,4 @@
-version: 2
+version: 2.1
 workflows:
   API-Workflow:
     jobs:
@@ -19,7 +19,6 @@ workflows:
       - Test Query:
           requires:
             - setup
-  version: 2
 
 executors:
   KarrLabBuildEnv:
