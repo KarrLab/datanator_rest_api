@@ -38,8 +38,10 @@ paths:
     $ref: paths/metabolites.yaml#/root
   /metabolites/concentrations/:
     $ref: paths/metabolites.yaml#/concentrations
-  /proteins/abundance/:
-    $ref: paths/proteins.yaml#/abundance
+  /proteins/precise_abundance/:
+    $ref: paths/proteins.yaml#/precise_abundance
+  /proteins/proximity_abundance/:
+    $ref: paths/proteins.yaml#/proximity_abundance
 components:
   schemas:
     Metabolite:
@@ -49,7 +51,9 @@ components:
     Reaction:
       $ref: ./schemas/reaction.yaml
     ProteinAbundance:
-      $ref: ./schemas/protein_abundance_uniprotid.yaml
+      $ref: ./schemas/proteins/singular_protein_abundance.yaml
+    ProximityProteinAbundance:
+      $ref: ./schemas/proteins/proximity_protein_abundance.yaml
     GeneralError:
       type: object
       properties:

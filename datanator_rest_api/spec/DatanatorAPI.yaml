@@ -129,10 +129,11 @@ paths:
         enum:
         - 'True'
         type: string
-  /proteins/abundance/:
+  /proteins/precise_abundance/:
     get:
       description: If abundance value for the protein is not found, one can search
-        for analog proteins by traversing the taxonomic tree
+        for proximity proteins
+      operationId: datanator_rest_api.routes.proteins.abundance.get_abundance
       parameters:
       - in: query
         name: uniprot_id
@@ -147,6 +148,39 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProteinAbundance'
+          description: OK
+      summary: Get abundance values for proteins
+      tags:
+      - Proteins
+  /proteins/proximity_abundance/:
+    get:
+      description: If abundance value for the protein is not found, one can search
+        for analog proteins by traversing the taxonomic tree
+      operationId: datanator_rest_api.routes.proteins.abundance.get_proximity_abundance
+      parameters:
+      - in: query
+        name: uniprot_id
+        required: true
+        schema:
+          items:
+            type: string
+          type: array
+      - in: query
+        name: distance
+        required: true
+        schema:
+          type: integer
+      - in: query
+        name: depth
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProximityProteinAbundance'
           description: OK
       summary: Get abundance values for proteins
       tags:
@@ -302,22 +336,56 @@ components:
       - source
       type: object
     ProteinAbundance:
-      properties:
-        abundances:
-          items:
-            properties:
-              abundance:
-                type: string
-              organ:
-                type: string
-            type: object
-          type: array
-        uniprot_id:
-          type: string
-      required:
-      - uniprot_id
-      - abundances
-      type: object
+      items:
+        properties:
+          abundances:
+            items:
+              properties:
+                abundance:
+                  type: string
+                organ:
+                  type: string
+              type: object
+            type: array
+          uniprot_id:
+            type: string
+        required:
+        - uniprot_id
+        - abundances
+        type: object
+      type: array
+    ProximityProteinAbundance:
+      items:
+        properties:
+          distance:
+            type: integer
+          documents:
+            items:
+              properties:
+                abundances:
+                  items:
+                    properties:
+                      abundance:
+                        type: string
+                      organ:
+                        type: string
+                    type: object
+                  type: array
+                depth:
+                  type: integer
+                ncbi_taxonomy_id:
+                  type: integer
+                species_name:
+                  type: string
+                uniprot_id:
+                  type: string
+              type: object
+            type: array
+        required:
+        - distance
+        - documents
+        type: object
+      type: array
     Reaction:
       properties:
         id:
