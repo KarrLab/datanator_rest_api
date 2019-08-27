@@ -26,7 +26,7 @@ executors:
       - image: karrlab/wc_env_dependencies:latest
     working_directory: /root/project
   setup_env:
-    working_directory: /root/
+    working_directory: /
     docker:
       - image: python:3.6
   api_test_env:
@@ -142,7 +142,7 @@ jobs:
     executor: setup_env
     steps:
       - persist_to_workspace:
-          root: /root/
+          root: /
           paths:
             - /usr/local/lib/python3.6/site-packages
             - /usr/local/bin
