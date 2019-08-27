@@ -23,3 +23,8 @@ class ImplementationTestCase(unittest.TestCase):
         self.assertTrue(len(result_0[0]['abundances']) == 56)
         self.assertEqual(result_0, result_1)
         self.assertEqual(result_2[0]['uniprot_id'], 'P12345')
+
+    def test_proximity_proteins(self):
+        result_0 = json.loads(self.client.get('/proteins/proximity_abundance/?uniprot_id=Q9D0T1&distance=100&depth=100').data)
+        self.assertEqual(len(result_0), 100)
+        self.assertEqual(result_0[2]['documents'][0]['uniprot_id'], 'P55770')
