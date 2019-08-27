@@ -1,0 +1,27 @@
+type: array
+items: 
+  type: object
+  required:
+    - distance
+    - documents
+  properties:
+    distance:
+      type: integer
+    documents:
+      type: array
+      items:
+        type: object
+        properties:
+          uniprot_id:
+            type: string
+          abundances:
+            type: array
+            items:
+              $ref: "./schemas/proteins/pax_abundance.yaml"
+          ncbi_taxonomy_id:
+            type: integer
+          species_name:
+            type: string
+          depth:
+            type: integer
+      
