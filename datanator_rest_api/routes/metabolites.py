@@ -8,6 +8,7 @@ Any subpaths are contained in an internal class
 :Copyright: 2019, Karr Lab
 :License: MIT
 """
+from flask import request
 
 
 def put(body):
@@ -18,13 +19,16 @@ def post():
     return ("test")
 
 
-def get(inchikey):
-    return("test")
+def get(inchi_key=None):
+    print(inchi_key)
+    return{"test": inchi_key}
 
 
 class concentrations(object):
-    def get():
-        return ('concentrations test get')
+    def get(inchi_key=None):
+        print(inchi_key)
+        print(request.args)
+        return{"test": inchi_key}
 
     def search():
         return("Concentrationstest")

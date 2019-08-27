@@ -51,7 +51,7 @@ paths:
     get:
       parameters:
       - in: query
-        name: inchikey
+        name: inchi_key
         required: false
         schema:
           type: string
@@ -71,7 +71,7 @@ paths:
       description: Update an existing metabolite
       parameters:
       - in: query
-        name: inchikey
+        name: inchi_key
         required: true
         schema:
           type: string
@@ -95,6 +95,12 @@ paths:
         takes a list of incjikeys for which to get data. The consensus flag will return
         a consensus value instead of an array of observations. The species query will
         provide taxonomic distance information for each result
+      parameters:
+      - in: query
+        name: inchi_key
+        required: false
+        schema:
+          type: string
       responses:
         '200':
           content:
@@ -107,7 +113,7 @@ paths:
       - Metabolites
     parameters:
     - in: query
-      name: inchikeys
+      name: inchi_keys
       required: false
       schema:
         items:
