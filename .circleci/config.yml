@@ -21,11 +21,31 @@ workflows:
             - setup
   version: 2
 
+executors:
+  KarrLabBuildEnv:
+    docker:
+      - image: karrlab/wc_env_dependencies:latest
+    working_directory: /root/project
+  SetUpEnv:
+    working_directory: /root/
+    docker:
+      - image: python:3.6
+  APITestEnv:
+    working_directory: /root/API/
+    docker:
+      - image: python:3.6
+  QueryTestEnv:
+    working_directory: /root/Query
+    docker:
+      - image: python:3.6
+
 testJob: &testJob
   working_directory: /root/build
   docker:
     - image: python:3.6
   steps:
+    - attach_workspace:
+      at: /
     - restore_cache:
         keys:
           - source-v1-{{ .Branch }}-{{ .Revision }}
@@ -41,9 +61,7 @@ testJob: &testJob
 
 jobs:
   karrlab:
-    working_directory: /root/project
-    docker:
-      - image: karrlab/wc_env_dependencies:latest
+    executor: KarrLabBuildEnv
     steps:
       - checkout
       - restore_cache:
@@ -122,10 +140,13 @@ jobs:
           path: /root/project/docs/_build/html
           destination: docs
   setup:
-    working_directory: /root/build
-    docker:
-      - image: python:3.6
+    executor: SetUpEnv
     steps:
+      - persist_to_workspace:
+          root: /
+          paths:
+            - /usr/local/lib/python3.6/site-packages
+            - /usr/local/bin
       #Get package
       - restore_cache:
           keys:
@@ -150,7 +171,7 @@ jobs:
             }}
           paths:
             - /usr/local/lib/python3.6/site-packages
-            - /user/local/bin
+            - /usr/local/bin
       - restore_cache:
           key: test-dependencies-v1-{{arch}}-{{ .Branch }}-{{ checksum "tests/requirements.txt"}}
 
