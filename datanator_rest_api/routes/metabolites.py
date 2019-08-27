@@ -29,6 +29,3 @@ class concentrations(object):
         print(inchi_key)
         print(request.args)
         return{"test": inchi_key}
-
-    def search():
-        return("Concentrationstest")
