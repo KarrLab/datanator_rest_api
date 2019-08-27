@@ -1,0 +1,11 @@
+type: object
+required:
+  - uniprot_id
+  - abundances
+properties:
+  uniprot_id:
+    type: string
+  abundances:
+    type: array
+    items:
+      $ref: "./schemas/pax_abundance.yaml"

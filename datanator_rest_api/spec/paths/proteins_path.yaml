@@ -1,0 +1,22 @@
+abundance:
+  parameters:
+    - in: query
+      name: uniprot_id
+      schema:
+        type: array
+        items:
+          type: string
+      required: true
+
+  get:
+    tags:
+      - Proteins
+    summary: Get abundance values for proteins
+    description: If abundance value for the protein is not found, one can search for analog proteins by traversing the taxonomic tree
+    responses:
+      "200":
+        description: OK
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ProteinAbundance"
