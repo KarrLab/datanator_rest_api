@@ -4,10 +4,40 @@ workflows:
     jobs:
       - karrlab
       - setup
-      - test:
+      - Test Package:
+          requires:
+            - setup
+      - Validate API:
+          requires:
+            - setup
+      - Build API:
+          requires:
+            - Validate API
+      - Test Implementation:
+          requires:
+            - Build API
+      - Test Query:
           requires:
             - setup
   version: 2
+
+testJob: &testJob
+  working_directory: /root/build
+  docker:
+    - image: python:3.6
+  steps:
+    - restore_cache:
+        keys:
+          - source-v1-{{ .Branch }}-{{ .Revision }}
+    - checkout
+    - restore_cache:
+        key: test-dependencies-v1-{{arch}}-{{ .Branch }}-{{ checksum "tests/requirements.txt"}}
+    - run:
+        name: Install package (Python 3)
+        command: pip3 install -U -e .
+    - run:
+        name: Run Tests
+        command: pytest
 
 jobs:
   karrlab:
@@ -132,8 +162,7 @@ jobs:
           paths:
             - /usr/local/lib/python3.6/site-packages
             - /usr/local/bin/
-
-  test:
+  Test Package:
     working_directory: /root/build
     docker:
       - image: python:3.6
@@ -150,3 +179,9 @@ jobs:
       - run:
           name: Run Tests
           command: pytest
+  Validate API:
+    <<: *testJob
+  Build API:
+    <<: *testJob
+  Test Implementation:
+    <<: *testJob
