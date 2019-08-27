@@ -47,8 +47,8 @@ testJob: &testJob
         at: /
     - checkout
     - run:
-      name: Install package (Python 3)
-      command: pip3 install -U -e .
+        name: Install package (Python 3)
+        command: pip3 install -U -e .
     - run:
         name: Run Tests
         command: pytest
