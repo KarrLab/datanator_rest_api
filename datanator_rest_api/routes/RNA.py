@@ -7,10 +7,6 @@
 """
 
 
-def search():
-    return ("search")
-
-
 def get():
     return("get")
 

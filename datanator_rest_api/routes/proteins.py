@@ -8,9 +8,6 @@
 from datanator_query_python.query import query_protein
 from datanator_query_python.config import config
 
-def search():
-    return("search")
-
 
 def get():
     return("get")
@@ -34,6 +31,6 @@ class Manager:
             server=server, username=username, password=password,
             authSource=authDB)
 
-def get_abundance_uniprotid(uniprot_id):
-        return Manager().manager.get_abundance_by_id(uniprot_id)
 
+def get_abundance_uniprotid(uniprot_id):
+    return Manager().manager.get_abundance_by_id(uniprot_id)

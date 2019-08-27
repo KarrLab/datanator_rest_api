@@ -10,10 +10,6 @@ Any subpaths are contained in an internal class
 """
 
 
-def search():
-    return ("test")
-
-
 def put(body):
     return ("test")
 
