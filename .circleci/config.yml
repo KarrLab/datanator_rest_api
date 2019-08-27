@@ -94,7 +94,7 @@ jobs:
   setup:
     working_directory: /root/build
     docker:
-      - image: python
+      - image: python:3.6-slim-buster
     steps:
       - restore_cache:
           keys:
@@ -107,7 +107,7 @@ jobs:
             - "."
 
       - restore_cache:
-          key: dependencies-v1-{{ arch }}-{{ .Branch }}-{{ checksum "/etc/docker-image-tag" }}-{{ checksum "requirements.txt" }}
+          key: dependencies-v1-{{ arch }}-{{ .Branch }}-{{ checksum "requirements.txt" }}
 
       - run:
           name: Install test dependencies
@@ -129,7 +129,7 @@ jobs:
 
       # Save packages to cache
       - save_cache:
-          key: dependencies-v1-{{ arch }}-{{ .Branch }}-{{ checksum "/etc/docker-image-tag" }}-{{ checksum "requirements.txt" }}
+          key: dependencies-v1-{{ arch }}-{{ .Branch }}-{{ checksum "requirements.txt" }}
           paths:
             - /usr/local/lib/python3.6/site-packages
 
