@@ -48,6 +48,15 @@ components:
       $ref: ./schemas/observation.yaml
     Reaction:
       $ref: ./schemas/reaction.yaml
+
+    ProteinAbundances:
+      type: object
+      properties:
+        organ:
+          type: string
+        abundance:
+          type: string
+
     GeneralError:
       type: object
       properties:
