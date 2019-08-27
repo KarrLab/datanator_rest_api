@@ -44,7 +44,7 @@ testJob: &testJob
     - image: python:3.6
   steps:
     - attach_workspace:
-      at: /
+        at: /
     - restore_cache:
         keys:
           - source-v1-{{ .Branch }}-{{ .Revision }}
