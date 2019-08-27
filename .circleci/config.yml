@@ -7,6 +7,7 @@ workflows:
   test:
     jobs:
       - setup
+      - test
 jobs:
   karrlab:
     working_directory: /root/project
