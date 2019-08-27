@@ -94,7 +94,7 @@ jobs:
   setup:
     working_directory: /root/build
     docker:
-      - image: python:3.6-slim-buster
+      - image: python:3.6
     steps:
       - restore_cache:
           keys:
@@ -117,7 +117,7 @@ jobs:
                 if [[ ! -z "$line" ]] && [[ ! "$line" =~ ^# ]]; then
                   pip3 install -U "$line"
                 fi
-              done < .circleci/requirements.txt
+              done < tests/requirements.txt
             fi
       - run:
           name: Install Package Dependencies
