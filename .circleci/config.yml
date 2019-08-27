@@ -4,7 +4,7 @@ workflows:
     jobs:
       - karrlab:
           context: karr_lab
-  test:
+  API-Workflow:
     jobs:
       - setup
       - test:
@@ -127,10 +127,6 @@ jobs:
           name: Install Package Dependencies
           command: pip3 install -r requirements.txt
 
-      - run:
-          name: Install package (Python 3)
-          command: pip3 install -U -e .
-
       # Save packages to cache
       - save_cache:
           key: dependencies-v1-{{ arch }}-{{ .Branch }}-{{ checksum "requirements.txt" }}
@@ -150,6 +146,9 @@ jobs:
             - source-v1-{{ .Branch }}-{{ .Revision }}
       - restore_cache:
           key: dependencies-v1-{{ arch }}-{{ .Branch }}-{{ checksum "requirements.txt" }}
+      - run:
+          name: Install package (Python 3)
+          command: pip3 install -U -e .
       - run:
           name: Run Tests
           command: pytest
