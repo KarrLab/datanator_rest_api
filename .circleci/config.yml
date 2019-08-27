@@ -144,8 +144,8 @@ jobs:
       - persist_to_workspace:
           root: /
           paths:
-            - /usr/local/lib/python3.6/site-packages
-            - /usr/local/bin
+            - usr/local/lib/python3.6/site-packages
+            - usr/local/bin
       #Get package
       - restore_cache:
           keys:
