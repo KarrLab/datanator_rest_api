@@ -17,9 +17,9 @@ class ImplementationTestCase(unittest.TestCase):
         self.client.testing = True
 
     def test_proteins(self):
-        result_0 = json.loads(self.client.get('/proteins/abundance/?uniprot_id=Q9D0T1').data)
-        result_1 = json.loads(self.client.get('/proteins/abundance/?uniprot_id=q9D0T1').data)
-        result_2 = json.loads(self.client.get('/proteins/abundance/?uniprot_id=q9D0T1,p12345').data)
+        result_0 = json.loads(self.client.get('/proteins/precise_abundance/?uniprot_id=Q9D0T1').data)
+        result_1 = json.loads(self.client.get('/proteins/precise_abundance/?uniprot_id=q9D0T1').data)
+        result_2 = json.loads(self.client.get('/proteins/precise_abundance/?uniprot_id=q9D0T1,p12345').data)
         self.assertTrue(len(result_0[0]['abundances']) == 56)
         self.assertEqual(result_0, result_1)
         self.assertEqual(result_2[0]['uniprot_id'], 'P12345')
