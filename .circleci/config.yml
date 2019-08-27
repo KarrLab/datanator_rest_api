@@ -121,7 +121,7 @@ jobs:
           name: Install test dependencies
           command: |
             if [[ -f tests/requirements.txt ]]; then              
-                  pip3 install -r tests/requirments.txt
+                  pip3 install -r tests/requirements.txt
             fi
       - run:
           name: Install Package Dependencies
