@@ -74,8 +74,14 @@ meta:
         required: false
     tags:
       - Proteins
-    summary: Get abundance values for proteins along the taxonomic tree
-    description: Search for analog proteins by traversing the taxonomic tree
+    summary: Get meta information for proteins
+    description: "Get meta information for proteins,\n
+    uniprot_id overrides all other input options.\n
+    Combination of protein_name + taxon_id yields\n
+    all uniprot_id that has abundance information in\n
+    that particular organism. species_name overrides\n
+    ncbi_taxon_id. Users should try different combinations\n
+    to get a feel of what each combination returns."  
     responses:
       "200":
         description: OK
