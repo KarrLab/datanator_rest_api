@@ -51,3 +51,35 @@ proximity_abundance:
           application/json:
             schema:
               $ref: "#/components/schemas/ProximityProteinAbundance"
+
+meta:
+  get:
+    parameters:
+      - in: query
+        name: uniprot_id
+        schema:
+          type: array
+          items:
+            type: string
+        required: false
+      - in: query
+        name: distance
+        schema:
+          type: integer
+        required: false
+      - in: query
+        name: depth
+        schema:
+          type: integer
+        required: false
+    tags:
+      - Proteins
+    summary: Get abundance values for proteins along the taxonomic tree
+    description: Search for analog proteins by traversing the taxonomic tree
+    responses:
+      "200":
+        description: OK
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ProximityProteinAbundance"
