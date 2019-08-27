@@ -185,3 +185,5 @@ jobs:
     <<: *testJob
   Test Implementation:
     <<: *testJob
+  Test Query:
+    <<: *testJob
