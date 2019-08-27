@@ -125,7 +125,7 @@ jobs:
             fi
       - run:
           name: Install Package Dependencies
-          command: pip3 install -r requirments.txt
+          command: pip3 install -r requirements.txt
 
       - run:
           name: Install package (Python 3)
