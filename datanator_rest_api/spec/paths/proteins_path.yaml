@@ -1,14 +1,14 @@
 abundance:
-  parameters:
-    - in: query
-      name: uniprot_id
-      schema:
-        type: array
-        items:
-          type: string
-      required: true
-
   get:
+    operationId: datanator_rest_api.routes.proteins.get_abundance_uniprotid
+    parameters:
+      - in: query
+        name: uniprot_id
+        schema:
+          type: array
+          items:
+            type: string
+        required: true
     tags:
       - Proteins
     summary: Get abundance values for proteins
