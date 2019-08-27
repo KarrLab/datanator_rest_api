@@ -1,5 +1,5 @@
 [![PyPI package](https://img.shields.io/pypi/v/datanator_rest_api.svg)](https://pypi.python.org/pypi/datanator_rest_api)
-[![PyPI Status](https://img.shields.io/pypi/status/openapi-spec-validator.svg)](https://pypi.python.org/pypi/datanator_rest_api)
+[![PyPI Status](https://img.shields.io/pypi/status/datanator_rest_api.svg)](https://pypi.python.org/pypi/datanator_rest_api)
 [![Documentation](https://readthedocs.org/projects/datanator-rest-api/badge/?version=latest)](https://docs.karrlab.org/datanator_rest_api)
 [![Test results](https://circleci.com/gh/KarrLab/datanator_rest_api.svg?style=shield)](https://circleci.com/gh/KarrLab/datanator_rest_api)
 [![Test coverage](https://coveralls.io/repos/github/KarrLab/datanator_rest_api/badge.svg)](https://coveralls.io/github/KarrLab/datanator_rest_api)
