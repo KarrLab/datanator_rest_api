@@ -94,30 +94,25 @@ jobs:
   setup:
     working_directory: /root/build
     docker:
-      - image: karrlab/wc_env_dependencies:latest
+      - image: python
     steps:
-      - checkout
       - restore_cache:
           keys:
-            - v1-{{ arch }}-{{ .Branch }}-{{ checksum "/etc/docker-image-tag" }}-{{ checksum "requirements.txt" }}
+            - source-v1-{{ .Branch }}-{{ .Revision }}
+            - source-v1-{{.Branch}}-
+      - checkout
+      - save_cache:
+          key: source-v1-{{ .Branch }}-{{ .Revision }}
+          paths:
+            - "."
 
-      # Python 3 installation tasks
+      - restore_cache:
+          key: dependencies-v1-{{ arch }}-{{ .Branch }}-{{ checksum "/etc/docker-image-tag" }}-{{ checksum "requirements.txt" }}
+
       - run:
-          name: Install pkg_utils (Python 3)
-          command: pip3 install -U git+https://github.com/KarrLab/pkg_utils.git#egg=pkg_utils
-      - run:
-          name: Install karr_lab_build_utils (Python 3)
+          name: Install test dependencies
           command: |
-            pip3 install -U git+https://github.com/KarrLab/sphinxcontrib-googleanalytics.git#egg=sphinxcontrib_googleanalytics
-            pip3 install -U git+https://github.com/KarrLab/wc_utils.git#egg=wc_utils[all]
-            pip3 install -U git+https://github.com/KarrLab/karr_lab_build_utils.git#egg=karr_lab_build_utils[all]
-      - run:
-          name: Install package configuration files including credentials
-          command: karr_lab_build_utils3 download-install-package-config-files
-      - run:
-          name: Setup Python environment
-          command: |
-            if [[ -f .circleci/requirements.txt ]]; then
+            if [[ -f tests/requirements.txt ]]; then
               while IFS="" read -r line || [ -n "$line" ]; do
                 if [[ ! -z "$line" ]] && [[ ! "$line" =~ ^# ]]; then
                   pip3 install -U "$line"
@@ -125,12 +120,16 @@ jobs:
               done < .circleci/requirements.txt
             fi
       - run:
+          name: Install Package Dependencies
+          command: pip3 install -r requirments.txt
+
+      - run:
           name: Install package (Python 3)
           command: pip3 install -U -e .[all]
 
       # Save packages to cache
       - save_cache:
-          key: v1-{{ arch }}-{{ .Branch }}-{{ checksum "/etc/docker-image-tag" }}-{{ checksum "requirements.txt" }}
+          key: dependencies-v1-{{ arch }}-{{ .Branch }}-{{ checksum "/etc/docker-image-tag" }}-{{ checksum "requirements.txt" }}
           paths:
             - /usr/local/lib/python3.6/site-packages
 
@@ -143,4 +142,3 @@ workflows:
   test:
     jobs:
       - setup
-
