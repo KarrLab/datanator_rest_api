@@ -38,25 +38,18 @@ paths:
     $ref: paths/metabolites.yaml#/root
   /metabolites/concentrations/:
     $ref: paths/metabolites.yaml#/concentrations
+  /proteins/abundance:
+    $ref: paths/proteins_path.yaml#/abundance
 components:
   schemas:
-    Protein:
-      $ref: ./schemas/protein.yaml
     Metabolite:
       $ref: ./schemas/metabolite.yaml
     Observation:
       $ref: ./schemas/observation.yaml
     Reaction:
       $ref: ./schemas/reaction.yaml
-
-    ProteinAbundances:
-      type: object
-      properties:
-        organ:
-          type: string
-        abundance:
-          type: string
-
+    ProteinAbundance:
+      $ref: ./schemas/protein_abundance_uniprotid.yaml
     GeneralError:
       type: object
       properties:

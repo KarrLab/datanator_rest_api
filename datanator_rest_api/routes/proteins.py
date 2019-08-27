@@ -37,9 +37,6 @@ class Manager:
 
 class abundance:
 
-    def get(self, distance, protein_id, depth):
-        if distance is None:
-            return Manager.manager.get_abundance_by_id(protein_id)
-        else:
-            return Manager.manager.get_equivalent_protein(protein_id, distance, max_depth=depth)
+    def get(self, uniprot_id):
+        return Manager.manager.get_abundance_by_id(uniprot_id)
 
