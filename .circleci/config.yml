@@ -141,6 +141,7 @@ jobs:
           paths:
             - "."
   test:
+    working_directory: /root/build
     docker:
       - image: python:3.6
     steps:
