@@ -21,19 +21,19 @@ workflows:
             - setup
 
 executors:
-  KarrLabBuildEnv:
+  karr_lab_build_env:
     docker:
       - image: karrlab/wc_env_dependencies:latest
     working_directory: /root/project
-  SetUpEnv:
+  setup_env:
     working_directory: /root/
     docker:
       - image: python:3.6
-  APITestEnv:
+  api_test_env:
     working_directory: /root/API/
     docker:
       - image: python:3.6
-  QueryTestEnv:
+  query_test_env:
     working_directory: /root/Query
     docker:
       - image: python:3.6
@@ -60,7 +60,7 @@ testJob: &testJob
 
 jobs:
   karrlab:
-    executor: KarrLabBuildEnv
+    executor: karr_lab_build_env
     steps:
       - checkout
       - restore_cache:
@@ -139,7 +139,7 @@ jobs:
           path: /root/project/docs/_build/html
           destination: docs
   setup:
-    executor: SetUpEnv
+    executor: setup_env
     steps:
       - persist_to_workspace:
           root: /
