@@ -31,10 +31,13 @@ class Manager:
             server=server, username=username, password=password,
             authSource=authDB)
 
-class abundance:
+class precise_abundance:
 
-    def get_abundance(uniprot_id):
+    def get(uniprot_id):
         return Manager().manager.get_abundance_by_id(uniprot_id)
 
-    def get_proximity_abundance(uniprot_id, distance, depth):
+
+class proximity_abundance:
+
+    def get(uniprot_id, distance, depth):
         return Manager().manager.get_equivalent_protein(uniprot_id, distance, max_depth=depth)

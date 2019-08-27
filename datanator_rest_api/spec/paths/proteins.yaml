@@ -1,6 +1,5 @@
 precise_abundance:
   get:
-    operationId: datanator_rest_api.routes.proteins.abundance.get_abundance
     parameters:
       - in: query
         name: uniprot_id
@@ -23,7 +22,6 @@ precise_abundance:
 
 proximity_abundance:
   get:
-    operationId: datanator_rest_api.routes.proteins.abundance.get_proximity_abundance
     parameters:
       - in: query
         name: uniprot_id
@@ -44,8 +42,8 @@ proximity_abundance:
         required: true
     tags:
       - Proteins
-    summary: Get abundance values for proteins
-    description: If abundance value for the protein is not found, one can search for analog proteins by traversing the taxonomic tree
+    summary: Get abundance values for proteins along the taxonomic tree
+    description: Search for analog proteins by traversing the taxonomic tree
     responses:
       "200":
         description: OK

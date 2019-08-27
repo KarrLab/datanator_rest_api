@@ -139,7 +139,6 @@ paths:
     get:
       description: If abundance value for the protein is not found, one can search
         for proximity proteins
-      operationId: datanator_rest_api.routes.proteins.abundance.get_abundance
       parameters:
       - in: query
         name: uniprot_id
@@ -160,9 +159,7 @@ paths:
       - Proteins
   /proteins/proximity_abundance/:
     get:
-      description: If abundance value for the protein is not found, one can search
-        for analog proteins by traversing the taxonomic tree
-      operationId: datanator_rest_api.routes.proteins.abundance.get_proximity_abundance
+      description: Search for analog proteins by traversing the taxonomic tree
       parameters:
       - in: query
         name: uniprot_id
@@ -188,7 +185,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ProximityProteinAbundance'
           description: OK
-      summary: Get abundance values for proteins
+      summary: Get abundance values for proteins along the taxonomic tree
       tags:
       - Proteins
 components:
