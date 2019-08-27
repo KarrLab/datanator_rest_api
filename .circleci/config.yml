@@ -26,7 +26,7 @@ executors:
       - image: karrlab/wc_env_dependencies:latest
     working_directory: /root/project
   setup_env:
-    working_directory: /
+    working_directory: /root/API/
     docker:
       - image: python:3.6
   api_test_env:
