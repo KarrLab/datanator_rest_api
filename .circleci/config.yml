@@ -109,10 +109,6 @@ jobs:
             - source-v1-{{ .Branch }}-{{ .Revision }}
             - source-v1-{{.Branch}}-
       - checkout
-      - save_cache:
-          key: source-v1-{{ .Branch }}-{{ .Revision }}
-          paths:
-            - "."
 
       - restore_cache:
           key: dependencies-v1-{{ arch }}-{{ .Branch }}-{{ checksum "requirements.txt" }}
@@ -136,3 +132,19 @@ jobs:
           key: dependencies-v1-{{ arch }}-{{ .Branch }}-{{ checksum "requirements.txt" }}
           paths:
             - /usr/local/lib/python3.6/site-packages
+      - save_cache:
+          key: source-v1-{{ .Branch }}-{{ .Revision }}
+          paths:
+            - "."
+  test:
+    docker:
+      - image: python:3.6
+    steps:
+      - restore_cache:
+          keys:
+            - source-v1-{{ .Branch }}-{{ .Revision }}
+      - restore_cache:
+          key: dependencies-v1-{{ arch }}-{{ .Branch }}-{{ checksum "requirements.txt" }}
+      - run:
+          name: Run Tests
+          command: pytest
