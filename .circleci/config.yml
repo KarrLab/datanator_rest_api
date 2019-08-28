@@ -27,6 +27,7 @@ workflows:
             - Backend Integration Test
             - Frontend Integration Test
       - Hold:
+          type: approval
           requires:
             - Stage
       - Deploy:
