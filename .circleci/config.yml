@@ -19,14 +19,16 @@ workflows:
       - Frontend Integration Test:
           requires:
             - Validation Test
-      - Hold:
-          type: approval
+      - Stage:
           requires:
             - Unit Test
             - Validation Test
             - Implementation Test
             - Backend Integration Test
             - Frontend Integration Test
+      - Hold:
+          requires:
+            - Stage
       - Deploy:
           requires:
             - Hold
@@ -213,6 +215,8 @@ jobs:
   Backend Integration Test:
     <<: *testJob
   Frontend Integration Test:
+    <<: *testJob
+  Stage:
     <<: *testJob
   Deploy:
     <<: *testJob
