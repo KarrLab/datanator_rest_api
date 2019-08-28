@@ -3,22 +3,33 @@ workflows:
   API-Workflow:
     jobs:
       - karrlab
-      - setup
-      - Test Package:
+      - Build
+      - Unit Test:
           requires:
             - setup
-      - Validate API:
+      - Validation Test:
           requires:
             - setup
-      - Build API:
+      - Implementation Test:
           requires:
             - Validate API
-      - Test Implementation:
+      - Backend Integration Test:
           requires:
             - Build API
-      - Test Query:
+      - Frontend Integration Test:
           requires:
             - setup
+      - Hold:
+          type: approval
+          requires:
+            - Unit Test
+            - Validation Test
+            - Implementation Test
+            - Backend Integration Test
+            - Frontend Integration Test
+      - Deploy:
+          requires:
+            - Hold
 
 executors:
   karr_lab_build_env:
@@ -133,7 +144,7 @@ jobs:
       - store_artifacts:
           path: /root/project/docs/_build/html
           destination: docs
-  setup:
+  Build:
     executor: setup_env
     steps:
       #Get package
@@ -178,7 +189,7 @@ jobs:
             - usr/local/lib/python3.6/site-packages
             - usr/local/bin
             - root/API/
-  Test Package:
+  Unit Test:
     working_directory: /root/build
     docker:
       - image: python:3.6
@@ -195,11 +206,13 @@ jobs:
       - run:
           name: Run Tests
           command: pytest
-  Validate API:
+  Validation Test:
     <<: *testJob
-  Build API:
+  Implementation Test:
     <<: *testJob
-  Test Implementation:
+  Backend Integration Test:
     <<: *testJob
-  Test Query:
+  Frontend Intergration Test:
+    <<: *testJob
+  Deploy:
     <<: *testJob
