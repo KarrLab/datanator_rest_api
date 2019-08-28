@@ -8,6 +8,12 @@ precise_abundance:
           items:
             type: string
         required: true
+      - in: query
+        name: with_meta
+        schema:
+          type: boolean
+        required: false
+        default: false
     tags:
       - Proteins
     summary: Get abundance values for proteins
@@ -56,19 +62,22 @@ meta:
   get:
     parameters:
       - in: query
+        name: species_name
+        schema:
+          type: string
+        required: false
+      - in: query
+        name: protein_name
+        schema:
+          type: string
+        required: false
+      - in: query
         name: uniprot_id
         schema:
-          type: array
-          items:
-            type: string
+          type: string
         required: false
       - in: query
-        name: distance
-        schema:
-          type: integer
-        required: false
-      - in: query
-        name: depth
+        name: ncbi_taxon_id
         schema:
           type: integer
         required: false
@@ -88,4 +97,4 @@ meta:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/ProximityProteinAbundance"
+              $ref: "#/components/schemas/ProteinMetaCommon"
