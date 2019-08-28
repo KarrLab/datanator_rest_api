@@ -212,7 +212,7 @@ jobs:
     <<: *testJob
   Backend Integration Test:
     <<: *testJob
-  Frontend Intergration Test:
+  Frontend Integration Test:
     <<: *testJob
   Deploy:
     <<: *testJob
