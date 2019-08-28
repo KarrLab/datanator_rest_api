@@ -6,19 +6,19 @@ workflows:
       - Build
       - Unit Test:
           requires:
-            - setup
+            - Build
       - Validation Test:
           requires:
-            - setup
+            - Build
       - Implementation Test:
           requires:
-            - Validate API
+            - Validation Test
       - Backend Integration Test:
           requires:
-            - Build API
+            - Validation Test
       - Frontend Integration Test:
           requires:
-            - setup
+            - Validation Test
       - Hold:
           type: approval
           requires:
