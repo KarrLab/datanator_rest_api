@@ -44,7 +44,7 @@ class proximity_abundance:
 
 class meta_combo:
 
-    def get(species_name=None, name=None, uniprot_id=None, ncbi_taxon_id=None):
+    def get(uniprot_id=None, ncbi_taxon_id=None, species_name=None, name=None):
         if uniprot_id is not None:   # uniprot_id
             return Manager().manager.get_meta_by_id(uniprot_id)
         elif uniprot_id is not None and ncbi_taxon_id is not None and species_name is None:  # name + taxon_id
