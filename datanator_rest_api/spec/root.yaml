@@ -49,7 +49,7 @@ paths:
 components:
   schemas:
     Metabolite:
-      $ref: ./schemas/metabolite.yaml
+      $ref: ./schemas/metabolites/metabolite.yaml
     Observation:
       $ref: ./schemas/observation.yaml
     Reaction:
