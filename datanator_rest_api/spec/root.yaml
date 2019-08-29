@@ -38,6 +38,8 @@ paths:
     $ref: paths/metabolites.yaml#/root
   /metabolites/concentrations/:
     $ref: paths/metabolites.yaml#/concentrations
+  /metabolites/concentration/:
+    $ref: paths/metabolites.yaml#/concentration
   /proteins/precise_abundance/:
     $ref: paths/proteins.yaml#/precise_abundance
   /proteins/proximity_abundance/:
@@ -50,6 +52,8 @@ components:
   schemas:
     Metabolite:
       $ref: ./schemas/metabolites/metabolite.yaml
+    MetaboliteConcentration:
+      $ref: ./schemas/metabolites/metabolite_concentration.yaml
     Observation:
       $ref: ./schemas/observation.yaml
     Reaction:
