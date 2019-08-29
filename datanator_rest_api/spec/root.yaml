@@ -42,8 +42,10 @@ paths:
     $ref: paths/proteins.yaml#/precise_abundance
   /proteins/proximity_abundance/:
     $ref: paths/proteins.yaml#/proximity_abundance
-  /proteins/meta/:
-    $ref: paths/proteins.yaml#/meta
+  /proteins/meta_combo:
+    $ref: paths/proteins.yaml#/meta_combo
+  /proteins/meta_single:
+    $ref: paths/proteins.yaml#/meta_single
 components:
   schemas:
     Metabolite:
@@ -56,8 +58,10 @@ components:
       $ref: ./schemas/proteins/singular_protein_abundance.yaml
     ProximityProteinAbundance:
       $ref: ./schemas/proteins/proximity_protein_abundance.yaml
-    ProteinMetaCommon:
-      $ref: ./schemas/proteins/protein_meta_common.yaml
+    ProteinMetaCombo:
+      $ref: ./schemas/proteins/protein_meta_combo.yaml
+    ProteinMetaSingle:
+      $ref: ./schemas/proteins/protein_meta_single.yaml
     GeneralError:
       type: object
       properties:

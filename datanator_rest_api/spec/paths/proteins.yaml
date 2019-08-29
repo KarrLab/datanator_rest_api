@@ -52,7 +52,34 @@ proximity_abundance:
             schema:
               $ref: "#/components/schemas/ProximityProteinAbundance"
 
-meta:
+meta_single:
+  get:
+    parameters:
+      - in: query
+        name: ncbi_taxon_id
+        schema:
+          type: integer
+        required: false
+      - in: query
+        name: name
+        schema:
+          type: string
+        required: false
+    tags:
+      - Proteins
+    summary: Get meta information for proteins with one input
+    description: "Get meta information for proteins,\n
+    input only the taxon_id or name (either kegg orthology\n
+    name or protein name)."  
+    responses:
+      "200":
+        description: OK
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ProteinMetaSingle"
+
+meta_combo:
   get:
     parameters:
       - in: query
@@ -63,14 +90,19 @@ meta:
             type: string
         required: false
       - in: query
-        name: distance
+        name: ncbi_taxon_id
         schema:
           type: integer
         required: false
       - in: query
-        name: depth
+        name: species_name
         schema:
-          type: integer
+          type: string
+        required: false
+      - in: query
+        name: name
+        schema:
+          type: string
         required: false
     tags:
       - Proteins
@@ -88,4 +120,4 @@ meta:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/ProximityProteinAbundance"
+              $ref: "#/components/schemas/ProteinMetaCombo"
