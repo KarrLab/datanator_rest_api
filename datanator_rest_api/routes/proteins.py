@@ -57,9 +57,9 @@ class meta_combo:
 class meta_single:
 
     def get(name=None, ncbi_taxon_id=None):
-        if name is not None and ncbi_taxon_id is None:
+        if name is not None and ncbi_taxon_id is None:  # name only
             return Manager().manager.get_info_by_text(name)
-        elif name is None and ncbi_taxon_id is not None:
+        elif name is None and ncbi_taxon_id is not None:  # taxon_id only
             return Manager().manager.get_info_by_taxonid(ncbi_taxon_id)
         else:
             return "This combination of input is not valid."
