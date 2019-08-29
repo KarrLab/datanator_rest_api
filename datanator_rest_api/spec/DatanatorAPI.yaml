@@ -150,9 +150,7 @@ paths:
         name: uniprot_id
         required: false
         schema:
-          items:
-            type: string
-          type: array
+          type: string
       - in: query
         name: ncbi_taxon_id
         required: false

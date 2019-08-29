@@ -8,12 +8,6 @@ precise_abundance:
           items:
             type: string
         required: true
-      - in: query
-        name: with_meta
-        schema:
-          type: boolean
-        required: false
-        default: false
     tags:
       - Proteins
     summary: Get abundance values for proteins
@@ -89,14 +83,14 @@ meta_combo:
   get:
     parameters:
       - in: query
-        name: species_name
+        name: uniprot_id
         schema:
           type: string
         required: false
       - in: query
         name: ncbi_taxon_id
         schema:
-          type: string
+          type: integer
         required: false
       - in: query
         name: species_name
