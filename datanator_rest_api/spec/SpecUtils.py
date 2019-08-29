@@ -71,7 +71,7 @@ class SpecUtils(object):
         pass
 
 
-if __name__ == "__main__":
+if __name__ == "__main__": # pragma: no cover
     res_api = SpecUtils.parseAPI(api_dir='.', src_file='root.yaml')
     try:
         SpecUtils.validateAPI(res_api)

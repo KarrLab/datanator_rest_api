@@ -1,3 +1,10 @@
+""" test_specificiation_is_valid
+
+:Author: Bilal Shaikh < bilalshaikh42@gmail.com >
+:Date: 2019-08-26
+:Copyright: 2019, Karr Lab
+:License: MIT
+""" 
 import datanator_rest_api.spec as spec
 import datanator_rest_api.core as core
 import unittest

@@ -10,22 +10,6 @@ import unittest
 import datanator_rest_api.core as core
 from prance import BaseParser
 
-
-class ImplementationTestCase(unittest.TestCase):
-    def setUp(self):
-
-        self.AutoResolver = core.AutoResolver
-        self.app = connexion.App(__name__)
-        self.app.add_api('../../datanator_rest_api/spec/DatanatorAPI.yaml', resolver=self.AutoResolver(
-            "datanator_rest_api.routes"), validate_responses=False)
-        self.client = self.app.app.test_client()
-        self.client.testing = True
-
-    def test_1(self):
-        response = self.client.get('/datanator/')
-        assert(response.status_code == 200)
-
-
 class RoutesTestCase(unittest.TestCase):
     @classmethod
     def setUpClass(cls):

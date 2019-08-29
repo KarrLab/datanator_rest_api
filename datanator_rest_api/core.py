@@ -17,7 +17,7 @@ def createApp(apiName="DatanatorAPI.yaml", entryModule="datanator_rest_api.route
     return app
 
 
-if __name__ == "__main__":
+if __name__ == "__main__": # pragma: no cover
 
     app = createApp()
     app.run(port=8080, debug=True)
