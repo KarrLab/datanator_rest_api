@@ -135,7 +135,7 @@ paths:
         enum:
         - 'True'
         type: string
-  /proteins/meta_combo/:
+  /proteins/meta/meta_combo/:
     get:
       description: |-
         Get meta information for proteins,
@@ -150,7 +150,9 @@ paths:
         name: uniprot_id
         required: false
         schema:
-          type: string
+          items:
+            type: string
+          type: array
       - in: query
         name: ncbi_taxon_id
         required: false
@@ -176,7 +178,7 @@ paths:
       summary: Get meta information for proteins
       tags:
       - Proteins
-  /proteins/meta_single/:
+  /proteins/meta/meta_single/:
     get:
       description: |-
         Get meta information for proteins,
@@ -190,6 +192,11 @@ paths:
           type: integer
       - in: query
         name: name
+        required: false
+        schema:
+          type: string
+      - in: query
+        name: ko
         required: false
         schema:
           type: string

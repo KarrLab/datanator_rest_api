@@ -42,9 +42,9 @@ paths:
     $ref: paths/proteins.yaml#/precise_abundance
   /proteins/proximity_abundance/:
     $ref: paths/proteins.yaml#/proximity_abundance
-  /proteins/meta_combo/:
+  /proteins/meta/meta_combo/:
     $ref: paths/proteins.yaml#/meta_combo
-  /proteins/meta_single/:
+  /proteins/meta/meta_single/:
     $ref: paths/proteins.yaml#/meta_single
 components:
   schemas:

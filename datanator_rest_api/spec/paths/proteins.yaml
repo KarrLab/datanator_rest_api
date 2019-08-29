@@ -65,6 +65,11 @@ meta_single:
         schema:
           type: string
         required: false
+      - in: query
+        name: ko
+        schema:
+          type: string
+        required: false
     tags:
       - Proteins
     summary: Get meta information for proteins with one input
@@ -85,7 +90,9 @@ meta_combo:
       - in: query
         name: uniprot_id
         schema:
-          type: string
+          type: array
+          items:
+            type: string
         required: false
       - in: query
         name: ncbi_taxon_id
