@@ -10,8 +10,7 @@ Any subpaths are contained in an internal class
 :License: MIT
 """
 from flask import request
-from datanator_query_python import front_end_query
-from datanator_query_python import config
+from datanator_query_python.config import query_manager
 
 def put(body):
     return ("test")
@@ -26,16 +25,6 @@ def get(inchi_key=None):
     return{"test": inchi_key}
 
 
-class Manager:
-    def __init__(self):
-        username = config.Config.USERNAME
-        password = config.Config.PASSWORD
-        server = config.Config.SERVER
-        authDB = config.Config.AUTHDB
-        self.manager = front_end_query.QueryFrontEnd(
-            MongoDB=server, username=username, password=password,
-            authDB=authDB)
-
 class concentrations(object):
     def get(inchi_key=None):
         print(inchi_key)
@@ -45,4 +34,4 @@ class concentrations(object):
 class concentration:
     
     def get(metabolite, species=None, abstract=False):
-        return Manager().manager.get_metabolite_concentration(metabolite, species, abstract_default=abstract)
+        return query_manager.Manager().metabolite_manager().get_metabolite_concentration(metabolite, species, abstract_default=abstract)

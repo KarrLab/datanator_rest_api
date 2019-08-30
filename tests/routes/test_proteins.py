@@ -10,7 +10,7 @@ class ImplementationTestCase(unittest.TestCase):
 
         self.AutoResolver = core.AutoResolver
         self.app = connexion.App(__name__)
-        self.app.add_api('../../../datanator_rest_api/spec/DatanatorAPI.yaml', 
+        self.app.add_api('../../datanator_rest_api/spec/DatanatorAPI.yaml', 
             resolver=self.AutoResolver(
             "datanator_rest_api.routes"), validate_responses=False)
         self.client = self.app.app.test_client()
