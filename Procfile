@@ -1,1 +1,1 @@
-web: gunicorn 'datanator_rest_api:create_app()'
+web: gunicorn 'datanator_rest_api.core:create_app()'

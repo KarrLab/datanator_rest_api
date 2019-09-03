@@ -11,7 +11,7 @@ import re
 from flask_cors import CORS
 
 
-def createApp(apiName="DatanatorAPI.yaml", entryModule="datanator_rest_api.routes", specification_dir="./spec", resolver=AutoResolver, validate_responses=False):
+def create_app(apiName="DatanatorAPI.yaml", entryModule="datanator_rest_api.routes", specification_dir="./spec", resolver=AutoResolver, validate_responses=False):
     app = connexion.App(__name__, specification_dir=specification_dir)
     app.add_api(apiName, resolver=resolver(entryModule),
 
@@ -19,7 +19,7 @@ def createApp(apiName="DatanatorAPI.yaml", entryModule="datanator_rest_api.route
     return app
 
 
-if __name__ == "__main__": # pragma: no cover
+if __name__ == "__main__":  # pragma: no cover
 
-    app = createApp()
+    app = create_app()
     app.run(port=8080, debug=True)
