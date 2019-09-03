@@ -1,4 +1,4 @@
-from . import *
+from .core import *
 import pkg_resources
 
 # read version
