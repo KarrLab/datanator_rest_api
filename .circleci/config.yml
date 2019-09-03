@@ -200,16 +200,11 @@ jobs:
             - root/API/
             - root/.wc
   Unit Test:
-    working_directory: /root/build
-    docker:
-      - image: python:3.6
+    executor: setup_env
     steps:
-      - restore_cache:
-          keys:
-            - source-v1-{{ .Branch }}-{{ .Revision }}
+      - attach_workspace:
+          at: /
       - checkout
-      - restore_cache:
-          key: test-dependencies-v1-{{arch}}-{{ .Branch }}-{{ checksum "tests/requirements.txt"}}
       - run:
           name: Install package (Python 3)
           command: pip3 install -U -e .
