@@ -185,6 +185,9 @@ jobs:
             - /usr/local/lib/python3.6/site-packages
             - /usr/local/bin
       #Get build configs
+      - add_ssh_keys:
+          fingerprints:
+            - "d5:32:b5:ab:5c:f6:ba:f7:31:d0:98:2e:be:81:0c:70"
       - run:
           name: Get Build config
           command: git clone git@github.com:KarrLab/karr_lab_build_config.git .wc
