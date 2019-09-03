@@ -31,4 +31,4 @@ class concentrations(object):
 class concentration:
     
     def get(metabolite, species=None, abstract=False):
-        return query_manager.Manager().metabolite_manager().get_metabolite_concentration(metabolite, species, abstract_default=abstract)
+        return query_manager.Manager().metabolite_manager().molecule_name_query(metabolite, species, abstract_default=abstract)

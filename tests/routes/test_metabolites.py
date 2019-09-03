@@ -16,11 +16,7 @@ class ImplementationTestCase(unittest.TestCase):
         self.client.testing = True
 
     def test_concentration(self):
-        result_0 = self.client.get('/metabolites/test')
-        self.assertEqual(result_0.status_code, 200)
-        dic_0 = json.loads(result_0.data)
-        self.assertTrue('Test' in dic_0)
-        result_1 = self.client.get('/metabolites/concentration/atp?Species=homo sapiens')
+        result_1 = self.client.get("/metabolites/concentration/?metabolite=atp&species=homo sapiens")
         dic_1 = json.loads(result_1.data)
         self.assertEqual(result_1.status_code, 200)
         self.assertTrue('concentrations' in dic_1[0][0])
