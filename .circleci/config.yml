@@ -160,6 +160,17 @@ jobs:
           key: source-v1-{{ .Branch }}-{{ .Revision }}
           paths:
             - .
+      # Install circle specific dependencies
+      - run:
+          name: Setup Python environment
+          command: |
+            if [[ -f .circleci/requirements.txt ]]; then
+              while IFS="" read -r line || [ -n "$line" ]; do
+                if [[ ! -z "$line" ]] && [[ ! "$line" =~ ^# ]]; then
+                  pip3 install -U "$line"
+                fi
+              done < .circleci/requirements.txt
+            fi
       #Get Test dependencies
       - restore_cache:
           key: test-dependencies-v1-{{arch}}-{{ .Branch }}-{{ checksum "tests/requirements.txt"}}
