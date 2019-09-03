@@ -14,9 +14,6 @@ class ImplementationTestCase(unittest.TestCase):
             "datanator_rest_api.routes"), validate_responses=False)
         self.client = self.app.app.test_client()
         self.client.testing = True
-    
-    def tearDown(self):
-        self.app_context.pop()
 
     def test_proteins(self):
         result_0 = json.loads(self.client.get('/proteins/precise_abundance/?uniprot_id=Q9D0T1').data)

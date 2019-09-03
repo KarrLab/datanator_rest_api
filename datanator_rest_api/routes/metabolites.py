@@ -21,15 +21,12 @@ def post():
 
 
 def get(inchi_key=None):
-    print(inchi_key)
-    return{"test": inchi_key}
+    return {"test": inchi_key}
 
 
 class concentrations(object):
-    def get(inchi_key=None):
-        print(inchi_key)
-        print(request.args)
-        return{"test": inchi_key}
+    def get(inchi_keys=None):
+        return {"test": inchi_keys}
 
 class concentration:
     
