@@ -1,4 +1,3 @@
-connexion
 connexion[swagger-ui]
 jsonschema<3.0.0,>=2.5.1 #connexion requirment
 cement >= 3.0.0 # for command line programs
