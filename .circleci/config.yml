@@ -187,7 +187,7 @@ jobs:
       #Get build configs
       - run:
           name: Get Build config
-          command: git@github.com:KarrLab/karr_lab_build_config.git .wc
+          command: git clone git@github.com:KarrLab/karr_lab_build_config.git .wc
 
       - persist_to_workspace:
           root: /
