@@ -1,22 +1,81 @@
+version: 2.1
+workflows:
+  API-Workflow:
+    jobs:
+      - karrlab
+      - Build
+      - Unit Test:
+          requires:
+            - Build
+      - Validation Test:
+          requires:
+            - Build
+      - Implementation Test:
+          requires:
+            - Validation Test
+      - Backend Integration Test:
+          requires:
+            - Validation Test
+      - Frontend Integration Test:
+          requires:
+            - Validation Test
+      - Stage:
+          requires:
+            - Unit Test
+            - Validation Test
+            - Implementation Test
+            - Backend Integration Test
+            - Frontend Integration Test
+      - Hold:
+          type: approval
+          requires:
+            - Stage
+      - Deploy:
+          requires:
+            - Hold
 
-version: 2
-jobs:
-  build:
-    working_directory: /root/project
+executors:
+  karr_lab_build_env:
     docker:
-
       - image: karrlab/wc_env_dependencies:latest
+    working_directory: /root/project
+  setup_env:
+    working_directory: /root/API/
+    docker:
+      - image: python:3.6
+  api_test_env:
+    working_directory: /root/API/
+    docker:
+      - image: python:3.6
+  query_test_env:
+    working_directory: /root/Query
+    docker:
+      - image: python:3.6
 
+testJob: &testJob
+  working_directory: /root/build
+  docker:
+    - image: python:3.6
+  steps:
+    - attach_workspace:
+        at: /
+    - checkout
+    - run:
+        name: Install package (Python 3)
+        command: pip3 install -U -e .
+    - run:
+        name: Run Tests
+        command: pytest
+
+jobs:
+  karrlab:
+    executor: karr_lab_build_env
     steps:
-      # Clone repository
       - checkout
-
-      # Load packages from cache
-      #- restore_cache:
-      #    keys:
-      #      - v1-{{ arch }}-{{ .Branch }}-{{ checksum "/etc/docker-image-tag" }}-{{ checksum "requirements.txt" }}
-
-      # Python 3 installation tasks      
+      - restore_cache:
+          keys:
+            - v1-{{ arch }}-{{ .Branch }}-{{ checksum "/etc/docker-image-tag" }}-{{ checksum
+              "requirements.txt" }}
       - run:
           name: Install pkg_utils (Python 3)
           command: pip3 install -U git+https://github.com/KarrLab/pkg_utils.git#egg=pkg_utils
@@ -42,14 +101,12 @@ jobs:
       - run:
           name: Install package (Python 3)
           command: pip3 install -U -e .[all]
-
-      # Save packages to cache
       - save_cache:
-          key: v1-{{ arch }}-{{ .Branch }}-{{ checksum "/etc/docker-image-tag" }}-{{ checksum "requirements.txt" }}
+          key:
+            v1-{{ arch }}-{{ .Branch }}-{{ checksum "/etc/docker-image-tag" }}-{{
+            checksum "requirements.txt" }}
           paths:
             - /usr/local/lib/python3.6/site-packages
-
-      # Test code
       - run:
           name: Test code
           command: |
@@ -66,8 +123,6 @@ jobs:
               echo "0" > TEST_EXIT_CODE
               exit 1
             fi
-
-      # Generate reports, archive results, and send notifications
       - run:
           name: Generate reports, archive results, and send notifications
           when: always
@@ -81,7 +136,6 @@ jobs:
             fi
 
             karr_lab_build_utils3 do-post-test-tasks $INSTALLATION_EXIT_CODE $TEST_EXIT_CODE
-
       - store_test_results:
           path: /root/project/tests/reports
       - store_artifacts:
@@ -93,11 +147,84 @@ jobs:
       - store_artifacts:
           path: /root/project/docs/_build/html
           destination: docs
+  Build:
+    executor: setup_env
+    steps:
+      #Get package
+      - restore_cache:
+          keys:
+            - source-v1-{{ .Branch }}-{{ .Revision }}
+            - source-v1-{{.Branch}}-
+      - checkout
+      - save_cache:
+          key: source-v1-{{ .Branch }}-{{ .Revision }}
+          paths:
+            - .
+      #Get main dependencies
+      - restore_cache:
+          key: dependencies-v1-{{ arch }}-{{ .Branch }}-{{ checksum "requirements.txt"}}
 
+      - run:
+          name: Install Package Dependencies
+          command: pip3 install -r requirements.txt
 
-# workflows:
-#  version: 2
-#  build:
-#    jobs:
-#      - build:
-#          context: karr_lab
+      - save_cache:
+          key:
+            dependencies-v1-{{ arch }}-{{ .Branch }}-{{ checksum "requirements.txt"
+            }}
+          paths:
+            - /usr/local/lib/python3.6/site-packages
+            - /usr/local/bin
+      - restore_cache:
+          key: test-dependencies-v1-{{arch}}-{{ .Branch }}-{{ checksum "tests/requirements.txt"}}
+
+      - run:
+          name: Install test dependencies
+          command: pip3 install -r tests/requirements.txt
+      - save_cache:
+          key: test-dependencies-v1-{{arch}}-{{ .Branch }}-{{ checksum "tests/requirements.txt"}}
+          paths:
+            - /usr/local/lib/python3.6/site-packages
+            - /usr/local/bin/
+      - persist_to_workspace:
+          root: /
+          paths:
+            - usr/local/lib/python3.6/site-packages
+            - usr/local/bin
+            - root/API/
+  Unit Test:
+    working_directory: /root/build
+    docker:
+      - image: python:3.6
+    steps:
+      - restore_cache:
+          keys:
+            - source-v1-{{ .Branch }}-{{ .Revision }}
+      - checkout
+      - restore_cache:
+          key: test-dependencies-v1-{{arch}}-{{ .Branch }}-{{ checksum "tests/requirements.txt"}}
+      - run:
+          name: Install package (Python 3)
+          command: pip3 install -U -e .
+      - run:
+          name: Run Tests
+          command: pytest
+  Validation Test:
+    <<: *testJob
+  Implementation Test:
+    <<: *testJob
+  Backend Integration Test:
+    <<: *testJob
+  Frontend Integration Test:
+    <<: *testJob
+  Stage:
+    docker:
+      - image: buildpack-deps:trusty
+    steps:
+      - checkout
+      - run:
+          name: Deploy Master to Heroku
+          command: |
+            git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git master
+  Deploy:
+    <<: *testJob
