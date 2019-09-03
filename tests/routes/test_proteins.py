@@ -33,8 +33,12 @@ class ImplementationTestCase(unittest.TestCase):
             '/proteins/meta/meta_combo/?uniprot_id=Q54ST0,Q9d0t1').data)        
         self.assertEqual(result_0[0]['ncbi_taxonomy_id'], 44689)
         self.assertEqual(result_0[1]['ncbi_taxonomy_id'], 10090)
+        raw_1 = self.client.get(
+            '/proteins/meta/meta_single/?ncbi_taxon_id=9606')
+        self.assertEqual(200, raw_1.status_code)
         result_1 = json.loads(self.client.get(
             '/proteins/meta/meta_single/?ncbi_taxon_id=9606').data)
+        print(result_1[0]['uniprot_ids'])
         self.assertEqual(len(result_1[0]['uniprot_ids']), 12412)
         result_2 = json.loads(self.client.get(
             '/proteins/meta/meta_single/?name=Nucleoside diphosphate kinase').data)
