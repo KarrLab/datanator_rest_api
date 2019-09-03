@@ -43,15 +43,15 @@ class SpecUtils(object):
         Returns: 
             str : A string containing the parsed API
         """
-        cwd = os.getcwd()
-        os.chdir(api_dir)
 
+        abspath = os.path.abspath(__file__)
+        dname = os.path.dirname(abspath)
+        os.chdir(dname)
         with open(src_file) as api_src:
             ret = yaml.safe_load(api_src)
             resolver = OpenapiResolver(ret)
             resolver.resolve()
             res = resolver.dump()
-        os.chdir(cwd)
         return res
 
     @staticmethod
@@ -71,7 +71,7 @@ class SpecUtils(object):
         pass
 
 
-if __name__ == "__main__":
+if __name__ == "__main__": # pragma: no cover
     res_api = SpecUtils.parseAPI(api_dir='.', src_file='root.yaml')
     try:
         SpecUtils.validateAPI(res_api)

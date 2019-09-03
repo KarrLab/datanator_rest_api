@@ -1,0 +1,18 @@
+type: array
+items:
+  type: object
+  required:
+    - uniprot_ids
+    - ko_name
+    - ko_number
+  properties:
+    uniprot_ids:
+      type: array
+      items:
+        type: string
+    ko_name:
+      type: array
+      items:
+        type: string
+    ko_number:
+      type: string

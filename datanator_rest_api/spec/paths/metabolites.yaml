@@ -5,7 +5,7 @@ root:
       - Metabolites
     parameters:
       - in: query
-        name: inchikey
+        name: inchi_key
         schema:
           type: string
         required: false
@@ -33,7 +33,7 @@ root:
     description: Update an existing metabolite
     parameters:
       - in: query
-        name: inchikey
+        name: inchi_key
         schema:
           type: string
         required: true
@@ -44,7 +44,7 @@ root:
 concentrations:
   parameters:
     - in: query
-      name: inchikeys
+      name: inchi_keys
       schema:
         type: array
         items:
@@ -70,6 +70,12 @@ concentrations:
   get:
     tags:
       - Metabolites
+    parameters:
+      - in: query
+        name: inchi_key
+        schema:
+          type: string
+        required: false
     summary: Get concentrations of Metabolites
     description: Get concentration data for metabolites. The inchikeys parameter takes a list of incjikeys for which to get data. The consensus flag will return a consensus value instead of an array of observations. The species query will provide taxonomic distance information for each result
     responses:
@@ -79,3 +85,34 @@ concentrations:
           application/json:
             schema:
               $ref: "#/components/schemas/Metabolite"
+
+concentration:
+  get:
+    parameters:
+      - in: query
+        name: abstract
+        schema:
+          type: boolean
+        required: false
+      - in: query
+        name: species
+        schema:
+          type: string
+        required: false
+      - in: query
+        name: metabolite
+        schema:
+          type: string
+        required: true 
+    tags:
+      - Metabolites
+      - Concentration
+    summary: Get metabolite concentration based on species and metabolite name
+    description: Some description
+    responses:
+      "200":
+        description: OK
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/MetaboliteConcentration"

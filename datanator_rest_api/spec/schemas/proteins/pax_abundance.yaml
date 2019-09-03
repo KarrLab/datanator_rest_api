@@ -1,0 +1,6 @@
+type: object
+properties:
+  organ:
+    type: string
+  abundance:
+    type: string

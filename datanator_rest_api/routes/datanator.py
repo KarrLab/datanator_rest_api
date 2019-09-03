@@ -7,13 +7,9 @@
 """
 
 
-def search():
+def get():
     dict = {"message": "tests pased"}
     return (dict)
-
-
-def get():
-    return(search())
 
 
 def put(body):

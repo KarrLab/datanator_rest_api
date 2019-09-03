@@ -4,8 +4,7 @@ info:
     email: info@karrlab.org
     name: Karr Lab
     url: https://datanator.info/
-  description:
-    An API for interacting with the Datanator Integrated Database. The
+  description: An API for interacting with the Datanator Integrated Database. The
     API can be used to get values for a variety of biological molecules and reactions,
     such as concentration, abundance, or kinetic parameters. The API complies with
     the openAPI 3 standard. Use the <a href="/apiDoc"> /apiDoc</a> path to access
@@ -13,28 +12,28 @@ info:
   title: Datanator API
   version: 1.0.0
 servers:
-  - description: Local Host
-    url: http://localhost:8080/
-  - description: SwaggerHub API Auto Mocking
-    url: https://virtserver.swaggerhub.com/bilalshaikh42/Datanator/1.0.0
-  - description: The public datanator server
-    url: http://api.datanator.info
+- description: Local Host
+  url: http://localhost:8080/
+- description: SwaggerHub API Auto Mocking
+  url: https://virtserver.swaggerhub.com/bilalshaikh42/Datanator/1.0.0
+- description: The public datanator server
+  url: http://api.datanator.info
 tags:
-  - description: Requests related to the database itself
-    name: Datanator
-  - description: Requests for information about metabolites, including conentrations
-    name: Metabolites
-  - description: Requests for information about proteins, enzymes, and protein complexes
-    name: Proteins
-  - description: Requests for information on reactions, including kinetic paramters
-    name: Reactions
-  - description: Requests for information on RNA abundance
-    name: RNA
+- description: Requests related to the database itself
+  name: Datanator
+- description: Requests for information about metabolites, including conentrations
+  name: Metabolites
+- description: Requests for information about proteins, enzymes, and protein complexes
+  name: Proteins
+- description: Requests for information on reactions, including kinetic paramters
+  name: Reactions
+- description: Requests for information on RNA abundance
+  name: RNA
 paths:
   /datanator/:
     get:
       responses:
-        "200":
+        '200':
           content:
             application/json:
               schema:
@@ -42,95 +41,258 @@ paths:
                   message:
                     type: string
                 required:
-                  - message
+                - message
                 type: object
           description: OK
       summary: Pings the server to verfy connection
       tags:
-        - Datanator
+      - Datanator
   /metabolites/:
     get:
       parameters:
-        - in: query
-          name: inchikey
-          required: false
-          schema:
-            type: string
+      - in: query
+        name: inchi_key
+        required: false
+        schema:
+          type: string
       responses:
-        "200":
+        '200':
           content:
             application/json:
               schema:
                 items:
-                  $ref: "#/components/schemas/Metabolite"
+                  $ref: '#/components/schemas/Metabolite'
                 type: array
           description: OK
       summary: Get the list of metabolite objects
       tags:
-        - Metabolites
+      - Metabolites
     post:
       description: Update an existing metabolite
       parameters:
-        - in: query
-          name: inchikey
-          required: true
-          schema:
-            type: string
+      - in: query
+        name: inchi_key
+        required: true
+        schema:
+          type: string
       responses:
-        "200":
+        '200':
           description: OK
       summary: Update an existing metabolite
       tags:
-        - Metabolites
+      - Metabolites
     put:
       description: Add a new metabolite
       responses:
-        "200":
+        '200':
           description: OK
       summary: Add a new metabolite
       tags:
-        - Metabolites
-  /metabolites/concentrations/:
+      - Metabolites
+  /metabolites/concentration/:
     get:
-      description:
-        Get concentration data for metabolites. The inchikeys parameter
-        takes a list of incjikeys for which to get data. The consensus flag will return
-        a consensus value instead of an array of observations. The species query will
-        provide taxonomic distance information for each result
+      description: Some description
+      parameters:
+      - in: query
+        name: abstract
+        required: false
+        schema:
+          type: boolean
+      - in: query
+        name: species
+        required: false
+        schema:
+          type: string
+      - in: query
+        name: metabolite
+        required: true
+        schema:
+          type: string
       responses:
-        "200":
+        '200':
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Metabolite"
+                $ref: '#/components/schemas/MetaboliteConcentration'
+          description: OK
+      summary: Get metabolite concentration based on species and metabolite name
+      tags:
+      - Metabolites
+      - Concentration
+  /metabolites/concentrations/:
+    get:
+      description: Get concentration data for metabolites. The inchikeys parameter
+        takes a list of incjikeys for which to get data. The consensus flag will return
+        a consensus value instead of an array of observations. The species query will
+        provide taxonomic distance information for each result
+      parameters:
+      - in: query
+        name: inchi_key
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Metabolite'
           description: OK
       summary: Get concentrations of Metabolites
       tags:
-        - Metabolites
+      - Metabolites
     parameters:
+    - in: query
+      name: inchi_keys
+      required: false
+      schema:
+        items:
+          type: string
+        type: array
+    - in: query
+      name: consensus
+      schema:
+        enum:
+        - 'True'
+        type: string
+    - in: query
+      name: species
+      schema:
+        type: string
+    - in: query
+      name: strict
+      schema:
+        enum:
+        - 'True'
+        type: string
+  /proteins/meta/meta_combo/:
+    get:
+      description: |-
+        Get meta information for proteins,
+         uniprot_id overrides all other input options.
+         Combination of protein_name + taxon_id yields
+         all uniprot_id that has abundance information in
+         that particular organism. species_name overrides
+         ncbi_taxon_id. Users should try different combinations
+         to get a feel of what each combination returns.
+      parameters:
       - in: query
-        name: inchikeys
+        name: uniprot_id
         required: false
         schema:
           items:
             type: string
           type: array
       - in: query
-        name: consensus
+        name: ncbi_taxon_id
+        required: false
         schema:
-          enum:
-            - "True"
+          type: integer
+      - in: query
+        name: species_name
+        required: false
+        schema:
           type: string
       - in: query
-        name: species
+        name: name
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProteinMetaCombo'
+          description: OK
+      summary: Get meta information for proteins
+      tags:
+      - Proteins
+  /proteins/meta/meta_single/:
+    get:
+      description: |-
+        Get meta information for proteins,
+         input only the taxon_id or name (either kegg orthology
+         name or protein name).
+      parameters:
+      - in: query
+        name: ncbi_taxon_id
+        required: false
+        schema:
+          type: integer
+      - in: query
+        name: name
+        required: false
         schema:
           type: string
       - in: query
-        name: strict
+        name: ko
+        required: false
         schema:
-          enum:
-            - "True"
           type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProteinMetaSingle'
+          description: OK
+      summary: Get meta information for proteins with one input
+      tags:
+      - Proteins
+  /proteins/precise_abundance/:
+    get:
+      description: If abundance value for the protein is not found, one can search
+        for proximity proteins
+      parameters:
+      - in: query
+        name: uniprot_id
+        required: true
+        schema:
+          items:
+            type: string
+          type: array
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProteinAbundance'
+          description: OK
+      summary: Get abundance values for proteins
+      tags:
+      - Proteins
+  /proteins/proximity_abundance/:
+    get:
+      description: Search for analog proteins by traversing the taxonomic tree
+      parameters:
+      - in: query
+        name: uniprot_id
+        required: true
+        schema:
+          items:
+            type: string
+          type: array
+      - in: query
+        name: distance
+        required: true
+        schema:
+          type: integer
+      - in: query
+        name: depth
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProximityProteinAbundance'
+          description: OK
+      summary: Get abundance values for proteins along the taxonomic tree
+      tags:
+      - Proteins
 components:
   parameters:
     limitParam:
@@ -154,7 +316,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/GeneralError"
+            $ref: '#/components/schemas/GeneralError'
       description: General Error
     IllegalInput:
       description: Illegal input for operation.
@@ -183,27 +345,25 @@ components:
           items:
             properties:
               error:
-                description:
-                  A numerical value corresponding to the error in the measurment,
+                description: A numerical value corresponding to the error in the measurment,
                   in the same units as the measurment
-                example: "1"
+                example: '1'
                 type: number
               experimental_conditions:
                 items:
                   type: string
                 type: array
               measurment:
-                description:
-                  A numerical value corresponding to the observed value
+                description: A numerical value corresponding to the observed value
                   of the measurment
                 example: 3.8
                 type: number
               measurment_type:
                 description: The type of measurment being made
                 enum:
-                  - concentration
-                  - abundance
-                  - mass
+                - concentration
+                - abundance
+                - mass
                 type: string
               source:
                 example: doi:10.1038/nphys1170
@@ -216,11 +376,11 @@ components:
                 example: uMolar
                 type: string
             required:
-              - measurment_type
-              - measurment
-              - units
-              - species
-              - source
+            - measurment_type
+            - measurment
+            - units
+            - species
+            - source
             type: object
           type: array
         inchi:
@@ -235,83 +395,39 @@ components:
               id:
                 type: string
             required:
-              - id
+            - id
             type: object
           type: array
       required:
-        - inchi_key
-        - inchi
-        - name
+      - inchi_key
+      - inchi
+      - name
       type: object
-    Observation:
+    MetaboliteConcentration:
       properties:
-        error:
-          description:
-            A numerical value corresponding to the error in the measurment,
-            in the same units as the measurment
-          example: "1"
-          type: number
-        experimental_conditions:
-          items:
-            type: string
-          type: array
-        measurment:
-          description:
-            A numerical value corresponding to the observed value of the
-            measurment
-          example: 3.8
-          type: number
-        measurment_type:
-          description: The type of measurment being made
-          enum:
-            - concentration
-            - abundance
-            - mass
-          type: string
-        source:
-          example: doi:10.1038/nphys1170
-          type: string
-        species:
-          example: Homo sapiens
-          type: string
-        units:
-          description: The units that the measurment was made in
-          example: uMolar
-          type: string
-      required:
-        - measurment_type
-        - measurment
-        - units
-        - species
-        - source
-      type: object
-    Protein:
-      properties:
-        abundances:
+        concentrations:
           items:
             properties:
               error:
-                description:
-                  A numerical value corresponding to the error in the measurment,
+                description: A numerical value corresponding to the error in the measurment,
                   in the same units as the measurment
-                example: "1"
+                example: '1'
                 type: number
               experimental_conditions:
                 items:
                   type: string
                 type: array
               measurment:
-                description:
-                  A numerical value corresponding to the observed value
+                description: A numerical value corresponding to the observed value
                   of the measurment
                 example: 3.8
                 type: number
               measurment_type:
                 description: The type of measurment being made
                 enum:
-                  - concentration
-                  - abundance
-                  - mass
+                - concentration
+                - abundance
+                - mass
                 type: string
               source:
                 example: doi:10.1038/nphys1170
@@ -324,32 +440,201 @@ components:
                 example: uMolar
                 type: string
             required:
-              - measurment_type
-              - measurment
-              - units
-              - species
-              - source
+            - measurment_type
+            - measurment
+            - units
+            - species
+            - source
             type: object
           type: array
-        ec_number:
-          type: integer
-        gene_name:
+        inchi:
           type: string
-        protein_name:
+        inchi_key:
           type: string
-        uniprot_id:
+        name:
+          type: string
+        reactions:
+          items:
+            properties:
+              id:
+                type: string
+            required:
+            - id
+            type: object
+          type: array
+      required:
+      - inchi_key
+      - inchi
+      - name
+      type: object
+    Observation:
+      properties:
+        error:
+          description: A numerical value corresponding to the error in the measurment,
+            in the same units as the measurment
+          example: '1'
+          type: number
+        experimental_conditions:
+          items:
+            type: string
+          type: array
+        measurment:
+          description: A numerical value corresponding to the observed value of the
+            measurment
+          example: 3.8
+          type: number
+        measurment_type:
+          description: The type of measurment being made
+          enum:
+          - concentration
+          - abundance
+          - mass
+          type: string
+        source:
+          example: doi:10.1038/nphys1170
+          type: string
+        species:
+          example: Homo sapiens
+          type: string
+        units:
+          description: The units that the measurment was made in
+          example: uMolar
           type: string
       required:
-        - uniprot_id
-        - protein_name
-        - gene_name
+      - measurment_type
+      - measurment
+      - units
+      - species
+      - source
       type: object
+    ProteinAbundance:
+      items:
+        properties:
+          abundances:
+            items:
+              properties:
+                abundance:
+                  type: string
+                organ:
+                  type: string
+              type: object
+            type: array
+          uniprot_id:
+            type: string
+        required:
+        - uniprot_id
+        - abundances
+        type: object
+      type: array
+    ProteinMetaCombo:
+      items:
+        properties:
+          abundances:
+            items:
+              properties:
+                abundance:
+                  type: string
+                organ:
+                  type: string
+              type: object
+            type: array
+          canonical_sequence:
+            type: string
+          ec_number:
+            type: string
+          entrez_id:
+            type: string
+          entry_name:
+            type: string
+          gene_name:
+            type: string
+          length:
+            type: integer
+          mass:
+            type: string
+          ncbi_taxonomy_id:
+            type: integer
+          ordered_locus_name:
+            type: string
+          protein_name:
+            type: string
+          species_name:
+            type: string
+          uniprot_id:
+            type: string
+        required:
+        - uniprot_id
+        - entry_name
+        - gene_name
+        - protein_name
+        - canonical_sequence
+        - length
+        - mass
+        - ec_number
+        - entrez_id
+        - abundances
+        - ncbi_taxonomy_id
+        - ordered_locus_name
+        - species_name
+        type: object
+      type: array
+    ProteinMetaSingle:
+      items:
+        properties:
+          ko_name:
+            items:
+              type: string
+            type: array
+          ko_number:
+            type: string
+          uniprot_ids:
+            items:
+              type: string
+            type: array
+        required:
+        - uniprot_ids
+        - ko_name
+        - ko_number
+        type: object
+      type: array
+    ProximityProteinAbundance:
+      items:
+        properties:
+          distance:
+            type: integer
+          documents:
+            items:
+              properties:
+                abundances:
+                  items:
+                    properties:
+                      abundance:
+                        type: string
+                      organ:
+                        type: string
+                    type: object
+                  type: array
+                depth:
+                  type: integer
+                ncbi_taxonomy_id:
+                  type: integer
+                species_name:
+                  type: string
+                uniprot_id:
+                  type: string
+              type: object
+            type: array
+        required:
+        - distance
+        - documents
+        type: object
+      type: array
     Reaction:
       properties:
         id:
           type: string
       required:
-        - id
+      - id
       type: object
     Tag:
       properties:

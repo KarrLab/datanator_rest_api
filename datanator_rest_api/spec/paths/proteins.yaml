@@ -1,32 +1,128 @@
-abundance:
-  parameters:
-    - in: query
-      name: depth
-      schema:
-        type: int
-      required: false
-    - in: query
-      name: distance
-      schema:
-        type: int
-      required: false
-    - in: query
-      name: uniprot_id
-      schema:
-        type: array
-        items:
-          type: string
-      required: false
-
+precise_abundance:
   get:
+    parameters:
+      - in: query
+        name: uniprot_id
+        schema:
+          type: array
+          items:
+            type: string
+        required: true
     tags:
       - Proteins
     summary: Get abundance values for proteins
-    description: If abundance value for the protein is not found, one can search for analog proteins by traversing the taxonomic tree
+    description: If abundance value for the protein is not found, one can search for proximity proteins
     responses:
       "200":
         description: OK
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/protein.yaml"
+              $ref: "#/components/schemas/ProteinAbundance"
+
+proximity_abundance:
+  get:
+    parameters:
+      - in: query
+        name: uniprot_id
+        schema:
+          type: array
+          items:
+            type: string
+        required: true
+      - in: query
+        name: distance
+        schema:
+          type: integer
+        required: true
+      - in: query
+        name: depth
+        schema:
+          type: integer
+        required: true
+    tags:
+      - Proteins
+    summary: Get abundance values for proteins along the taxonomic tree
+    description: Search for analog proteins by traversing the taxonomic tree
+    responses:
+      "200":
+        description: OK
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ProximityProteinAbundance"
+
+meta_single:
+  get:
+    parameters:
+      - in: query
+        name: ncbi_taxon_id
+        schema:
+          type: integer
+        required: false
+      - in: query
+        name: name
+        schema:
+          type: string
+        required: false
+      - in: query
+        name: ko
+        schema:
+          type: string
+        required: false
+    tags:
+      - Proteins
+    summary: Get meta information for proteins with one input
+    description: "Get meta information for proteins,\n
+    input only the taxon_id or name (either kegg orthology\n
+    name or protein name)."  
+    responses:
+      "200":
+        description: OK
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ProteinMetaSingle"
+
+meta_combo:
+  get:
+    parameters:
+      - in: query
+        name: uniprot_id
+        schema:
+          type: array
+          items:
+            type: string
+        required: false
+      - in: query
+        name: ncbi_taxon_id
+        schema:
+          type: integer
+        required: false
+      - in: query
+        name: species_name
+        schema:
+          type: string
+        required: false
+      - in: query
+        name: name
+        schema:
+          type: string
+        required: false
+    tags:
+      - Proteins
+    summary: Get meta information for proteins
+    description: "Get meta information for proteins,\n
+    uniprot_id overrides all other input options.\n
+    Combination of protein_name + taxon_id yields\n
+    all uniprot_id that has abundance information in\n
+    that particular organism. species_name overrides\n
+    ncbi_taxon_id. Users should try different combinations\n
+    to get a feel of what each combination returns."  
+    responses:
+      "200":
+        description: OK
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ProteinMetaCombo"
