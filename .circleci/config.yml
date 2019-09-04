@@ -245,7 +245,7 @@ jobs:
             fi
       - run:
           name: Enable Heroku Stage Container
-          command: heroku ps:start -a $HEROKU_APP_NAME_STAGE web
+          command: heroku ps:scale web=1 -a $HEROKU_APP_NAME_STAGE
       - run:
           name: Stage Master to Heroku
           command: |
@@ -266,6 +266,7 @@ jobs:
       - run:
           name: Disable Heroku Stage Container
           command: heroku ps:stop -a $HEROKU_APP_NAME_STAGE web
+          command: heroku ps:scale web=0 -a $HEROKU_APP_NAME_STAGE
       - run:
           name: Deploy Master to Heroku
           command: |
