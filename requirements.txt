@@ -1,6 +1,5 @@
 connexion[swagger-ui]
 flask_cors
-jsonschema<3.0.0,>=2.5.1 #connexion requirment
 cement >= 3.0.0 # for command line programs
 setuptools # for pkg_resources module
 openapi_resolver # to process api files
