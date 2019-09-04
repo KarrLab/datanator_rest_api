@@ -1,10 +1,7 @@
-connexion
-swagger-ui-bundle #for documentation of api 
+connexion[swagger-ui]
 jsonschema<3.0.0,>=2.5.1 #connexion requirment
 cement >= 3.0.0 # for command line programs
 setuptools # for pkg_resources module
 openapi_resolver # to process api files
 openapi_spec_validator
-datanator_query_python>=0.0.3
-flask_cors
-
+datanator_query_python
