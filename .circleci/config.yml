@@ -2,7 +2,6 @@ version: 2.1
 workflows:
   API-Workflow:
     jobs:
-      - karrlab
       - Build
       - Unit Test:
           requires:
@@ -33,6 +32,9 @@ workflows:
       - Deploy:
           requires:
             - Hold
+  KarrLab:
+    jobs:
+      - karrlab
 
 executors:
   karr_lab_build_env:
