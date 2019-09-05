@@ -16,6 +16,7 @@ def createApp(apiName="DatanatorAPI.yaml", entryModule="datanator_rest_api.route
     app.add_api(apiName, resolver=resolver(entryModule),
 
                 validate_responses=validate_responses, strict_validation=True)
+    CORS(app)
     return app
 
 
