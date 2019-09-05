@@ -5,3 +5,8 @@
 :Copyright: 2019, Karr Lab
 :License: MIT
 """
+
+
+def get():
+    dict = {"message": "Server Running"}
+    return (dict)
