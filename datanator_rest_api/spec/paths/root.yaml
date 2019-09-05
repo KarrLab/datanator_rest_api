@@ -1,8 +1,8 @@
 get:
   summary: Pings the server to verfy connection
   responses:
-    "200":
-      description: OK
+    "418":
+      description: I'm a teapot
       content:
         application/json:
           schema:

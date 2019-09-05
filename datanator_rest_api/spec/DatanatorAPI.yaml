@@ -33,7 +33,7 @@ paths:
   /:
     get:
       responses:
-        '200':
+        '418':
           content:
             application/json:
               schema:
@@ -43,7 +43,7 @@ paths:
                 required:
                 - message
                 type: object
-          description: OK
+          description: I'm a teapot
       summary: Pings the server to verfy connection
   /datanator/:
     get:

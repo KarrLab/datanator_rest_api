@@ -8,5 +8,5 @@
 
 
 def get():
-    dict = {"message": "Server Running"}
-    return (dict)
+    res = {"message": "Server Running"}
+    return (res, 418)
