@@ -2,7 +2,6 @@ version: 2.1
 workflows:
   API-Workflow:
     jobs:
-      - karrlab
       - Build
       - Unit Test:
           requires:
@@ -33,6 +32,9 @@ workflows:
       - Deploy:
           requires:
             - Hold
+  KarrLab:
+    jobs:
+      - karrlab
 
 executors:
   karr_lab_build_env:
@@ -184,6 +186,17 @@ jobs:
           paths:
             - /usr/local/lib/python3.6/site-packages
             - /usr/local/bin
+      # Install circle specific dependencies
+      - run:
+          name: Install Test Packages
+          command: |
+            if [[ -f .circleci/requirements.txt ]]; then
+              while IFS="" read -r line || [ -n "$line" ]; do
+                if [[ ! -z "$line" ]] && [[ ! "$line" =~ ^# ]]; then
+                  pip3 install -U "$line"
+                fi
+              done < .circleci/requirements.txt
+            fi
       #Get build configs
       - add_ssh_keys:
           fingerprints:
@@ -225,8 +238,39 @@ jobs:
     steps:
       - checkout
       - run:
+          name: "Install Heroku CLI, if necessary"
+          command: |
+            if [[ $(command -v heroku) == "" ]]; then
+              curl https://cli-assets.heroku.com/install.sh | sh
+            else
+              echo "Heroku is already installed. No operation was performed."
+            fi
+      - run:
+          name: Enable Heroku Stage Container
+          command: heroku ps:scale web=1 -a $HEROKU_APP_NAME_STAGE
+      - run:
+          name: Stage Master to Heroku
+          command: |
+            git push --force https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME_STAGE.git master
+  Deploy:
+    docker:
+      - image: buildpack-deps:trusty
+    steps:
+      - checkout
+      - run:
+          name: "Install Heroku CLI, if necessary"
+          command: |
+            if [[ $(command -v heroku) == "" ]]; then
+              curl https://cli-assets.heroku.com/install.sh | sh
+            else
+              echo "Heroku is already installed. No operation was performed."
+            fi
+      - run:
+          name: Disable Heroku Stage Container
+          command: |
+            heroku ps:stop -a $HEROKU_APP_NAME_STAGE web
+            heroku ps:scale web=0 -a $HEROKU_APP_NAME_STAGE
+      - run:
           name: Deploy Master to Heroku
           command: |
-            git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git master
-  Deploy:
-    <<: *testJob
+            git push --force https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git master

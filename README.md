@@ -7,29 +7,37 @@
 [![License](https://img.shields.io/github/license/KarrLab/datanator_rest_api.svg)](LICENSE)
 ![Analytics](https://ga-beacon.appspot.com/UA-86759801-1/datanator_rest_api/README.md?pixel)
 
-# datanator_rest_api
+# Datanator Rest API
 
-Write an overview
+This package implements an OAS3 compliant REST API for the Datanator integrated database. It contains the Open API specfication in the spec subpackage, and uses connexion to create a server. The endpoint buissness logic is located in the routes subpackage.
 
 ## Installation
+
 1. Install dependencies
 2. Install the latest release from PyPI
-  ```
-  pip install datanator_rest_api.git[all]
-  ```
+
+```
+pip install datanator_rest_api[all]
+```
+
 3. Install the latest revision from GitHub
-  ```
-  pip install git+https://github.com/KarrLab/datanator_rest_api.git#egg=datanator_rest_api[all]
-  ```
+
+```
+pip install git+https://github.com/KarrLab/datanator_rest_api.git#egg=datanator_rest_api[all]
+```
 
 ## Documentation
+
 Please see the [API documentation](https://docs.karrlab.org/datanator_rest_api).
 
 ## License
+
 The package is released under the [MIT license](LICENSE).
 
 ## Development team
+
 This package was developed by the [Karr Lab](https://www.karrlab.org) at the Icahn School of Medicine at Mount Sinai in New York, USA.
 
 ## Questions and comments
+
 Please contact the [Karr Lab](mailto:info@karrlab.org) with any questions or comments.

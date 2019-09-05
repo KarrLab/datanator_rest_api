@@ -13,7 +13,7 @@ import datanator_rest_api.spec
 import datanator_rest_api.routes
 
 
-class BaseController(cement.Controller):
+class BaseController(cement.Controller):  # pragma: no cover
     """ Base controller for command line application """
 
     class Meta:
@@ -39,7 +39,7 @@ class BaseController(cement.Controller):
         self._parser.print_help()
 
 
-class Command3WithArgumentsController(cement.Controller):
+class Command3WithArgumentsController(cement.Controller):  # pragma: no cover
     """ Command3 description """
 
     class Meta:
@@ -67,7 +67,7 @@ class Command3WithArgumentsController(cement.Controller):
         args.opt_arg_4
 
 
-class Cli(cement.App):
+class Cli(cement.App):  # pragma: no cover
     """ Command line application """
     class Meta:
         label = 'datanator_rest_api'
@@ -78,6 +78,6 @@ class Cli(cement.App):
         ]
 
 
-def main():
+def main():  # pragma: no cover
     with Cli() as cli:
         cli.run()
