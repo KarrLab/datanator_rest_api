@@ -22,8 +22,13 @@ def post(body):
 
 class precise_abundance:
 
-    def get(uniprot_id):
-        return query_manager.Manager().protein_manager().get_abundance_by_id(uniprot_id)
+    def get(uniprot_id=None, kegg_orthology=None):
+        if uniprot_id is not None and kegg_orthology is None:
+            return query_manager.Manager().protein_manager().get_abundance_by_id(uniprot_id)
+        elif uniprot_id is None and kegg_orthology is not None:
+            return query_manager.Manager().protein_manager().get_abundance_by_ko(kegg_orthology)
+        else: 
+            return 'One and only one argument type is allowed'
 
 
 class proximity_abundance:

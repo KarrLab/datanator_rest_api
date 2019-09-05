@@ -17,7 +17,7 @@ servers:
 - description: SwaggerHub API Auto Mocking
   url: https://virtserver.swaggerhub.com/bilalshaikh42/Datanator/1.0.0
 - description: The public datanator server
-  url: http://api.datanator.info
+  url: http://api2.datanator.info
 tags:
 - description: Requests related to the database itself
   name: Datanator
@@ -242,16 +242,22 @@ paths:
       - Proteins
   /proteins/precise_abundance/:
     get:
-      description: If abundance value for the protein is not found, one can search
-        for proximity proteins
+      description: |-
+        If abundance value for the protein is not found, one can search for proximity proteins
+         using proximity_abundance
       parameters:
       - in: query
         name: uniprot_id
-        required: true
+        required: false
         schema:
           items:
             type: string
           type: array
+      - in: query
+        name: kegg_orthology
+        required: false
+        schema:
+          type: string
       responses:
         '200':
           content:

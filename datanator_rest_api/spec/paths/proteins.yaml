@@ -7,11 +7,17 @@ precise_abundance:
           type: array
           items:
             type: string
-        required: true
+        required: false
+      - in: query
+        name: kegg_orthology
+        schema:
+          type: string
+        required: false
     tags:
       - Proteins
     summary: Get abundance values for proteins
-    description: If abundance value for the protein is not found, one can search for proximity proteins
+    description: "If abundance value for the protein is not found, one can search for proximity proteins\n
+    using proximity_abundance"
     responses:
       "200":
         description: OK
@@ -126,3 +132,4 @@ meta_combo:
           application/json:
             schema:
               $ref: "#/components/schemas/ProteinMetaCombo"
+

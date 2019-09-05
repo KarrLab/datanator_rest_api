@@ -18,7 +18,7 @@ servers:
   - description: SwaggerHub API Auto Mocking
     url: https://virtserver.swaggerhub.com/bilalshaikh42/Datanator/1.0.0
   - description: The public datanator server
-    url: http://api.datanator.info
+    url: http://api2.datanator.info
 tags:
   - name: Datanator
     description: Requests related to the database itself
