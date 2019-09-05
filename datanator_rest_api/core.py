@@ -16,11 +16,11 @@ def create_app(apiName="DatanatorAPI.yaml", entryModule="datanator_rest_api.rout
     app.add_api(apiName, resolver=resolver(entryModule),
 
                 validate_responses=validate_responses, strict_validation=True)
-    CORS(app)
     return app
 
 
 if __name__ == "__main__":  # pragma: no cover
 
     app = create_app()
+    CORS(app.app)
     app.run(port=8080, debug=True)
