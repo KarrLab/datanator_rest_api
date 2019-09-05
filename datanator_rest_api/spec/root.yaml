@@ -13,12 +13,12 @@ info:
     email: info@karrlab.org
     url: https://datanator.info/
 servers:
-  - description: Local Host
-    url: http://localhost:8080/
-  - description: SwaggerHub API Auto Mocking
-    url: https://virtserver.swaggerhub.com/bilalshaikh42/Datanator/1.0.0
-  - description: The public datanator server
+  - description: The default server
+    url: /
+  - description: The Datanator server
     url: http://api2.datanator.info
+  - description: The Datanator test server
+    url: http://testapi.datanator.info
 tags:
   - name: Datanator
     description: Requests related to the database itself
