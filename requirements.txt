@@ -1,8 +1,8 @@
 connexion[swagger-ui]
 flask_cors
-cement >= 3.0.0 # for command line programs
+cement >= 3.0.4 # for command line programs
 setuptools # for pkg_resources module
 openapi_resolver # to process api files
 openapi_spec_validator
-datanator_query_python
+datanator_query_python >=0.0.4
 gunicorn #for deployment
