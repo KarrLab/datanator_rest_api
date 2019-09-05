@@ -6,19 +6,23 @@ Test the implementation of the API
 :License: MIT
 """
 import connexion
-import unittest
+import pytest
 import datanator_rest_api.core as core
 from prance import BaseParser
 
-class RoutesTestCase(unittest.TestCase):
-    @classmethod
-    def setUpClass(cls):
-        cls.parser = BaseParser('./datanator_rest_api/spec/DatanatorAPI.yaml')
-        cls.specification = cls.parser.specification
-        cls.paths = cls.specification['paths']
-        cls.routes = cls.paths.keys()
 
-    def test_routes(self):
-        for route in self.routes:
-            print(route)
-        assert(True)
+@pytest.fixture()
+def routes():
+    parser = BaseParser('./datanator_rest_api/spec/DatanatorAPI.yaml')
+    specification = parser.specification
+    paths = specification['paths']
+    return list(paths.items())
+
+
+def test_routes(routes):
+
+    for route, routespec in routes:
+        print(route)
+        print(routespec)
+        print("++++++++++++++++++")
+    assert(True)

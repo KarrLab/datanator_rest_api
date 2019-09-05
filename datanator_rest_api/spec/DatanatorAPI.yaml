@@ -30,6 +30,21 @@ tags:
 - description: Requests for information on RNA abundance
   name: RNA
 paths:
+  /:
+    get:
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    type: string
+                required:
+                - message
+                type: object
+          description: OK
+      summary: Pings the server to verfy connection
   /datanator/:
     get:
       responses:

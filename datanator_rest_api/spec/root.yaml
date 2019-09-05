@@ -32,6 +32,8 @@ tags:
     description: Requests for information on RNA abundance
 
 paths:
+  /:
+    $ref: paths/root.yaml
   /datanator/:
     $ref: paths/datanator.yaml
   /metabolites/:
