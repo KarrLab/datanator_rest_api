@@ -28,7 +28,7 @@ class precise_abundance:
         elif uniprot_id is None and kegg_orthology is not None:
             return query_manager.Manager().protein_manager().get_abundance_by_ko(kegg_orthology)
         else: 
-            return 'One and only one argument type is allowed'
+            return [{'uniprot_id': 'One and only one input option is allowed.', 'abundances': []}]
 
 
 class proximity_abundance:

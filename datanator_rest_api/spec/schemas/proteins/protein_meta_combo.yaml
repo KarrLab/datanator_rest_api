@@ -10,10 +10,8 @@ items:
     - length
     - mass
     - ec_number
-    - entrez_id
     - abundances
     - ncbi_taxonomy_id
-    - ordered_locus_name
     - species_name
   properties:
     uniprot_id:
@@ -32,15 +30,11 @@ items:
       type: string
     ec_number:
       type: string
-    entrez_id:
-      type: string
     abundances:
       type: array
       items:
         $ref: "./schemas/proteins/pax_abundance.yaml"
     ncbi_taxonomy_id:
       type: integer
-    ordered_locus_name:
-      type: string
     species_name:
       type: string

@@ -563,8 +563,6 @@ components:
             type: string
           ec_number:
             type: string
-          entrez_id:
-            type: string
           entry_name:
             type: string
           gene_name:
@@ -575,8 +573,6 @@ components:
             type: string
           ncbi_taxonomy_id:
             type: integer
-          ordered_locus_name:
-            type: string
           protein_name:
             type: string
           species_name:
@@ -592,10 +588,8 @@ components:
         - length
         - mass
         - ec_number
-        - entrez_id
         - abundances
         - ncbi_taxonomy_id
-        - ordered_locus_name
         - species_name
         type: object
       type: array
