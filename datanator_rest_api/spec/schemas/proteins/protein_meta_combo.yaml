@@ -4,12 +4,10 @@ items:
   required:
     - uniprot_id
     - entry_name
-    - gene_name
     - protein_name
     - canonical_sequence
     - length
     - mass
-    - ec_number
     - abundances
     - ncbi_taxonomy_id
     - species_name
@@ -18,8 +16,6 @@ items:
       type: string
     entry_name:
       type: string
-    gene_name:
-      type: string
     protein_name:
       type: string
     canonical_sequence:
@@ -27,8 +23,6 @@ items:
     length:
       type: integer
     mass:
-      type: string
-    ec_number:
       type: string
     abundances:
       type: array

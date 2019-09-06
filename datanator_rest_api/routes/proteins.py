@@ -49,7 +49,16 @@ class meta:
             elif name is not None and species_name is not None:   # name + species_name
                 return query_manager.Manager().protein_manager().get_meta_by_name_name(name, species_name)
             else:
-                return 'Please try another input combination'
+                return [{'uniprot_id': 'Please try another input combination',
+                'entry_name': 'Please try another input combination',
+                'gene_name': 'Please try another input combination',
+                'protein_name': 'Please try another input combination',
+                'canonical_sequence': 'Please try another input combination',
+                'length': 99999999,
+                'mass': 'Please try another input combination',
+                'abundances': [],
+                'ncbi_taxonomy_id': 99999999,
+                'species_name': 'Please try another input combination'}]
 
     class meta_single:
 
@@ -61,4 +70,4 @@ class meta:
             elif name is None and ncbi_taxon_id is None and ko is not None:  # ko only
                 return query_manager.Manager().protein_manager().get_info_by_ko(ko)
             else:
-                return "This combination of input is not valid."
+                return [{'uniprot_ids': [], 'ko_name': [], 'ko_number': 'This combination of input is invalid.'}]

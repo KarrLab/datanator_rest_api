@@ -561,11 +561,7 @@ components:
             type: array
           canonical_sequence:
             type: string
-          ec_number:
-            type: string
           entry_name:
-            type: string
-          gene_name:
             type: string
           length:
             type: integer
@@ -582,12 +578,10 @@ components:
         required:
         - uniprot_id
         - entry_name
-        - gene_name
         - protein_name
         - canonical_sequence
         - length
         - mass
-        - ec_number
         - abundances
         - ncbi_taxonomy_id
         - species_name
