@@ -15,8 +15,9 @@ class ImplementationTestCase(unittest.TestCase):
         self.client = self.app.app.test_client()
         self.client.testing = True
 
+    @unittest.skip('need front_end_query to be fixed')
     def test_concentration(self):
-        result_1 = self.client.get("/metabolites/concentration/?metabolite=atp&species=homo sapiens")
+        result_1 = self.client.get("/metabolites/concentration/?species=homo sapiens&metabolite=atp")
         dic_1 = json.loads(result_1.data)
         self.assertEqual(result_1.status_code, 200)
         self.assertTrue('concentrations' in dic_1[0][0])

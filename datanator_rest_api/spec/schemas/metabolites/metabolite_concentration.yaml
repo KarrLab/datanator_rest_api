@@ -1,22 +1,22 @@
 type: array
 items:
-  type: object
-  required:
-    - inchi_key
-    - inchi
-    - name
-  properties:
-    inchi_key:
-      type: string
-    inchi:
-      type: string
-    concentrations: 
-      type: array
-      items:
-        $ref: ./schemas/observation.yaml
-    name:
-      type: string
-    reactions:
-      type: array
-      items:
-        $ref: ./schemas/reaction.yaml
+  type: array
+  items:
+    type: object
+    required:
+      - version
+      - creation_date
+      - name
+      - inchi
+      - inchikey
+    properties:
+      version:
+        type: string
+      creation_date:
+        type: string
+      name:
+        type: string
+      inchi:
+        type: string
+      inchikey:
+        type: string
