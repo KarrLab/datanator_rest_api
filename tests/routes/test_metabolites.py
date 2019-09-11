@@ -11,7 +11,7 @@ class ImplementationTestCase(unittest.TestCase):
         self.app = connexion.App(__name__)
         self.app.add_api('../../datanator_rest_api/spec/DatanatorAPI.yaml', 
             resolver=self.AutoResolver(
-            "datanator_rest_api.routes"), validate_responses=False)
+            "datanator_rest_api.routes"), validate_responses=True)
         self.client = self.app.app.test_client()
         self.client.testing = True
 
@@ -21,10 +21,10 @@ class ImplementationTestCase(unittest.TestCase):
         self.assertEqual(result_1.status_code, 200)
         self.assertTrue('concentrations' in dic_1[0][0])
     
-    def test_get(self):
-        result_0 = json.loads(self.client.get('/metabolites/?inchi_key=test_inchi_key').data)
-        self.assertEqual({"test": 'test_inchi_key'}, result_0)
+    # def test_get(self):
+    #     result_0 = json.loads(self.client.get('/metabolites/?inchi_key=test_inchi_key').data)
+    #     self.assertEqual({"test": 'test_inchi_key'}, result_0)
     
-    def test_concentrations(self):
-        result_0 = json.loads(self.client.get('/metabolites/concentrations/?inchi_keys=test_inchi_keys').data)
-        self.assertEqual({"test": ['test_inchi_keys']}, result_0)
+    # def test_concentrations(self):
+    #     result_0 = json.loads(self.client.get('/metabolites/concentrations/?inchi_keys=test_inchi_keys').data)
+    #     self.assertEqual({"test": ['test_inchi_keys']}, result_0)
