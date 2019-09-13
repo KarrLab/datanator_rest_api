@@ -79,7 +79,7 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - v1-{{ arch }}-{{ .Branch }}-{{ checksum "/etc/docker-image-tag" }}-{{ checksum
+            - v2-{{ arch }}-{{ .Branch }}-{{ checksum "/etc/docker-image-tag" }}-{{ checksum
               "requirements.txt" }}
       - run:
           name: Install pkg_utils (Python 3)
@@ -108,7 +108,7 @@ jobs:
           command: pip3 install -U -e .[all]
       - save_cache:
           key:
-            v1-{{ arch }}-{{ .Branch }}-{{ checksum "/etc/docker-image-tag" }}-{{
+            v2-{{ arch }}-{{ .Branch }}-{{ checksum "/etc/docker-image-tag" }}-{{
             checksum "requirements.txt" }}
           paths:
             - /usr/local/lib/python3.6/site-packages
