@@ -11,13 +11,13 @@ workflows:
             - Build
       - Implementation Test:
           requires:
-            - Validation Test
+            - Build
       - Backend Integration Test:
           requires:
-            - Validation Test
+            - Build
       - Frontend Integration Test:
           requires:
-            - Validation Test
+            - Build
       - Stage:
           requires:
             - Unit Test
