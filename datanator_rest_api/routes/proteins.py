@@ -10,15 +10,15 @@ from datanator_query_python.config import query_manager
 
 
 def get():
-    return("get")
+    return("")
 
 
 def put(body):
-    return ("put")
+    return ("")
 
 
 def post(body):
-    return ("post")
+    return ("")
 
 class precise_abundance:
 

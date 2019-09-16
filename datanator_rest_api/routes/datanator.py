@@ -9,12 +9,12 @@
 
 def get():
     dict = {"message": "tests pased"}
-    return (dict)
+    return ("")
 
 
 def put(body):
-    return ("put")
+    return ("")
 
 
 def post(body):
-    return ("post")
+    return ("")

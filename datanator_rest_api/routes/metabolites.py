@@ -12,23 +12,25 @@ Any subpaths are contained in an internal class
 from flask import request
 from datanator_query_python.config import query_manager
 
+
 def put(body):
     return ("test")
 
 
 def post():
-    return ("test")
+    return ("")
 
 
 def get(inchi_key=None):
-    return {"test": inchi_key}
+    return ("")
 
 
 class concentrations(object):
     def get(inchi_keys=None):
-        return {"test": inchi_keys}
+        return ("")
+
 
 class concentration:
-    
+
     def get(metabolite, species=None, abstract=False):
         return query_manager.Manager().metabolite_manager().molecule_name_query(metabolite, species, abstract_default=abstract)
