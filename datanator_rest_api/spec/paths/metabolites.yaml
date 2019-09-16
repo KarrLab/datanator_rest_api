@@ -25,6 +25,12 @@ root:
     description: Add a new metabolite
     responses:
       "200":
+        content:
+          text/plain:
+            schema:
+              type: string
+              example: test
+
         description: OK
   post:
     tags:
@@ -103,7 +109,7 @@ concentration:
         name: metabolite
         schema:
           type: string
-        required: true 
+        required: true
     tags:
       - Metabolites
       - Concentration
