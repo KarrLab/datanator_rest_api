@@ -425,69 +425,28 @@ components:
       - name
       type: object
     MetaboliteConcentration:
-      properties:
-        concentrations:
-          items:
-            properties:
-              error:
-                description: A numerical value corresponding to the error in the measurment,
-                  in the same units as the measurment
-                example: '1'
-                type: number
-              experimental_conditions:
-                items:
-                  type: string
-                type: array
-              measurment:
-                description: A numerical value corresponding to the observed value
-                  of the measurment
-                example: 3.8
-                type: number
-              measurment_type:
-                description: The type of measurment being made
-                enum:
-                - concentration
-                - abundance
-                - mass
-                type: string
-              source:
-                example: doi:10.1038/nphys1170
-                type: string
-              species:
-                example: Homo sapiens
-                type: string
-              units:
-                description: The units that the measurment was made in
-                example: uMolar
-                type: string
-            required:
-            - measurment_type
-            - measurment
-            - units
-            - species
-            - source
-            type: object
-          type: array
-        inchi:
-          type: string
-        inchi_key:
-          type: string
-        name:
-          type: string
-        reactions:
-          items:
-            properties:
-              id:
-                type: string
-            required:
-            - id
-            type: object
-          type: array
-      required:
-      - inchi_key
-      - inchi
-      - name
-      type: object
+      items:
+        items:
+          properties:
+            creation_date:
+              type: string
+            inchi:
+              type: string
+            inchikey:
+              type: string
+            name:
+              type: string
+            version:
+              type: string
+          required:
+          - version
+          - creation_date
+          - name
+          - inchi
+          - inchikey
+          type: object
+        type: array
+      type: array
     Observation:
       properties:
         error:
@@ -598,8 +557,8 @@ components:
             type: string
           uniprot_ids:
             items:
-              type: string
-            type: array
+              type: object
+            type: object
         required:
         - uniprot_ids
         - ko_name

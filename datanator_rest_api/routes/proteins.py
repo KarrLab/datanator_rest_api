@@ -64,10 +64,10 @@ class meta:
 
         def get(name=None, ncbi_taxon_id=None, ko=None):
             if name is not None and ncbi_taxon_id is None and ko is None:  # name only
-                return query_manager.Manager().protein_manager().get_info_by_text(name)
+                return query_manager.Manager().protein_manager().get_info_by_text_abundances(name)
             elif name is None and ncbi_taxon_id is not None and ko is None:  # taxon_id only
-                return query_manager.Manager().protein_manager().get_info_by_taxonid(ncbi_taxon_id)
+                return query_manager.Manager().protein_manager().get_info_by_taxonid_abundance(ncbi_taxon_id)
             elif name is None and ncbi_taxon_id is None and ko is not None:  # ko only
-                return query_manager.Manager().protein_manager().get_info_by_ko(ko)
+                return query_manager.Manager().protein_manager().get_info_by_ko_abundance(ko)
             else:
-                return [{'uniprot_ids': [], 'ko_name': [], 'ko_number': 'This combination of input is invalid.'}]
+                return [{'uniprot_ids': {}, 'ko_name': [], 'ko_number': 'This combination of input is invalid.'}]

@@ -7,9 +7,9 @@ items:
     - ko_number
   properties:
     uniprot_ids:
-      type: array
+      type: object
       items:
-        type: string
+        type: object
     ko_name:
       type: array
       items:
