@@ -47,9 +47,9 @@ paths:
   /proteins/proximity_abundance/:
     $ref: paths/proteins.yaml#/proximity_abundance
   /proteins/meta/meta_combo/:
-    $ref: paths/proteins.yaml#/meta_combo
+    $ref: paths/proteins.yaml#/meta/meta_combo
   /proteins/meta/meta_single/:
-    $ref: paths/proteins.yaml#/meta_single
+    $ref: paths/proteins.yaml#/meta/meta_single
 components:
   schemas:
     Metabolite:
