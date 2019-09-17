@@ -79,7 +79,7 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - v2-{{ arch }}-{{ .Branch }}-{{ checksum "/etc/docker-image-tag" }}-{{ checksum
+            - v42-{{ arch }}-{{ .Branch }}-{{ checksum "/etc/docker-image-tag" }}-{{ checksum
               "requirements.txt" }}
       - run:
           name: Install pkg_utils (Python 3)
