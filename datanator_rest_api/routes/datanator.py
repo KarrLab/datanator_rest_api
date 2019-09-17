@@ -9,7 +9,7 @@
 
 def get():
     dict = {"message": "tests pased"}
-    return ("")
+    return (dict)
 
 
 def put(body):
