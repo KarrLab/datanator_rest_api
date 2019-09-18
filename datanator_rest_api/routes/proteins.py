@@ -34,7 +34,7 @@ class precise_abundance:
 class proximity_abundance:
 
     def get(uniprot_id, distance, depth):
-        return query_manager.Manager().protein_manager().get_equivalent_protein(uniprot_id, distance, max_depth=depth)
+        return query_manager.Manager().protein_manager().get_equivalent_protein_with_anchor(uniprot_id, distance, max_depth=depth)
 
 
 class meta:

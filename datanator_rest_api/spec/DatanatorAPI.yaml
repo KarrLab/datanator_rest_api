@@ -296,9 +296,7 @@ paths:
         name: uniprot_id
         required: true
         schema:
-          items:
-            type: string
-          type: array
+          type: string
       - in: query
         name: distance
         required: true
