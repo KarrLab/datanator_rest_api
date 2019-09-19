@@ -48,42 +48,26 @@ root:
         description: OK
 
 concentrations:
-  parameters:
-    - in: query
-      name: inchi_keys
-      schema:
-        type: array
-        items:
-          type: string
-      required: false
-    - in: query
-      name: consensus
-      schema:
-        type: string
-        enum:
-          - "True"
-    - in: query
-      name: species
-      schema:
-        type: string
-    - in: query
-      name: strict
-      schema:
-        type: string
-        enum:
-          - "True"
-
   get:
     tags:
       - Metabolites
     parameters:
       - in: query
-        name: inchi_key
+        name: inchi
         schema:
           type: string
-        required: false
+        required: true
+        description: inchi string of a metabolite without the leading "InChI=" 
+      - in: query
+        name: consensus
+        schema:
+          type: boolean
+        required: false 
+        description: display consensus concentration value
     summary: Get concentrations of Metabolites
-    description: Get concentration data for metabolites. The inchikeys parameter takes a list of incjikeys for which to get data. The consensus flag will return a consensus value instead of an array of observations. The species query will provide taxonomic distance information for each result
+    description: "Get concentration data for metabolites. The inchikeys parameter takes a list of inchikeys\n
+     for which to get data. The consensus flag will return a consensus value instead of an array of observations.\n
+      The species query will provide taxonomic distance information for each result."
     responses:
       "200":
         description: OK

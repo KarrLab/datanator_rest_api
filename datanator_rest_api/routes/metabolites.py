@@ -25,9 +25,9 @@ def get(inchi_key=None):
     return ("")
 
 
-class concentrations(object):
-    def get(inchi_keys=None):
-        return ("")
+class concentrations:
+    def get(inchi, consensus=False):
+        return query_manager.Manager().eymdb_manager().get_conc_from_inchi(inchi, consensus=consensus)
 
 
 class concentration:

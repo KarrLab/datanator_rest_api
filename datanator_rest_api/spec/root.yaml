@@ -57,9 +57,9 @@ components:
     MetaboliteConcentration:
       $ref: ./schemas/metabolites/metabolite_concentration.yaml
     Observation:
-      $ref: ./schemas/observation.yaml
+      $ref: ./schemas/metabolites/observation.yaml
     Reaction:
-      $ref: ./schemas/reaction.yaml
+      $ref: ./schemas/metabolites/reaction.yaml
     ProteinAbundance:
       $ref: ./schemas/proteins/singular_protein_abundance.yaml
     ProximityProteinAbundance:
