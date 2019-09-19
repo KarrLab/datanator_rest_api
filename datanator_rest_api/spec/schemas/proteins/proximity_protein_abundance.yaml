@@ -24,4 +24,10 @@ items:
             type: string
           depth:
             type: integer
+          ko_number:
+            type: string
+          ko_name:
+            type: array
+            items:
+              type: string
       

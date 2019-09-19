@@ -587,6 +587,12 @@ components:
                   type: array
                 depth:
                   type: integer
+                ko_name:
+                  items:
+                    type: string
+                  type: array
+                ko_number:
+                  type: string
                 ncbi_taxonomy_id:
                   type: integer
                 species_name:
