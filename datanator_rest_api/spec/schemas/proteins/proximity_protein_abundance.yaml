@@ -7,6 +7,7 @@ items:
   properties:
     distance:
       type: integer
+      description: -1 indicates no protein with such uniprot_id; -2 indicates protein has no ko info.
     documents:
       type: array
       items:

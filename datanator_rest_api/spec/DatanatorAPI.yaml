@@ -517,6 +517,8 @@ components:
       items:
         properties:
           distance:
+            description: -1 indicates no protein with such uniprot_id; -2 indicates
+              protein has no ko info.
             type: integer
           documents:
             items:
