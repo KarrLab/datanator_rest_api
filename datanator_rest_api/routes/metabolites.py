@@ -23,7 +23,7 @@ def post():
 
 def get(inchi, species, last_id='000000000000000000000000', page_size=20):
     last_id = ObjectId(last_id)
-    print(inchi)
+    print(len(inchi))
     return query_manager.Manager().eymdb_manager().get_meta_from_inchis(inchi, species, last_id=last_id, page_size=page_size)
 
 
