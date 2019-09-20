@@ -66,18 +66,44 @@ paths:
     get:
       parameters:
       - in: query
-        name: inchi_key
+        name: inchi
+        required: true
+        schema:
+          items:
+            type: string
+          type: array
+      - in: query
+        name: species
+        required: true
+        schema:
+          enum:
+          - Escherichia coli
+          - Saccharomyces cerevisiae
+          type: string
+      - description: must be 12 bytes str or 24 hex digits
+        examples:
+          12-byte:
+            summary: a 12-byte str
+            value: foo-bar-quux
+          24-hex:
+            summary: a 24-hex digit
+            value: 0123456789ab0123456789ab
+        in: query
+        name: last_id
         required: false
         schema:
           type: string
+      - in: query
+        name: page_size
+        required: false
+        schema:
+          type: integer
       responses:
         '200':
           content:
             application/json:
               schema:
-                items:
-                  $ref: '#/components/schemas/Metabolite'
-                type: array
+                $ref: '#/components/schemas/Metabolite'
           description: OK
       summary: Get the list of metabolite objects
       tags:
@@ -351,21 +377,10 @@ components:
         properties:
           description:
             type: string
-          inchi:
-            type: string
           inchikey:
             type: string
           name:
             type: string
-          reactions:
-            items:
-              properties:
-                id:
-                  type: string
-              required:
-              - id
-              type: object
-            type: array
         required:
         - inchikey
         - name
@@ -374,26 +389,24 @@ components:
       type: array
     MetaboliteConcentration:
       items:
-        items:
-          properties:
-            creation_date:
-              type: string
-            inchi:
-              type: string
-            inchikey:
-              type: string
-            name:
-              type: string
-            version:
-              type: string
-          required:
-          - version
-          - creation_date
-          - name
-          - inchi
-          - inchikey
-          type: object
-        type: array
+        properties:
+          creation_date:
+            type: string
+          inchi:
+            type: string
+          inchikey:
+            type: string
+          name:
+            type: string
+          version:
+            type: string
+        required:
+        - version
+        - creation_date
+        - name
+        - inchi
+        - inchikey
+        type: object
       type: array
     Observation:
       properties:

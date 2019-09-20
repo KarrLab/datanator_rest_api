@@ -11,7 +11,7 @@ Any subpaths are contained in an internal class
 """
 from flask import request
 from datanator_query_python.config import query_manager
-
+from bson.objectid import ObjectId
 
 def put(body):
     return ("test")
@@ -21,8 +21,10 @@ def post():
     return ("")
 
 
-def get(inchi_key=None):
-    return ("")
+def get(inchi, species, last_id='000000000000000000000000', page_size=20):
+    last_id = ObjectId(last_id)
+    print(inchi)
+    return query_manager.Manager().eymdb_manager().get_meta_from_inchis(inchi, species, last_id=last_id, page_size=page_size)
 
 
 class concentrations:

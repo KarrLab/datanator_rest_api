@@ -8,13 +8,7 @@ items:
   properties:
     inchikey:
       type: string
-    inchi:
-      type: string
     description:
       type: string
     name:
       type: string
-    reactions:
-      type: array
-      items:
-        $ref: ./schemas/metabolites/reaction.yaml

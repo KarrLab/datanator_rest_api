@@ -5,9 +5,35 @@ root:
       - Metabolites
     parameters:
       - in: query
-        name: inchi_key
+        name: inchi
+        schema:
+          type: array
+          items:
+            type: string
+        required: true
+      - in: query
+        name: species
         schema:
           type: string
+          enum: ['Escherichia coli', 'Saccharomyces cerevisiae']
+        required: true
+      - in: query
+        name: last_id
+        schema:
+          type: string
+        description: must be 12 bytes str or 24 hex digits
+        examples:
+          12-byte:
+            value: foo-bar-quux
+            summary: a 12-byte str
+          24-hex:
+            value: 0123456789ab0123456789ab
+            summary: a 24-hex digit
+        required: false
+      - in: query
+        name: page_size
+        schema:
+          type: integer
         required: false
     responses:
       "200":
@@ -15,9 +41,7 @@ root:
         content:
           application/json:
             schema:
-              type: array
-              items:
-                $ref: "#/components/schemas/Metabolite"
+              $ref: "#/components/schemas/Metabolite"
   put:
     tags:
       - Metabolites
