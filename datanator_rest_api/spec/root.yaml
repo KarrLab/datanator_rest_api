@@ -16,7 +16,7 @@ servers:
   - description: The default server
     url: /
   - description: The Datanator server
-    url: http://api2.datanator.info
+    url: http://api.datanator.info
   - description: The Datanator test server
     url: http://testapi.datanator.info
 tags:

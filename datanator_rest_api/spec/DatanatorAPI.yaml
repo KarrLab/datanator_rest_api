@@ -15,7 +15,7 @@ servers:
 - description: The default server
   url: /
 - description: The Datanator server
-  url: http://api2.datanator.info
+  url: http://api.datanator.info
 - description: The Datanator test server
   url: http://testapi.datanator.info
 tags:
@@ -72,6 +72,7 @@ paths:
           items:
             type: string
           type: array
+        style: spaceDelimited
       - in: query
         name: species
         required: true
@@ -172,7 +173,7 @@ paths:
          for which to get data. The consensus flag will return a consensus value instead of an array of observations.
          The species query will provide taxonomic distance information for each result.
       parameters:
-      - description: inchi string of a metabolite without the leading "InChI="
+      - description: inchi string of a metabolite
         in: query
         name: inchi
         required: true

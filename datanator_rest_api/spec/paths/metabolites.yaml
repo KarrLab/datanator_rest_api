@@ -11,6 +11,7 @@ root:
           items:
             type: string
         required: true
+        style: spaceDelimited
       - in: query
         name: species
         schema:
@@ -81,7 +82,7 @@ concentrations:
         schema:
           type: string
         required: true
-        description: inchi string of a metabolite without the leading "InChI=" 
+        description: inchi string of a metabolite
       - in: query
         name: consensus
         schema:
