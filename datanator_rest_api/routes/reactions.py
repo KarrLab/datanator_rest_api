@@ -10,8 +10,8 @@
 from datanator_query_python.config.query_manager import RxnManager
 
 
-class KinlawIdByRxn:
+class kinlaw_by_rxn:
 
     def get(substrates, products, dof=0, projection={'kinlaw_id': 1, '_id': 0}):
-        count, docs = RxnManager().rxn_manager().get_kinlaw_by_rxn(substrates, products, dof=dof, projection=projection)
-        return count, docs
+        _, docs = RxnManager().rxn_manager().get_kinlaw_by_rxn(substrates, products, dof=dof, projection=projection)
+        return docs

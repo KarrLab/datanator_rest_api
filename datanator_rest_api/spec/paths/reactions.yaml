@@ -1,4 +1,4 @@
-proximity_abundance:
+kinlaw_by_rxn:
   get:
     parameters:
       - in: query
@@ -40,4 +40,7 @@ proximity_abundance:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/ProximityProteinAbundance"
+              anyOf:
+                - $ref: "#/components/schemas/RxnCompartment"
+                - $ref: "#/components/schemas/RxnEnzyme"
+                - $ref: "#/components/schemas/RxnResource"

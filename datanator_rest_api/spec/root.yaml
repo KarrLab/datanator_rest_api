@@ -51,7 +51,7 @@ paths:
   /proteins/meta/meta_single/:
     $ref: paths/proteins.yaml#/meta/meta_single
   /reactions/kinlawid_by_rxn/:
-    $ref: paths/reactions.yaml#/KinlawIdByRxn/
+    $ref: paths/reactions.yaml#/kinlaw_by_rxn/
 components:
   schemas:
     Metabolite:

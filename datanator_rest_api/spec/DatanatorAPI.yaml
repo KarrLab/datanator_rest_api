@@ -327,6 +327,52 @@ paths:
       summary: Get abundance values for proteins along the taxonomic tree
       tags:
       - Proteins
+  /reactions/kinlawid_by_rxn/:
+    get:
+      description: Search for reactions given reactants
+      parameters:
+      - in: query
+        name: substrates
+        required: true
+        schema:
+          items:
+            type: string
+          type: array
+      - in: query
+        name: products
+        required: true
+        schema:
+          items:
+            type: string
+          type: array
+      - in: query
+        name: dof
+        required: false
+        schema:
+          type: integer
+      - in: query
+        name: projection
+        required: false
+        schema:
+          properties:
+            id:
+              type: integer
+            kinlaw_id:
+              type: integer
+          type: object
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                anyOf:
+                - $ref: '#/components/schemas/RxnCompartment'
+                - $ref: '#/components/schemas/RxnEnzyme'
+                - $ref: '#/components/schemas/RxnResource'
+          description: OK
+      summary: Get reactions based on substrates' and products' inchikey
+      tags:
+      - Reactions
 components:
   parameters:
     limitParam:
@@ -574,6 +620,47 @@ components:
       required:
       - id
       type: object
+    RxnCompartment:
+      properties:
+        enzyme:
+          items:
+            properties:
+              compartment_id:
+                type: number
+              compartment_name:
+                type: string
+              created:
+                type: string
+              modified:
+                type: string
+            type: object
+          type: array
+      type: object
+    RxnEnzyme:
+      properties:
+        enzyme:
+          items:
+            properties:
+              enzyme_id:
+                type: number
+              enzyme_name:
+                type: string
+              enzyme_type:
+                type: string
+              molecular_weight:
+                type: number
+            type: object
+          type: array
+      type: object
+    RxnResource:
+      items:
+        properties:
+          id:
+            type: string
+          namespace:
+            type: string
+        type: object
+      type: array
     Tag:
       properties:
         id:
