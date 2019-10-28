@@ -50,6 +50,8 @@ paths:
     $ref: paths/proteins.yaml#/meta/meta_combo
   /proteins/meta/meta_single/:
     $ref: paths/proteins.yaml#/meta/meta_single
+  /reactions/kinlawid_by_rxn/:
+    $ref: paths/reactions.yaml#/KinlawIdByRxn/
 components:
   schemas:
     Metabolite:
@@ -68,6 +70,12 @@ components:
       $ref: ./schemas/proteins/protein_meta_combo.yaml
     ProteinMetaSingle:
       $ref: ./schemas/proteins/protein_meta_single.yaml
+    RxnCompartment:
+      $ref: ./schemas/reactions/compartment.yaml
+    RxnEnzyme:
+      $ref: ./schemas/reactions/enzyme.yaml
+    RxnResource:
+      $ref: ./schemas/reactions/resource.yaml
     GeneralError:
       type: object
       properties:

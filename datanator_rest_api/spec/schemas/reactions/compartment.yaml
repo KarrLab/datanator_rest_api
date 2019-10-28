@@ -1,0 +1,15 @@
+type: object
+properties:
+  enzyme:
+    type: array
+    items:
+      type: object
+      properties:
+        compartment_id:
+          type: number
+        compartment_name:
+          type: string
+        created:
+          type: string
+        modified:
+          type: string  

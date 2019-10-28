@@ -1,0 +1,15 @@
+type: object
+properties:
+  enzyme:
+    type: array
+    items:
+      type: object
+      properties:
+        molecular_weight:
+          type: number
+        enzyme_id:
+          type: number
+        enzyme_name:
+          type: string
+        enzyme_type:
+          type: string  

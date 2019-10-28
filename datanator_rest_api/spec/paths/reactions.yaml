@@ -1,0 +1,43 @@
+proximity_abundance:
+  get:
+    parameters:
+      - in: query
+        name: substrates
+        schema:
+          type: array
+          items:
+            type: string
+        required: true
+      - in: query
+        name: products
+        schema:
+          type: array
+          items:
+            type: string
+        required: true
+      - in: query
+        name: dof
+        schema:
+          type: integer
+        required: false
+      - in: query
+        name: projection
+        schema:
+          type: object
+          properties:
+            id:
+              type: integer
+            kinlaw_id:
+              type: integer
+        required: false
+    tags:
+      - Reactions
+    summary: Get reactions based on substrates' and products' inchikey
+    description: Search for reactions given reactants
+    responses:
+      "200":
+        description: OK
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ProximityProteinAbundance"
