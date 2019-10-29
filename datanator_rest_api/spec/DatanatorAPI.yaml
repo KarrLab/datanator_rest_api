@@ -373,6 +373,27 @@ paths:
       summary: Get reactions based on substrates' and products' inchikey
       tags:
       - Reactions
+  /taxon/canon_rank_distance/:
+    get:
+      description: see summary
+      parameters:
+      - in: query
+        name: ncbi_id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TxnCanonRankDistance'
+          description: OK
+      summary: |-
+        Given the ncbi_id, return canonically-ranked ancestors
+         along the lineage and their non-canonical distances.
+      tags:
+      - NCBI Taxonomy
 components:
   parameters:
     limitParam:
@@ -669,6 +690,13 @@ components:
         name:
           type: string
       type: object
+    TxnCanonRankDistance:
+      items:
+        properties:
+          rank:
+            type: integer
+        type: object
+      type: array
   securitySchemes:
     api_key:
       in: header
