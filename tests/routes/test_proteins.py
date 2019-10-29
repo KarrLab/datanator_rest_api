@@ -38,9 +38,9 @@ class ImplementationTestCase(unittest.TestCase):
         result_0 = self.client.get(
             '/proteins/meta/meta_combo/?uniprot_id=Q54ST0,Q9d0t1')       
         self.assertEqual(result_0.status_code, 200)
-        result_1 = self.client.get(
-            '/proteins/meta/meta_single/?ncbi_taxon_id=9606')
-        self.assertEqual(result_1.status_code, 200)
+        # result_1 = self.client.get(
+        #     '/proteins/meta/meta_single/?ncbi_taxon_id=9606')
+        # self.assertEqual(result_1.status_code, 200)
         result_2 = self.client.get(
             '/proteins/meta/meta_single/?name=Nucleoside diphosphate kinase')
         self.assertEqual(result_2.status_code, 200)
