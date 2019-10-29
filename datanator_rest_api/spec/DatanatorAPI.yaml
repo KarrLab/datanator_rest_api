@@ -327,7 +327,7 @@ paths:
       summary: Get abundance values for proteins along the taxonomic tree
       tags:
       - Proteins
-  /reactions/kinlawid_by_rxn/:
+  /reactions/kinlaw_by_rxn/:
     get:
       description: Search for reactions given reactants
       parameters:

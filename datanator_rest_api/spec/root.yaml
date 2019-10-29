@@ -50,7 +50,7 @@ paths:
     $ref: paths/proteins.yaml#/meta/meta_combo
   /proteins/meta/meta_single/:
     $ref: paths/proteins.yaml#/meta/meta_single
-  /reactions/kinlawid_by_rxn/:
+  /reactions/kinlaw_by_rxn/:
     $ref: paths/reactions.yaml#/kinlaw_by_rxn/
 components:
   schemas:
