@@ -4,12 +4,11 @@ The root class contains the HTTP methods for the /metabolites/ path
 Any subpaths are contained in an internal class
 
 :Author: Bilal Shaikh < bilalshaikh42@gmail.com >
-         Zhouyang Lian < zhouyang.lian@familian.life >
+:Author: Zhouyang Lian < zhouyang.lian@familian.life >
 :Date: 2019-08-20
 :Copyright: 2019, Karr Lab
 :License: MIT
 """
-from flask import request
 from datanator_query_python.config import query_manager
 from bson.objectid import ObjectId
 
