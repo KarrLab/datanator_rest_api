@@ -12,4 +12,4 @@ from datanator_query_python.config import query_manager
 class text_search:
 
     def get(query_message, index, from_=0, size=10):
-        query_manager.FtxManager().ftx_manager().simple_query_string(query_message, index, from_=from_, size=size)
+        r = query_manager.FtxManager().ftx_manager().simple_query_string(query_message, index, from_=from_, size=size)
