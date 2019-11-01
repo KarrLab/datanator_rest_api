@@ -426,10 +426,12 @@ paths:
       description: see summary
       parameters:
       - in: query
-        name: ncbi_id
+        name: species
         required: true
         schema:
-          type: integer
+          oneOf:
+          - type: string
+          - type: integer
       responses:
         '200':
           content:
@@ -438,28 +440,7 @@ paths:
                 $ref: '#/components/schemas/TxnCanonRankDistance'
           description: OK
       summary: |-
-        Given the ncbi_id, return canonically-ranked ancestors
-         along the lineage and their non-canonical distances.
-      tags:
-      - NCBI Taxonomy
-  /taxon/canon_rank_distance_by_name/:
-    get:
-      description: see summary
-      parameters:
-      - in: query
-        name: name
-        required: true
-        schema:
-          type: string
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TxnCanonRankDistance'
-          description: OK
-      summary: |-
-        Given the species name, return canonically-ranked ancestors
+        Given the species identifier, return canonically-ranked ancestors
          along the lineage and their non-canonical distances.
       tags:
       - NCBI Taxonomy

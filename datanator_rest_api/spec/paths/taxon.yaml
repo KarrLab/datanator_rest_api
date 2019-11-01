@@ -2,34 +2,15 @@ canon_rank_distance:
   get:
     parameters:
       - in: query
-        name: ncbi_id
+        name: species
         schema:
-          type: integer
+          oneOf:
+            - type: string
+            - type: integer
         required: true
     tags:
       - NCBI Taxonomy
-    summary: "Given the ncbi_id, return canonically-ranked ancestors\n
-             along the lineage and their non-canonical distances."
-    description: see summary
-    responses:
-      "200":
-        description: OK
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/TxnCanonRankDistance"
-
-canon_rank_distance_by_name:
-  get:
-    parameters:
-      - in: query
-        name: name
-        schema:
-          type: string
-        required: true
-    tags:
-      - NCBI Taxonomy
-    summary: "Given the species name, return canonically-ranked ancestors\n
+    summary: "Given the species identifier, return canonically-ranked ancestors\n
              along the lineage and their non-canonical distances."
     description: see summary
     responses:
