@@ -1,0 +1,15 @@
+type: object
+properties:
+  took:
+    type: integer
+  timed_out:
+    type: boolean
+  _shards:
+    $ref: "#/components/schemas/FtxShards"
+  hits:
+    $ref: "#/components/schemas/FtxHitsObj"
+required:
+  - took
+  - timed_out
+  - _shards
+  - hits

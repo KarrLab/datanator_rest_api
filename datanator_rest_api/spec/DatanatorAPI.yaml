@@ -62,6 +62,53 @@ paths:
       summary: Pings the server to verfy connection
       tags:
       - Datanator
+  /ftx/text_search/:
+    get:
+      description: Search for string in Elasticsearch indices
+      parameters:
+      - in: query
+        name: query_message
+        required: true
+        schema:
+          type: string
+      - in: query
+        name: index
+        required: true
+        schema:
+          type: string
+      - in: query
+        name: from_
+        required: false
+        schema:
+          type: integer
+      - in: query
+        name: size
+        required: false
+        schema:
+          type: integer
+      - in: query
+        name: fields
+        required: true
+        schema:
+          default:
+          - protein_name
+          - synonyms
+          - enzymes
+          - ko_name
+          - gene_name
+          items:
+            type: string
+          type: array
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FTX'
+          description: OK
+      summary: Full text search on landing page
+      tags:
+      - FTX
   /metabolites/:
     get:
       parameters:
@@ -431,6 +478,80 @@ components:
           type: integer
         name:
           type: string
+      type: object
+    FTX:
+      properties:
+        _shards:
+          $ref: '#/components/schemas/FtxShards'
+        hits:
+          $ref: '#/components/schemas/FtxHitsObj'
+        timed_out:
+          type: boolean
+        took:
+          type: integer
+      required:
+      - took
+      - timed_out
+      - _shards
+      - hits
+      type: object
+    FtxHitsArray:
+      items:
+        properties:
+          _id:
+            type: string
+          _index:
+            type: string
+          _score:
+            type: number
+          _source:
+            type: object
+          _type:
+            type: string
+        required:
+        - _id
+        - _index
+        - _score
+        - _source
+        - _type
+        type: object
+      type: array
+    FtxHitsObj:
+      properties:
+        hits:
+          $ref: '#/components/schemas/FtxHitsArray'
+        max_score:
+          type: number
+        total:
+          properties:
+            relation:
+              type: string
+            value:
+              type: integer
+          required:
+          - value
+          - relation
+          type: object
+      required:
+      - total
+      - max_score
+      - hits
+      type: object
+    FtxShards:
+      properties:
+        failed:
+          type: integer
+        skipped:
+          type: integer
+        successful:
+          type: integer
+        total:
+          type: integer
+      required:
+      - total
+      - successful
+      - skipped
+      - failed
       type: object
     GeneralError:
       properties:

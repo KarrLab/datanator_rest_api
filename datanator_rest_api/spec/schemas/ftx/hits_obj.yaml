@@ -1,0 +1,20 @@
+type: object
+properties:
+  total:
+    type: object
+    properties:
+      value:
+        type: integer
+      relation:
+        type: string
+    required:
+      - value
+      - relation
+  max_score:
+    type: number
+  hits:
+    $ref: "#/components/schemas/FtxHitsArray"
+required:
+  - total
+  - max_score
+  - hits

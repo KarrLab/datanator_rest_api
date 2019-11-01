@@ -54,6 +54,8 @@ paths:
     $ref: paths/reactions.yaml#/kinlaw_by_rxn/
   /taxon/canon_rank_distance/:
     $ref: paths/taxon.yaml#/canon_rank_distance/
+  /ftx/text_search/:
+    $ref: paths/ftx.yaml#/text_search/
 components:
   schemas:
     Metabolite:
@@ -80,6 +82,14 @@ components:
       $ref: ./schemas/reactions/resource.yaml
     TxnCanonRankDistance:
       $ref: ./schemas/taxon/canon_rank_distance.yaml
+    FtxShards:
+      $ref: ./schemas/ftx/shards.yaml
+    FtxHitsObj:
+      $ref: ./schemas/ftx/hits_obj.yaml
+    FtxHitsArray:
+      $ref: ./schemas/ftx/hits_array.yaml
+    FTX:
+      $ref: ./schemas/ftx/ftx.yaml
     GeneralError:
       type: object
       properties:

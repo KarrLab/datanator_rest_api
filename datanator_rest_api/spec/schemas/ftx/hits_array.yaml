@@ -1,0 +1,20 @@
+type: array
+items:
+  type: object
+  properties:
+    _id:
+      type: string
+    _index:
+      type: string
+    _score:
+      type: number
+    _source:
+      type: object
+    _type:
+      type: string
+  required:
+    - _id
+    - _index
+    - _score
+    - _source
+    - _type

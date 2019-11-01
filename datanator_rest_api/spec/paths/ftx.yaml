@@ -1,0 +1,43 @@
+text_search:
+  get:
+    parameters:
+      - in: query
+        name: query_message
+        schema:
+          type: string
+        required: true
+      - in: query
+        name: index
+        schema:
+          type: string
+        required: true
+      - in: query
+        name: from_
+        schema:
+          type: integer
+        required: false
+      - in: query
+        name: size
+        schema:
+          type: integer
+        required: false
+      - in: query
+        name: fields
+        schema:
+          type: array
+          items:
+            type: string
+          default: ['protein_name', 'synonyms', 'enzymes', 'ko_name', 'gene_name']
+        required: true
+        description: Fields in which the text search will be done
+    tags:
+      - FTX
+    summary: Full text search on landing page
+    description: "Search for string in Elasticsearch indices"
+    responses:
+      "200":
+        description: OK
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/FTX"
