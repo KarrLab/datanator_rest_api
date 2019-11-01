@@ -18,3 +18,24 @@ canon_rank_distance:
           application/json:
             schema:
               $ref: "#/components/schemas/TxnCanonRankDistance"
+
+canon_rank_distance_by_name:
+  get:
+    parameters:
+      - in: query
+        name: name
+        schema:
+          type: string
+        required: true
+    tags:
+      - NCBI Taxonomy
+    summary: "Given the species name, return canonically-ranked ancestors\n
+             along the lineage and their non-canonical distances."
+    description: see summary
+    responses:
+      "200":
+        description: OK
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TxnCanonRankDistance"

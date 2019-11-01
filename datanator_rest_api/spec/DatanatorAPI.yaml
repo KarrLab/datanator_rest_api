@@ -86,7 +86,8 @@ paths:
         required: false
         schema:
           type: integer
-      - in: query
+      - description: Fields in which the text search will be done
+        in: query
         name: fields
         required: true
         schema:
@@ -438,6 +439,27 @@ paths:
           description: OK
       summary: |-
         Given the ncbi_id, return canonically-ranked ancestors
+         along the lineage and their non-canonical distances.
+      tags:
+      - NCBI Taxonomy
+  /taxon/canon_rank_distance_by_name/:
+    get:
+      description: see summary
+      parameters:
+      - in: query
+        name: name
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TxnCanonRankDistance'
+          description: OK
+      summary: |-
+        Given the species name, return canonically-ranked ancestors
          along the lineage and their non-canonical distances.
       tags:
       - NCBI Taxonomy
