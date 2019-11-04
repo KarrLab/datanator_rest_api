@@ -71,10 +71,12 @@ paths:
         required: true
         schema:
           type: string
-      - in: query
+      - description: ES indices on which ftx will be performed
+        in: query
         name: index
         required: true
         schema:
+          default: ecmdb,ymdb,protein
           type: string
       - in: query
         name: from_
