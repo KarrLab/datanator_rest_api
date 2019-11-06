@@ -16,5 +16,9 @@ class ImplementationTestCase(unittest.TestCase):
         self.client.testing = True
 
     def test_kinlawid_by_rxn(self):
-        docs_0 = self.client.get('/reactions/kinlaw_by_rxn/?substrates=XJLXINKUBYWONI-NNYOXOHSSA-N,ODBLHEXUDAPZAU-UHFFFAOYSA-N&products=GPRLSGONYQIRFK-UHFFFAOYSA-N,KPGXRSRHYNQIFN-UHFFFAOYSA-N')
+        docs_0 = self.client.get("/reactions/kinlaw_by_rxn/?substrates=XJLXINKUBYWONI-NNYOXOHSSA-N,ODBLHEXUDAPZAU-UHFFFAOYSA-N&products=GPRLSGONYQIRFK-UHFFFAOYSA-N,KPGXRSRHYNQIFN-UHFFFAOYSA-N")
+        self.assertEqual(docs_0.status_code, 200)
+
+    def test_kinlawid_doc(self):
+        docs_0 = self.client.get('/reactions/kinlaw_doc/?kinlaw_id=10')
         self.assertEqual(docs_0.status_code, 200)

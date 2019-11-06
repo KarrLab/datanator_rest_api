@@ -8,6 +8,7 @@ kinlaw_by_rxn:
           items:
             type: string
         required: true
+        description: list of substrates' inchikey
       - in: query
         name: products
         schema:
@@ -15,21 +16,28 @@ kinlaw_by_rxn:
           items:
             type: string
         required: true
+        description: list of products' inchikey
+      - in: query
+        name: _from
+        schema:
+          type: integer
+          default: 0
+        required: true 
+        description: page from (0 indexed)
+      - in: query
+        name: size
+        schema: 
+          type: integer
+          default: 10
+        required: true 
+        description: page size
       - in: query
         name: dof
         schema:
           type: integer
+          default: 0
         required: false
-      - in: query
-        name: projection
-        schema:
-          type: object
-          properties:
-            id:
-              type: integer
-            kinlaw_id:
-              type: integer
-        required: false
+        description: degree of freedom allowed (number of parts of inchikey to truncate); the default is 0
     tags:
       - Reactions
     summary: Get reactions based on substrates' and products' inchikey
@@ -44,3 +52,43 @@ kinlaw_by_rxn:
                 - $ref: "#/components/schemas/RxnCompartment"
                 - $ref: "#/components/schemas/RxnEnzyme"
                 - $ref: "#/components/schemas/RxnResource"
+                - $ref: "#/components/schemas/RxnComprehensive"
+
+kinlaw_doc:
+  get:
+    parameters:
+      - in: query
+        name: kinlaw_id
+        schema:
+          type: array
+          items:
+            type: integer
+        required: true
+        description: list of kinetic law ids
+      - in: query
+        name: _from
+        schema:
+          type: integer
+          default: 0
+        required: true 
+        description: page from (0 indexed)
+      - in: query
+        name: size
+        schema: 
+          type: integer
+          default: 10
+        required: true 
+        description: page size
+    tags:
+      - Reactions
+    summary: Get reactions based on kinetic law ids
+    description: Search for reactions given kinetic law ids
+    responses:
+      "200":
+        description: OK
+        content:
+          application/json:
+            schema:
+              anyOf:
+                - $ref: "#/components/schemas/RxnComprehensive"
+                - $ref: "#/components/schemas/RxnError"
