@@ -54,6 +54,8 @@ paths:
     $ref: paths/reactions.yaml#/kinlaw_by_rxn/
   /reactions/kinlaw_doc/:
     $ref: paths/reactions.yaml#/kinlaw_doc/
+  /reactions/kinlaw_entry/:
+    $ref: paths/reactions.yaml#/kinlaw_entry/
   /taxon/canon_rank_distance/:
     $ref: paths/taxon.yaml#/canon_rank_distance/
   /taxon/canon_rank_distance_by_name/:
@@ -90,6 +92,8 @@ components:
       $ref: ./schemas/reactions/comprehensive.yaml
     RxnError:
       $ref: ./schemas/reactions/error.yaml
+    RxnEntryId:
+      $ref: ./schemas/reactions/kinlaw_entry.yaml
     TxnCanonRankDistance:
       $ref: ./schemas/taxon/canon_rank_distance.yaml
     FtxShards:

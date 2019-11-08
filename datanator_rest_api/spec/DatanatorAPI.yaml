@@ -471,6 +471,26 @@ paths:
       summary: Get reactions based on kinetic law ids
       tags:
       - Reactions
+  /reactions/kinlaw_entry/:
+    get:
+      description: Search for reactions given sabiork reaction entry id
+      parameters:
+      - description: sabiork reaction entry id
+        in: query
+        name: entry_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RxnEntryId'
+          description: OK
+      summary: Get reactions based on reaction entry id
+      tags:
+      - Reactions
   /taxon/canon_rank_distance/:
     get:
       description: see summary
@@ -908,6 +928,29 @@ components:
             type: string
         type: object
       type: array
+    RxnEntryId:
+      properties:
+        kinlaw_id:
+          items:
+            type: integer
+          type: array
+        products:
+          items:
+            items:
+              type: string
+            type: array
+          type: array
+        substrates:
+          items:
+            items:
+              type: string
+            type: array
+          type: array
+      required:
+      - kinlaw_id
+      - substrates
+      - products
+      type: object
     RxnEnzyme:
       properties:
         enzyme:

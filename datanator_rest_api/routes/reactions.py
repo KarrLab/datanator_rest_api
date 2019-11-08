@@ -28,3 +28,10 @@ class kinlaw_doc:
         docs, count = RxnManager().rxn_manager().get_reaction_doc(kinlaw_id, projection=projection)
         manager = paginator.Paginator(count, docs)
         return manager.page(_from=_from, size=size)
+
+
+class kinlaw_entry:
+
+    def get(entry_id):
+        result = RxnManager().rxn_manager().get_kinlaw_by_entryid(entry_id)
+        return result

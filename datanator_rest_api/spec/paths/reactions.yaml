@@ -92,3 +92,24 @@ kinlaw_doc:
               anyOf:
                 - $ref: "#/components/schemas/RxnComprehensive"
                 - $ref: "#/components/schemas/RxnError"
+
+kinlaw_entry:
+  get:
+    parameters:
+      - in: query
+        name: entry_id
+        schema:
+          type: string
+        required: true
+        description: sabiork reaction entry id
+    tags:
+      - Reactions
+    summary: Get reactions based on reaction entry id
+    description: Search for reactions given sabiork reaction entry id
+    responses:
+      "200":
+        description: OK
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/RxnEntryId"

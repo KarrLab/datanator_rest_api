@@ -1,0 +1,22 @@
+type: object
+properties:
+  kinlaw_id:
+    type: array
+    items:
+      type: integer
+  substrates:
+    type: array
+    items:
+      type: array
+      items:
+        type: string
+  products:
+    type: array
+    items:
+      type: array
+      items:
+        type: string
+required:
+  - kinlaw_id
+  - substrates
+  - products

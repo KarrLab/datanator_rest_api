@@ -22,3 +22,7 @@ class ImplementationTestCase(unittest.TestCase):
     def test_kinlawid_doc(self):
         docs_0 = self.client.get('/reactions/kinlaw_doc/?kinlaw_id=10')
         self.assertEqual(docs_0.status_code, 200)
+
+    def test_kinlaw_entryid(self):
+        docs_0 = self.client.get('/reactions/kinlaw_entry/?entry_id=6593')
+        self.assertEqual(docs_0.status_code, 200)
