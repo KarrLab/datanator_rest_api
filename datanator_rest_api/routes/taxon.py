@@ -12,6 +12,13 @@ from datanator_query_python.config.query_manager import TaxonManager
 
 class canon_rank_distance:
 
-    def get():
-        results = TaxonManager().txn_manager().get_canon_rank_distance(species, front_end=True)
+    def get(ncbi_id):
+        results = TaxonManager().txn_manager().get_canon_rank_distance(ncbi_id, front_end=True)
+        return results
+
+
+class canon_rank_distance_by_name:
+
+    def get(name):
+        results = TaxonManager().txn_manager().get_canon_rank_distance_by_name(name, front_end=True)
         return results

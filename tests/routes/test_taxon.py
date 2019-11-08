@@ -16,7 +16,9 @@ class ImplementationTestCase(unittest.TestCase):
         self.client.testing = True
 
     def test_canon_rank_distance(self):
-        result_0 = self.client.get('/taxon/canon_rank_distance/?species=9606')
-        result_1 = self.client.get('/taxon/canon_rank_distance/?species=homo sapiens')
-        self.assertEqual(result_0.status_code, 200)
-        self.assertEqual(result_1.status_code, 200)
+        result = self.client.get('/taxon/canon_rank_distance/?ncbi_id=9606')
+        self.assertEqual(result.status_code, 200)
+
+    def test_canon_rank_distance_by_name(self):
+        result = self.client.get('/taxon/canon_rank_distance_by_name/?name=homo sapiens')
+        self.assertEqual(result.status_code, 200)
