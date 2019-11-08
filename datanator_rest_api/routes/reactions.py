@@ -8,10 +8,30 @@
 
 
 from datanator_query_python.config.query_manager import RxnManager
+from datanator_rest_api.util import paginator
 
 
 class kinlaw_by_rxn:
 
-    def get(substrates, products, dof=0, projection={'kinlaw_id': 1, '_id': 0}):
-        _, docs = RxnManager().rxn_manager().get_kinlaw_by_rxn(substrates, products, dof=dof, projection=projection)
-        return docs
+    def get(substrates, products, _from, size, dof):
+        projection = {'_id': 0}
+        print(projection)
+        count, docs = RxnManager().rxn_manager().get_kinlaw_by_rxn(substrates, products, dof=dof, projection=projection)
+        manager = paginator.Paginator(count, docs)
+        return manager.page(_from=_from, size=size)
+
+
+class kinlaw_doc:
+    
+    def get(kinlaw_id, _from, size):
+        projection = {'_id': 0}
+        docs, count = RxnManager().rxn_manager().get_reaction_doc(kinlaw_id, projection=projection)
+        manager = paginator.Paginator(count, docs)
+        return manager.page(_from=_from, size=size)
+
+
+class kinlaw_entry:
+
+    def get(entry_id):
+        result = RxnManager().rxn_manager().get_kinlaw_by_entryid(entry_id)
+        return result

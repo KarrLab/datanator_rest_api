@@ -71,10 +71,12 @@ paths:
         required: true
         schema:
           type: string
-      - in: query
+      - description: ES indices on which ftx will be performed
+        in: query
         name: index
         required: true
         schema:
+          default: ecmdb,ymdb,protein
           type: string
       - in: query
         name: from_
@@ -379,35 +381,44 @@ paths:
     get:
       description: Search for reactions given reactants
       parameters:
-      - in: query
+      - description: list of substrates' inchikey
+        in: query
         name: substrates
         required: true
         schema:
           items:
             type: string
           type: array
-      - in: query
+      - description: list of products' inchikey
+        in: query
         name: products
         required: true
         schema:
           items:
             type: string
           type: array
-      - in: query
+      - description: page from (0 indexed)
+        in: query
+        name: _from
+        required: true
+        schema:
+          default: 0
+          type: integer
+      - description: page size
+        in: query
+        name: size
+        required: true
+        schema:
+          default: 10
+          type: integer
+      - description: degree of freedom allowed (number of parts of inchikey to truncate);
+          the default is 0
+        in: query
         name: dof
         required: false
         schema:
+          default: 0
           type: integer
-      - in: query
-        name: projection
-        required: false
-        schema:
-          properties:
-            id:
-              type: integer
-            kinlaw_id:
-              type: integer
-          type: object
       responses:
         '200':
           content:
@@ -417,8 +428,67 @@ paths:
                 - $ref: '#/components/schemas/RxnCompartment'
                 - $ref: '#/components/schemas/RxnEnzyme'
                 - $ref: '#/components/schemas/RxnResource'
+                - $ref: '#/components/schemas/RxnComprehensive'
           description: OK
       summary: Get reactions based on substrates' and products' inchikey
+      tags:
+      - Reactions
+  /reactions/kinlaw_doc/:
+    get:
+      description: Search for reactions given kinetic law ids
+      parameters:
+      - description: list of kinetic law ids
+        in: query
+        name: kinlaw_id
+        required: true
+        schema:
+          items:
+            type: integer
+          type: array
+      - description: page from (0 indexed)
+        in: query
+        name: _from
+        required: true
+        schema:
+          default: 0
+          type: integer
+      - description: page size
+        in: query
+        name: size
+        required: true
+        schema:
+          default: 10
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                anyOf:
+                - $ref: '#/components/schemas/RxnComprehensive'
+                - $ref: '#/components/schemas/RxnError'
+          description: OK
+      summary: Get reactions based on kinetic law ids
+      tags:
+      - Reactions
+  /reactions/kinlaw_entry/:
+    get:
+      description: Search for reactions given sabiork reaction entry id
+      parameters:
+      - description: sabiork reaction entry id
+        in: query
+        name: entry_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RxnEntryId'
+          description: OK
+      summary: Get reactions based on reaction entry id
       tags:
       - Reactions
   /taxon/canon_rank_distance/:
@@ -640,6 +710,15 @@ components:
       - species
       - source
       type: object
+    Projection:
+      properties:
+        _id:
+          type: integer
+        kinlaw_id:
+          type: integer
+      required:
+      - _id
+      type: object
     ProteinAbundance:
       items:
         properties:
@@ -781,6 +860,78 @@ components:
             type: object
           type: array
       type: object
+    RxnComprehensive:
+      items:
+        properties:
+          enzymes:
+            items:
+              type: object
+            type: array
+          equation:
+            nullable: true
+            type: string
+          kinlaw_id:
+            type: integer
+          mechanism:
+            nullable: true
+            type: string
+          media:
+            nullable: true
+            type: string
+          modified:
+            nullable: true
+            type: string
+          parameter:
+            items:
+              type: object
+            type: array
+          ph:
+            nullable: true
+            type: number
+          resource:
+            items:
+              type: object
+            type: array
+          taxon_id:
+            nullable: true
+            type: integer
+          taxon_variant:
+            nullable: true
+            type: string
+          taxon_wildtype:
+            nullable: true
+            type: integer
+          temperature:
+            nullable: true
+            type: number
+          tissue:
+            nullable: true
+            type: string
+        type: object
+      type: array
+    RxnEntryId:
+      properties:
+        kinlaw_id:
+          items:
+            type: integer
+          type: array
+        products:
+          items:
+            items:
+              type: string
+            type: array
+          type: array
+        substrates:
+          items:
+            items:
+              type: string
+            type: array
+          type: array
+      required:
+      - kinlaw_id
+      - substrates
+      - products
+      type: object
     RxnEnzyme:
       properties:
         enzyme:
@@ -797,6 +948,8 @@ components:
             type: object
           type: array
       type: object
+    RxnError:
+      type: string
     RxnResource:
       items:
         properties:

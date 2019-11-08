@@ -10,7 +10,9 @@ text_search:
         name: index
         schema:
           type: string
+          default: "ecmdb,ymdb,protein"
         required: true
+        description: ES indices on which ftx will be performed
       - in: query
         name: from_
         schema:

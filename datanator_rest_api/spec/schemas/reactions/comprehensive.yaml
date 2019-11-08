@@ -1,0 +1,48 @@
+type: array
+items:
+  type: object
+  properties:
+    kinlaw_id:
+      type: integer
+    resource:
+      type: array
+      items:
+        type: object
+    enzymes:
+      type: array
+      items:
+        type: object
+    parameter:
+      type: array
+      items:
+        type: object
+    tissue:
+      type: string
+      nullable: true
+    mechanism:
+      type: string
+      nullable: true
+    equation:
+      type: string
+      nullable: true
+    taxon_id:
+      type: integer
+      nullable: true
+    taxon_wildtype:
+      type: integer
+      nullable: true
+    taxon_variant:
+      type: string
+      nullable: true
+    temperature:
+      type: number
+      nullable: true
+    ph:
+      type: number
+      nullable: true
+    media:
+      type: string
+      nullable: true
+    modified:
+      type: string
+      nullable: true
