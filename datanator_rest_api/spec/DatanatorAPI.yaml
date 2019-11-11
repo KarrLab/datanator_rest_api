@@ -481,12 +481,30 @@ paths:
         required: true
         schema:
           type: string
+      - description: page from (0 indexed)
+        in: query
+        name: _from
+        required: true
+        schema:
+          default: 0
+          type: integer
+      - description: page size
+        in: query
+        name: size
+        required: true
+        schema:
+          default: 10
+          type: integer
       responses:
         '200':
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/RxnEntryId'
+                anyOf:
+                - $ref: '#/components/schemas/RxnCompartment'
+                - $ref: '#/components/schemas/RxnEnzyme'
+                - $ref: '#/components/schemas/RxnResource'
+                - $ref: '#/components/schemas/RxnComprehensive'
           description: OK
       summary: Get reactions based on reaction entry id
       tags:

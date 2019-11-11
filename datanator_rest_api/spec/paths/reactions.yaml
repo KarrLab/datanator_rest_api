@@ -102,6 +102,20 @@ kinlaw_entry:
           type: string
         required: true
         description: sabiork reaction entry id
+      - in: query
+        name: _from
+        schema:
+          type: integer
+          default: 0
+        required: true 
+        description: page from (0 indexed)
+      - in: query
+        name: size
+        schema: 
+          type: integer
+          default: 10
+        required: true 
+        description: page size
     tags:
       - Reactions
     summary: Get reactions based on reaction entry id
@@ -112,4 +126,8 @@ kinlaw_entry:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/RxnEntryId"
+              anyOf:
+                - $ref: "#/components/schemas/RxnCompartment"
+                - $ref: "#/components/schemas/RxnEnzyme"
+                - $ref: "#/components/schemas/RxnResource"
+                - $ref: "#/components/schemas/RxnComprehensive"
