@@ -32,6 +32,14 @@ kinlaw_by_rxn:
         required: true 
         description: page size
       - in: query
+        name: bound
+        schema: 
+          type: string
+          enum: [loose, tight]
+          default: loose
+        required: true 
+        description: whether to limit substrates/products to include only input values
+      - in: query
         name: dof
         schema:
           type: integer

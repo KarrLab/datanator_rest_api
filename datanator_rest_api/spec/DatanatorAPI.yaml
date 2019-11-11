@@ -411,6 +411,16 @@ paths:
         schema:
           default: 10
           type: integer
+      - description: whether to limit substrates/products to include only input values
+        in: query
+        name: bound
+        required: true
+        schema:
+          default: loose
+          enum:
+          - loose
+          - tight
+          type: string
       - description: degree of freedom allowed (number of parts of inchikey to truncate);
           the default is 0
         in: query

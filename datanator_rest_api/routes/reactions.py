@@ -13,9 +13,10 @@ from datanator_rest_api.util import paginator
 
 class kinlaw_by_rxn:
 
-    def get(substrates, products, _from, size, dof):
+    def get(substrates, products, _from, size, bound, dof):
         projection = {'_id': 0}
-        count, docs = RxnManager().rxn_manager().get_kinlaw_by_rxn(substrates, products, dof=dof, projection=projection)
+        count, docs = RxnManager().rxn_manager().get_kinlaw_by_rxn(substrates, products, dof=dof, 
+                                                                   projection=projection, bound=bound)
         manager = paginator.Paginator(count, docs)
         return manager.page(_from=_from, size=size)
 
