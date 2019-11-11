@@ -103,12 +103,18 @@ kinlaw_entry:
         required: true
         description: sabiork reaction entry id
       - in: query
-        name: _from
+        name: target_organism
+        schema:
+          type: string
+        required: false
+        description: the target organism in which the reaction occurs
+      - in: query
+        name: last_id
         schema:
           type: integer
           default: 0
         required: true 
-        description: page from (0 indexed)
+        description: the last kinlaw_id from previous page
       - in: query
         name: size
         schema: 

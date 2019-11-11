@@ -31,7 +31,7 @@ class kinlaw_doc:
 
 class kinlaw_entry:
 
-    def get(entry_id, _from, size):
-        docs, count = RxnManager().rxn_manager().get_info_by_entryid(entry_id)
-        manager = paginator.Paginator(count, docs)
-        return manager.page(_from=_from, size=size)
+    def get(entry_id, target_organism=None, last_id=0, size=10):
+        docs = RxnManager().rxn_manager().get_info_by_entryid(entry_id, target_organism=target_organism,
+                                                            size=size, last_id=last_id)
+        return docs

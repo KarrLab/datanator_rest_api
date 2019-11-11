@@ -481,9 +481,15 @@ paths:
         required: true
         schema:
           type: string
-      - description: page from (0 indexed)
+      - description: the target organism in which the reaction occurs
         in: query
-        name: _from
+        name: target_organism
+        required: false
+        schema:
+          type: string
+      - description: the last kinlaw_id from previous page
+        in: query
+        name: last_id
         required: true
         schema:
           default: 0
