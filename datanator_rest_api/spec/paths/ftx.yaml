@@ -10,26 +10,31 @@ text_search:
         name: index
         schema:
           type: string
-          default: "ecmdb,ymdb,protein"
+          default: "ecmdb,ymdb,protein,sabio_rk"
         required: true
         description: ES indices on which ftx will be performed
       - in: query
         name: from_
         schema:
           type: integer
-        required: false
+          default: 0
+        required: true
       - in: query
         name: size
         schema:
           type: integer
-        required: false
+          default: 10
+        required: true
       - in: query
         name: fields
         schema:
           type: array
           items:
             type: string
-          default: ['protein_name', 'synonyms', 'enzymes', 'ko_name', 'gene_name']
+          default: ['protein_name', 'synonyms', 'enzymes', 'ko_name', 'gene_name',
+                    'reaction_participant.substrate.substrate_name', 'reaction_participant.substrate.substrate_synonym',
+                    'reaction_participant.product.product_name', 'reaction_participant.product.substrate_synonym',
+                    'enzymes.enzyme.enzyme_name', 'enzymes.subunit.canonical_sequence']
         required: true
         description: Fields in which the text search will be done
     tags:
