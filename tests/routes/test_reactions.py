@@ -26,3 +26,7 @@ class ImplementationTestCase(unittest.TestCase):
     def test_kinlaw_entryid(self):
         docs_0 = self.client.get('/reactions/kinlaw_entry/?entry_id=6593')
         self.assertEqual(docs_0.status_code, 200)
+
+    def test_kinlaw_by_name(self):
+        docs_0 = self.client.get("/reactions/kinlaw_by_name/?substrates=Riboflavin-5-phosphate,2-Hydroxypentanoate&products=reduced FMN")
+        self.assertEqual(docs_0.status_code, 200)

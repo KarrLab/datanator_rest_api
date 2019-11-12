@@ -52,6 +52,8 @@ paths:
     $ref: paths/proteins.yaml#/meta/meta_single
   /reactions/kinlaw_by_rxn/:
     $ref: paths/reactions.yaml#/kinlaw_by_rxn/
+  /reactions/kinlaw_by_name/:
+    $ref: paths/reactions.yaml#/kinlaw_by_name/
   /reactions/kinlaw_doc/:
     $ref: paths/reactions.yaml#/kinlaw_doc/
   /reactions/kinlaw_entry/:

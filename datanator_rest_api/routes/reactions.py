@@ -21,6 +21,16 @@ class kinlaw_by_rxn:
         return manager.page(_from=_from, size=size)
 
 
+class kinlaw_by_name:
+
+    def get(substrates, products, _from, size, bound):
+        projection = {'_id': 0}
+        count, docs = RxnManager().rxn_manager().get_kinlaw_by_rxn_name(substrates, products, 
+                                                                   projection=projection, bound=bound)
+        manager = paginator.Paginator(count, docs)
+        return manager.page(_from=_from, size=size)
+
+
 class kinlaw_doc:
     
     def get(kinlaw_id, _from, size):

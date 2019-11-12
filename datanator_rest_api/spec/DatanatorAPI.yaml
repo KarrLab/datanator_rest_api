@@ -377,6 +377,64 @@ paths:
       summary: Get abundance values for proteins along the taxonomic tree
       tags:
       - Proteins
+  /reactions/kinlaw_by_name/:
+    get:
+      description: Search for reactions given reactants
+      parameters:
+      - description: list of substrates' names
+        in: query
+        name: substrates
+        required: true
+        schema:
+          items:
+            type: string
+          type: array
+      - description: list of products' names
+        in: query
+        name: products
+        required: true
+        schema:
+          items:
+            type: string
+          type: array
+      - description: page from (0 indexed)
+        in: query
+        name: _from
+        required: true
+        schema:
+          default: 0
+          type: integer
+      - description: page size
+        in: query
+        name: size
+        required: true
+        schema:
+          default: 10
+          type: integer
+      - description: whether to limit substrates/products to include only input values
+        in: query
+        name: bound
+        required: true
+        schema:
+          default: loose
+          enum:
+          - loose
+          - tight
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                anyOf:
+                - $ref: '#/components/schemas/RxnCompartment'
+                - $ref: '#/components/schemas/RxnEnzyme'
+                - $ref: '#/components/schemas/RxnResource'
+                - $ref: '#/components/schemas/RxnComprehensive'
+          description: OK
+      summary: Get reactions based on substrates' and products' names
+      tags:
+      - Reactions
   /reactions/kinlaw_by_rxn/:
     get:
       description: Search for reactions given reactants

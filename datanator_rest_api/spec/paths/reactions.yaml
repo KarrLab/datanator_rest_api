@@ -62,6 +62,63 @@ kinlaw_by_rxn:
                 - $ref: "#/components/schemas/RxnResource"
                 - $ref: "#/components/schemas/RxnComprehensive"
 
+kinlaw_by_name:
+  get:
+    parameters:
+      - in: query
+        name: substrates
+        schema:
+          type: array
+          items:
+            type: string
+        required: true
+        description: list of substrates' names
+      - in: query
+        name: products
+        schema:
+          type: array
+          items:
+            type: string
+        required: true
+        description: list of products' names
+      - in: query
+        name: _from
+        schema:
+          type: integer
+          default: 0
+        required: true 
+        description: page from (0 indexed)
+      - in: query
+        name: size
+        schema: 
+          type: integer
+          default: 10
+        required: true 
+        description: page size
+      - in: query
+        name: bound
+        schema: 
+          type: string
+          enum: [loose, tight]
+          default: loose
+        required: true 
+        description: whether to limit substrates/products to include only input values
+    tags:
+      - Reactions
+    summary: Get reactions based on substrates' and products' names
+    description: Search for reactions given reactants
+    responses:
+      "200":
+        description: OK
+        content:
+          application/json:
+            schema:
+              anyOf:
+                - $ref: "#/components/schemas/RxnCompartment"
+                - $ref: "#/components/schemas/RxnEnzyme"
+                - $ref: "#/components/schemas/RxnResource"
+                - $ref: "#/components/schemas/RxnComprehensive"
+
 kinlaw_doc:
   get:
     parameters:
