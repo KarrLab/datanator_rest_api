@@ -101,6 +101,7 @@ paths:
           - enzymes
           - ko_name
           - gene_name
+          - name
           - reaction_participant.substrate.substrate_name
           - reaction_participant.substrate.substrate_synonym
           - reaction_participant.product.product_name
