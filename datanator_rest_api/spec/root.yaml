@@ -66,6 +66,8 @@ paths:
     $ref: paths/ftx.yaml#/text_search/
   /ftx/text_search/indices_in_page/:
     $ref: paths/ftx.yaml#/indices_in_page/
+  /ftx/text_search/num_of_index/:
+    $ref: paths/ftx.yaml#/num_of_index/
 components:
   schemas:
     Projection:

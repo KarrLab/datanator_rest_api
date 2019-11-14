@@ -26,3 +26,12 @@ class text_search:
                                                                             analyze_wild_card=True)
             result = query_manager.FtxManager().ftx_manager().get_index_in_page(r, iof)
             return result
+
+    
+    class num_of_index:
+
+        def get(query_message, index, size, fields):
+            r = query_manager.FtxManager().ftx_manager().simple_query_string(query_message, index, from_=0, 
+                                                                            size=size, fields=fields, lenient=True,
+                                                                            analyze_wild_card=True)
+            return r
