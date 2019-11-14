@@ -48,3 +48,62 @@ text_search:
           application/json:
             schema:
               $ref: "#/components/schemas/FTX"
+
+indices_in_page:
+  get:
+    parameters:
+      - in: query
+        name: query_message
+        schema:
+          type: string
+        required: true
+      - in: query
+        name: index
+        schema:
+          type: string
+          default: "ecmdb,ymdb,metabolites_meta,protein,sabio_rk"
+        required: true
+        description: ES indices on which ftx will be performed
+      - in: query
+        name: iof
+        schema:
+          type: array
+          items:
+            type: string
+        required: true
+        description: indices of interest in page
+      - in: query
+        name: from_
+        schema:
+          type: integer
+          default: 0
+        required: true
+      - in: query
+        name: size
+        schema:
+          type: integer
+          default: 10
+        required: true
+      - in: query
+        name: fields
+        schema:
+          type: array
+          items:
+            type: string
+          default: ['protein_name', 'synonyms', 'enzymes', 'ko_name', 'gene_name', 'name',
+                    'reaction_participant.substrate.substrate_name', 'reaction_participant.substrate.substrate_synonym',
+                    'reaction_participant.product.product_name', 'reaction_participant.product.substrate_synonym',
+                    'enzymes.enzyme.enzyme_name', 'enzymes.subunit.canonical_sequence']
+        required: true
+        description: Fields in which the text search will be done
+    tags:
+      - FTX
+    summary: Search for index of interest (iof) in the returned ftx searc page
+    description: "Search for index of interest (iof) in the returned ftx searc page."
+    responses:
+      "200":
+        description: OK
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/FtxHitsInPage"

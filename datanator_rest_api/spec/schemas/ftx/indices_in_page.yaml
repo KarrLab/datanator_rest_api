@@ -1,0 +1,12 @@
+type: object
+properties:
+  ecmdb:
+    $ref: "./schemas/ftx/transformed_hits.yaml"
+  ymdb:
+    $ref: "./schemas/ftx/transformed_hits.yaml"
+  sabio_rk:
+    $ref: "./schemas/ftx/transformed_hits.yaml"
+  protein:
+    $ref: "./schemas/ftx/transformed_hits.yaml"
+  metabolites_meta:
+    $ref: "./schemas/ftx/transformed_hits.yaml"

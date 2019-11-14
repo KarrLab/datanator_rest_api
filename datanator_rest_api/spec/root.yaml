@@ -64,6 +64,8 @@ paths:
     $ref: paths/taxon.yaml#/canon_rank_distance_by_name/
   /ftx/text_search/:
     $ref: paths/ftx.yaml#/text_search/
+  /ftx/text_search/indices_in_page/:
+    $ref: paths/ftx.yaml#/indices_in_page/
 components:
   schemas:
     Projection:
@@ -104,6 +106,10 @@ components:
       $ref: ./schemas/ftx/hits_obj.yaml
     FtxHitsArray:
       $ref: ./schemas/ftx/hits_array.yaml
+    FtxTransHits:
+      $ref: ./schemas/ftx/transformed_hits.yaml
+    FtxHitsInPage:
+      $ref: ./schemas/ftx/indices_in_page.yaml
     FTX:
       $ref: ./schemas/ftx/ftx.yaml
     GeneralError:

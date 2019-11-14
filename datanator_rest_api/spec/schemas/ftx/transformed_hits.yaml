@@ -1,0 +1,8 @@
+type: array
+items:
+  type: object
+  properties:
+    _score:
+      type: number
+  required:
+    - _score

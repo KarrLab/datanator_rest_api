@@ -76,7 +76,7 @@ paths:
         name: index
         required: true
         schema:
-          default: ecmdb,ymdb,protein,sabio_rk
+          default: ecmdb,ymdb,metabolites_meta,protein,sabio_rk
           type: string
       - in: query
         name: from_
@@ -119,6 +119,73 @@ paths:
                 $ref: '#/components/schemas/FTX'
           description: OK
       summary: Full text search on landing page
+      tags:
+      - FTX
+  /ftx/text_search/indices_in_page/:
+    get:
+      description: Search for index of interest (iof) in the returned ftx searc page.
+      parameters:
+      - in: query
+        name: query_message
+        required: true
+        schema:
+          type: string
+      - description: ES indices on which ftx will be performed
+        in: query
+        name: index
+        required: true
+        schema:
+          default: ecmdb,ymdb,metabolites_meta,protein,sabio_rk
+          type: string
+      - description: indices of interest in page
+        in: query
+        name: iof
+        required: true
+        schema:
+          items:
+            type: string
+          type: array
+      - in: query
+        name: from_
+        required: true
+        schema:
+          default: 0
+          type: integer
+      - in: query
+        name: size
+        required: true
+        schema:
+          default: 10
+          type: integer
+      - description: Fields in which the text search will be done
+        in: query
+        name: fields
+        required: true
+        schema:
+          default:
+          - protein_name
+          - synonyms
+          - enzymes
+          - ko_name
+          - gene_name
+          - name
+          - reaction_participant.substrate.substrate_name
+          - reaction_participant.substrate.substrate_synonym
+          - reaction_participant.product.product_name
+          - reaction_participant.product.substrate_synonym
+          - enzymes.enzyme.enzyme_name
+          - enzymes.subunit.canonical_sequence
+          items:
+            type: string
+          type: array
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FtxHitsInPage'
+          description: OK
+      summary: Search for index of interest (iof) in the returned ftx searc page
       tags:
       - FTX
   /metabolites/:
@@ -709,6 +776,54 @@ components:
         - _type
         type: object
       type: array
+    FtxHitsInPage:
+      properties:
+        ecmdb:
+          items:
+            properties:
+              _score:
+                type: number
+            required:
+            - _score
+            type: object
+          type: array
+        metabolites_meta:
+          items:
+            properties:
+              _score:
+                type: number
+            required:
+            - _score
+            type: object
+          type: array
+        protein:
+          items:
+            properties:
+              _score:
+                type: number
+            required:
+            - _score
+            type: object
+          type: array
+        sabio_rk:
+          items:
+            properties:
+              _score:
+                type: number
+            required:
+            - _score
+            type: object
+          type: array
+        ymdb:
+          items:
+            properties:
+              _score:
+                type: number
+            required:
+            - _score
+            type: object
+          type: array
+      type: object
     FtxHitsObj:
       properties:
         hits:
@@ -746,6 +861,15 @@ components:
       - skipped
       - failed
       type: object
+    FtxTransHits:
+      items:
+        properties:
+          _score:
+            type: number
+        required:
+        - _score
+        type: object
+      type: array
     GeneralError:
       properties:
         code:
