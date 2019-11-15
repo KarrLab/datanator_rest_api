@@ -108,6 +108,7 @@ paths:
           - reaction_participant.product.substrate_synonym
           - enzymes.enzyme.enzyme_name
           - enzymes.subunit.canonical_sequence
+          - species
           items:
             type: string
           type: array
@@ -175,6 +176,7 @@ paths:
           - reaction_participant.product.substrate_synonym
           - enzymes.enzyme.enzyme_name
           - enzymes.subunit.canonical_sequence
+          - species
           items:
             type: string
           type: array
@@ -235,6 +237,7 @@ paths:
           - reaction_participant.product.substrate_synonym
           - enzymes.enzyme.enzyme_name
           - enzymes.subunit.canonical_sequence
+          - species
           items:
             type: string
           type: array

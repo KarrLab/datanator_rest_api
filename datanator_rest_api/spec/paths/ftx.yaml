@@ -34,7 +34,7 @@ text_search:
           default: ['protein_name', 'synonyms', 'enzymes', 'ko_name', 'gene_name', 'name',
                     'reaction_participant.substrate.substrate_name', 'reaction_participant.substrate.substrate_synonym',
                     'reaction_participant.product.product_name', 'reaction_participant.product.substrate_synonym',
-                    'enzymes.enzyme.enzyme_name', 'enzymes.subunit.canonical_sequence']
+                    'enzymes.enzyme.enzyme_name', 'enzymes.subunit.canonical_sequence', 'species']
         required: true
         description: Fields in which the text search will be done
     tags:
@@ -93,7 +93,7 @@ indices_in_page:
           default: ['protein_name', 'synonyms', 'enzymes', 'ko_name', 'gene_name', 'name',
                     'reaction_participant.substrate.substrate_name', 'reaction_participant.substrate.substrate_synonym',
                     'reaction_participant.product.product_name', 'reaction_participant.product.substrate_synonym',
-                    'enzymes.enzyme.enzyme_name', 'enzymes.subunit.canonical_sequence']
+                    'enzymes.enzyme.enzyme_name', 'enzymes.subunit.canonical_sequence', 'species']
         required: true
         description: Fields in which the text search will be done
     tags:
@@ -140,7 +140,7 @@ num_of_index:
           default: ['protein_name', 'synonyms', 'enzymes', 'ko_name', 'gene_name', 'name',
                     'reaction_participant.substrate.substrate_name', 'reaction_participant.substrate.substrate_synonym',
                     'reaction_participant.product.product_name', 'reaction_participant.product.substrate_synonym',
-                    'enzymes.enzyme.enzyme_name', 'enzymes.subunit.canonical_sequence']
+                    'enzymes.enzyme.enzyme_name', 'enzymes.subunit.canonical_sequence', 'species']
         required: true
         description: Fields in which the text search will be done
     tags:
