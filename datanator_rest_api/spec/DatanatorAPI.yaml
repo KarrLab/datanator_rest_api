@@ -202,8 +202,15 @@ paths:
         name: index
         required: true
         schema:
+          enum:
+          - ecmdb
+          - ymdb
+          - metabolites_meta
+          - sabio_rk
+          - protein
           type: string
-      - in: query
+      - description: number of hits needed (max 70)
+        in: query
         name: size
         required: true
         schema:

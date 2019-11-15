@@ -31,7 +31,7 @@ class text_search:
     class num_of_index:
 
         def get(query_message, index, size, fields):
-            r = query_manager.FtxManager().ftx_manager().simple_query_string(query_message, index, from_=0, 
-                                                                            size=size, fields=fields, lenient=True,
-                                                                            analyze_wild_card=True)
+            r = query_manager.FtxManager().ftx_manager().get_single_index_count(query_message, index, size,
+                                                                                fields=fields, lenient=True,
+                                                                                analyze_wild_card=True)
             return r

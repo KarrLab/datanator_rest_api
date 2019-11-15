@@ -120,6 +120,7 @@ num_of_index:
         name: index
         schema:
           type: string
+          enum: [ecmdb, ymdb, metabolites_meta, sabio_rk, protein]
         required: true
         description: index of interest
       - in: query
@@ -129,6 +130,7 @@ num_of_index:
           default: 10
           maximum: 70
         required: true
+        description: number of hits needed (max 70)
       - in: query
         name: fields
         schema:
