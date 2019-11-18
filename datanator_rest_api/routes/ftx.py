@@ -13,8 +13,7 @@ class text_search:
 
     def get(query_message, index, from_, size, fields):
         r = query_manager.FtxManager().ftx_manager().simple_query_string(query_message, index, from_=from_, 
-                                                                        size=size, fields=fields, lenient=True,
-                                                                        analyze_wild_card=True)
+                                                                        size=size, fields=fields)
         return r
 
 
@@ -22,8 +21,7 @@ class text_search:
         
         def get(query_message, iof, index, from_, size, fields):
             r = query_manager.FtxManager().ftx_manager().simple_query_string(query_message, index, from_=from_, 
-                                                                            size=size, fields=fields, lenient=True,
-                                                                            analyze_wild_card=True)
+                                                                            size=size, fields=fields)
             result = query_manager.FtxManager().ftx_manager().get_index_in_page(r, iof)
             return result
 
