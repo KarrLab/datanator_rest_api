@@ -46,6 +46,8 @@ paths:
     $ref: paths/proteins.yaml#/precise_abundance
   /proteins/proximity_abundance/:
     $ref: paths/proteins.yaml#/proximity_abundance
+  /proteins/proximity_abundance/proximity_abundance_kegg/:
+    $ref: paths/proteins.yaml#/proximity_abundance_kegg
   /proteins/meta/meta_combo/:
     $ref: paths/proteins.yaml#/meta/meta_combo
   /proteins/meta/meta_single/:

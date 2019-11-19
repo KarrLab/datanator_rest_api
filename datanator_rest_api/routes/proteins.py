@@ -39,6 +39,12 @@ class proximity_abundance:
     def get(uniprot_id, distance, depth):
         return query_manager.Manager().protein_manager().get_equivalent_protein_with_anchor(uniprot_id, distance, max_depth=depth)
 
+    
+    class proximity_abundance_kegg:
+
+        def get(kegg_id, anchor, distance, depth):
+            return query_manager.Manager().protein_manager().get_equivalent_kegg_with_anchor(kegg_id, anchor, distance, max_depth=depth)
+
 
 class meta:
 
