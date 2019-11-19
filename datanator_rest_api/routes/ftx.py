@@ -30,6 +30,17 @@ class text_search:
 
         def get(query_message, index, size, fields):
             r = query_manager.FtxManager().ftx_manager().get_single_index_count(query_message, index, size,
-                                                                                fields=fields, lenient=True,
-                                                                                analyze_wild_card=True)
+                                                                                fields=fields)
             return r
+
+
+    class frontend_num_of_index:
+
+        def get(query_message, indices, size, fields):
+            result = []
+            indices = indices.split(',')
+            for index in indices:
+                r = query_manager.FtxManager().ftx_manager().get_single_index_count(query_message, index, size,
+                                                                                    fields=fields)
+                result.append(r)
+            return result

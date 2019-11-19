@@ -154,3 +154,50 @@ num_of_index:
           application/json:
             schema:
               $ref: "#/components/schemas/FtxHitsInPage"
+
+frontend_num_of_index:
+  get:
+    parameters:
+      - in: query
+        name: query_message
+        schema:
+          type: string
+        required: true
+      - in: query
+        name: indices
+        schema:
+          type: string
+          default: "ecmdb,ymdb,metabolites_meta,protein,sabio_rk"
+        required: true
+        description: comma separated string of indices
+      - in: query
+        name: size
+        schema:
+          type: integer
+          default: 10
+          maximum: 70
+        required: true
+        description: number of hits needed (max 70)
+      - in: query
+        name: fields
+        schema:
+          type: array
+          items:
+            type: string
+          default: ['protein_name', 'synonyms', 'enzymes', 'ko_name', 'gene_name', 'name',
+                    'reaction_participant.substrate.substrate_name', 'reaction_participant.substrate.substrate_synonym',
+                    'reaction_participant.product.product_name', 'reaction_participant.product.substrate_synonym',
+                    'enzymes.enzyme.enzyme_name', 'enzymes.subunit.canonical_sequence', 'species']
+        required: true
+        description: Fields in which the text search will be done
+    tags:
+      - FTX
+    summary: Search for number hits in a particular index
+    description: "Search for number hits in a particular index."
+    responses:
+      "200":
+        description: OK
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/FtxHitsInPage"
