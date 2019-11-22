@@ -195,7 +195,7 @@ frontend_num_of_index:
     summary: Search for number hits in a particular index
     description: "Search for number hits in a particular index."
     responses:
-      "200":
+      "200":  
         description: OK
         content:
           application/json:
