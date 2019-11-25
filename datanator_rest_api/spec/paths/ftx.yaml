@@ -167,7 +167,7 @@ frontend_num_of_index:
         name: indices
         schema:
           type: string
-          default: "ecmdb,ymdb,metabolites_meta,protein,sabio_rk"
+          default: "ecmdb,ymdb,metabolites_meta,protein,sabio_reaction_entries"
         required: true
         description: comma separated string of indices
       - in: query
@@ -185,9 +185,8 @@ frontend_num_of_index:
           items:
             type: string
           default: ['protein_name', 'synonyms', 'enzymes', 'ko_name', 'gene_name', 'name',
-                    'reaction_participant.substrate.substrate_name', 'reaction_participant.substrate.substrate_synonym',
-                    'reaction_participant.product.product_name', 'reaction_participant.product.substrate_synonym',
-                    'enzymes.enzyme.enzyme_name', 'enzymes.subunit.canonical_sequence', 'species']
+                    'enzyme_name', 'product_names', 'substrate_names',
+                    'enzymes.subunit.canonical_sequence', 'species']
         required: true
         description: Fields in which the text search will be done
     tags:

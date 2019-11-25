@@ -136,7 +136,7 @@ paths:
         name: indices
         required: true
         schema:
-          default: ecmdb,ymdb,metabolites_meta,protein,sabio_rk
+          default: ecmdb,ymdb,metabolites_meta,protein,sabio_reaction_entries
           type: string
       - description: number of hits needed (max 70)
         in: query
@@ -158,11 +158,9 @@ paths:
           - ko_name
           - gene_name
           - name
-          - reaction_participant.substrate.substrate_name
-          - reaction_participant.substrate.substrate_synonym
-          - reaction_participant.product.product_name
-          - reaction_participant.product.substrate_synonym
-          - enzymes.enzyme.enzyme_name
+          - enzyme_name
+          - product_names
+          - substrate_names
           - enzymes.subunit.canonical_sequence
           - species
           items:
