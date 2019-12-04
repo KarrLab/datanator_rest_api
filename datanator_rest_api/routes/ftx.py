@@ -39,8 +39,13 @@ class text_search:
         def get(query_message, indices, size, fields):
             result = []
             indices = indices.split(',')
+            r = {}
             for index in indices:
-                r = query_manager.FtxManager().ftx_manager().get_single_index_count(query_message, index, size,
-                                                                                    fields=fields)
+                if index == 'protein':
+                    r = query_manager.FtxManager().ftx_manager().get_protein_ko_count(query_message, index,
+                                                                                      fields=fields)
+                else:
+                    r = query_manager.FtxManager().ftx_manager().get_single_index_count(query_message, index, size,
+                                                                                        fields=fields)
                 result.append(r)
             return result
