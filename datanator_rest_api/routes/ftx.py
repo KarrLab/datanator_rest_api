@@ -42,7 +42,7 @@ class text_search:
             r = {}
             for index in indices:
                 if index == 'protein':
-                    r = query_manager.FtxManager().ftx_manager().get_protein_ko_count(query_message, index,
+                    r = query_manager.FtxManager().ftx_manager().get_protein_ko_count(query_message, size,
                                                                                       fields=fields)
                 else:
                     r = query_manager.FtxManager().ftx_manager().get_single_index_count(query_message, index, size,
