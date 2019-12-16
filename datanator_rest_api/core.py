@@ -19,7 +19,7 @@ profiler = Profiler()
 def create_app(apiName="DatanatorAPI.yaml", entryModule="datanator_rest_api.routes", 
               specification_dir="./spec", resolver=AutoResolver, validate_responses=False,
               config_class=config.FlaskProfiler):
-    option = {"swagger_path": swagger_ui_3_path}
+    option = {"swagger_path": swagger_ui_3_path, "swagger_url":"/docs"}
     app = connexion.App(
         __name__, specification_dir=specification_dir, options=option)
     app.add_api(apiName, resolver=resolver(entryModule),
