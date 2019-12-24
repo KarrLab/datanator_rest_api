@@ -70,8 +70,11 @@ paths:
     $ref: paths/ftx.yaml#/indices_in_page/
   /ftx/text_search/num_of_index/:
     $ref: paths/ftx.yaml#/num_of_index/
+  /ftx/text_search/protein_ranked_by_ko/:
+    $ref: paths/ftx.yaml#/protein_ranked_by_ko/
   /ftx/text_search/frontend_num_of_index/:
     $ref: paths/ftx.yaml#/frontend_num_of_index/
+    
 components:
   schemas:
     Projection:

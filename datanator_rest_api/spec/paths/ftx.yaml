@@ -98,8 +98,8 @@ indices_in_page:
         description: Fields in which the text search will be done
     tags:
       - FTX
-    summary: Search for index of interest (iof) in the returned ftx searc page
-    description: "Search for index of interest (iof) in the returned ftx searc page."
+    summary: Search for index of interest (iof) in the returned ftx search page
+    description: "Search for index of interest (iof) in the returned ftx search page."
     responses:
       "200":
         description: OK
@@ -123,6 +123,12 @@ num_of_index:
           enum: [ecmdb, ymdb, metabolites_meta, sabio_rk, protein]
         required: true
         description: index of interest
+      - in: query
+        name: from_
+        schema:
+          type: integer
+          default: 0
+        required: true
       - in: query
         name: size
         schema:
@@ -195,6 +201,50 @@ frontend_num_of_index:
     description: "Search for number hits in a particular index."
     responses:
       "200":  
+        description: OK
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/FtxHitsInPage"
+
+protein_ranked_by_ko:
+  get:
+    parameters:
+      - in: query
+        name: query_message
+        schema:
+          type: string
+        required: true
+      - in: query
+        name: from_
+        schema:
+          type: integer
+          default: 0
+        required: true
+      - in: query
+        name: size
+        schema:
+          type: integer
+          default: 10
+          maximum: 70
+        required: true
+        description: number of hits needed (max 70)
+      - in: query
+        name: fields
+        schema:
+          type: array
+          items:
+            type: string
+          default: ['protein_name', 'synonyms', 'enzymes', 'ko_name', 'gene_name', 'name',
+                    'enzymes.enzyme.enzyme_name', 'enzymes.subunit.canonical_sequence', 'species']
+        required: true
+        description: Fields in which the text search will be done
+    tags:
+      - FTX
+    summary: Search for number hits proteins ranked by unique kegg orthology name.
+    description: "Search for number hits proteins ranked by unique kegg orthology name."
+    responses:
+      "200":
         description: OK
         content:
           application/json:

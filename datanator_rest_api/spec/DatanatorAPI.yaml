@@ -178,7 +178,7 @@ paths:
       - FTX
   /ftx/text_search/indices_in_page/:
     get:
-      description: Search for index of interest (iof) in the returned ftx searc page.
+      description: Search for index of interest (iof) in the returned ftx search page.
       parameters:
       - in: query
         name: query_message
@@ -241,7 +241,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/FtxHitsInPage'
           description: OK
-      summary: Search for index of interest (iof) in the returned ftx searc page
+      summary: Search for index of interest (iof) in the returned ftx search page
       tags:
       - FTX
   /ftx/text_search/num_of_index/:
@@ -265,6 +265,12 @@ paths:
           - sabio_rk
           - protein
           type: string
+      - in: query
+        name: from_
+        required: true
+        schema:
+          default: 0
+          type: integer
       - description: number of hits needed (max 70)
         in: query
         name: size
@@ -303,6 +309,58 @@ paths:
                 $ref: '#/components/schemas/FtxHitsInPage'
           description: OK
       summary: Search for number hits in a particular index
+      tags:
+      - FTX
+  /ftx/text_search/protein_ranked_by_ko/:
+    get:
+      description: Search for number hits proteins ranked by unique kegg orthology
+        name.
+      parameters:
+      - in: query
+        name: query_message
+        required: true
+        schema:
+          type: string
+      - in: query
+        name: from_
+        required: true
+        schema:
+          default: 0
+          type: integer
+      - description: number of hits needed (max 70)
+        in: query
+        name: size
+        required: true
+        schema:
+          default: 10
+          maximum: 70
+          type: integer
+      - description: Fields in which the text search will be done
+        in: query
+        name: fields
+        required: true
+        schema:
+          default:
+          - protein_name
+          - synonyms
+          - enzymes
+          - ko_name
+          - gene_name
+          - name
+          - enzymes.enzyme.enzyme_name
+          - enzymes.subunit.canonical_sequence
+          - species
+          items:
+            type: string
+          type: array
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FtxHitsInPage'
+          description: OK
+      summary: Search for number hits proteins ranked by unique kegg orthology name.
       tags:
       - FTX
   /metabolites/:

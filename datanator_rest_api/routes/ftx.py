@@ -28,9 +28,9 @@ class text_search:
     
     class num_of_index:
 
-        def get(query_message, index, size, fields):
+        def get(query_message, index, from_, size, fields):
             r = query_manager.FtxManager().ftx_manager().get_single_index_count(query_message, index, size,
-                                                                                fields=fields)
+                                                                                fields=fields, from_=from_)
             return r
 
 
@@ -49,3 +49,11 @@ class text_search:
                                                                                         fields=fields)
                 result.append(r)
             return result
+
+
+    class protein_ranked_by_ko:
+
+        def get(query_message, from_, size, fields):
+            r = query_manager.FtxManager().ftx_manager().get_protein_ko_count(query_message, size,
+                                                                              fields=fields, from_=from_)
+            return r
