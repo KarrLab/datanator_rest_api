@@ -264,6 +264,8 @@ paths:
           - metabolites_meta
           - sabio_rk
           - protein
+          - sabio
+          - sabio_reaction_entries
           type: string
       - in: query
         name: from_
