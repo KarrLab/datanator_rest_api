@@ -46,3 +46,16 @@ class kinlaw_entry:
         docs = RxnManager().rxn_manager().get_info_by_entryid(entry_id, target_organism=target_organism,
                                                             size=size, last_id=last_id)
         return docs
+
+
+class summary:
+
+    class num_organism:
+
+        def get():
+            return RxnManager().rxn_manager().get_unique_organisms()
+
+    class num_entries:
+        
+        def get():
+            return RxnManager().rxn_manager().get_unique_entries()

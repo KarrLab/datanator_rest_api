@@ -913,6 +913,36 @@ paths:
       summary: Get reactions based on reaction entry id
       tags:
       - Reactions
+  /reactions/summary/num_entries/:
+    get:
+      description: For about page
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: integer
+          description: OK
+      summary: Get number of unique reaction entries.
+      tags:
+      - Kinetics
+      - Reactions
+      - Count
+  /reactions/summary/num_organism/:
+    get:
+      description: For about page
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: integer
+          description: OK
+      summary: Get number of unique organisms in reaction collection.
+      tags:
+      - Kinetics
+      - Reactions
+      - Organism
   /taxon/canon_rank_distance/:
     get:
       description: see summary

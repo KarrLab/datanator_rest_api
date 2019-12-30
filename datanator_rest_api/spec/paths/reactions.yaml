@@ -202,3 +202,36 @@ kinlaw_entry:
                 - $ref: "#/components/schemas/RxnEnzyme"
                 - $ref: "#/components/schemas/RxnResource"
                 - $ref: "#/components/schemas/RxnComprehensive"
+
+summary:
+  num_entries:
+    get:
+      tags:
+        - Kinetics
+        - Reactions
+        - Count
+      summary: Get number of unique reaction entries.
+      description: For about page
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: integer
+
+  num_organism:
+    get:
+      tags:
+        - Kinetics
+        - Reactions
+        - Organism
+      summary: Get number of unique organisms in reaction collection.
+      description: For about page
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: integer
