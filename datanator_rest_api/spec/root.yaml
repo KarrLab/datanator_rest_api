@@ -40,6 +40,8 @@ paths:
     $ref: paths/metabolites.yaml#/root
   /metabolites/concentrations/:
     $ref: paths/metabolites.yaml#/concentrations
+  /metabolites/summary/concentration_count/:
+    $ref: paths/metabolites.yaml#/num_conc
   /metabolites/concentration/:
     $ref: paths/metabolites.yaml#/concentration
   /proteins/precise_abundance/:
@@ -52,6 +54,10 @@ paths:
     $ref: paths/proteins.yaml#/meta/meta_combo
   /proteins/meta/meta_single/:
     $ref: paths/proteins.yaml#/meta/meta_single
+  /proteins/summary/num_protein/:
+    $ref: paths/proteins.yaml#/summary/num_protein
+  /proteins/summary/num_organism/:
+    $ref: paths/proteins.yaml#/summary/num_organism
   /reactions/kinlaw_by_rxn/:
     $ref: paths/reactions.yaml#/kinlaw_by_rxn/
   /reactions/kinlaw_by_name/:

@@ -168,3 +168,33 @@ meta:
               schema:
                 $ref: "#/components/schemas/ProteinMetaCombo"
 
+summary:
+  num_protein:
+    get:
+      tags:
+        - Protein
+        - Count
+      summary: Get number of unique proteins.
+      description: For about page
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: integer
+
+  num_organism:
+    get:
+      tags:
+        - Protein
+        - Organism
+      summary: Get number of unique organisms in protein collection.
+      description: For about page
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: integer

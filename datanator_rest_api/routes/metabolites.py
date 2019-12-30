@@ -31,6 +31,14 @@ class concentrations:
         return query_manager.Manager().eymdb_manager().get_conc_from_inchi(inchi, consensus=consensus)
 
 
+class summary:
+
+    class concentration_count():
+    
+        def get():
+            return query_manager.Manager().eymdb_manager().get_concentration_count()
+
+
 class concentration:
 
     def get(metabolite, species=None, abstract=False):

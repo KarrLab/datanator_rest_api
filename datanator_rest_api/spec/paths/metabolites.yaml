@@ -131,3 +131,18 @@ concentration:
           application/json:
             schema:
               $ref: "#/components/schemas/MetaboliteConcentration"
+
+num_conc:
+  get:
+    tags:
+      - Metabolites
+      - Concentration
+    summary: Get number of metabolites that have concenctration values
+    description: Some description
+    responses:
+      "200":
+        description: OK
+        content:
+          application/json:
+            schema:
+              type: integer

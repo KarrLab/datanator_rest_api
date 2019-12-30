@@ -498,6 +498,20 @@ paths:
       summary: Get concentrations of Metabolites
       tags:
       - Metabolites
+  /metabolites/summary/concentration_count/:
+    get:
+      description: Some description
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: integer
+          description: OK
+      summary: Get number of metabolites that have concenctration values
+      tags:
+      - Metabolites
+      - Concentration
   /proteins/meta/meta_combo/:
     get:
       description: |-
@@ -665,6 +679,34 @@ paths:
       summary: Get abundance values for proteins along the taxonomic tree
       tags:
       - Proteins
+  /proteins/summary/num_organism/:
+    get:
+      description: For about page
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: integer
+          description: OK
+      summary: Get number of unique organisms in protein collection.
+      tags:
+      - Protein
+      - Organism
+  /proteins/summary/num_protein/:
+    get:
+      description: For about page
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: integer
+          description: OK
+      summary: Get number of unique proteins.
+      tags:
+      - Protein
+      - Count
   /reactions/kinlaw_by_name/:
     get:
       description: Search for reactions given reactants

@@ -80,3 +80,16 @@ class meta:
                 return query_manager.Manager().protein_manager().get_info_by_ko_abundance(ko)
             else:
                 return [{'uniprot_ids': {}, 'ko_name': ['invalid input'], 'ko_number': 'This combination of input is invalid.'}]
+
+
+class summary:
+
+    class num_organism:
+
+        def get():
+            return query_manager.Manager().protein_manager().get_unique_organism()
+
+    class num_protein:
+        
+        def get():
+            return query_manager.Manager().protein_manager().get_unique_protein()

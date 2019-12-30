@@ -31,3 +31,9 @@ class ImplementationTestCase(unittest.TestCase):
             '/metabolites/concentrations/?inchi=InChI=1S/C8H11NO2/c9-4-3-6-1-2-7(10)8(11)5-6/h1-2,5,10-11H,3-4,9H2')
         dic_0 = json.loads(result_0.data)
         self.assertEqual(result_0.status_code, 200)
+
+    def test_summary_conc_count(self):
+        result_0 = self.client.get(
+            '/metabolites/summary/concentration_count/')
+        self.assertEqual(1586, (json.loads(result_0.data)))
+        self.assertEqual(result_0.status_code, 200)        
