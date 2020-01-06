@@ -226,7 +226,7 @@ jobs:
           command: python3 setup.py install_egg_info
       - run:
           name: Install package (Python 3)
-          command: python3 -m pip install -e .
+          command: python3 -m pip install -U -e .
       - run:
           name: Run Tests
           command: pytest
