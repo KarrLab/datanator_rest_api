@@ -54,6 +54,6 @@ class text_search:
     class protein_ranked_by_ko:
 
         def get(query_message, from_, size, fields):
-            r = query_manager.FtxManager().ftx_manager().get_protein_ko_count(query_message, size,
+            r = query_manager.FtxManager().ftx_manager().get_protein_ko_count_abundance(query_message, size,
                                                                               fields=fields, from_=from_)
             return r

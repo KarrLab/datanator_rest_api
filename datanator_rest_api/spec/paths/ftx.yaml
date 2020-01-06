@@ -249,4 +249,4 @@ protein_ranked_by_ko:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/FtxHitsInPage"
+              $ref: "#/components/schemas/FtxProteinByKo"

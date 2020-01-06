@@ -360,7 +360,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/FtxHitsInPage'
+                $ref: '#/components/schemas/FtxProteinByKo'
           description: OK
       summary: Search for number hits proteins ranked by unique kegg orthology name.
       tags:
@@ -1128,6 +1128,21 @@ components:
       - total
       - max_score
       - hits
+      type: object
+    FtxProteinByKo:
+      properties:
+        top_kos:
+          properties:
+            buckets:
+              items:
+                properties:
+                  top_ko:
+                    $ref: '#/components/schemas/FtxHitsObj'
+                type: object
+              type: array
+          type: object
+      required:
+      - top_kos
       type: object
     FtxShards:
       properties:
