@@ -31,4 +31,8 @@ items:
             type: array
             items:
               type: string
+          gene_name:
+            type: string
+          protein_name:
+            type: string
       
