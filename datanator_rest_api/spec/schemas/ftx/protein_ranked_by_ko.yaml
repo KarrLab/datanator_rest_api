@@ -1,0 +1,15 @@
+type: object
+properties:
+    top_kos:
+        type: object
+        properties:
+            buckets:
+                type: array
+                items:
+                    type: object
+                    properties:
+                        "top_ko":
+                            $ref: "#/components/schemas/FtxHitsObj"
+required:
+    - top_kos
+      

@@ -129,6 +129,8 @@ components:
       $ref: ./schemas/ftx/transformed_hits.yaml
     FtxHitsInPage:
       $ref: ./schemas/ftx/indices_in_page.yaml
+    FtxProteinByKo:
+      $ref: ./schemas/ftx/protein_ranked_by_ko.yaml
     FTX:
       $ref: ./schemas/ftx/ftx.yaml
     GeneralError:
