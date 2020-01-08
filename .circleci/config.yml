@@ -114,6 +114,8 @@ jobs:
             - /usr/local/lib/python3.6/site-packages
       - run:
           name: Test code
+          environment:
+            PYTHONFAULTHANDLER: 1
           command: |
             set +e
 
