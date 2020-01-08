@@ -111,7 +111,7 @@ jobs:
             v42-{{ arch }}-{{ .Branch }}-{{ checksum "/etc/docker-image-tag" }}-{{
             checksum "requirements.txt" }}
           paths:
-            - /usr/local/lib/python3.6/site-packages
+            - /usr/local/lib/python3.7/site-packages
       - run:
           name: Test code
           environment:
@@ -176,7 +176,7 @@ jobs:
       - save_cache:
           key: test-dependencies-v2-{{arch}}-{{ .Branch }}-{{ checksum "tests/requirements.txt"}}
           paths:
-            - /usr/local/lib/python3.6/site-packages
+            - /usr/local/lib/python3.7/site-packages
             - /usr/local/bin/
       #Get main dependencies
       - restore_cache:
@@ -189,7 +189,7 @@ jobs:
             dependencies-v2-{{ arch }}-{{ .Branch }}-{{ checksum "requirements.txt"
             }}
           paths:
-            - /usr/local/lib/python3.6/site-packages
+            - /usr/local/lib/python3.7/site-packages
             - /usr/local/bin
       # Install circle specific dependencies
       - run:
