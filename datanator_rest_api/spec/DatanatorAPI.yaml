@@ -27,7 +27,7 @@ tags:
   name: Proteins
 - description: Requests for information on reactions, including kinetic paramters
   name: Reactions
-- description: Requests for information on RNA abundance
+- description: Requests for information on RNA
   name: RNA
 paths:
   /:
@@ -943,6 +943,38 @@ paths:
       - Kinetics
       - Reactions
       - Organism
+  /rna/halflife/get_info_by_protein_name/:
+    get:
+      description: Get RNA half-life information based on protein name.
+      parameters:
+      - example: Protein translocase subunit SecD
+        in: query
+        name: protein_name
+        required: true
+        schema:
+          type: string
+      - example: 0
+        in: query
+        name: _from
+        required: true
+        schema:
+          type: integer
+      - example: 10
+        in: query
+        name: size
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RnaHalflifeDoc'
+          description: OK
+      summary: Get RNA half-life information based on protein name.
+      tags:
+      - RNA Half-life
   /taxon/canon_rank_distance/:
     get:
       description: see summary
@@ -1392,49 +1424,51 @@ components:
       - id
       type: object
     RnaHalflifeDoc:
-      properties:
-        function:
-          nullable: true
-          type: string
-        gene_name:
-          nullable: true
-          type: string
-        halflives:
-          items:
-            properties:
-              halflife:
-                type: number
-              ncbi_taxonomy_id:
-                type: integer
-              reference:
-                items:
-                  properties:
-                    doi:
-                      type: string
-                  type: object
-                type: array
-              species:
-                type: string
-              unit:
-                type: string
-            required:
-            - halflife
-            - reference
-            - species
-            - ncbi_taxonomy_id
-            type: object
-          type: array
-        modified:
-          type: string
-        protein_name:
-          type: string
-        protein_synonyms:
-          items:
+      items:
+        properties:
+          function:
+            nullable: true
             type: string
-          type: array
-      required:
-      - halflives
-      type: object
+          gene_name:
+            nullable: true
+            type: string
+          halflives:
+            items:
+              properties:
+                halflife:
+                  type: number
+                ncbi_taxonomy_id:
+                  type: integer
+                reference:
+                  items:
+                    properties:
+                      doi:
+                        type: string
+                    type: object
+                  type: array
+                species:
+                  type: string
+                unit:
+                  type: string
+              required:
+              - halflife
+              - reference
+              - species
+              - ncbi_taxonomy_id
+              type: object
+            type: array
+          modified:
+            type: string
+          protein_name:
+            type: string
+          protein_synonyms:
+            items:
+              type: string
+            type: array
+        required:
+        - halflives
+        type: object
+      type: array
     RnaHalflives:
       properties:
         halflife:

@@ -1,24 +1,26 @@
 get_info_by_protein_name:
     get:
+      tags: 
+        - RNA
       parameters:
         - in: query
           name: protein_name
           schema:
             type: string
           required: true
-          default: Protein translocase subunit SecD
-          - in: query
+          example: Protein translocase subunit SecD
+        - in: query
           name: _from
           schema:
             type: integer
           required: true
-          default: 0
-          - in: query
+          example: 0
+        - in: query
           name: size
           schema:
             type: integer
           required: true
-          default: 10
+          example: 10
       tags:
         - RNA Half-life 
       summary: Get RNA half-life information based on protein name.

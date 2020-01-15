@@ -29,7 +29,7 @@ tags:
   - name: Reactions
     description: Requests for information on reactions, including kinetic paramters
   - name: RNA
-    description: Requests for information on RNA abundance
+    description: Requests for information on RNA
 
 paths:
   /:
@@ -70,6 +70,8 @@ paths:
     $ref: paths/reactions.yaml#/summary/num_organism
   /reactions/summary/num_entries/:
     $ref: paths/reactions.yaml#/summary/num_entries
+  /rna/halflife/get_info_by_protein_name/:
+    $ref: paths/rna.yaml#/get_info_by_protein_name/
   /taxon/canon_rank_distance/:
     $ref: paths/taxon.yaml#/canon_rank_distance/
   /taxon/canon_rank_distance_by_name/:
