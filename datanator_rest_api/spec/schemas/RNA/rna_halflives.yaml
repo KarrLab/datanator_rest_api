@@ -1,0 +1,22 @@
+type: object
+properties:
+    halflife:
+        type: number
+    unit:
+        type: string
+    reference:
+        type: array
+        items:
+            type: object
+            properties:
+                doi:
+                    type: string
+    species:
+        type: string
+    ncbi_taxonomy_id:
+        type: integer
+required:
+    - halflife
+    - reference
+    - species
+    - ncbi_taxonomy_id

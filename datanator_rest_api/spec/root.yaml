@@ -117,6 +117,10 @@ components:
       $ref: ./schemas/reactions/error.yaml
     RxnEntryId:
       $ref: ./schemas/reactions/kinlaw_entry.yaml
+    RnaHalflives:
+      $ref: ./schemas/RNA/rna_halflives.yaml
+    RnaHalflifeDoc:
+      $ref: ./schemas/RNA/halflife_doc.yaml
     TxnCanonRankDistance:
       $ref: ./schemas/taxon/canon_rank_distance.yaml
     FtxShards:

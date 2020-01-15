@@ -1391,6 +1391,73 @@ components:
       required:
       - id
       type: object
+    RnaHalflifeDoc:
+      properties:
+        function:
+          nullable: true
+          type: string
+        gene_name:
+          nullable: true
+          type: string
+        halflives:
+          items:
+            properties:
+              halflife:
+                type: number
+              ncbi_taxonomy_id:
+                type: integer
+              reference:
+                items:
+                  properties:
+                    doi:
+                      type: string
+                  type: object
+                type: array
+              species:
+                type: string
+              unit:
+                type: string
+            required:
+            - halflife
+            - reference
+            - species
+            - ncbi_taxonomy_id
+            type: object
+          type: array
+        modified:
+          type: string
+        protein_name:
+          type: string
+        protein_synonyms:
+          items:
+            type: string
+          type: array
+      required:
+      - halflives
+      type: object
+    RnaHalflives:
+      properties:
+        halflife:
+          type: number
+        ncbi_taxonomy_id:
+          type: integer
+        reference:
+          items:
+            properties:
+              doi:
+                type: string
+            type: object
+          type: array
+        species:
+          type: string
+        unit:
+          type: string
+      required:
+      - halflife
+      - reference
+      - species
+      - ncbi_taxonomy_id
+      type: object
     RxnCompartment:
       properties:
         enzyme:
