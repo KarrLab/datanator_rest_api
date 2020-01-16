@@ -16,9 +16,9 @@ servers:
   - description: The default server
     url: /
   - description: The Datanator server
-    url: http://api.datanator.info
+    url: https://api.datanator.info
   - description: The Datanator test server
-    url: http://testapi.datanator.info
+    url: https://testapi.datanator.info
 tags:
   - name: Datanator
     description: Requests related to the database itself
@@ -200,7 +200,7 @@ components:
       type: oauth2
       flows:
         implicit:
-          authorizationUrl: http://example.org/api/oauth/dialog
+          authorizationUrl: https://example.org/api/oauth/dialog
           scopes:
             write:pets: modify pets in your account
             read:pets: read your pets
