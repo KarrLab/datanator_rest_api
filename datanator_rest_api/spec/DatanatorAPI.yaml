@@ -266,6 +266,7 @@ paths:
           - protein
           - sabio
           - sabio_reaction_entries
+          - rna_halflife
           type: string
       - in: query
         name: from_

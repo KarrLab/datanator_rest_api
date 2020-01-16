@@ -120,7 +120,7 @@ num_of_index:
         name: index
         schema:
           type: string
-          enum: [ecmdb, ymdb, metabolites_meta, sabio_rk, protein, sabio, sabio_reaction_entries]
+          enum: [ecmdb, ymdb, metabolites_meta, sabio_rk, protein, sabio, sabio_reaction_entries, rna_halflife]
         required: true
         description: index of interest
       - in: query
