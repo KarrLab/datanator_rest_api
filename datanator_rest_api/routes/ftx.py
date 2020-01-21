@@ -11,7 +11,7 @@ from datanator_query_python.config import query_manager
 
 class text_search:
 
-    def get(query_message, index, from_, size, fields, _source_includes):
+    def get(query_message, index, from_, size, fields, _source_includes=[]):
         print(_source_includes)
         r = query_manager.FtxManager().ftx_manager().simple_query_string(query_message, index, from_=from_, 
                                                 size=size, fields=fields, _source_includes=_source_includes)
