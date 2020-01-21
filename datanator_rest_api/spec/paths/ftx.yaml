@@ -36,7 +36,15 @@ text_search:
                     'reaction_participant.product.product_name', 'reaction_participant.product.substrate_synonym',
                     'enzymes.enzyme.enzyme_name', 'enzymes.subunit.canonical_sequence', 'species']
         required: true
-        description: Fields in which the text search will be done
+        description: Fields in which the text search will be done.
+      - in: query
+        name: _source_includes
+        schema:
+          type: array
+          items:
+            type: string
+            nullable: true
+        required: false
     tags:
       - FTX
     summary: Full text search on landing page

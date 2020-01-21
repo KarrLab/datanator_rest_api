@@ -90,7 +90,7 @@ paths:
         schema:
           default: 10
           type: integer
-      - description: Fields in which the text search will be done
+      - description: Fields in which the text search will be done.
         in: query
         name: fields
         required: true
@@ -110,6 +110,14 @@ paths:
           - enzymes.subunit.canonical_sequence
           - species
           items:
+            type: string
+          type: array
+      - in: query
+        name: _source_includes
+        required: false
+        schema:
+          items:
+            nullable: true
             type: string
           type: array
       responses:
