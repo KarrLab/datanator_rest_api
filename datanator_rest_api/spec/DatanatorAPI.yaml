@@ -878,6 +878,44 @@ paths:
       summary: Get reactions based on kinetic law ids
       tags:
       - Reactions
+  /reactions/kinlaw_doc/with_prm/:
+    get:
+      description: Return reactions with at least one km or kcat
+      parameters:
+      - description: list of kinetic law ids
+        in: query
+        name: kinlaw_id
+        required: true
+        schema:
+          items:
+            type: integer
+          type: array
+      - description: page from (0 indexed)
+        in: query
+        name: _from
+        required: true
+        schema:
+          default: 0
+          type: integer
+      - description: page size
+        in: query
+        name: size
+        required: true
+        schema:
+          default: 10
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                anyOf:
+                - $ref: '#/components/schemas/RxnComprehensive'
+                - $ref: '#/components/schemas/RxnError'
+          description: OK
+      summary: Get reactions based on kinetic law ids
+      tags:
+      - Reactions
   /reactions/kinlaw_entry/:
     get:
       description: Search for reactions given sabiork reaction entry id

@@ -64,6 +64,8 @@ paths:
     $ref: paths/reactions.yaml#/kinlaw_by_name/
   /reactions/kinlaw_doc/:
     $ref: paths/reactions.yaml#/kinlaw_doc/
+  /reactions/kinlaw_doc/with_prm/:
+    $ref: paths/reactions.yaml#/with_prm
   /reactions/kinlaw_entry/:
     $ref: paths/reactions.yaml#/kinlaw_entry/
   /reactions/summary/num_organism/:

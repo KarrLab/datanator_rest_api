@@ -39,6 +39,12 @@ class kinlaw_doc:
         manager = paginator.Paginator(count, docs)
         return manager.page(_from=_from, size=size)
 
+    class with_prm:
+
+        def get(kinlaw_ids, _from=0, size=10):
+            result, _ = RxnManager().rxn_manager().get_rxn_with_prm(kinlaw_ids, _from=_from, size=size)
+            return result
+
 
 class kinlaw_entry:
 

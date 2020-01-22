@@ -156,7 +156,46 @@ kinlaw_doc:
             schema:
               anyOf:
                 - $ref: "#/components/schemas/RxnComprehensive"
-                - $ref: "#/components/schemas/RxnError"
+                - $ref: "#/components/schemas/RxnError"  
+                
+with_prm:
+  get:
+    parameters:
+      - in: query
+        name: kinlaw_id
+        schema:
+          type: array
+          items:
+            type: integer
+        required: true
+        description: list of kinetic law ids
+      - in: query
+        name: _from
+        schema:
+          type: integer
+          default: 0
+        required: true 
+        description: page from (0 indexed)
+      - in: query
+        name: size
+        schema: 
+          type: integer
+          default: 10
+        required: true 
+        description: page size
+    tags:
+      - Reactions
+    summary: Get reactions based on kinetic law ids
+    description: Return reactions with at least one km or kcat
+    responses:
+      "200":
+        description: OK
+        content:
+          application/json:
+            schema:
+              anyOf:
+                - $ref: "#/components/schemas/RxnComprehensive"
+                - $ref: "#/components/schemas/RxnError"      
 
 kinlaw_entry:
   get:
