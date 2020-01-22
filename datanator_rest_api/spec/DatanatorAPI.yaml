@@ -461,6 +461,7 @@ paths:
         name: species
         required: false
         schema:
+          default: Escherichia coli
           type: string
       - in: query
         name: metabolite
