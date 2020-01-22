@@ -668,6 +668,7 @@ paths:
         name: anchor
         required: true
         schema:
+          default: homo sapiens
           type: string
       - in: query
         name: distance

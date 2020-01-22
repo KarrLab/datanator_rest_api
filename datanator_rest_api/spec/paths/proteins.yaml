@@ -68,6 +68,7 @@ proximity_abundance_kegg:
         name: anchor
         schema:
           type: string
+          default: homo sapiens
         required: true
         description: anchor organism
       - in: query
