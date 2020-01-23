@@ -666,7 +666,7 @@ paths:
       - description: anchor organism
         in: query
         name: anchor
-        required: true
+        required: false
         schema:
           default: homo sapiens
           type: string
