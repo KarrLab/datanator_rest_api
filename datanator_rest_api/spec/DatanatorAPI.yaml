@@ -275,6 +275,7 @@ paths:
           - sabio
           - sabio_reaction_entries
           - rna_halflife
+          - taxon_tree
           type: string
       - in: query
         name: from_
