@@ -1031,6 +1031,7 @@ paths:
       summary: Pings the server to verfy connection
       tags:
       - Info
+      - Datanator
   /taxon/canon_rank_distance/:
     get:
       description: see summary

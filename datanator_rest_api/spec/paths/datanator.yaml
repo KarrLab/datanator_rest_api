@@ -2,6 +2,7 @@ get:
   summary: Pings the server to verfy connection
   tags:
     - Info
+    - Datanator
   responses:
     "200":
       description: OK.
