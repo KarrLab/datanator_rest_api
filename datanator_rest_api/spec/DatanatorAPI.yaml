@@ -1022,10 +1022,14 @@ paths:
                 required:
                 - message
                 type: object
-          description: OK
+          description: OK.
+        '404':
+          description: Api server not found.
+        5XX:
+          description: Unexpected error.
       summary: Pings the server to verfy connection
       tags:
-      - Datanator
+      - Info
   /taxon/canon_rank_distance/:
     get:
       description: see summary

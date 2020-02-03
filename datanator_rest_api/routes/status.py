@@ -8,7 +8,7 @@
 
 
 def get():
-    dict = {"message": "tests pased"}
+    dict = {"message": "Api server is up."}
     return (dict)
 
 
