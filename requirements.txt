@@ -1,9 +1,9 @@
-connexion[swagger-ui]
-flask_cors
 cement >= 3.0.4 # for command line programs
-setuptools # for pkg_resources module
+connexion[swagger-ui]
+datanator_query_python == 0.6.18
+flask_cors
+flask_profiler
+gunicorn #for deployment
 openapi_resolver # to process api files
 openapi_spec_validator
-datanator_query_python == 0.6.18
-gunicorn #for deployment
-flask_profiler
+setuptools # for pkg_resources module
