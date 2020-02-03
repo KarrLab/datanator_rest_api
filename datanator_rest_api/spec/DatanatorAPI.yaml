@@ -4,11 +4,12 @@ info:
     email: info@karrlab.org
     name: Karr Lab
     url: https://datanator.info/
-  description: An API for interacting with the Datanator Integrated Database. The
-    API can be used to get values for a variety of biological molecules and reactions,
-    such as concentration, abundance, or kinetic parameters. The API complies with
-    the openAPI 3 standard. Use the <a href="/apiDoc"> /apiDoc</a> path to access
-    the api specification
+  description: A REST API for the <a href="https://datanator.info" target="_blank" 
+    rel="noopener noreferrer">Datanator integrated database</a> of molecular data for 
+    modeling the biochemistry of cells. The API can be used to find data for modeling
+    cells such as the concentrations of metabolites, abundances of proteins, and rate
+    constants of reactions. The API is compliant with the <a href="https://www.openapis.org/" 
+    target="_blank" rel="noopener noreferrer">OpenAPI 3 standard</a>.
   title: Datanator API
   version: 1.0.0
 servers:
