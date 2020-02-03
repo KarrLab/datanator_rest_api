@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "d451a08f3e8a6d0a6c5ca908b9c3fbb770802952023a48f5f33fb9a46389521f"
+            "sha256": "70cce32fa144c2d38413ccbf01839108408036f7a8cdeddcee7888a9365615e0"
         },
         "pipfile-spec": 6,
         "requires": {},
@@ -13,7 +13,7 @@
             }
         ]
     },
-    "default": {        
+    "default": {
         "swagger-ui-bundle": {
             "git": "https://github.com/KarrLab/datanator_swagger_ui_bundle.git"
         }
