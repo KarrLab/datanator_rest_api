@@ -19,7 +19,7 @@ class CoreTestCase(unittest.TestCase):
         cls.client.testing = True
 
     def test_1(self):
-        response = self.client.get('/datanator/')
+        response = self.client.get('/status/')
         assert(response.status_code == 200)
 
     def test_initialization(self):
@@ -29,5 +29,5 @@ class CoreTestCase(unittest.TestCase):
 
     def test_run(self):
         self.assertIs(type(self.client), flask.testing.FlaskClient)
-        response = self.client.get('/datanator/')
+        response = self.client.get('/status/')
         assert(response.status_code == 200)
