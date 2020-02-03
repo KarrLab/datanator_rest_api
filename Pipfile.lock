@@ -15,7 +15,8 @@
     },
     "default": {
         "swagger-ui-bundle": {
-            "git": "https://github.com/KarrLab/datanator_swagger_ui_bundle.git"
+            "git": "https://github.com/KarrLab/datanator_swagger_ui_bundle.git",
+            "ref": "f9a4fec6084095ccb110bad51c39518b9ecfd95a"
         }
     }
 }
