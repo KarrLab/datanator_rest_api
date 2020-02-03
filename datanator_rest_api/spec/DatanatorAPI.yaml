@@ -4,11 +4,11 @@ info:
     email: info@karrlab.org
     name: Karr Lab
     url: https://datanator.info/
-  description: A REST API for the <a href="https://datanator.info" target="_blank" 
-    rel="noopener noreferrer">Datanator integrated database</a> of molecular data for 
-    modeling the biochemistry of cells. The API can be used to find data for modeling
+  description: A REST API for the <a href="https://datanator.info" target="_blank"
+    rel="noopener noreferrer">Datanator integrated database</a> of molecular data
+    for modeling the biochemistry of cells. The API can be used to find data for modeling
     cells such as the concentrations of metabolites, abundances of proteins, and rate
-    constants of reactions. The API is compliant with the <a href="https://www.openapis.org/" 
+    constants of reactions. The API is compliant with the <a href="https://www.openapis.org/"
     target="_blank" rel="noopener noreferrer">OpenAPI 3 standard</a>.
   title: Datanator API
   version: 1.0.0
@@ -46,23 +46,6 @@ paths:
                 type: object
           description: I'm a teapot
       summary: Pings the server to verfy connection
-  /datanator/:
-    get:
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                properties:
-                  message:
-                    type: string
-                required:
-                - message
-                type: object
-          description: OK
-      summary: Pings the server to verfy connection
-      tags:
-      - Datanator
   /ftx/text_search/:
     get:
       description: Search for string in Elasticsearch indices
@@ -1026,6 +1009,23 @@ paths:
       summary: Get RNA half-life information based on protein name.
       tags:
       - RNA Half-life
+  /status/:
+    get:
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    type: string
+                required:
+                - message
+                type: object
+          description: OK
+      summary: Pings the server to verfy connection
+      tags:
+      - Datanator
   /taxon/canon_rank_distance/:
     get:
       description: see summary

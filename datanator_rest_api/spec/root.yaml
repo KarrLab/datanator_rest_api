@@ -35,7 +35,7 @@ tags:
 paths:
   /:
     $ref: paths/root.yaml
-  /datanator/:
+  /status/:
     $ref: paths/datanator.yaml
   /metabolites/:
     $ref: paths/metabolites.yaml#/root
