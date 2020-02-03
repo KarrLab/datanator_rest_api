@@ -3,7 +3,7 @@ connexion[swagger-ui]
 datanator_query_python == 0.6.18
 flask_cors
 flask_profiler
-gunicorn #for deployment
+gunicorn # web server
 openapi_resolver # to process api files
 openapi_spec_validator
 setuptools # for pkg_resources module
