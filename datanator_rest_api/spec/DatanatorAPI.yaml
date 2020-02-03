@@ -823,6 +823,7 @@ paths:
                 - $ref: '#/components/schemas/RxnEnzyme'
                 - $ref: '#/components/schemas/RxnResource'
                 - $ref: '#/components/schemas/RxnComprehensive'
+                - $ref: '#/components/schemas/RxnError'
           description: OK
       summary: Get reactions based on substrates' and products' inchikey
       tags:
