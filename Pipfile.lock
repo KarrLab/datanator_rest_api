@@ -591,7 +591,7 @@
         },
         "swagger-ui-bundle": {
             "git": "https://github.com/KarrLab/datanator_swagger_ui_bundle.git",
-            "ref": "f9a4fec6084095ccb110bad51c39518b9ecfd95a"
+            "ref": "122ada0fc645bfa0222b86fa46c8d2a6171fd617"
         },
         "tqdm": {
             "hashes": [
