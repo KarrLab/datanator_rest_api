@@ -1,10 +1,11 @@
 get:
   summary: Pings the server to verfy connection
   tags:
+    - Info
     - Datanator
   responses:
     "200":
-      description: OK
+      description: OK.
       content:
         application/json:
           schema:
@@ -14,3 +15,7 @@ get:
             properties:
               message:
                 type: string
+    "404":
+      description: Api server not found.
+    "5XX":
+      description: Unexpected error.

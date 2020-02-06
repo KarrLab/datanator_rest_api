@@ -16,19 +16,21 @@ class ImplementationTestCase(unittest.TestCase):
         self.client.testing = True
 
     def test_kinlawid_by_rxn(self):
-        docs_0 = self.client.get("/reactions/kinlaw_by_rxn/?substrates=XJLXINKUBYWONI-NNYOXOHSSA-N,ODBLHEXUDAPZAU-UHFFFAOYSA-N&products=GPRLSGONYQIRFK-UHFFFAOYSA-N,KPGXRSRHYNQIFN-UHFFFAOYSA-N")
+        s = """/reactions/kinlaw_by_rxn/?substrates=XJLXINKUBYWONI-NNYOXOHSSA-N&substrates=ODBLHEXUDAPZAU-UHFFFAOYSA-N\
+        &products=GPRLSGONYQIRFK-UHFFFAOYSA-N&products=KPGXRSRHYNQIFN-UHFFFAOYSA-N&_from=0&size=10&bound=loose&dof=0"""
+        docs_0 = self.client.get(s)
         self.assertEqual(docs_0.status_code, 200)
 
     def test_kinlawid_doc(self):
-        docs_0 = self.client.get('/reactions/kinlaw_doc/?kinlaw_id=10')
+        docs_0 = self.client.get('/reactions/kinlaw_doc/?kinlaw_id=10&_from=0&size=10')
         self.assertEqual(docs_0.status_code, 200)
 
     def test_kinlaw_entryid(self):
-        docs_0 = self.client.get('/reactions/kinlaw_entry/?entry_id=6593')
+        docs_0 = self.client.get('/reactions/kinlaw_entry/?entry_id=6593&last_id=0&size=10')
         self.assertEqual(docs_0.status_code, 200)
 
     def test_kinlaw_by_name(self):
-        docs_0 = self.client.get("/reactions/kinlaw_by_name/?substrates=Riboflavin-5-phosphate,2-Hydroxypentanoate&products=reduced FMN")
+        docs_0 = self.client.get("/reactions/kinlaw_by_name/?substrates=Riboflavin-5-phosphate&substrates=2-Hydroxypentanoate&products=reduced%20FMN&_from=0&size=10&bound=loose")
         self.assertEqual(docs_0.status_code, 200)
 
     def test_summary_organism(self):

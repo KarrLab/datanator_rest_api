@@ -61,6 +61,7 @@ kinlaw_by_rxn:
                 - $ref: "#/components/schemas/RxnEnzyme"
                 - $ref: "#/components/schemas/RxnResource"
                 - $ref: "#/components/schemas/RxnComprehensive"
+                - $ref: "#/components/schemas/RxnError" 
 
 kinlaw_by_name:
   get:
