@@ -375,6 +375,38 @@ paths:
       summary: Search for number hits proteins ranked by unique kegg orthology name.
       tags:
       - FTX
+  /kegg/get_meta/:
+    get:
+      description: A list of kegg ortholog IDs for querying.
+      parameters:
+      - in: query
+        name: kegg_ids
+        required: true
+        schema:
+          items:
+            example: K00016
+            type: string
+          type: array
+      - in: query
+        name: _from
+        schema:
+          default: 0
+          type: integer
+      - in: query
+        name: size
+        schema:
+          default: 10
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/KeggMetaDoc'
+          description: OK
+      summary: Get KEGG ortholog meta information for a list of KEGG IDs.
+      tags:
+      - KEGG
   /metabolites/:
     get:
       parameters:

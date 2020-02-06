@@ -9,3 +9,12 @@ Any subpaths are contained in an internal class
 :License: MIT
 """
 from datanator_query_python.config.query_manager import KeggManager
+from datanator_rest_api.util import paginator
+
+
+class get_meta:
+
+    def get(kegg_ids, _from=0, size=10):
+        docs, count = KeggManager().kegg_manager().get_meta_by_kegg_id(kegg_ids)
+        manager = paginator.Paginator(count, list(docs))
+        return manager.page(_from=_from, size=size)

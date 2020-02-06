@@ -88,6 +88,8 @@ paths:
     $ref: paths/ftx.yaml#/protein_ranked_by_ko/
   /ftx/text_search/frontend_num_of_index/:
     $ref: paths/ftx.yaml#/frontend_num_of_index/
+  /kegg/get_meta/:
+    $ref: paths/kegg.yaml#/get_meta/
     
 components:
   schemas:
