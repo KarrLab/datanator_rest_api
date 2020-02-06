@@ -1259,6 +1259,65 @@ components:
         message:
           type: string
       type: object
+    KeggMetaDoc:
+      items:
+        properties:
+          definition:
+            properties:
+              ec_code:
+                items:
+                  type: string
+                type: array
+              name:
+                items:
+                  type: string
+                type: array
+            type: object
+          gene_name:
+            items:
+              type: string
+            type: array
+          kegg_disease:
+            items:
+              properties:
+                kegg_disease_code:
+                  type: string
+                kegg_disease_name:
+                  type: string
+              type: object
+            nullable: true
+            type: array
+          kegg_module:
+            items:
+              properties:
+                kegg_module_code:
+                  type: string
+                kegg_module_name:
+                  type: string
+              type: object
+            nullable: true
+            type: array
+          kegg_orthology_id:
+            type: string
+          kegg_pathway:
+            items:
+              properties:
+                kegg_pathway_code:
+                  type: string
+                pathway_description:
+                  type: string
+              type: object
+            nullable: true
+            type: array
+        required:
+        - kegg_orthology_id
+        - gene_name
+        - definition
+        - kegg_pathway
+        - kegg_disease
+        - kegg_module
+        type: object
+      type: array
     Metabolite:
       items:
         properties:

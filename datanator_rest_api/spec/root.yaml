@@ -141,6 +141,8 @@ components:
       $ref: ./schemas/ftx/protein_ranked_by_ko.yaml
     FTX:
       $ref: ./schemas/ftx/ftx.yaml
+    KeggMetaDoc:
+      $ref: ./schemas/kegg/kegg_meta_doc.yaml
     GeneralError:
       type: object
       properties:

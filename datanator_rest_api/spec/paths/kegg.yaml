@@ -1,0 +1,22 @@
+get_meta:
+    get:
+        tags:
+            - KEGG
+        parameters:
+            - in: query
+                name: kegg_ids
+                schmea:
+                    type: array
+                    items:
+                        type: string
+                        example: K00016
+                required: true
+                description: A list of kegg ortholog IDs for querying.
+                summary: Get KEGG ortholog meta information for a list of KEGG IDs.
+                responses:
+                    "200":
+                      description: OK
+                      content:
+                        application/json:
+                          schema:
+                            $ref: "#/components/schemas/KeggMetaDoc"

@@ -1,0 +1,56 @@
+type: object
+properties:
+    kegg_orthology_id:
+        type: string
+    gene_name:
+        type: array
+        items:
+            type: string
+    definition:
+        type: object
+        properties:
+            name:
+                type: array
+                items:
+                    type: string
+            ec_code:
+                type: array
+                items:
+                    type: string
+    kegg_pathway:
+        nullable: true
+        type: array
+        items:
+            type: object
+            properties:
+                kegg_pathway_code:
+                    type: string
+                pathway_description:
+                    type: string
+    kegg_disease:
+        nullable: true
+        type: array
+        items:
+            type: object
+            properties:
+                kegg_disease_code:
+                    type: string
+                kegg_disease_name:
+                    type: string
+    kegg_module:
+        nullable: true
+        type: array
+        items:
+            type: object
+            properties:
+                kegg_module_code:
+                    type: string
+                kegg_module_name:
+                    type: string
+required:
+    - kegg_orthology_id
+    - gene_name
+    - definition
+    - kegg_pathway
+    - kegg_disease
+    - kegg_module
