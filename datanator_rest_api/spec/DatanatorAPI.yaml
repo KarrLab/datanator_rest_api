@@ -30,6 +30,8 @@ tags:
   name: Reactions
 - description: Requests for information on RNA
   name: RNA
+- description: Request for information on KEGG database.
+  name: Kegg
 paths:
   /:
     get:
