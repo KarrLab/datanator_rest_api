@@ -32,7 +32,9 @@ tags:
   - name: RNA
     description: Requests for information on RNA
   - name: Kegg
-    description: Request for information on KEGG database.
+    description: Requests for information on KEGG database.
+  - name: NCBI Taxonomy
+    description: Requests for querying the taxonomic tree.
 
 paths:
   /:

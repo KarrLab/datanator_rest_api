@@ -30,8 +30,10 @@ tags:
   name: Reactions
 - description: Requests for information on RNA
   name: RNA
-- description: Request for information on KEGG database.
+- description: Requests for information on KEGG database.
   name: Kegg
+- description: Requests for querying the taxonomic tree.
+  name: NCBI Taxonomy
 paths:
   /:
     get:
