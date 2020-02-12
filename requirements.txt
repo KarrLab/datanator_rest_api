@@ -1,6 +1,6 @@
 cement >= 3.0.4 # for command line programs
 connexion[swagger-ui]
-datanator_query_python == 0.6.19
+datanator_query_python == 0.6.21
 flask_cors
 flask_profiler
 gunicorn # web server

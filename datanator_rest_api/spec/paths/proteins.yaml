@@ -173,7 +173,7 @@ summary:
   num_protein:
     get:
       tags:
-        - Protein
+        - Proteins
         - Count
       summary: Get number of unique proteins.
       description: For about page
@@ -188,7 +188,7 @@ summary:
   num_organism:
     get:
       tags:
-        - Protein
+        - Proteins
         - Organism
       summary: Get number of unique organisms in protein collection.
       description: For about page
@@ -199,3 +199,36 @@ summary:
             application/json:
               schema:
                 type: integer
+
+similar_protein:
+  refseq:
+    get:
+      parameters:
+        - in: query
+          name: uniprot_id
+          schema:
+            type: string
+          required: true
+        - in: query
+          name: identity
+          schema:
+            type: integer
+            enum: [100, 90, 50]
+            default: 90
+          required: false
+      tags:
+        - Proteins
+      summary: Get similar proteins based on refseq 
+      description: This section provides links to proteins that are similar to the protein sequence(s) described in this entry at different levels of sequence identity thresholds (100%, 90% and 50%) based on their membership in UniProt Reference Clusters.
+      tags:
+        - Proteins
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+                  nullable: true

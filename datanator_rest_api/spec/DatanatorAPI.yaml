@@ -711,6 +711,41 @@ paths:
       summary: Get abundance values for proteins along the taxonomic tree
       tags:
       - Proteins
+  /proteins/similar_protein/refseq/:
+    get:
+      description: This section provides links to proteins that are similar to the
+        protein sequence(s) described in this entry at different levels of sequence
+        identity thresholds (100%, 90% and 50%) based on their membership in UniProt
+        Reference Clusters.
+      parameters:
+      - in: query
+        name: uniprot_id
+        required: true
+        schema:
+          type: string
+      - in: query
+        name: identity
+        required: false
+        schema:
+          default: 90
+          enum:
+          - 100
+          - 90
+          - 50
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  nullable: true
+                  type: string
+                type: array
+          description: OK
+      summary: Get similar proteins based on refseq
+      tags:
+      - Protein
   /proteins/summary/num_organism/:
     get:
       description: For about page

@@ -93,3 +93,10 @@ class summary:
         
         def get():
             return query_manager.Manager().protein_manager().get_unique_protein()
+
+
+class similar_protein:
+
+    class refseq:
+        def get(uniprot_id, identity=90):
+            return query_manager.uniprot_manager().get_similar_proteins(uniprot_id, identity=identity)
