@@ -6,7 +6,7 @@ name = 'pypi'
 [packages]
 cement = '>= 3.0.4' # for command line programs
 connexion = {extras = ['swagger-ui']}
-datanator_query_python = '== 0.6.22'
+datanator_query_python = '== 0.6.23'
 flask_cors = '*'
 flask_profiler = '*'
 gunicorn = '*' # web server
