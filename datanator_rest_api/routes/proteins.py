@@ -58,16 +58,7 @@ class meta:
             elif name is not None and species_name is not None:   # name + species_name
                 return query_manager.Manager().protein_manager().get_meta_by_name_name(name, species_name)
             else:
-                return [{'uniprot_id': 'Please try another input combination',
-                'entry_name': 'Please try another input combination',
-                'gene_name': 'Please try another input combination',
-                'protein_name': 'Please try another input combination',
-                'canonical_sequence': 'Please try another input combination',
-                'length': 99999999,
-                'mass': 'Please try another input combination',
-                'abundances': [],
-                'ncbi_taxonomy_id': 99999999,
-                'species_name': 'Please try another input combination'}]
+                return wrong
 
     class meta_single:
 
