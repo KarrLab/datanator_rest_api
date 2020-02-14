@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "6a3a2e6295968250c2a061957e0b1cf04d92965f32d1c9be6a5af2e883b8130a"
+            "sha256": "5d6850954adae72876863b529caa5672214ce621a2863b64d230679be2da04d0"
         },
         "pipfile-spec": 6,
         "requires": {},
@@ -118,11 +118,11 @@
         },
         "datanator-query-python": {
             "hashes": [
-                "sha256:22bab53bcbefc7d4adde595c21e0f76a001995d0578b4ca419ad1634753ae4df",
-                "sha256:bdb979592c128297563902735d4a012d9db7949984f9892d7e931efe1c959917"
+                "sha256:0735103075e632bf70eb258e5b3ced8aa3fa109eb199c043d2c2089dbb175430",
+                "sha256:a135a3ecb10733f38eb3cdc1fd7411283ddc2cfbd04b696db0abb009517e8dad"
             ],
             "index": "pypi",
-            "version": "==0.6.24"
+            "version": "==0.6.25"
         },
         "dnspython": {
             "hashes": [
