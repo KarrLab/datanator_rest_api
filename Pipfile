@@ -25,11 +25,3 @@ extras = [ "swagger-ui",]
 
 [packages.swagger_ui_bundle]
 git = "https://github.com/KarrLab/datanator_swagger_ui_bundle.git"
-
-[dev-packages.42a8ccb]
-path = "/home/zl/karr_lab/datanator_query_python"
-editable = true
-
-[dev-packages.e1839a8]
-path = "."
-editable = true
