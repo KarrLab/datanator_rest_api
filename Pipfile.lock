@@ -121,7 +121,7 @@
         "datanator-rest-api": {
             "editable": true,
             "git": "git@github.com:KarrLab/datanator_rest_api.git",
-            "ref": "9276712dfaa0688335314510335e2476fd78521b"
+            "ref": "967285e76fa2544cebea7cf816345a5ebea957a3"
         },
         "dnspython": {
             "hashes": [

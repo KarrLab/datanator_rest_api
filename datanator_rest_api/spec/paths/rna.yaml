@@ -2,6 +2,7 @@ get_info_by_protein_name:
     get:
       tags: 
         - RNA
+        - RNA Half-life
       parameters:
         - in: query
           name: protein_name
@@ -20,9 +21,7 @@ get_info_by_protein_name:
           schema:
             type: integer
           required: true
-          example: 10
-      tags:
-        - RNA Half-life 
+          example: 10 
       summary: Get RNA half-life information based on protein name.
       description: "Get RNA half-life information based on protein name."
       responses:

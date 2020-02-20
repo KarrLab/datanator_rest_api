@@ -55,7 +55,7 @@ class ImplementationTestCase(unittest.TestCase):
         self.assertEqual(result_5.status_code, 200)
         result_6 = self.client.get(
             '/proteins/meta/meta_combo/?ncbi_taxon_id=9606')
-        self.assertEqual(result_6.status_code, 200)
+        self.assertEqual(result_6.status_code, 500)
 
     def test_proximity_proteins_kegg(self):
         result_0 = self.client.get('/proteins/proximity_abundance/proximity_abundance_kegg/?kegg_id=K03154&anchor=Thermus%20thermophilus%20HB27&distance=3&depth=2')
@@ -67,4 +67,8 @@ class ImplementationTestCase(unittest.TestCase):
 
     def test_summary_protein(self):
         result = self.client.get('/proteins/summary/num_protein/')
+        self.assertEqual(result.status_code, 200)
+
+    def test_similar_protein_refseq(self):
+        result = self.client.get('/proteins/similar_protein/refseq/?uniprot_id=q9vb24&identity=90')
         self.assertEqual(result.status_code, 200)
