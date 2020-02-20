@@ -39,3 +39,30 @@ canon_rank_distance_by_name:
           application/json:
             schema:
               $ref: "#/components/schemas/TxnCanonRankDistance"
+
+is_child:
+  get:
+    parameters:
+      - in: query
+        name: src_tax_id
+        schema:
+          type: integer
+        description: source organism's NCBI Taxonomy ID.
+        required: true
+      - in: query
+        name: target_tax_id
+        schema:
+          type: integer
+        description: target organism's NCBI Taxonomy ID.
+        required: true
+    tags:
+      - NCBI Taxonomy
+    summary: "Check if source is the child of target."
+    description: see summary
+    responses:
+      "200":
+        description: OK
+        content:
+          application/json:
+            schema:
+              type: boolean

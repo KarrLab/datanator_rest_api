@@ -22,3 +22,9 @@ class canon_rank_distance_by_name:
     def get(name):
         results = TaxonManager().txn_manager().get_canon_rank_distance_by_name(name, front_end=True)
         return results
+
+
+class is_child:
+    
+    def get(src_tax_id, target_tax_id):
+        return TaxonManager().txn_manager().under_category(src_tax_id, target_tax_id)

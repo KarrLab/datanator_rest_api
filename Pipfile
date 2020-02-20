@@ -1,23 +1,35 @@
 [[source]]
-url = 'https://pypi.python.org/simple'
+url = "https://pypi.python.org/simple"
 verify_ssl = true
-name = 'pypi'
+name = "pypi"
 
 [packages]
-cement = '>= 3.0.4' # for command line programs
-connexion = {extras = ['swagger-ui']}
-datanator_query_python = '== 0.6.19'
-flask_cors = '*'
-flask_profiler = '*'
-gunicorn = '*' # web server
-openapi_resolver = '*' # to process api files
-openapi_spec_validator = '*'
-setuptools = '*' # for pkg_resources module
-swagger_ui_bundle = { git = 'https://github.com/KarrLab/datanator_swagger_ui_bundle.git'}
+cement = ">= 3.0.4"
+datanator_query_python = "== 0.6.26"
+flask_cors = "*"
+flask_profiler = "*"
+gunicorn = "*"
+openapi_resolver = "*"
+openapi_spec_validator = "*"
+setuptools = "*"
 
 [dev-packages]
-capturer = '*' # to capture standard output in tests
-flask = '>= 1.1.0'
-mock = '*' # to mock python classes and methods
-prance = '*' #to parse api
-pytest = '*'
+capturer = "*"
+flask = ">= 1.1.0"
+mock = "*"
+prance = "*"
+pytest = "*"
+
+[packages.connexion]
+extras = [ "swagger-ui",]
+
+[packages.swagger_ui_bundle]
+git = "https://github.com/KarrLab/datanator_swagger_ui_bundle.git"
+
+[dev-packages.42a8ccb]
+path = "/home/zl/karr_lab/datanator_query_python"
+editable = true
+
+[dev-packages.e1839a8]
+path = "."
+editable = true

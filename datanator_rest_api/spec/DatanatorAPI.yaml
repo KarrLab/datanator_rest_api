@@ -1106,6 +1106,32 @@ paths:
          along the lineage and their non-canonical distances.
       tags:
       - NCBI Taxonomy
+  /taxon/is_child/:
+    get:
+      description: see summary
+      parameters:
+      - description: source organism's NCBI Taxonomy ID.
+        in: query
+        name: src_tax_id
+        required: true
+        schema:
+          type: integer
+      - description: target organism's NCBI Taxonomy ID.
+        in: query
+        name: target_tax_id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: boolean
+          description: OK
+      summary: Check if source is the child of target.
+      tags:
+      - NCBI Taxonomy
 components:
   parameters:
     limitParam:
