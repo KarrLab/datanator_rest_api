@@ -1,0 +1,1 @@
+web: gunicorn 'datanator_rest_api.core:run'
