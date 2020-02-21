@@ -5,6 +5,7 @@ name = "pypi"
 
 [packages]
 cement = ">= 3.0.4"
+connexion = {extras = ['swagger-ui']}
 datanator_query_python = "*"
 flask_cors = "*"
 flask_profiler = "*"

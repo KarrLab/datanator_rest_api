@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "9aa34615c509cf678ad87382d6c8ebe05a30eac85c3d4ae44b667ea0ad341a37"
+            "sha256": "70521b844b70e1609b8485b10cb58b2edc9c12a606af75201c453b476adf74b6"
         },
         "pipfile-spec": 6,
         "requires": {},
@@ -91,12 +91,27 @@
             ],
             "version": "==7.0"
         },
+        "clickclick": {
+            "hashes": [
+                "sha256:4a890aaa9c3990cfabd446294eb34e3dc89701101ac7b41c1bff85fc210f6d23",
+                "sha256:ab8f229fb9906a86634bdfc6fabfc2b665f44804170720db4f6e1d98f8a58f3d"
+            ],
+            "version": "==1.2.2"
+        },
         "configparser": {
             "hashes": [
                 "sha256:254c1d9c79f60c45dfde850850883d5aaa7f19a23f13561243a050d5a7c3fe4c",
                 "sha256:c7d282687a5308319bf3d2e7706e575c635b0a470342641c93bea0ea3b5331df"
             ],
             "version": "==4.0.2"
+        },
+        "connexion": {
+            "hashes": [
+                "sha256:bf32bfae6af337cfa4a8489c21516adbe5c50e3f8dc0b7ed2394ce8dde218018",
+                "sha256:c568e579f84be808e387dcb8570bb00a536891be1318718a0dad3ba90f034191"
+            ],
+            "index": "pypi",
+            "version": "==2.6.0"
         },
         "datanator-query-python": {
             "hashes": [
@@ -206,6 +221,12 @@
             ],
             "markers": "python_version < '3.8'",
             "version": "==1.5.0"
+        },
+        "inflection": {
+            "hashes": [
+                "sha256:18ea7fb7a7d152853386523def08736aa8c32636b047ade55f7578c4edeb16ca"
+            ],
+            "version": "==0.3.1"
         },
         "itsdangerous": {
             "hashes": [
@@ -600,7 +621,12 @@
             "version": "==1.14.0"
         },
         "swagger-ui-bundle": {
-            "git": "https://github.com/KarrLab/datanator_swagger_ui_bundle.git"
+            "hashes": [
+                "sha256:49d2e12d60a6499e9d37ea37953b5d700f4e114edc7520fe918bae5eb693a20e",
+                "sha256:c5373b683487b1b914dccd23bcd9a3016afa2c2d1cda10f8713c0a9af0f91dd3",
+                "sha256:f776811855092c086dbb08216c8810a84accef8c76c796a135caa13645c5cc68"
+            ],
+            "version": "==0.0.6"
         },
         "tqdm": {
             "hashes": [
