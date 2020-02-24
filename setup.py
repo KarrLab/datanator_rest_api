@@ -14,12 +14,7 @@ import os
 
 name = 'datanator_rest_api'
 dirname = os.path.dirname(__file__)
-package_data = {
-    name: [
-        'VERSION'
-    ],
-}
-print(dirname)
+
 # get package metadata
 md = pkg_utils.get_package_metadata(dirname, name)
 
