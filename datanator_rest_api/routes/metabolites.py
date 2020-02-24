@@ -43,3 +43,9 @@ class concentration:
 
     def get(metabolite, species='Escherichia coli', abstract=False):
         return query_manager.Manager().metabolite_manager().molecule_name_query(metabolite, species, abstract_default=abstract)
+
+
+class meta:
+
+    def get(inchi_key):
+        return query_manager.metabolites_meta_manager().get_metabolites_meta(inchi_key)

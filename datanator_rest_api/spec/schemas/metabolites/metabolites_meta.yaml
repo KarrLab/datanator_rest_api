@@ -1,0 +1,30 @@
+type: object
+properties:
+    inchi:
+        type: string
+    m2m_id:
+        type: string
+        nullable: true
+    ymdb_id:
+        type: string
+        nullable: true
+    kinlaw_id:
+        type: array
+        items:
+            type: integer
+        nullable: true
+    synonyms:
+        type: array
+        items:
+            type: string
+        nullable: true
+    InChI_Key:
+        type: string
+    name:
+        type: string
+    chebi_id:
+        type: string
+    hmdb_id:
+        type: string
+    kegg_id:
+        type: string

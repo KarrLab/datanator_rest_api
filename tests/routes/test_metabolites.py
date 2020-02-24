@@ -37,3 +37,7 @@ class ImplementationTestCase(unittest.TestCase):
             '/metabolites/summary/concentration_count/')
         self.assertEqual(1586, (json.loads(result_0.data)))
         self.assertEqual(result_0.status_code, 200)        
+
+    def test_meta(self):
+        result_1 = self.client.get("/metabolites/meta/?inchi_key=UHDGCWIWMRVCDJ-XVFCMESISA-N")
+        self.assertEqual(result_1.status_code, 200)

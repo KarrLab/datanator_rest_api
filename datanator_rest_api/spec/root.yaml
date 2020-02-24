@@ -47,6 +47,8 @@ paths:
     $ref: paths/metabolites.yaml#/concentrations
   /metabolites/summary/concentration_count/:
     $ref: paths/metabolites.yaml#/num_conc
+  /metabolites/meta/:
+    $ref: paths/metabolites.yaml#/meta
   /metabolites/concentration/:
     $ref: paths/metabolites.yaml#/concentration
   /proteins/precise_abundance/:
@@ -108,6 +110,8 @@ components:
       $ref: ./schemas/metabolites/metabolite.yaml
     MetaboliteConcentration:
       $ref: ./schemas/metabolites/metabolite_concentration.yaml
+    MetaboliteMeta:
+      $ref: ./schemas/metabolites/metabolites_meta.yaml
     Observation:
       $ref: ./schemas/metabolites/observation.yaml
     Reaction:

@@ -147,3 +147,24 @@ num_conc:
           application/json:
             schema:
               type: integer
+
+meta:
+  get:
+    parameters:
+      - in: query
+        name: inchi_key
+        schema:
+          type: string
+        required: true
+    tags:
+      - Metabolites
+    summary: Get metabolite meta information from metabolites_meta collection
+    description: see summary
+    responses:
+      "200":
+        description: OK
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/MetaboliteMeta"
+  

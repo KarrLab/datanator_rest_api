@@ -529,6 +529,25 @@ paths:
       summary: Get concentrations of Metabolites
       tags:
       - Metabolites
+  /metabolites/meta/:
+    get:
+      description: see summary
+      parameters:
+      - in: query
+        name: inchi_key
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MetaboliteMeta'
+          description: OK
+      summary: Get metabolite meta information from metabolites_meta collection
+      tags:
+      - Metabolites
   /metabolites/summary/concentration_count/:
     get:
       description: Some description
@@ -745,7 +764,7 @@ paths:
           description: OK
       summary: Get similar proteins based on refseq
       tags:
-      - Protein
+      - Proteins
   /proteins/summary/num_organism/:
     get:
       description: For about page
@@ -758,7 +777,7 @@ paths:
           description: OK
       summary: Get number of unique organisms in protein collection.
       tags:
-      - Protein
+      - Proteins
       - Organism
   /proteins/summary/num_protein/:
     get:
@@ -772,7 +791,7 @@ paths:
           description: OK
       summary: Get number of unique proteins.
       tags:
-      - Protein
+      - Proteins
       - Count
   /reactions/kinlaw_by_name/:
     get:
@@ -1459,6 +1478,37 @@ components:
         - inchikey
         type: object
       type: array
+    MetaboliteMeta:
+      properties:
+        InChI_Key:
+          type: string
+        chebi_id:
+          type: string
+        hmdb_id:
+          type: string
+        inchi:
+          type: string
+        kegg_id:
+          type: string
+        kinlaw_id:
+          items:
+            type: integer
+          nullable: true
+          type: array
+        m2m_id:
+          nullable: true
+          type: string
+        name:
+          type: string
+        synonyms:
+          items:
+            type: string
+          nullable: true
+          type: array
+        ymdb_id:
+          nullable: true
+          type: string
+      type: object
     Observation:
       properties:
         error:
