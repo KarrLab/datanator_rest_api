@@ -1,9 +1,6 @@
 # description
 README.rst
 
-# version
-include datanator_rest_api/VERSION
-
 # license
 include LICENSE
 
