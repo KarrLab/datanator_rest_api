@@ -24,5 +24,5 @@ class ImplementationTestCase(unittest.TestCase):
         self.assertEqual(result.status_code, 200)
 
     def test_canon_rank_distance_by_name(self):
-        result = self.client.get('/taxon/is_child/?src_tax_id=550690&target_tax_id=523')
+        result = self.client.get('/taxon/is_child/?src_tax_ids=550690&target_tax_id=523')
         self.assertEqual(result.status_code, 200)
