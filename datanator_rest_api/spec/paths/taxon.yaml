@@ -70,3 +70,32 @@ is_child:
               type: array
               items:
                 type: boolean
+
+canon_rank_common_distance:
+  get:
+    parameters:
+      - in: query
+        name: org_0
+        schema:
+          type: integer
+        required: true
+        description: NCBI Taxonomy ID of the first organism
+        example: 562
+      - in: query
+        name: org_1
+        schema:
+          type: integer
+        required: true
+        description: NCBI Taxonomy ID of the second organism
+        example: 550685
+    tags:
+      - NCBI Taxonomy
+    summary: "calculate the distance between the each of the two organisms and their canonically-ranked common ancestor."
+    description: see summary
+    responses:
+      "200":
+        description: OK
+        content:
+          application/json:
+            schema:
+              type: object

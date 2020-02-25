@@ -28,3 +28,9 @@ class is_child:
     
     def get(src_tax_ids, target_tax_id):
         return TaxonManager().txn_manager().each_under_category(src_tax_ids, target_tax_id)
+
+
+class canon_rank_common_distance:
+
+    def get(org_0, org_1):
+        return TaxonManager().txn_manager().get_canon_common_ancestor(org_0, org_1)

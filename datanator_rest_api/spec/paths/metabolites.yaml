@@ -167,4 +167,25 @@ meta:
           application/json:
             schema:
               $ref: "#/components/schemas/MetaboliteMeta"
-  
+
+concentration_only:
+  get:
+    parameters:
+      - in: query
+        name: inchi_key
+        schema:
+          type: string
+        required: true
+    tags:
+      - Metabolites
+    summary: Get metabolite concentration information from xmdb collection
+    description: see summary
+    responses:
+      "200":
+        description: OK
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: object

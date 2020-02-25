@@ -49,3 +49,9 @@ class meta:
 
     def get(inchi_key):
         return query_manager.metabolites_meta_manager().get_metabolites_meta(inchi_key)
+
+
+class concentration_only:
+
+    def get(inchi_key):
+        return query_manager.Manager().eymdb_manager().get_conc_from_inchi(inchi_key, inchi_key=True, projection={'_id':0, 'concentrations': 1})

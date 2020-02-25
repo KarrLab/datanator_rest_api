@@ -118,11 +118,11 @@
         },
         "datanator-query-python": {
             "hashes": [
-                "sha256:214789245669e1f57724edebaae395a66d5c02c38aa341db0e8885e397764e81",
-                "sha256:6b9d235227fe57c3d11798d196cbda8a3a83a8b3d8811138c16efa85e26c01df"
+                "sha256:62b53dcd74d66379be0ebfa25460623c2473df309ea55fe4da9e08521e54f634",
+                "sha256:be60669180fd4a340861296165b02cad7eb2ebc3541a440d598ca1b155091692"
             ],
             "index": "pypi",
-            "version": "==0.6.28"
+            "version": "==0.6.30"
         },
         "dnspython": {
             "hashes": [

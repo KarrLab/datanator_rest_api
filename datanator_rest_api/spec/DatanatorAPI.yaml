@@ -500,6 +500,27 @@ paths:
       tags:
       - Metabolites
       - Concentration
+  /metabolites/concentration_only/:
+    get:
+      description: see summary
+      parameters:
+      - in: query
+        name: inchi_key
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  type: object
+                type: array
+          description: OK
+      summary: Get metabolite concentration information from xmdb collection
+      tags:
+      - Metabolites
   /metabolites/concentrations/:
     get:
       description: |-
@@ -1123,6 +1144,35 @@ paths:
       tags:
       - Info
       - Datanator
+  /taxon/canon_rank_common_distance/:
+    get:
+      description: see summary
+      parameters:
+      - description: NCBI Taxonomy ID of the first organism
+        example: 562
+        in: query
+        name: org_0
+        required: true
+        schema:
+          type: integer
+      - description: NCBI Taxonomy ID of the second organism
+        example: 550685
+        in: query
+        name: org_1
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+          description: OK
+      summary: calculate the distance between the each of the two organisms and their
+        canonically-ranked common ancestor.
+      tags:
+      - NCBI Taxonomy
   /taxon/canon_rank_distance/:
     get:
       description: see summary

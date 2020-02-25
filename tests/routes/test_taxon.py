@@ -23,6 +23,10 @@ class ImplementationTestCase(unittest.TestCase):
         result = self.client.get('/taxon/canon_rank_distance_by_name/?name=homo sapiens')
         self.assertEqual(result.status_code, 200)
 
-    def test_canon_rank_distance_by_name(self):
+    def test_is_child(self):
         result = self.client.get('/taxon/is_child/?src_tax_ids=550690&target_tax_id=523')
+        self.assertEqual(result.status_code, 200)
+
+    def test_canon_rank_common_distance(self):
+        result = self.client.get('/taxon/canon_rank_common_distance/?org_0=562&org_1=4464674')
         self.assertEqual(result.status_code, 200)
