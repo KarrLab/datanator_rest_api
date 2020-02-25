@@ -26,5 +26,5 @@ class canon_rank_distance_by_name:
 
 class is_child:
     
-    def get(src_tax_id, target_tax_id):
-        return TaxonManager().txn_manager().under_category(src_tax_id, target_tax_id)
+    def get(src_tax_ids, target_tax_id):
+        return TaxonManager().txn_manager().each_under_category(src_tax_ids, target_tax_id)

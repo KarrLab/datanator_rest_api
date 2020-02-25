@@ -44,10 +44,12 @@ is_child:
   get:
     parameters:
       - in: query
-        name: src_tax_id
+        name: src_tax_ids
         schema:
-          type: integer
-        description: source organism's NCBI Taxonomy ID.
+          type: array
+          items:
+            type: integer
+        description: source organism's NCBI Taxonomy IDs.
         required: true
       - in: query
         name: target_tax_id
@@ -57,7 +59,7 @@ is_child:
         required: true
     tags:
       - NCBI Taxonomy
-    summary: "Check if source is the child of target."
+    summary: "Check if each source is the child of target."
     description: see summary
     responses:
       "200":
@@ -65,4 +67,6 @@ is_child:
         content:
           application/json:
             schema:
-              type: boolean
+              type: array
+              items:
+                type: boolean

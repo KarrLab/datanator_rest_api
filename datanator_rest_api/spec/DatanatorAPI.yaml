@@ -1169,12 +1169,14 @@ paths:
     get:
       description: see summary
       parameters:
-      - description: source organism's NCBI Taxonomy ID.
+      - description: source organism's NCBI Taxonomy IDs.
         in: query
-        name: src_tax_id
+        name: src_tax_ids
         required: true
         schema:
-          type: integer
+          items:
+            type: integer
+          type: array
       - description: target organism's NCBI Taxonomy ID.
         in: query
         name: target_tax_id
@@ -1186,9 +1188,11 @@ paths:
           content:
             application/json:
               schema:
-                type: boolean
+                items:
+                  type: boolean
+                type: array
           description: OK
-      summary: Check if source is the child of target.
+      summary: Check if each source is the child of target.
       tags:
       - NCBI Taxonomy
 components:
