@@ -21,7 +21,7 @@ class halflife:
                                                                                           size=size)
             for doc in docs:
                 if taxon_distance:
-                    for sub_doc in docs:
+                    for sub_doc in doc['halflives']:
                         _id = sub_doc['species']
                         sub_doc['taxon_distance'] = query_manager.TaxonManager().txn_manager().get_common_ancestor(_id, species_name)
                 else:
