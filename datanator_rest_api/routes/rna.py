@@ -23,7 +23,9 @@ class halflife:
                 if taxon_distance:
                     for sub_doc in doc['halflives']:
                         _id = sub_doc['ncbi_taxonomy_id']
-                        sub_doc['taxon_distance'] = query_manager.TaxonManager().txn_manager().get_common_ancestor(_id, ncbi_taxonomy_id, org_format='_id')
+                        _, dist = query_manager.TaxonManager().txn_manager().get_common_ancestor(_id, ncbi_taxonomy_id, org_format='_id')
+                        sub_doc['taxon_distance'] = dist[0]
+                    result.append(doc)
                 else:
                     result.append(doc)
             return result
