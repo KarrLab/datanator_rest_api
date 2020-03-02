@@ -28,10 +28,10 @@ get_info_by_protein_name:
             type: boolean
           example: true
         - in: query
-          name: species_name
+          name: ncbi_taxonomy_id
           schema:
-            type: string
-          example: Homo sapiens
+            type: integer
+          example: 9606
       summary: Get RNA half-life information based on protein name.
       description: "Get RNA half-life information based on protein name."
       responses:
