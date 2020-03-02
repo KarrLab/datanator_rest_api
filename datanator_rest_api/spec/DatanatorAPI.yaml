@@ -1111,6 +1111,16 @@ paths:
         required: true
         schema:
           type: integer
+      - example: true
+        in: query
+        name: taxon_distance
+        schema:
+          type: boolean
+      - example: Homo sapiens
+        in: query
+        name: species_name
+        schema:
+          type: string
       responses:
         '200':
           content:
