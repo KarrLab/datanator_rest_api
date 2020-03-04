@@ -15,7 +15,7 @@ class halflife:
     class get_info_by_protein_name:
 
         def get(protein_name='Protein translocase subunit SecD', _from=0, size=10, 
-        taxon_distance=True, species=9606):
+        taxon_distance=True, species='homo sapiens'):
             result = []
             docs, _ = query_manager.RnaManager().rna_manager().get_doc_by_protein_name(protein_name, _from=_from,
                                                                                           size=size)
