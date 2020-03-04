@@ -1126,11 +1126,11 @@ paths:
         name: taxon_distance
         schema:
           type: boolean
-      - example: 9606
+      - example: homo sapiens
         in: query
-        name: ncbi_taxonomy_id
+        name: species
         schema:
-          type: integer
+          type: string
       responses:
         '200':
           content:

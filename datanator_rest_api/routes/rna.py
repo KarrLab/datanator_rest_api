@@ -15,15 +15,15 @@ class halflife:
     class get_info_by_protein_name:
 
         def get(protein_name='Protein translocase subunit SecD', _from=0, size=10, 
-        taxon_distance=True, ncbi_taxonomy_id=9606):
+        taxon_distance=True, species=9606):
             result = []
             docs, _ = query_manager.RnaManager().rna_manager().get_doc_by_protein_name(protein_name, _from=_from,
                                                                                           size=size)
             for doc in docs:
                 if taxon_distance:
                     for sub_doc in doc['halflives']:
-                        _id = sub_doc['ncbi_taxonomy_id']
-                        _, dist = query_manager.TaxonManager().txn_manager().get_common_ancestor(_id, ncbi_taxonomy_id, org_format='_id')
+                        name = sub_doc.get('species')
+                        _, dist = query_manager.TaxonManager().txn_manager().get_common_ancestor(name, species, org_format='name')
                         sub_doc['taxon_distance'] = dist[0]
                     result.append(doc)
                 else:
