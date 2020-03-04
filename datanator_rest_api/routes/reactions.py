@@ -32,8 +32,8 @@ class kinlaw_by_name:
         for doc in docs:
             if taxon_distance:
                 name = doc['taxon_name']
-                _, dist = query_manager.TaxonManager().txn_manager().get_common_ancestor(name, species, org_format='name')
-                doc['taxon_distance'] = dist[0]
+                dist = query_manager.TaxonManager().txn_manager().get_canon_common_ancestor(name, species, org_format='tax_name')
+                doc['taxon_distance'] = dist
                 result.append(doc)
             else:
                 result.append(doc)
