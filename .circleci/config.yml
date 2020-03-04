@@ -104,6 +104,10 @@ jobs:
               done < .circleci/requirements.txt
             fi
       - run:
+          name: Install datanator_query_python from git reports
+          command: |
+            python3 -m pip install -U git+https://github.com/KarrLab/datanator_query_python.git#egg=wc_utils[all]
+      - run:
           name: Install package (Python 3)
           command: python3 -m pip install -U -e .[all]
       - save_cache:
