@@ -106,7 +106,7 @@ jobs:
       - run:
           name: Install datanator_query_python from git reports
           command: |
-            python3 -m pip install -U git+https://github.com/KarrLab/datanator_query_python.git#egg=wc_utils[all]
+            python3 -m pip install -U git+https://github.com/KarrLab/datanator_query_python.git#egg=datanator_query_python[all]
       - run:
           name: Install package (Python 3)
           command: python3 -m pip install -U -e .[all]
