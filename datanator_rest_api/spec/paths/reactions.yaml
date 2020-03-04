@@ -104,6 +104,16 @@ kinlaw_by_name:
           default: loose
         required: true 
         description: whether to limit substrates/products to include only input values
+      - in: query
+        name: taxon_distance
+        schema:
+          type: boolean
+        example: true
+      - in: query
+        name: species
+        schema:
+          type: string
+        example: 'homo sapiens'
     tags:
       - Reactions
     summary: Get reactions based on substrates' and products' names

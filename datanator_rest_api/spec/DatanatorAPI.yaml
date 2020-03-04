@@ -858,6 +858,16 @@ paths:
           - loose
           - tight
           type: string
+      - example: true
+        in: query
+        name: taxon_distance
+        schema:
+          type: boolean
+      - example: homo sapiens
+        in: query
+        name: species
+        schema:
+          type: string
       responses:
         '200':
           content:
