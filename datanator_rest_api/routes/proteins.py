@@ -58,7 +58,7 @@ class meta:
             elif name is not None and species_name is not None:   # name + species_name
                 return query_manager.Manager().protein_manager().get_meta_by_name_name(name, species_name)
             else:
-                return wrong
+                return 
 
     class meta_single:
 
