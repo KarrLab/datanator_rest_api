@@ -72,3 +72,7 @@ class ImplementationTestCase(unittest.TestCase):
     def test_similar_protein_refseq(self):
         result = self.client.get('/proteins/similar_protein/refseq/?uniprot_id=q9vb24&identity=90')
         self.assertEqual(result.status_code, 200)
+
+    def test_related_reactions(self):
+        result = self.client.get('/proteins/related/related_reactions/?ko=K00426')
+        self.assertEqual(result.status_code, 200)
