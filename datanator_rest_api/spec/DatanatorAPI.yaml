@@ -736,11 +736,6 @@ paths:
         required: true
         schema:
           type: integer
-      - in: query
-        name: depth
-        required: true
-        schema:
-          type: integer
       responses:
         '200':
           content:

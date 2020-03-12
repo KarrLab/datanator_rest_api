@@ -42,8 +42,8 @@ class proximity_abundance:
     
     class proximity_abundance_kegg:
 
-        def get(kegg_id, distance, depth, anchor='homo sapiens'):
-            return query_manager.Manager().protein_manager().get_equivalent_kegg_with_anchor(kegg_id, anchor, distance, max_depth=depth)
+        def get(kegg_id, distance, anchor='homo sapiens'):
+            return query_manager.Manager().protein_manager().get_all_kegg(kegg_id, anchor, distance)
 
 
 class meta:

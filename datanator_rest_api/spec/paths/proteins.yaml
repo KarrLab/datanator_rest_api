@@ -76,11 +76,6 @@ proximity_abundance_kegg:
         schema:
           type: integer
         required: true
-      - in: query
-        name: depth
-        schema:
-          type: integer
-        required: true
     tags:
       - Proteins
     summary: Get abundance values for proteins along the taxonomic tree
