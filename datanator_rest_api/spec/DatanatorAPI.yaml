@@ -746,6 +746,30 @@ paths:
       summary: Get abundance values for proteins along the taxonomic tree
       tags:
       - Proteins
+  /proteins/related/related_reactions/:
+    get:
+      description: Finds all reactions catalyzed by proteins belonging to one kegg
+        group
+      parameters:
+      - example: K00426
+        in: query
+        name: ko
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  nullable: true
+                  type: string
+                type: array
+          description: OK
+      summary: Get related reactions based on kegg ortholog groups
+      tags:
+      - Proteins
   /proteins/similar_protein/refseq/:
     get:
       description: This section provides links to proteins that are similar to the

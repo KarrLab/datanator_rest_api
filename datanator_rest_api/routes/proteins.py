@@ -91,3 +91,13 @@ class similar_protein:
     class refseq:
         def get(uniprot_id, identity=90):
             return query_manager.uniprot_manager().get_similar_proteins(uniprot_id, identity=identity)
+
+
+class related:
+
+    class related_reactions:
+        def get(ko):
+            lists = query_manager.Manager().protein_manager().get_info_by_ko(ko)
+            uniprot_ids = lists[0]['uniprot_ids']
+            kinlaw_ids = query_manager.RxnManager().rxn_manager().get_reaction_by_subunit(uniprot_ids)
+            return kinlaw_ids
