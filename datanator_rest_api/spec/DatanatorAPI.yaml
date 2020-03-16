@@ -1976,7 +1976,7 @@ components:
       items:
         properties:
           rank:
-            type: integer
+            type: string
         type: object
       type: array
   securitySchemes:
