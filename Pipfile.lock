@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "d5a49acecc5590d23eaaec5ec79768e031d13d35c1cf0cd821384244d26a3d18"
+            "sha256": "c34c7af915a3eb3f45587e0198baa0d1ea414700cecbfe95480eaa61f34657c8"
         },
         "pipfile-spec": 6,
         "requires": {},
@@ -70,7 +70,7 @@
         },
         "datanator-query-python": {
             "git": "https://github.com/KarrLab/datanator_query_python.git",
-            "ref": "17ea3f02869d4cbbcff94f9c2691ef19f0e79cc4"
+            "ref": "1d1cc01607215008ea673fa43b64c1af37633850"
         },
         "flask": {
             "hashes": [
@@ -331,6 +331,10 @@
                 "sha256:e345d143d80bf5ee7534056164e5e112ea5e22716bbb1ce727941f4c8b471b9a"
             ],
             "version": "==7.1.1"
+        },
+        "datanator-query-python": {
+            "git": "https://github.com/KarrLab/datanator_query_python.git",
+            "ref": "1d1cc01607215008ea673fa43b64c1af37633850"
         },
         "flask": {
             "hashes": [
