@@ -18,7 +18,6 @@ flask = ">= 1.1.0"
 mock = "*"
 prance = "*"
 pytest = "*"
-"e1839a8" = {path = "/home/zl/karr_lab/datanator_query_python", editable = true}
 
 [packages.connexion]
 extras = [ "swagger-ui",]
