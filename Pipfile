@@ -18,6 +18,7 @@ flask = ">= 1.1.0"
 mock = "*"
 prance = "*"
 pytest = "*"
+"e1839a8" = {path = "/home/zl/karr_lab/datanator_query_python", editable = true}
 
 [packages.connexion]
 extras = [ "swagger-ui",]
@@ -25,9 +26,8 @@ extras = [ "swagger-ui",]
 [packages.swagger_ui_bundle]
 git = "https://github.com/KarrLab/datanator_swagger_ui_bundle.git"
 
+[packages.pkg_utils]
+git = "https://github.com/KarrLab/pkg_utils.git"
+
 [packages.datanator_query_python]
 git = "https://github.com/KarrLab/datanator_query_python.git"
-
-[dev-packages.42a8ccb]
-path = "/home/zl/karr_lab/datanator_query_python"
-editable = true

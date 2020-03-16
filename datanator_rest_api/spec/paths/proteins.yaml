@@ -248,5 +248,5 @@ related:
               schema:
                 type: array
                 items:
-                  type: string
+                  type: object
                   nullable: true
