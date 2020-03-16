@@ -70,7 +70,7 @@
         },
         "datanator-query-python": {
             "git": "https://github.com/KarrLab/datanator_query_python.git",
-            "ref": "820461dc83604181b8fd34e9ba528fc86e4b9f02"
+            "ref": "17ea3f02869d4cbbcff94f9c2691ef19f0e79cc4"
         },
         "flask": {
             "hashes": [
