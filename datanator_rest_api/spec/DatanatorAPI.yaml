@@ -764,7 +764,7 @@ paths:
               schema:
                 items:
                   nullable: true
-                  type: string
+                  type: object
                 type: array
           description: OK
       summary: Get related reactions based on kegg ortholog groups
@@ -1976,7 +1976,7 @@ components:
       items:
         properties:
           rank:
-            type: integer
+            type: string
         type: object
       type: array
   securitySchemes:
