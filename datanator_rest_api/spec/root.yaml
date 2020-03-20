@@ -69,6 +69,8 @@ paths:
     $ref: paths/proteins.yaml#/summary/num_organism
   /proteins/similar_protein/refseq/:
     $ref: paths/proteins.yaml#/similar_protein/refseq
+  /proteins/related/related_reactions/:
+    $ref: paths/proteins.yaml#/related/related_reactions/
   /reactions/kinlaw_by_rxn/:
     $ref: paths/reactions.yaml#/kinlaw_by_rxn/
   /reactions/kinlaw_by_name/:

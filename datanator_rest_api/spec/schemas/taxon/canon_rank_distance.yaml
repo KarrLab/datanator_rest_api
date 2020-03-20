@@ -3,4 +3,4 @@ items:
   type: object
   properties:
     rank:
-      type: integer    
+      type: string    

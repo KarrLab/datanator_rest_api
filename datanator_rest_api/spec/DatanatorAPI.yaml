@@ -736,11 +736,6 @@ paths:
         required: true
         schema:
           type: integer
-      - in: query
-        name: depth
-        required: true
-        schema:
-          type: integer
       responses:
         '200':
           content:
@@ -749,6 +744,30 @@ paths:
                 $ref: '#/components/schemas/ProximityProteinAbundance'
           description: OK
       summary: Get abundance values for proteins along the taxonomic tree
+      tags:
+      - Proteins
+  /proteins/related/related_reactions/:
+    get:
+      description: Finds all reactions catalyzed by proteins belonging to one kegg
+        group
+      parameters:
+      - example: K00426
+        in: query
+        name: ko
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  nullable: true
+                  type: object
+                type: array
+          description: OK
+      summary: Get related reactions based on kegg ortholog groups
       tags:
       - Proteins
   /proteins/similar_protein/refseq/:
@@ -857,6 +876,16 @@ paths:
           enum:
           - loose
           - tight
+          type: string
+      - example: true
+        in: query
+        name: taxon_distance
+        schema:
+          type: boolean
+      - example: homo sapiens
+        in: query
+        name: species
+        schema:
           type: string
       responses:
         '200':
@@ -1111,6 +1140,16 @@ paths:
         required: true
         schema:
           type: integer
+      - example: true
+        in: query
+        name: taxon_distance
+        schema:
+          type: boolean
+      - example: homo sapiens
+        in: query
+        name: species
+        schema:
+          type: string
       responses:
         '200':
           content:
@@ -1937,7 +1976,7 @@ components:
       items:
         properties:
           rank:
-            type: integer
+            type: string
         type: object
       type: array
   securitySchemes:

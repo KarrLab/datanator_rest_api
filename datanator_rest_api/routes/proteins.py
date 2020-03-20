@@ -42,8 +42,8 @@ class proximity_abundance:
     
     class proximity_abundance_kegg:
 
-        def get(kegg_id, distance, depth, anchor='homo sapiens'):
-            return query_manager.Manager().protein_manager().get_equivalent_kegg_with_anchor(kegg_id, anchor, distance, max_depth=depth)
+        def get(kegg_id, distance, anchor='homo sapiens'):
+            return query_manager.Manager().protein_manager().get_all_kegg(kegg_id, anchor, distance)
 
 
 class meta:
@@ -91,3 +91,13 @@ class similar_protein:
     class refseq:
         def get(uniprot_id, identity=90):
             return query_manager.uniprot_manager().get_similar_proteins(uniprot_id, identity=identity)
+
+
+class related:
+
+    class related_reactions:
+        def get(ko):
+            lists = query_manager.Manager().protein_manager().get_info_by_ko(ko)
+            uniprot_ids = lists[0]['uniprot_ids']
+            kinlaw_ids = query_manager.RxnManager().rxn_manager().get_reaction_by_subunit(uniprot_ids)
+            return kinlaw_ids

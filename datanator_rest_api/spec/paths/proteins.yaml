@@ -76,11 +76,6 @@ proximity_abundance_kegg:
         schema:
           type: integer
         required: true
-      - in: query
-        name: depth
-        schema:
-          type: integer
-        required: true
     tags:
       - Proteins
     summary: Get abundance values for proteins along the taxonomic tree
@@ -229,4 +224,29 @@ similar_protein:
                 type: array
                 items:
                   type: string
+                  nullable: true
+
+related:
+  related_reactions:
+    get:
+      parameters:
+        - in: query
+          name: ko
+          schema:
+            type: string
+          required: true
+          example: K00426
+      tags:
+        - Proteins
+      summary: Get related reactions based on kegg ortholog groups 
+      description: Finds all reactions catalyzed by proteins belonging to one kegg group
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
                   nullable: true

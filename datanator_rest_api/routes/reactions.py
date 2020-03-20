@@ -8,6 +8,7 @@
 
 
 from datanator_query_python.config.query_manager import RxnManager
+from datanator_query_python.config import query_manager
 from datanator_rest_api.util import paginator
 
 
@@ -23,12 +24,20 @@ class kinlaw_by_rxn:
 
 class kinlaw_by_name:
 
-    def get(substrates, products, _from, size, bound):
+    def get(substrates, products, _from, size, bound, taxon_distance=True, species='homo sapiens'):
         projection = {'_id': 0}
-        count, docs = RxnManager().rxn_manager().get_kinlaw_by_rxn_name(substrates, products, 
-                                                                   projection=projection, bound=bound)
-        manager = paginator.Paginator(count, docs)
-        return manager.page(_from=_from, size=size)
+        result = []
+        _, docs = RxnManager().rxn_manager().get_kinlaw_by_rxn_name(substrates, products, 
+                                                                   projection=projection, bound=bound, skip=_from, limit=size)
+        for doc in docs:
+            if taxon_distance:
+                name = doc['taxon_name']
+                dist = query_manager.TaxonManager().txn_manager().get_canon_common_ancestor(name, species, org_format='tax_name')
+                doc['taxon_distance'] = dist
+                result.append(doc)
+            else:
+                result.append(doc)
+        return result
 
 
 class kinlaw_doc:

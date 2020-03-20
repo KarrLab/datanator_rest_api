@@ -6,14 +6,14 @@ name = "pypi"
 [packages]
 cement = ">= 3.0.4"
 connexion = {extras = ['swagger-ui']}
-datanator_query_python = "*"
+datanator_query_python = {git = 'https://github.com/KarrLab/datanator_query_python.git'}
 flask_cors = "*"
 flask_profiler = "*"
 gunicorn = "*"
 openapi_resolver = "*"
 openapi_spec_validator = "*"
 setuptools = "*"
-swagger_ui_bundle = { git = 'https://github.com/KarrLab/datanator_swagger_ui_bundle.git'}
+swagger_ui_bundle = {git = 'https://github.com/KarrLab/datanator_swagger_ui_bundle.git'}
 
 [dev-packages]
 capturer = "*"
@@ -21,3 +21,4 @@ flask = ">= 1.1.0"
 mock = "*"
 prance = "*"
 pytest = "*"
+datanator-query-python = {path = "/home/zl/karr_lab/datanator_query_python"}

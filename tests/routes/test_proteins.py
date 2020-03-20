@@ -58,7 +58,7 @@ class ImplementationTestCase(unittest.TestCase):
         self.assertEqual(result_6.status_code, 500)
 
     def test_proximity_proteins_kegg(self):
-        result_0 = self.client.get('/proteins/proximity_abundance/proximity_abundance_kegg/?kegg_id=K03154&anchor=Thermus%20thermophilus%20HB27&distance=3&depth=2')
+        result_0 = self.client.get('/proteins/proximity_abundance/proximity_abundance_kegg/?kegg_id=K03154&anchor=Thermus%20thermophilus%20HB27&distance=3')
         self.assertEqual(result_0.status_code, 200)
 
     def test_summary_organism(self):
@@ -71,4 +71,8 @@ class ImplementationTestCase(unittest.TestCase):
 
     def test_similar_protein_refseq(self):
         result = self.client.get('/proteins/similar_protein/refseq/?uniprot_id=q9vb24&identity=90')
+        self.assertEqual(result.status_code, 200)
+
+    def test_related_reactions(self):
+        result = self.client.get('/proteins/related/related_reactions/?ko=K00426')
         self.assertEqual(result.status_code, 200)
