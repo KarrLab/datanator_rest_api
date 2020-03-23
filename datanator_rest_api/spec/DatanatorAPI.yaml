@@ -298,6 +298,9 @@ paths:
           - enzymes.enzyme.enzyme_name
           - enzymes.subunit.canonical_sequence
           - species
+          - protein_names
+          - halflives.accession_id
+          - identifier
           items:
             type: string
           type: array

@@ -154,7 +154,8 @@ num_of_index:
           default: ['protein_name', 'synonyms', 'enzymes', 'ko_name', 'gene_name', 'name',
                     'reaction_participant.substrate.substrate_name', 'reaction_participant.substrate.substrate_synonym',
                     'reaction_participant.product.product_name', 'reaction_participant.product.substrate_synonym',
-                    'enzymes.enzyme.enzyme_name', 'enzymes.subunit.canonical_sequence', 'species']
+                    'enzymes.enzyme.enzyme_name', 'enzymes.subunit.canonical_sequence', 'species', 'protein_names',
+                    'halflives.accession_id', 'identifier']
         required: true
         description: Fields in which the text search will be done
     tags:
