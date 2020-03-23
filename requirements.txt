@@ -6,3 +6,4 @@ gunicorn # web server
 openapi_resolver # to process api files
 openapi_spec_validator
 setuptools # for pkg_resources module
+datanator_query_python
