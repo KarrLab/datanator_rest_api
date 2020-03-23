@@ -21,4 +21,3 @@ flask = ">= 1.1.0"
 mock = "*"
 prance = "*"
 pytest = "*"
-datanator-query-python = {path = "/home/zl/karr_lab/datanator_query_python"}
