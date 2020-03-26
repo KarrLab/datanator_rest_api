@@ -48,7 +48,7 @@ class concentration:
 class meta:
 
     def get(inchi_key):
-        return query_manager.metabolites_meta_manager().get_metabolites_meta(inchi_key)
+        return query_manager.metabolites_meta_manager().get_eymeta(inchi_key)
 
 
 class concentration_only:

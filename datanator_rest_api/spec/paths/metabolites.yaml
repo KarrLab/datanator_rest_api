@@ -166,7 +166,7 @@ meta:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/MetaboliteMeta"
+              type: object
 
 concentration_only:
   get:
