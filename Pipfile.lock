@@ -405,7 +405,8 @@
         },
         "pkg-utils": {
             "editable": true,
-            "git": "https://github.com/KarrLab/pkg_utils.git"
+            "git": "https://github.com/KarrLab/pkg_utils.git",
+            "ref": "84a80233ae735eed32402451260a90497b7fac0e"
         },
         "pluggy": {
             "hashes": [
