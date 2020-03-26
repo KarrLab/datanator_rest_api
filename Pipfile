@@ -24,11 +24,7 @@ pytest = "*"
 extras = [ "swagger-ui",]
 
 [packages.datanator_query_python]
-git = "https://github.com/KarrLab/datanator_query_python.git"
+git = "git+https://github.com/KarrLab/datanator_query_python.git"
 
 [packages.swagger_ui_bundle]
 git = "https://github.com/KarrLab/datanator_swagger_ui_bundle.git"
-
-[dev-packages.42a8ccb]
-path = "/home/zl/karr_lab/datanator_query_python"
-editable = true
