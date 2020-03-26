@@ -12,6 +12,7 @@ openapi_resolver = "*"
 openapi_spec_validator = "*"
 setuptools = "*"
 pytest = "*"
+pkg_utils = {git = "https://github.com/KarrLab/pkg_utils.git", editable = true}
 datanator_query_python = {git = "https://github.com/KarrLab/datanator_query_python.git", editable = true}
 
 [dev-packages]
