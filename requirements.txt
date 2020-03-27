@@ -2,7 +2,7 @@ attrs==19.3.0
 cement==3.0.4
 click==7.1.1
 connexion
-datanator-query-python
+datanator-query-python==0.7.0
 flask==1.1.1
 flask-cors==3.0.8
 flask-httpauth==3.3.0
