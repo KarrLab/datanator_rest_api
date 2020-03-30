@@ -1,1 +1,1 @@
-web: gunicorn 'datanator_rest_api.core:run' --log-file - --log-level debug
+web: gunicorn 'datanator_rest_api.core:run'
