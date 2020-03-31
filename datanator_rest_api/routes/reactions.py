@@ -25,7 +25,7 @@ class kinlaw_by_rxn:
 class kinlaw_by_name:
 
     def get(substrates, products, _from, size, bound, taxon_distance=True, species='homo sapiens'):
-        projection = {'_id': 0}
+        projection = {'_id': 0, 'kegg_meta.gene_ortholog': 0}
         result = []
         _, docs = RxnManager().rxn_manager().get_kinlaw_by_rxn_name(substrates, products, 
                                                                    projection=projection, bound=bound, skip=_from, limit=size)
