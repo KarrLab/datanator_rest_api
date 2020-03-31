@@ -156,6 +156,19 @@ meta:
         schema:
           type: string
         required: true
+      - in: query
+        name: projection
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                _id:
+                  type: integer
+                  default: 0
+              example:
+                _id: 0
+                kegg_meta.gene_ortholog: 0
     tags:
       - Metabolites
     summary: Get metabolite meta information from metabolites_meta collection

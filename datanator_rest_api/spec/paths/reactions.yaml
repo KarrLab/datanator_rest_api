@@ -114,6 +114,11 @@ kinlaw_by_name:
         schema:
           type: string
         example: 'homo sapiens'
+      - in: query
+        name: projection
+        schema:
+          type: string
+        example: "{'_id': 0, 'kegg_meta.gene_ortholog': 0}"
     tags:
       - Reactions
     summary: Get reactions based on substrates' and products' names
