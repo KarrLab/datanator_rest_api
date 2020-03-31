@@ -152,7 +152,7 @@ meta:
   get:
     parameters:
       - in: query
-        name: inchi_key
+        name: _input
         schema:
           type: string
         required: true
