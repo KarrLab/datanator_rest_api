@@ -142,6 +142,12 @@ paths:
           default: 10
           maximum: 70
           type: integer
+      - in: query
+        name: from_
+        required: false
+        schema:
+          default: 0
+          type: integer
       - description: Fields in which the text search will be done
         in: query
         name: fields
@@ -159,6 +165,7 @@ paths:
           - substrate_names
           - enzymes.subunit.canonical_sequence
           - species
+          - protein_names
           items:
             type: string
           type: array

@@ -38,14 +38,14 @@ class text_search:
 
     class frontend_num_of_index:
 
-        def get(query_message, indices, size, fields):
+        def get(query_message, indices, size, fields, from_=0):
             result = []
             indices = indices.split(',')
             r = {}
             for index in indices:
                 if index == 'protein' or index == 'rna':
                     r = f_manager.get_index_ko_count(query_message, size,
-                                                     index=index, fields=fields)
+                                                     index=index, fields=fields, from_=from_)
                 else:
                     r = f_manager.get_single_index_count(query_message, index, size,
                                                          fields=fields)

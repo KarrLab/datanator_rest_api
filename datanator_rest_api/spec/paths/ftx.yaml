@@ -194,6 +194,12 @@ frontend_num_of_index:
         required: true
         description: number of hits needed (max 70)
       - in: query
+        name: from_
+        schema:
+          type: integer
+          default: 0
+        required: false
+      - in: query
         name: fields
         schema:
           type: array
@@ -201,7 +207,7 @@ frontend_num_of_index:
             type: string
           default: ['protein_name', 'synonyms', 'enzymes', 'ko_name', 'gene_name', 'name',
                     'enzyme_name', 'product_names', 'substrate_names',
-                    'enzymes.subunit.canonical_sequence', 'species']
+                    'enzymes.subunit.canonical_sequence', 'species', 'protein_names']
         required: true
         description: Fields in which the text search will be done
     tags:
