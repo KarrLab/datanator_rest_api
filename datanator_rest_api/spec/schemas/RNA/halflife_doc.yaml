@@ -2,23 +2,16 @@ type: array
 items:
     type: object
     properties:
-        function:
-            type: string
-            nullable: true
-        gene_name:
+        uniprot_id:
             type: string
             nullable: true
         halflives:
             type: array
             items:
                 $ref: "./schemas/RNA/rna_halflives.yaml"
-        modified:
-            type: string
-        protein_name:
-            type: string
-        protein_synonyms:
+        protein_names:
             type: array
             items:
                 type: string
-    required:
-        - halflives
+        ko_number:
+            type: string

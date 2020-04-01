@@ -16,7 +16,6 @@ properties:
     ncbi_taxonomy_id:
         type: integer
 required:
-    - halflife
     - reference
     - species
     - ncbi_taxonomy_id

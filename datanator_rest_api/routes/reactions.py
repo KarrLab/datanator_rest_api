@@ -31,7 +31,7 @@ class kinlaw_by_name:
         result = []
         projection = eval(projection)
         _, docs = r_manager.get_kinlaw_by_rxn_name(substrates, products, 
-                                                                   projection=projection, bound=bound, skip=_from, limit=size)
+                                                   projection=projection, bound=bound, skip=_from, limit=size)
         for doc in docs:
             if taxon_distance:
                 name = doc['taxon_name']
@@ -62,7 +62,7 @@ class kinlaw_entry:
 
     def get(entry_id, target_organism=None, last_id=0, size=10):
         docs = r_manager.get_info_by_entryid(entry_id, target_organism=target_organism,
-                                                            size=size, last_id=last_id)
+                                             size=size, last_id=last_id)
         return docs
 
 

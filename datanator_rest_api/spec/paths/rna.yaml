@@ -41,3 +41,47 @@ get_info_by_name:
             application/json:
               schema:
                 $ref: "#/components/schemas/RnaHalflifeDoc"
+
+get_info_by_ko:
+    get:
+      tags: 
+        - RNA
+        - RNA Half-life
+      parameters:
+        - in: query
+          name: ko_number
+          schema:
+            type: string
+          required: true
+          example: K13280
+        - in: query
+          name: _from
+          schema:
+            type: integer
+          required: true
+          example: 0
+        - in: query
+          name: size
+          schema:
+            type: integer
+          required: true
+          example: 10
+        - in: query
+          name: taxon_distance
+          schema:
+            type: boolean
+          example: true
+        - in: query
+          name: species
+          schema:
+            type: string
+          example: 'homo sapiens'
+      summary: Get RNA half-life information based on protein kegg ortholog group.
+      description: "Get RNA half-life information based on protein kegg ortholog group."
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RnaHalflifeDoc"
