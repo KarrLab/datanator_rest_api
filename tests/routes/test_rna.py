@@ -16,5 +16,5 @@ class ImplementationTestCase(unittest.TestCase):
         self.client.testing = True
 
     def test_kinlawid_doc(self):
-        docs_0 = self.client.get('/rna/halflife/get_info_by_protein_name/?protein_name=something&_from=0&size=10')
+        docs_0 = self.client.get('/rna/halflife/get_info_by_name/?protein_name=something&_from=0&size=10')
         self.assertEqual(docs_0.status_code, 200)

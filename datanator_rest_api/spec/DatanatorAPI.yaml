@@ -1139,7 +1139,7 @@ paths:
       - Kinetics
       - Reactions
       - Organism
-  /rna/halflife/get_info_by_protein_name/:
+  /rna/halflife/get_info_by_name/:
     get:
       description: Get RNA half-life information based on protein name.
       parameters:

@@ -13,12 +13,12 @@ rna_manager = query_manager.RnaManager().rna_manager()
 class halflife:
 
 
-    class get_info_by_protein_name:
+    class get_info_by_name:
 
         def get(protein_name='Protein translocase subunit SecD', _from=0, size=10, 
         taxon_distance=True, species='homo sapiens'):
             result = []
-            docs, _ = rna_manager.get_doc_by_protein_name(protein_name, _from=_from,
+            docs, _ = rna_manager.get_doc_by_names(protein_name, _from=_from,
                                                           size=size)
             for doc in docs:
                 ko = doc.get('ko_number')

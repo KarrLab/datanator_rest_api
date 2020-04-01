@@ -1,4 +1,4 @@
-get_info_by_protein_name:
+get_info_by_name:
     get:
       tags: 
         - RNA

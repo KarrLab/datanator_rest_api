@@ -15,7 +15,7 @@ class text_search:
 
     def get(query_message, index, from_, size, fields, _source_includes=[]):
         r = f_manager.simple_query_string(query_message, index, from_=from_, 
-                                                size=size, fields=fields, _source_includes=_source_includes)
+                                          size=size, fields=fields, _source_includes=_source_includes)
         return r
 
 
@@ -23,7 +23,7 @@ class text_search:
         
         def get(query_message, iof, index, from_, size, fields):
             r = f_manager.simple_query_string(query_message, index, from_=from_, 
-                                                                            size=size, fields=fields)
+                                              size=size, fields=fields)
             result = f_manager.get_index_in_page(r, iof)
             return result
 
@@ -32,7 +32,7 @@ class text_search:
 
         def get(query_message, index, from_, size, fields):
             r = f_manager.get_single_index_count(query_message, index, size,
-                                                                                fields=fields, from_=from_)
+                                                 fields=fields, from_=from_)
             return r
 
 
@@ -43,12 +43,12 @@ class text_search:
             indices = indices.split(',')
             r = {}
             for index in indices:
-                if index == 'protein':
-                    r = f_manager.get_protein_ko_count(query_message, size,
-                                                                                      fields=fields)
+                if index == 'protein' or index == 'rna':
+                    r = f_manager.get_index_ko_count(query_message, size,
+                                                     index=index, fields=fields)
                 else:
                     r = f_manager.get_single_index_count(query_message, index, size,
-                                                                                        fields=fields)
+                                                         fields=fields)
                 result.append(r)
             return result
 
