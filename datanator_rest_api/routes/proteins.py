@@ -11,6 +11,8 @@
 from datanator_query_python.config import query_manager
 
 
+p_manager = query_manager.Manager().protein_manager()
+
 def get():
     return("")
 
@@ -27,9 +29,9 @@ class precise_abundance:
 
     def get(uniprot_id=None, kegg_orthology=None):
         if uniprot_id is not None and kegg_orthology is None:
-            return query_manager.Manager().protein_manager().get_abundance_by_id(uniprot_id)
+            return p_manager.get_abundance_by_id(uniprot_id)
         elif uniprot_id is None and kegg_orthology is not None:
-            return query_manager.Manager().protein_manager().get_abundance_by_ko(kegg_orthology)
+            return p_manager.get_abundance_by_ko(kegg_orthology)
         else: 
             return [{'uniprot_id': 'One and only one input option is allowed.', 'abundances': []}]
 
@@ -37,13 +39,13 @@ class precise_abundance:
 class proximity_abundance:
 
     def get(uniprot_id, distance, depth):
-        return query_manager.Manager().protein_manager().get_equivalent_protein_with_anchor(uniprot_id, distance, max_depth=depth)
+        return p_manager.get_equivalent_protein_with_anchor(uniprot_id, distance, max_depth=depth)
 
     
     class proximity_abundance_kegg:
 
         def get(kegg_id, distance, anchor='homo sapiens'):
-            return query_manager.Manager().protein_manager().get_all_kegg(kegg_id, anchor, distance)
+            return p_manager.get_all_kegg(kegg_id, anchor, distance)
 
 
 class meta:
@@ -52,11 +54,11 @@ class meta:
 
         def get(uniprot_id=None, ncbi_taxon_id=None, species_name=None, name=None):
             if uniprot_id is not None:   # uniprot_id
-                return query_manager.Manager().protein_manager().get_meta_by_id(uniprot_id)
+                return p_manager.get_meta_by_id(uniprot_id)
             elif name is not None and ncbi_taxon_id is not None and species_name is None:  # name + taxon_id
-                return query_manager.Manager().protein_manager().get_meta_by_name_taxon(name, ncbi_taxon_id)
+                return p_manager.get_meta_by_name_taxon(name, ncbi_taxon_id)
             elif name is not None and species_name is not None:   # name + species_name
-                return query_manager.Manager().protein_manager().get_meta_by_name_name(name, species_name)
+                return p_manager.get_meta_by_name_name(name, species_name)
             else:
                 return wrong
 
@@ -64,11 +66,11 @@ class meta:
 
         def get(name=None, ncbi_taxon_id=None, ko=None):
             if name is not None and ncbi_taxon_id is None and ko is None:  # name only
-                return query_manager.Manager().protein_manager().get_info_by_text_abundances(name)
+                return p_manager.get_info_by_text_abundances(name)
             # elif name is None and ncbi_taxon_id is not None and ko is None:  # taxon_id only
-            #     return query_manager.Manager().protein_manager().get_info_by_taxonid_abundance(ncbi_taxon_id)
+            #     return p_manager.get_info_by_taxonid_abundance(ncbi_taxon_id)
             elif name is None and ncbi_taxon_id is None and ko is not None:  # ko only
-                return query_manager.Manager().protein_manager().get_info_by_ko_abundance(ko)
+                return p_manager.get_info_by_ko_abundance(ko)
             else:
                 return [{'uniprot_ids': {}, 'ko_name': ['invalid input'], 'ko_number': 'This combination of input is invalid.'}]
 
@@ -78,12 +80,12 @@ class summary:
     class num_organism:
 
         def get():
-            return query_manager.Manager().protein_manager().get_unique_organism()
+            return p_manager.get_unique_organism()
 
     class num_protein:
         
         def get():
-            return query_manager.Manager().protein_manager().get_unique_protein()
+            return p_manager.get_unique_protein()
 
 
 class similar_protein:
@@ -97,7 +99,7 @@ class related:
 
     class related_reactions:
         def get(ko):
-            lists = query_manager.Manager().protein_manager().get_info_by_ko(ko)
+            lists = p_manager.get_info_by_ko(ko)
             uniprot_ids = lists[0]['uniprot_ids']
             kinlaw_ids = query_manager.RxnManager().rxn_manager().get_reaction_by_subunit(uniprot_ids)
             return kinlaw_ids

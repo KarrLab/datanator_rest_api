@@ -12,11 +12,13 @@ from datanator_query_python.config import query_manager
 from datanator_rest_api.util import paginator
 
 
+r_manager = RxnManager().rxn_manager()
+
 class kinlaw_by_rxn:
 
     def get(substrates, products, _from, size, bound, dof):
         projection = {'_id': 0}
-        count, docs = RxnManager().rxn_manager().get_kinlaw_by_rxn(substrates, products, dof=dof, 
+        count, docs = r_manager.get_kinlaw_by_rxn(substrates, products, dof=dof, 
                                                                    projection=projection, bound=bound)
         manager = paginator.Paginator(count, docs)
         return manager.page(_from=_from, size=size)
@@ -28,7 +30,7 @@ class kinlaw_by_name:
             species='homo sapiens', projection="{'_id': 0, 'kegg_meta.gene_ortholog': 0, 'anc_id': 0, 'anc_name': 0}"):
         result = []
         projection = eval(projection)
-        _, docs = RxnManager().rxn_manager().get_kinlaw_by_rxn_name(substrates, products, 
+        _, docs = r_manager.get_kinlaw_by_rxn_name(substrates, products, 
                                                                    projection=projection, bound=bound, skip=_from, limit=size)
         for doc in docs:
             if taxon_distance:
@@ -45,21 +47,21 @@ class kinlaw_doc:
     
     def get(kinlaw_id, _from, size):
         projection = {'_id': 0}
-        docs, count = RxnManager().rxn_manager().get_reaction_doc(kinlaw_id, projection=projection)
+        docs, count = r_manager.get_reaction_doc(kinlaw_id, projection=projection)
         manager = paginator.Paginator(count, docs)
         return manager.page(_from=_from, size=size)
 
     class with_prm:
 
         def get(kinlaw_ids, _from=0, size=10):
-            result, _ = RxnManager().rxn_manager().get_rxn_with_prm(kinlaw_ids, _from=_from, size=size)
+            result, _ = r_manager.get_rxn_with_prm(kinlaw_ids, _from=_from, size=size)
             return result
 
 
 class kinlaw_entry:
 
     def get(entry_id, target_organism=None, last_id=0, size=10):
-        docs = RxnManager().rxn_manager().get_info_by_entryid(entry_id, target_organism=target_organism,
+        docs = r_manager.get_info_by_entryid(entry_id, target_organism=target_organism,
                                                             size=size, last_id=last_id)
         return docs
 
@@ -69,9 +71,9 @@ class summary:
     class num_organism:
 
         def get():
-            return RxnManager().rxn_manager().get_unique_organisms()
+            return r_manager.get_unique_organisms()
 
     class num_entries:
         
         def get():
-            return RxnManager().rxn_manager().get_unique_entries()
+            return r_manager.get_unique_entries()

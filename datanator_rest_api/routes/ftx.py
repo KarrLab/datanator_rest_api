@@ -9,10 +9,12 @@ perform full text search
 from datanator_query_python.config import query_manager
 
 
+f_manager = query_manager.FtxManager().ftx_manager()
+
 class text_search:
 
     def get(query_message, index, from_, size, fields, _source_includes=[]):
-        r = query_manager.FtxManager().ftx_manager().simple_query_string(query_message, index, from_=from_, 
+        r = f_manager.simple_query_string(query_message, index, from_=from_, 
                                                 size=size, fields=fields, _source_includes=_source_includes)
         return r
 
@@ -20,16 +22,16 @@ class text_search:
     class indices_in_page:
         
         def get(query_message, iof, index, from_, size, fields):
-            r = query_manager.FtxManager().ftx_manager().simple_query_string(query_message, index, from_=from_, 
+            r = f_manager.simple_query_string(query_message, index, from_=from_, 
                                                                             size=size, fields=fields)
-            result = query_manager.FtxManager().ftx_manager().get_index_in_page(r, iof)
+            result = f_manager.get_index_in_page(r, iof)
             return result
 
     
     class num_of_index:
 
         def get(query_message, index, from_, size, fields):
-            r = query_manager.FtxManager().ftx_manager().get_single_index_count(query_message, index, size,
+            r = f_manager.get_single_index_count(query_message, index, size,
                                                                                 fields=fields, from_=from_)
             return r
 
@@ -42,10 +44,10 @@ class text_search:
             r = {}
             for index in indices:
                 if index == 'protein':
-                    r = query_manager.FtxManager().ftx_manager().get_protein_ko_count(query_message, size,
+                    r = f_manager.get_protein_ko_count(query_message, size,
                                                                                       fields=fields)
                 else:
-                    r = query_manager.FtxManager().ftx_manager().get_single_index_count(query_message, index, size,
+                    r = f_manager.get_single_index_count(query_message, index, size,
                                                                                         fields=fields)
                 result.append(r)
             return result
@@ -54,6 +56,6 @@ class text_search:
     class protein_ranked_by_ko:
 
         def get(query_message, from_, size, fields):
-            r = query_manager.FtxManager().ftx_manager().get_protein_ko_count_abundance(query_message, size,
-                                                                              fields=fields, from_=from_)
+            r = f_manager.get_protein_ko_count_abundance(query_message, size,
+                                                         fields=fields, from_=from_)
             return r
