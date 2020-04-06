@@ -30,6 +30,8 @@ class kinlaw_by_name:
             species='homo sapiens', projection="{'_id': 0, 'kegg_meta.gene_ortholog': 0, 'anc_id': 0, 'anc_name': 0}"):
         result = []
         projection = eval(projection)
+        print(substrates)
+        print(products)
         _, docs = r_manager.get_kinlaw_by_rxn_name(substrates, products, 
                                                    projection=projection, bound=bound, skip=_from, limit=size)
         for doc in docs:

@@ -73,6 +73,8 @@ kinlaw_by_name:
           items:
             type: string
         required: true
+        style: pipeDelimited
+        explode: false
         description: list of substrates' names
       - in: query
         name: products
@@ -81,6 +83,8 @@ kinlaw_by_name:
           items:
             type: string
         required: true
+        explode: false
+        style: pipeDelimited
         description: list of products' names
       - in: query
         name: _from

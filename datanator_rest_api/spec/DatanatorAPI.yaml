@@ -861,6 +861,7 @@ paths:
       description: Search for reactions given reactants
       parameters:
       - description: list of substrates' names
+        explode: false
         in: query
         name: substrates
         required: true
@@ -868,7 +869,9 @@ paths:
           items:
             type: string
           type: array
+        style: pipeDelimited
       - description: list of products' names
+        explode: false
         in: query
         name: products
         required: true
@@ -876,6 +879,7 @@ paths:
           items:
             type: string
           type: array
+        style: pipeDelimited
       - description: page from (0 indexed)
         in: query
         name: _from
