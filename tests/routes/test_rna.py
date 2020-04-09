@@ -22,3 +22,7 @@ class ImplementationTestCase(unittest.TestCase):
     def test_get_info_by_ko(self):
         docs_0 = self.client.get('/rna/halflife/get_info_by_ko/?ko_number=K13280&_from=0&size=10')
         self.assertEqual(docs_0.status_code, 200)
+
+    def test_get_total_docs(self):
+        result = self.client.get('/rna/meta/get_total_docs/')
+        self.assertEqual(result.status_code, 200)

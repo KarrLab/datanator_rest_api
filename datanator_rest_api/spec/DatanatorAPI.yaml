@@ -1236,6 +1236,22 @@ paths:
       tags:
       - RNA
       - RNA Half-life
+  /rna/meta/get_total_docs/:
+    get:
+      description: Get number of proteins and non-coding DNAs that have half-life
+        values
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: integer
+          description: OK
+      summary: Get number of proteins and non-coding DNAs that have half-life values
+      tags:
+      - RNA
+      - RNA Half-life
+      - Meta
   /status/:
     get:
       responses:

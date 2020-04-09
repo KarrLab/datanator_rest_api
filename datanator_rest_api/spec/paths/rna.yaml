@@ -85,3 +85,19 @@ get_info_by_ko:
             application/json:
               schema:
                 $ref: "#/components/schemas/RnaHalflifeDoc"
+
+get_total_docs:
+  get:
+    tags:
+      - RNA
+      - RNA Half-life
+      - Meta
+    summary: Get number of proteins and non-coding DNAs that have half-life values
+    description: Get number of proteins and non-coding DNAs that have half-life values
+    responses:
+      "200":
+        description: OK
+        content:
+          application/json:
+            schema:
+              type: integer

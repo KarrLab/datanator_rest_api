@@ -56,3 +56,11 @@ class halflife:
                 else:
                     result.append(doc)
             return result
+
+
+class meta:
+
+    class get_total_docs:
+        
+        def get():
+            return rna_manager.collection.count_documents({})
