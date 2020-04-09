@@ -1163,6 +1163,36 @@ paths:
       - Kinetics
       - Reactions
       - Organism
+  /reactions/summary/num_parameter_kcat/:
+    get:
+      description: For about page
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: integer
+          description: OK
+      summary: Get number of reaction entries with k_cat.
+      tags:
+      - Kinetics
+      - Reactions
+      - Organism
+  /reactions/summary/num_parameter_km/:
+    get:
+      description: For about page
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: integer
+          description: OK
+      summary: Get number of reaction entries with Km.
+      tags:
+      - Kinetics
+      - Reactions
+      - Organism
   /rna/halflife/get_info_by_ko/:
     get:
       description: Get RNA half-life information based on protein kegg ortholog group.

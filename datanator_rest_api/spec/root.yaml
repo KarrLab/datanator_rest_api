@@ -87,6 +87,10 @@ paths:
     $ref: paths/reactions.yaml#/summary/num_organism
   /reactions/summary/num_entries/:
     $ref: paths/reactions.yaml#/summary/num_entries
+  /reactions/summary/num_parameter_km/:
+    $ref: paths/reactions.yaml#/summary/num_parameter_km
+  /reactions/summary/num_parameter_kcat/:
+    $ref: paths/reactions.yaml#/summary/num_parameter_kcat
   /rna/halflife/get_info_by_name/:
     $ref: paths/rna.yaml#/get_info_by_name/
   /rna/halflife/get_info_by_ko/:

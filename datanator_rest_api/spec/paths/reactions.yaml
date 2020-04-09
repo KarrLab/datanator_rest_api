@@ -294,3 +294,35 @@ summary:
             application/json:
               schema:
                 type: integer
+
+  num_parameter_km:
+    get:
+      tags:
+        - Kinetics
+        - Reactions
+        - Organism
+      summary: Get number of reaction entries with Km.
+      description: For about page
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: integer
+
+  num_parameter_kcat:
+    get:
+      tags:
+        - Kinetics
+        - Reactions
+        - Organism
+      summary: Get number of reaction entries with k_cat.
+      description: For about page
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: integer

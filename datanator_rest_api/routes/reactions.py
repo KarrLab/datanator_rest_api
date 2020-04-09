@@ -30,8 +30,6 @@ class kinlaw_by_name:
             species='homo sapiens', projection="{'_id': 0, 'kegg_meta.gene_ortholog': 0, 'anc_id': 0, 'anc_name': 0}"):
         result = []
         projection = eval(projection)
-        print(substrates)
-        print(products)
         _, docs = r_manager.get_kinlaw_by_rxn_name(substrates, products, 
                                                    projection=projection, bound=bound, skip=_from, limit=size)
         for doc in docs:
@@ -79,3 +77,16 @@ class summary:
         
         def get():
             return r_manager.get_unique_entries()
+
+    class num_parameter_km:
+
+        def get():
+            return r_manager.collection.count_documents({'parameter.observed_name': 'Km'}, collation=r_manager.collation)
+
+
+    class num_parameter_kcat:
+
+        def get():
+            return r_manager.collection.count_documents({'parameter.observed_name': {
+                                                         '$in': ['kcat', 'k_cat']}}, 
+                                                         collation=r_manager.collation)
