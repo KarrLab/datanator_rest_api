@@ -67,6 +67,8 @@ paths:
     $ref: paths/proteins.yaml#/summary/num_protein
   /proteins/summary/num_organism/:
     $ref: paths/proteins.yaml#/summary/num_organism
+  /proteins/summary/num_abundances/:
+    $ref: paths/proteins.yaml#/summary/num_abundances
   /proteins/similar_protein/refseq/:
     $ref: paths/proteins.yaml#/similar_protein/refseq
   /proteins/related/related_reactions/:

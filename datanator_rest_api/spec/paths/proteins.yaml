@@ -195,6 +195,20 @@ summary:
               schema:
                 type: integer
 
+  num_abundances:
+    get:
+      tags:
+        - Proteins
+      summary: Get number of proteins with abundance values
+      description: For about page
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: integer    
+
 similar_protein:
   refseq:
     get:

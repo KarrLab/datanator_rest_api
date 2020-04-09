@@ -87,6 +87,11 @@ class summary:
         def get():
             return p_manager.get_unique_protein()
 
+    class num_abundances():
+
+        def get():
+            return p_manager.collection.count_documents({'abundances': {"$exists": True}})
+
 
 class similar_protein:
 
