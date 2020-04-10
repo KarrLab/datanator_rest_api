@@ -36,7 +36,17 @@ class ImplementationTestCase(unittest.TestCase):
         result_0 = self.client.get(
             '/metabolites/summary/concentration_count/')
         self.assertEqual(1586, (json.loads(result_0.data)))
-        self.assertEqual(result_0.status_code, 200)        
+        self.assertEqual(result_0.status_code, 200)
+
+    def test_summary_ecmdb_count(self):
+        result_0 = self.client.get(
+            '/metabolites/summary/ecmdb_doc_count/')
+        self.assertEqual(result_0.status_code, 200) 
+
+    def test_summary_ymdb_count(self):
+        result_0 = self.client.get(
+            '/metabolites/summary/ymdb_doc_count/')
+        self.assertEqual(result_0.status_code, 200)         
 
     def test_meta(self):
         result_1 = self.client.get("/metabolites/meta/?_input=UHDGCWIWMRVCDJ-XVFCMESISA-N")

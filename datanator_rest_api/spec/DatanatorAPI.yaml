@@ -606,6 +606,34 @@ paths:
       tags:
       - Metabolites
       - Concentration
+  /metabolites/summary/ecmdb_doc_count/:
+    get:
+      description: Some description
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: integer
+          description: OK
+      summary: Get number of metabolites in ECMDB collection.
+      tags:
+      - Metabolites
+      - Concentration
+  /metabolites/summary/ymdb_doc_count/:
+    get:
+      description: Some description
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: integer
+          description: OK
+      summary: Get number of metabolites in YMDB collection.
+      tags:
+      - Metabolites
+      - Concentration
   /proteins/meta/meta_combo/:
     get:
       description: |-

@@ -148,6 +148,36 @@ num_conc:
             schema:
               type: integer
 
+ecmdb_doc_count:
+  get:
+    tags:
+      - Metabolites
+      - Concentration
+    summary: Get number of metabolites in ECMDB collection.
+    description: Some description
+    responses:
+      "200":
+        description: OK
+        content:
+          application/json:
+            schema:
+              type: integer
+
+ymdb_doc_count:
+  get:
+    tags:
+      - Metabolites
+      - Concentration
+    summary: Get number of metabolites in YMDB collection.
+    description: Some description
+    responses:
+      "200":
+        description: OK
+        content:
+          application/json:
+            schema:
+              type: integer
+
 meta:
   get:
     parameters:

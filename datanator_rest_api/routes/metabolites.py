@@ -43,6 +43,18 @@ class summary:
         def get():
             return ey_manager.get_concentration_count()
 
+    
+    class ecmdb_doc_count():
+        
+        def get():
+            return ey_manager.collection_ecmdb.count_documents({})
+
+
+    class ymdb_doc_count():
+        
+        def get():
+            return ey_manager.collection_ymdb.count_documents({})
+
 
 class concentration:
 
