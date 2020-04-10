@@ -1174,6 +1174,31 @@ paths:
       summary: Get reactions based on reaction entry id
       tags:
       - Reactions
+  /reactions/summary/get_distinct/:
+    get:
+      description: Get number of distinct values in field.
+      parameters:
+      - example: pH
+        in: query
+        name: _input
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  oneOf:
+                  - type: string
+                  - type: integer
+                type: array
+          description: OK
+      summary: Get number of distinct values in field.
+      tags:
+      - Reactions
+      - Kinetics
   /reactions/summary/num_entries/:
     get:
       description: For about page
@@ -1218,7 +1243,6 @@ paths:
       tags:
       - Kinetics
       - Reactions
-      - Organism
   /reactions/summary/num_parameter_km/:
     get:
       description: For about page
@@ -1322,7 +1346,7 @@ paths:
       - RNA Half-life
   /rna/summary/get_distinct/:
     get:
-      description: Get number of primary sources used to parse mRNA half-life information.
+      description: Get number of distinct values in field.
       parameters:
       - example: halflives.reference.doi
         in: query
@@ -1337,7 +1361,7 @@ paths:
               schema:
                 type: integer
           description: OK
-      summary: Get number of primary sources used to parse mRNA half-life information.
+      summary: Get number of distinct values in field.
       tags:
       - RNA
       - RNA Half-life

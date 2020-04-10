@@ -90,3 +90,9 @@ class summary:
             return r_manager.collection.count_documents({'parameter.observed_name': {
                                                          '$in': ['kcat', 'k_cat']}}, 
                                                          collation=r_manager.collation)
+
+
+    class get_distinct:
+
+        def get(_input):
+            return r_manager.collection.distinct(_input)

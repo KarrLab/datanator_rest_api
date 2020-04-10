@@ -48,3 +48,7 @@ class ImplementationTestCase(unittest.TestCase):
     def test_summary_num_parameter_kcat(self):
         result = self.client.get('/reactions/summary/num_parameter_kcat/')
         self.assertEqual(result.status_code, 200)
+
+    def test_get_distinct(self):
+        result = self.client.get('/reactions/summary/get_distinct/?_input=pH')
+        self.assertEqual(result.status_code, 200)

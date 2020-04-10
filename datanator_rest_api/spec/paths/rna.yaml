@@ -131,8 +131,8 @@ get_distinct:
       - RNA
       - RNA Half-life
       - Meta
-    summary: Get number of primary sources used to parse mRNA half-life information.
-    description: Get number of primary sources used to parse mRNA half-life information.
+    summary: Get number of distinct values in field.
+    description: Get number of distinct values in field.
     responses:
       "200":
         description: OK

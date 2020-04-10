@@ -316,7 +316,6 @@ summary:
       tags:
         - Kinetics
         - Reactions
-        - Organism
       summary: Get number of reaction entries with k_cat.
       description: For about page
       responses:
@@ -326,3 +325,29 @@ summary:
             application/json:
               schema:
                 type: integer
+
+  get_distinct:
+    get:
+      parameters:
+        - in: query
+          name: _input
+          schema:
+            type: string
+          example: 'pH'
+          required: true
+      tags:
+        - Reactions
+        - Kinetics
+      summary: Get number of distinct values in field.
+      description: Get number of distinct values in field.
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  oneOf:
+                    - type: string
+                    - type: integer
