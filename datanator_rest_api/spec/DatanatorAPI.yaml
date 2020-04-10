@@ -1320,6 +1320,28 @@ paths:
       tags:
       - RNA
       - RNA Half-life
+  /rna/summary/get_distinct/:
+    get:
+      description: Get number of primary sources used to parse mRNA half-life information.
+      parameters:
+      - example: halflives.reference.doi
+        in: query
+        name: _input
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: integer
+          description: OK
+      summary: Get number of primary sources used to parse mRNA half-life information.
+      tags:
+      - RNA
+      - RNA Half-life
+      - Meta
   /rna/summary/get_publication_num/:
     get:
       description: Get number of primary sources used to parse mRNA half-life information.

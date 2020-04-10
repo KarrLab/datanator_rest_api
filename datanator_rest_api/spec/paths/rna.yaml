@@ -117,3 +117,26 @@ get_publication_num:
           application/json:
             schema:
               type: integer
+
+get_distinct:
+  get:
+    parameters:
+      - in: query
+        name: _input
+        schema:
+          type: string
+        example: 'halflives.reference.doi'
+        required: true
+    tags:
+      - RNA
+      - RNA Half-life
+      - Meta
+    summary: Get number of primary sources used to parse mRNA half-life information.
+    description: Get number of primary sources used to parse mRNA half-life information.
+    responses:
+      "200":
+        description: OK
+        content:
+          application/json:
+            schema:
+              type: integer

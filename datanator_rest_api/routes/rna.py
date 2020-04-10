@@ -69,3 +69,8 @@ class summary:
 
         def get():
             return len(rna_manager.collection.distinct('halflives.reference.doi'))
+
+    class get_distinct:
+        
+        def get(_input):
+            return len(rna_manager.collection.distinct(_input))

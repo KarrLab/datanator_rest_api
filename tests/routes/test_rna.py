@@ -30,3 +30,7 @@ class ImplementationTestCase(unittest.TestCase):
     def test_get_publication_num(self):
         result = self.client.get('/rna/summary/get_publication_num/')
         self.assertEqual(result.status_code, 200)
+
+    def test_get_distinct(self):
+        result = self.client.get('/rna/summary/get_distinct/?_input=halflives.species')
+        self.assertEqual(result.status_code, 200)
