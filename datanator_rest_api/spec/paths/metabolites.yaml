@@ -178,6 +178,21 @@ ymdb_doc_count:
             schema:
               type: integer
 
+get_ref_count:
+  get:
+    tags:
+      - Metabolites
+      - Concentration
+    summary: Get number of primary sources in metabolite collection.
+    description: Some description
+    responses:
+      "200":
+        description: OK
+        content:
+          application/json:
+            schema:
+              type: integer
+
 meta:
   get:
     parameters:

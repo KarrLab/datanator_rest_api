@@ -620,6 +620,20 @@ paths:
       tags:
       - Metabolites
       - Concentration
+  /metabolites/summary/get_ref_count/:
+    get:
+      description: Some description
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: integer
+          description: OK
+      summary: Get number of primary sources in metabolite collection.
+      tags:
+      - Metabolites
+      - Concentration
   /metabolites/summary/ymdb_doc_count/:
     get:
       description: Some description

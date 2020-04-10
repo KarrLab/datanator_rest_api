@@ -56,6 +56,12 @@ class summary:
             return ey_manager.collection_ymdb.count_documents({})
 
 
+    class get_ref_count:
+
+        def get():
+            return len(ey_manager.collection_ecmdb.distinct('syntehsis_reference')) + len(ey_manager.collection_ymdb.distinct('syntehsis_reference'))
+
+
 class concentration:
 
     def get(metabolite, species='Escherichia coli', abstract=False):
