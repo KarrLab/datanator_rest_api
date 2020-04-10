@@ -92,6 +92,12 @@ class summary:
         def get():
             return p_manager.collection.count_documents({'abundances': {"$exists": True}})
 
+    
+    class num_publications():
+
+        def get():
+            return p_manager.paxdb_collection.count_documents({})
+
 
 class similar_protein:
 

@@ -207,7 +207,21 @@ summary:
           content:
             application/json:
               schema:
-                type: integer    
+                type: integer
+                
+  num_publications:
+    get:
+      tags:
+        - Proteins
+      summary: Get number of publications used to get protein abundances.
+      description: For about page
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: integer 
 
 similar_protein:
   refseq:

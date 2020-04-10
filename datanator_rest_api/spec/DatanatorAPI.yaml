@@ -897,6 +897,19 @@ paths:
       tags:
       - Proteins
       - Count
+  /proteins/summary/num_publications/:
+    get:
+      description: For about page
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: integer
+          description: OK
+      summary: Get number of publications used to get protein abundances.
+      tags:
+      - Proteins
   /reactions/kinlaw_by_name/:
     get:
       description: Search for reactions given reactants
