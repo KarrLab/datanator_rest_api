@@ -101,3 +101,19 @@ get_total_docs:
           application/json:
             schema:
               type: integer
+
+get_publication_num:
+  get:
+    tags:
+      - RNA
+      - RNA Half-life
+      - Meta
+    summary: Get number of primary sources used to parse mRNA half-life information.
+    description: Get number of primary sources used to parse mRNA half-life information.
+    responses:
+      "200":
+        description: OK
+        content:
+          application/json:
+            schema:
+              type: integer

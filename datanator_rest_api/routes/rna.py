@@ -58,9 +58,14 @@ class halflife:
             return result
 
 
-class meta:
+class summary:
 
     class get_total_docs:
         
         def get():
             return rna_manager.collection.count_documents({})
+
+    class get_publication_num:
+
+        def get():
+            return len(rna_manager.collection.distinct('halflives.reference.doi'))

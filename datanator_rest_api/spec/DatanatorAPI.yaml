@@ -1307,7 +1307,22 @@ paths:
       tags:
       - RNA
       - RNA Half-life
-  /rna/meta/get_total_docs/:
+  /rna/summary/get_publication_num/:
+    get:
+      description: Get number of primary sources used to parse mRNA half-life information.
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: integer
+          description: OK
+      summary: Get number of primary sources used to parse mRNA half-life information.
+      tags:
+      - RNA
+      - RNA Half-life
+      - Meta
+  /rna/summary/get_total_docs/:
     get:
       description: Get number of proteins and non-coding DNAs that have half-life
         values

@@ -24,5 +24,9 @@ class ImplementationTestCase(unittest.TestCase):
         self.assertEqual(docs_0.status_code, 200)
 
     def test_get_total_docs(self):
-        result = self.client.get('/rna/meta/get_total_docs/')
+        result = self.client.get('/rna/summary/get_total_docs/')
+        self.assertEqual(result.status_code, 200)
+
+    def test_get_publication_num(self):
+        result = self.client.get('/rna/summary/get_publication_num/')
         self.assertEqual(result.status_code, 200)
