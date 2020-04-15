@@ -69,7 +69,7 @@ class kinlaw_entry:
     def get(entry_id, target_organism=None, last_id=0, size=10):
         docs = r_manager.get_info_by_entryid(entry_id, target_organism=target_organism,
                                              size=size, last_id=last_id)
-        return docs
+        return list(docs)
 
 
 class summary:
