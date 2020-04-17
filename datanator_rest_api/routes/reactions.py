@@ -38,7 +38,10 @@ class kinlaw_by_name:
         _, docs = r_manager.get_kinlaw_by_rxn_name(substrates, products, 
                                                    projection=projection, bound=bound, skip=_from, limit=size)
         for doc in docs:
-            doc['kegg_meta'] = get_kegg_meta(doc['ec_meta']['ec_number'], {'_id': 0, 'gene_ortholog': 0})
+            try:
+                doc['kegg_meta'] = get_kegg_meta(doc['ec_meta']['ec_number'], {'_id': 0, 'gene_ortholog': 0})
+            except TypeError:
+                doc['kegg_meta'] = []
             if taxon_distance:
                 name = doc['taxon_name']
                 dist = query_manager.TaxonManager().txn_manager().get_canon_common_ancestor(name, species, org_format='tax_name')
