@@ -101,6 +101,8 @@ paths:
     $ref: paths/reactions.yaml#/summary/num_parameter_kcat
   /reactions/summary/get_distinct/:
     $ref: paths/reactions.yaml#/summary/get_distinct
+  /reactions/summary/get_frequency/:
+    $ref: paths/reactions.yaml#/summary/get_frequency
   /rna/halflife/get_info_by_name/:
     $ref: paths/rna.yaml#/get_info_by_name/
   /rna/halflife/get_info_by_ko/:

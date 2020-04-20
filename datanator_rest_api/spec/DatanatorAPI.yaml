@@ -1213,6 +1213,29 @@ paths:
       tags:
       - Reactions
       - Kinetics
+  /reactions/summary/get_frequency/:
+    get:
+      description: For about page
+      parameters:
+      - in: query
+        name: field
+        required: true
+        schema:
+          enum:
+          - temperature
+          - ph
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+          description: OK
+      summary: Get pH distribution.
+      tags:
+      - Kinetics
+      - Reactions
   /reactions/summary/num_entries/:
     get:
       description: For about page

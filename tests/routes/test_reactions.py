@@ -52,3 +52,9 @@ class ImplementationTestCase(unittest.TestCase):
     def test_get_distinct(self):
         result = self.client.get('/reactions/summary/get_distinct/?_input=pH')
         self.assertEqual(result.status_code, 200)
+
+    def test_get_ph_freq(self):
+        result = self.client.get('/reactions/summary/get_frequency/?field=ph')
+        self.assertEqual(result.status_code, 200)
+        result = self.client.get('/reactions/summary/get_frequency/?field=temperature')
+        self.assertEqual(result.status_code, 200)

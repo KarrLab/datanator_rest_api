@@ -105,3 +105,11 @@ class summary:
 
         def get(_input):
             return r_manager.collection.distinct(_input)
+
+
+    class get_frequency:
+
+        def get(field):
+            return [doc for doc in r_manager.db_obj['sabio_rk'].aggregate(
+                [{'$group': { '_id' : '${}'.format(field), 'count' : {'$sum' : 1}}}]
+            )]
