@@ -113,7 +113,7 @@ jobs:
             #   done < .circleci/requirements.txt
             # fi
             python3 -m pip install pipenv
-            pipenv install -e .
+            /usr/local/bin/pipenv install -e .
       - run:
           name: Install package (Python 3)
           command: python3 -m pip install -U -e .[all]
