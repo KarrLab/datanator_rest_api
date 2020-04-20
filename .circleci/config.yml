@@ -112,7 +112,6 @@ jobs:
             #     fi
             #   done < .circleci/requirements.txt
             # fi
-            python3 -m pip install -e .
       - run:
           name: Install package (Python 3)
           command: python3 -m pip install -U -e .[all]
