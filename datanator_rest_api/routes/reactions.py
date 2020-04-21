@@ -111,5 +111,5 @@ class summary:
 
         def get(field):
             return [doc for doc in r_manager.db_obj['sabio_rk'].aggregate(
-                [{'$group': { '_id' : '${}'.format(field), 'count' : {'$sum' : 1}}}]
-            )]
+                    [{'$sortByCount': '${}'.format(field)}]
+                    )]
