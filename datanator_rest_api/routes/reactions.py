@@ -110,6 +110,17 @@ class summary:
     class get_frequency:
 
         def get(field):
+            nums = r_manager.db_obj['sabio_rk'].count_documents({})
+            print(nums)
             return [doc for doc in r_manager.db_obj['sabio_rk'].aggregate(
-                    [{'$sortByCount': '${}'.format(field)}]
+                    [{'$group': { '_id' : '${}'.format(field), 'count' : {'$sum' : 1}}},
+                     {"$project": { 
+                        "count": 1, 
+                        "percentage": { 
+                                "$multiply": [{"$divide": ["$count", nums]}, 100]
+                            }
+                        }
+                     },
+                     {"$sort": {"count": -1 }}
+                    ]
                     )]
