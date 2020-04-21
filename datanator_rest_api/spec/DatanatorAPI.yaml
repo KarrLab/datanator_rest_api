@@ -271,6 +271,7 @@ paths:
           - sabio_reaction_entries
           - rna_halflife
           - taxon_tree
+          - brenda_reactions
           type: string
       - in: query
         name: from_
