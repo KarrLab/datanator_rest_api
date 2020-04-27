@@ -12,6 +12,11 @@ Any subpaths are contained in an internal class
 from datanator_query_python.config import query_manager
 from bson.objectid import ObjectId
 
+
+ey_manager = query_manager.Manager().eymdb_manager()
+m_manager = query_manager.Manager().metabolite_manager()
+mm_manager = query_manager.metabolites_meta_manager()
+
 def put(body):
     return ("test")
 
@@ -23,12 +28,12 @@ def post():
 def get(inchi, species, last_id='000000000000000000000000', page_size=20):
     last_id = ObjectId(last_id)
     print(len(inchi))
-    return query_manager.Manager().eymdb_manager().get_meta_from_inchis(inchi, species, last_id=last_id, page_size=page_size)
+    return ey_manager.get_meta_from_inchis(inchi, species, last_id=last_id, page_size=page_size)
 
 
 class concentrations:
     def get(inchi, consensus=False):
-        return query_manager.Manager().eymdb_manager().get_conc_from_inchi(inchi, consensus=consensus)
+        return ey_manager.get_conc_from_inchi(inchi, consensus=consensus)
 
 
 class summary:
@@ -36,22 +41,40 @@ class summary:
     class concentration_count():
     
         def get():
-            return query_manager.Manager().eymdb_manager().get_concentration_count()
+            return ey_manager.get_concentration_count()
+
+    
+    class ecmdb_doc_count():
+        
+        def get():
+            return ey_manager.collection_ecmdb.count_documents({})
+
+
+    class ymdb_doc_count():
+        
+        def get():
+            return ey_manager.collection_ymdb.count_documents({})
+
+
+    class get_ref_count:
+
+        def get():
+            return len(ey_manager.collection_ecmdb.distinct('syntehsis_reference')) + len(ey_manager.collection_ymdb.distinct('syntehsis_reference'))
 
 
 class concentration:
 
     def get(metabolite, species='Escherichia coli', abstract=False):
-        return query_manager.Manager().metabolite_manager().molecule_name_query(metabolite, species, abstract_default=abstract)
+        return m_manager.molecule_name_query(metabolite, species, abstract_default=abstract)
 
 
 class meta:
 
     def get(_input):
-        return query_manager.metabolites_meta_manager().get_eymeta(_input)
+        return mm_manager.get_eymeta(_input)
 
 
 class concentration_only:
 
     def get(inchi_key):
-        return query_manager.Manager().eymdb_manager().get_conc_from_inchi(inchi_key, inchi_key=True, projection={'_id':0, 'concentrations': 1})
+        return ey_manager.get_conc_from_inchi(inchi_key, inchi_key=True, projection={'_id':0, 'concentrations': 1})

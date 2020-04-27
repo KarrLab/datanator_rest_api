@@ -10,6 +10,8 @@ mock = "*"
 prance = "*"
 pytest = "*"
 datanator-rest-api = {editable = true,path = "."}
+datanator-query-python = {editable = true,path = "../datanator_query_python"}
+pylint = "*"
 
 [packages.pkg_utils]
 git = "https://github.com/KarrLab/pkg_utils.git"

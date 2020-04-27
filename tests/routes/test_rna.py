@@ -15,6 +15,22 @@ class ImplementationTestCase(unittest.TestCase):
         self.client = self.app.app.test_client()
         self.client.testing = True
 
-    def test_kinlawid_doc(self):
-        docs_0 = self.client.get('/rna/halflife/get_info_by_protein_name/?protein_name=something&_from=0&size=10')
+    def test_get_info_by_name(self):
+        docs_0 = self.client.get('/rna/halflife/get_info_by_name/?protein_name=something&_from=0&size=10')
         self.assertEqual(docs_0.status_code, 200)
+
+    def test_get_info_by_ko(self):
+        docs_0 = self.client.get('/rna/halflife/get_info_by_ko/?ko_number=K13280&_from=0&size=10')
+        self.assertEqual(docs_0.status_code, 200)
+
+    def test_get_total_docs(self):
+        result = self.client.get('/rna/summary/get_total_docs/')
+        self.assertEqual(result.status_code, 200)
+
+    def test_get_publication_num(self):
+        result = self.client.get('/rna/summary/get_publication_num/')
+        self.assertEqual(result.status_code, 200)
+
+    def test_get_distinct(self):
+        result = self.client.get('/rna/summary/get_distinct/?_input=halflives.species')
+        self.assertEqual(result.status_code, 200)

@@ -40,3 +40,21 @@ class ImplementationTestCase(unittest.TestCase):
     def test_summary_protein(self):
         result = self.client.get('/reactions/summary/num_entries/')
         self.assertEqual(result.status_code, 200)
+    
+    def test_summary_num_parameter_km(self):
+        result = self.client.get('/reactions/summary/num_parameter_km/')
+        self.assertEqual(result.status_code, 200)
+
+    def test_summary_num_parameter_kcat(self):
+        result = self.client.get('/reactions/summary/num_parameter_kcat/')
+        self.assertEqual(result.status_code, 200)
+
+    def test_get_distinct(self):
+        result = self.client.get('/reactions/summary/get_distinct/?_input=pH')
+        self.assertEqual(result.status_code, 200)
+
+    def test_get_ph_freq(self):
+        result = self.client.get('/reactions/summary/get_frequency/?field=ph')
+        self.assertEqual(result.status_code, 200)
+        result = self.client.get('/reactions/summary/get_frequency/?field=temperature')
+        self.assertEqual(result.status_code, 200)

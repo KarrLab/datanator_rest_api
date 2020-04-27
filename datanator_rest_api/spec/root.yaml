@@ -47,6 +47,12 @@ paths:
     $ref: paths/metabolites.yaml#/concentrations
   /metabolites/summary/concentration_count/:
     $ref: paths/metabolites.yaml#/num_conc
+  /metabolites/summary/ecmdb_doc_count/:
+    $ref: paths/metabolites.yaml#/ecmdb_doc_count
+  /metabolites/summary/ymdb_doc_count/:
+    $ref: paths/metabolites.yaml#/ymdb_doc_count
+  /metabolites/summary/get_ref_count/:
+    $ref: paths/metabolites.yaml#/get_ref_count
   /metabolites/meta/:
     $ref: paths/metabolites.yaml#/meta
   /metabolites/concentration/:
@@ -67,6 +73,10 @@ paths:
     $ref: paths/proteins.yaml#/summary/num_protein
   /proteins/summary/num_organism/:
     $ref: paths/proteins.yaml#/summary/num_organism
+  /proteins/summary/num_abundances/:
+    $ref: paths/proteins.yaml#/summary/num_abundances
+  /proteins/summary/num_publications/:
+    $ref: paths/proteins.yaml#/summary/num_publications
   /proteins/similar_protein/refseq/:
     $ref: paths/proteins.yaml#/similar_protein/refseq
   /proteins/related/related_reactions/:
@@ -85,8 +95,24 @@ paths:
     $ref: paths/reactions.yaml#/summary/num_organism
   /reactions/summary/num_entries/:
     $ref: paths/reactions.yaml#/summary/num_entries
-  /rna/halflife/get_info_by_protein_name/:
-    $ref: paths/rna.yaml#/get_info_by_protein_name/
+  /reactions/summary/num_parameter_km/:
+    $ref: paths/reactions.yaml#/summary/num_parameter_km
+  /reactions/summary/num_parameter_kcat/:
+    $ref: paths/reactions.yaml#/summary/num_parameter_kcat
+  /reactions/summary/get_distinct/:
+    $ref: paths/reactions.yaml#/summary/get_distinct
+  /reactions/summary/get_frequency/:
+    $ref: paths/reactions.yaml#/summary/get_frequency
+  /rna/halflife/get_info_by_name/:
+    $ref: paths/rna.yaml#/get_info_by_name/
+  /rna/halflife/get_info_by_ko/:
+    $ref: paths/rna.yaml#/get_info_by_ko/
+  /rna/summary/get_total_docs/:
+    $ref: paths/rna.yaml#/get_total_docs/
+  /rna/summary/get_publication_num/:
+    $ref: paths/rna.yaml#/get_publication_num/
+  /rna/summary/get_distinct/:
+    $ref: paths/rna.yaml#/get_distinct/
   /taxon/canon_rank_distance/:
     $ref: paths/taxon.yaml#/canon_rank_distance/
   /taxon/canon_rank_distance_by_name/:

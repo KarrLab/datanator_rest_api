@@ -65,8 +65,17 @@ class ImplementationTestCase(unittest.TestCase):
         result = self.client.get('/proteins/summary/num_organism/')
         self.assertEqual(result.status_code, 200)
 
+    @unittest.skip('too long')
     def test_summary_protein(self):
         result = self.client.get('/proteins/summary/num_protein/')
+        self.assertEqual(result.status_code, 200)
+
+    def test_summary_abundance_count(self):
+        result = self.client.get('/proteins/summary/num_abundances/')
+        self.assertEqual(result.status_code, 200)
+
+    def test_summary_num_publications(self):
+        result = self.client.get('/proteins/summary/num_publications/')
         self.assertEqual(result.status_code, 200)
 
     def test_similar_protein_refseq(self):
