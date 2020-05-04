@@ -114,7 +114,9 @@ jobs:
             fi
       - run:
           name: Install package (Python 3)
-          command: python3 -m pip install -U -e .[all]
+          command: |
+            python3 setup.py install_egg_info
+            python3 -m pip install -U -e .[all]
       - save_cache:
           key:
             v42-{{ arch }}-{{ .Branch }}-{{ checksum "/etc/docker-image-tag" }}-{{
