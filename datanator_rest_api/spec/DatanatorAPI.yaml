@@ -272,6 +272,7 @@ paths:
           - rna_halflife
           - taxon_tree
           - brenda_reactions
+          - metabolite_concentrations
           type: string
       - in: query
         name: from_
