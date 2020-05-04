@@ -129,7 +129,8 @@ num_of_index:
         schema:
           type: string
           enum: [ecmdb, ymdb, metabolites_meta, sabio_rk, protein, sabio, 
-                sabio_reaction_entries, rna_halflife, taxon_tree, brenda_reactions]
+                sabio_reaction_entries, rna_halflife, taxon_tree, brenda_reactions,
+                metabolite_concentrations]
         required: true
         description: index of interest
       - in: query
