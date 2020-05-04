@@ -70,8 +70,10 @@ class concentration:
 
 class meta:
 
-    def get(_input):
-        return mm_manager.get_eymeta(_input)
+    def get(kegg_id, projection="{'_id': 0, 'kegg_meta.gene_ortholog': 0}"):
+        projection = eval(projection)
+        return mm_manager.collection.find_one({'kegg_id': kegg_id}, projection=projection,
+                                              collation=mm_manager.collation)
 
 
 class concentration_only:
