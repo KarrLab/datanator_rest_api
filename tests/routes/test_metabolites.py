@@ -54,7 +54,7 @@ class ImplementationTestCase(unittest.TestCase):
         self.assertEqual(result_0.status_code, 200)          
 
     def test_meta(self):
-        result_1 = self.client.get("/metabolites/meta/?_input=UHDGCWIWMRVCDJ-XVFCMESISA-N")
+        result_1 = self.client.get("/metabolites/meta/?inchi_key=UHDGCWIWMRVCDJ-XVFCMESISA-N")
         self.assertEqual(result_1.status_code, 200)
 
     def test_concentration_only(self):
