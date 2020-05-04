@@ -60,20 +60,20 @@ executors:
   setup_env:
     working_directory: /root/API/
     docker:
-      - image: python:3.6
+      - image: python:3.7
   api_test_env:
     working_directory: /root/API/
     docker:
-      - image: python:3.6
+      - image: python:3.7
   query_test_env:
     working_directory: /root/Query
     docker:
-      - image: python:3.6
+      - image: python:3.7
 
 testJob: &testJob
   working_directory: /root/build
   docker:
-    - image: python:3.6
+    - image: python:3.7
   steps:
     - attach_workspace:
         at: /
@@ -225,7 +225,7 @@ jobs:
       - persist_to_workspace:
           root: /
           paths:
-            - usr/local/lib/python3.6/site-packages
+            - usr/local/lib/python3.7/site-packages
             - usr/local/bin
             - root/API/
             - root/.wc
