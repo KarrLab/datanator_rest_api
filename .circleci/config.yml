@@ -181,17 +181,6 @@ jobs:
           key: source-v2-{{ .Branch }}-{{ .Revision }}
           paths:
             - .
-      #Get Test dependencies
-      - restore_cache:
-          key: test-dependencies-v2-{{arch}}-{{ .Branch }}-{{ checksum "tests/requirements.txt"}}
-      - run:
-          name: Install test dependencies
-          command: python3 -m pip install -r tests/requirements.txt
-      - save_cache:
-          key: test-dependencies-v2-{{arch}}-{{ .Branch }}-{{ checksum "tests/requirements.txt"}}
-          paths:
-            - /usr/local/lib/python3.7/site-packages
-            - /usr/local/bin/
       #Get main dependencies
       - restore_cache:
           key: dependencies-v2-{{ arch }}-{{ .Branch }}-{{ checksum "requirements.txt"}}
