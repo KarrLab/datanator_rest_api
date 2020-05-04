@@ -197,7 +197,7 @@ meta:
   get:
     parameters:
       - in: query
-        name: kegg_id
+        name: inchi_key
         schema:
           type: string
         required: true

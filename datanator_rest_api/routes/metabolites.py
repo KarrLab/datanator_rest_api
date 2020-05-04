@@ -70,9 +70,9 @@ class concentration:
 
 class meta:
 
-    def get(kegg_id, projection="{'_id': 0, 'kegg_meta.gene_ortholog': 0}"):
+    def get(inchi_key, projection="{'_id': 0, 'kegg_meta.gene_ortholog': 0}"):
         projection = eval(projection)
-        return mm_manager.collection.find_one({'kegg_id': kegg_id}, projection=projection,
+        return mm_manager.collection.find_one({'InChI_Key': inchi_key}, projection=projection,
                                               collation=mm_manager.collation)
 
 

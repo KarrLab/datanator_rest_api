@@ -567,7 +567,7 @@ paths:
       description: see summary
       parameters:
       - in: query
-        name: kegg_id
+        name: inchi_key
         required: true
         schema:
           type: string
