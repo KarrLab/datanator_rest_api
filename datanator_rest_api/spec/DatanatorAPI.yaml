@@ -561,7 +561,7 @@ paths:
       description: see summary
       parameters:
       - in: query
-        name: inchi_key
+        name: inchikey
         required: true
         schema:
           type: string

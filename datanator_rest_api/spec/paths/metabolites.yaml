@@ -191,7 +191,7 @@ meta:
   get:
     parameters:
       - in: query
-        name: inchi_key
+        name: inchikey
         schema:
           type: string
         required: true
