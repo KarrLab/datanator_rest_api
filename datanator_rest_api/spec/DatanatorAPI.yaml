@@ -565,19 +565,14 @@ paths:
         required: true
         schema:
           type: string
-      - content:
-          application/json:
-            schema:
-              example:
-                _id: 0
-                kegg_meta.gene_ortholog: 0
-              properties:
-                _id:
-                  default: 0
-                  type: integer
-              type: object
-        in: query
+      - in: query
         name: projection
+        schema:
+          example:
+            _id: 0
+            kegg_meta.gene_ortholog: 0
+            reaction_participants: 0
+          type: string
       responses:
         '200':
           content:
