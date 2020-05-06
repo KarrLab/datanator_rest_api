@@ -1,14 +1,21 @@
-type: array
-items:
-  type: object
-  required:
-    - inchikey
-    - name
-    - description
-  properties:
-    inchikey:
-      type: string
-    description:
-      type: string
-    name:
-      type: string
+type: object
+required:
+  - inchikey
+  - metabolite
+  - concentrations
+properties:
+  inchikey:
+    type: string
+  metabolite:
+    type: string
+  concentrations:
+    type: array
+    items:
+      type: object
+      properties:
+        concentration:
+          oneOf: 
+            - type: number
+            - type: string
+        unit:
+          type: string

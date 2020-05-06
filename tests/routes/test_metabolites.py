@@ -28,8 +28,7 @@ class ImplementationTestCase(unittest.TestCase):
     
     def test_concentrations(self):
         result_0 = self.client.get(
-            '/metabolites/concentrations/?inchi=InChI=1S/C8H11NO2/c9-4-3-6-1-2-7(10)8(11)5-6/h1-2,5,10-11H,3-4,9H2')
-        dic_0 = json.loads(result_0.data)
+            '/metabolites/concentrations/?inchikey=XJLXINKUBYWONI-NNYOXOHSSA-O')
         self.assertEqual(result_0.status_code, 200)
 
     def test_summary_conc_count(self):

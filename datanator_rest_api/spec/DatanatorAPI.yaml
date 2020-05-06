@@ -540,18 +540,12 @@ paths:
          for which to get data. The consensus flag will return a consensus value instead of an array of observations.
          The species query will provide taxonomic distance information for each result.
       parameters:
-      - description: inchi string of a metabolite
+      - description: InChIKey string of a metabolite
         in: query
-        name: inchi
+        name: inchikey
         required: true
         schema:
           type: string
-      - description: display consensus concentration value
-        in: query
-        name: consensus
-        required: false
-        schema:
-          type: boolean
       responses:
         '200':
           content:
@@ -1811,20 +1805,27 @@ components:
         type: object
       type: array
     Metabolite:
-      items:
-        properties:
-          description:
-            type: string
-          inchikey:
-            type: string
-          name:
-            type: string
-        required:
-        - inchikey
-        - name
-        - description
-        type: object
-      type: array
+      properties:
+        concentrations:
+          items:
+            properties:
+              concentration:
+                oneOf:
+                - type: number
+                - type: string
+              unit:
+                type: string
+            type: object
+          type: array
+        inchikey:
+          type: string
+        metabolite:
+          type: string
+      required:
+      - inchikey
+      - metabolite
+      - concentrations
+      type: object
     MetaboliteConcentration:
       items:
         properties:

@@ -32,8 +32,9 @@ def get(inchi, species, last_id='000000000000000000000000', page_size=20):
 
 
 class concentrations:
-    def get(inchi, consensus=False):
-        return ey_manager.get_conc_from_inchi(inchi, consensus=consensus)
+    def get(inchikey):
+        query = {'inchikey': inchikey}
+        return m_manager.db_obj['metabolite_concentrations'].find_one(filter=query, projection={'_id': 0})
 
 
 class summary:
