@@ -547,8 +547,8 @@ paths:
         schema:
           type: string
       - description: Target species
-        in: species
-        name: inchikey
+        in: query
+        name: species
         schema:
           example: Escherichia coli
           type: string
@@ -557,6 +557,7 @@ paths:
         in: query
         name: taxon_distance
         schema:
+          example: false
           type: boolean
       responses:
         '200':
