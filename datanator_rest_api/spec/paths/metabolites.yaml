@@ -85,7 +85,7 @@ concentrations:
         description: InChIKey string of a metabolite
     summary: Get concentrations of Metabolites
     description: "Get concentration data for metabolites. The inchikeys parameter takes a list of inchikeys\n
-     for which to get data. The consensus flag will return a consensus value instead of an array of observations.\n
+    for which to get data. The consensus flag will return a consensus value instead of an array of observations.\n
       The species query will provide taxonomic distance information for each result."
     responses:
       "200":
@@ -94,6 +94,34 @@ concentrations:
           application/json:
             schema:
               $ref: "#/components/schemas/Metabolite"
+
+similar_compounds:
+  get:
+    tags:
+      - Metabolites
+    parameters:
+      - in: query
+        name: inchikey
+        schema:
+          type: string
+        required: true
+        description: InChIKey string of a metabolite
+      - in: query
+        name: threshold
+        schema:
+          type: number
+          minimum: 0.6
+          example: 0.6
+        description: Tanimoto similarity score threshold
+    summary: Get concentrations of Metabolites.
+    description: "Get metabolite's chemically-similar metabolites' concentrations."
+    responses:
+      "200":
+        description: OK
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SimilarMetaboliteConcentration"
 
 concentration:
   get:

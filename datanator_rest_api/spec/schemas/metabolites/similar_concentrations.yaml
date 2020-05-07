@@ -1,0 +1,17 @@
+type: array
+items:
+  type: object
+  nullable: true
+  properties:
+    inchikey:
+      type: string
+    concentrations:
+      type: array
+      items:
+        type: object
+    similarity_score:
+      type: number
+  required:
+    - inchikey
+    - concentrations
+    - similarity_score

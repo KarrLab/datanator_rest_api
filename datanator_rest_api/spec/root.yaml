@@ -45,6 +45,8 @@ paths:
     $ref: paths/metabolites.yaml#/root
   /metabolites/concentrations/:
     $ref: paths/metabolites.yaml#/concentrations
+  /metabolites/concentrations/similar_compounds/:
+    $ref: paths/metabolites.yaml#/similar_compounds
   /metabolites/summary/concentration_count/:
     $ref: paths/metabolites.yaml#/num_conc
   /metabolites/summary/ecmdb_doc_count/:
@@ -142,6 +144,8 @@ components:
       $ref: ./schemas/metabolites/metabolite.yaml
     MetaboliteConcentration:
       $ref: ./schemas/metabolites/metabolite_concentration.yaml
+    SimilarMetaboliteConcentration:
+      $ref: ./schemas/metabolites/similar_concentrations.yaml
     MetaboliteMeta:
       $ref: ./schemas/metabolites/metabolites_meta.yaml
     Observation:

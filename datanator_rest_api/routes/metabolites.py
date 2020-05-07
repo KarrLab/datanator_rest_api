@@ -16,6 +16,7 @@ from bson.objectid import ObjectId
 ey_manager = query_manager.Manager().eymdb_manager()
 m_manager = query_manager.Manager().metabolite_manager()
 mm_manager = query_manager.metabolites_meta_manager()
+mc_manager = query_manager.Manager().metabolite_concentration_manager()
 
 def put(body):
     return ("test")
@@ -32,9 +33,16 @@ def get(inchi, species, last_id='000000000000000000000000', page_size=20):
 
 
 class concentrations:
+
     def get(inchikey):
         query = {'inchikey': inchikey}
         return m_manager.db_obj['metabolite_concentrations'].find_one(filter=query, projection={'_id': 0})
+
+
+    class similar_compounds:
+
+        def get(inchikey, threshold=0.6):
+            return mc_manager.get_similar_concentrations(inchikey, threshold=threshold)
 
 
 class summary:

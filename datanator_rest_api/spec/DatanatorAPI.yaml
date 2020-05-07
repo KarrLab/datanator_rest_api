@@ -556,6 +556,33 @@ paths:
       summary: Get concentrations of Metabolites
       tags:
       - Metabolites
+  /metabolites/concentrations/similar_compounds/:
+    get:
+      description: Get metabolite's chemically-similar metabolites' concentrations.
+      parameters:
+      - description: InChIKey string of a metabolite
+        in: query
+        name: inchikey
+        required: true
+        schema:
+          type: string
+      - description: Tanimoto similarity score threshold
+        in: query
+        name: threshold
+        schema:
+          example: 0.6
+          minimum: 0.6
+          type: number
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SimilarMetaboliteConcentration'
+          description: OK
+      summary: Get concentrations of Metabolites.
+      tags:
+      - Metabolites
   /metabolites/meta/:
     get:
       description: see summary
@@ -2224,6 +2251,24 @@ components:
             type: string
           namespace:
             type: string
+        type: object
+      type: array
+    SimilarMetaboliteConcentration:
+      items:
+        nullable: true
+        properties:
+          concentrations:
+            items:
+              type: object
+            type: array
+          inchikey:
+            type: string
+          similarity_score:
+            type: number
+        required:
+        - inchikey
+        - concentrations
+        - similarity_score
         type: object
       type: array
     Tag:
