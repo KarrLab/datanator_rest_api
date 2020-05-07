@@ -34,10 +34,15 @@ def get(inchi, species, last_id='000000000000000000000000', page_size=20):
 
 class concentrations:
 
-    def get(inchikey):
+    def get(inchikey, species='Escherichia coli', taxon_distance=False):
         query = {'inchikey': inchikey}
-        return m_manager.db_obj['metabolite_concentrations'].find_one(filter=query, projection={'_id': 0})
-
+        result = m_manager.db_obj['metabolite_concentrations'].find_one(filter=query, projection={'_id': 0})
+        if taxon_distance:
+            for concentration in result["concentrations"]:
+                name = concentration['species_name']
+                dist = query_manager.TaxonManager().txn_manager().get_canon_common_ancestor(name, species, org_format='tax_name')
+                concentration['taxon_distance'] = dist
+        return result
 
     class similar_compounds:
 

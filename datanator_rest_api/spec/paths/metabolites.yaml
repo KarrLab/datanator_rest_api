@@ -83,6 +83,17 @@ concentrations:
           type: string
         required: true
         description: InChIKey string of a metabolite
+      - in: species
+        name: inchikey
+        schema:
+          type: string
+          example: Escherichia coli
+        description: Target species
+      - in: query
+        name: taxon_distance
+        schema:
+          type: boolean
+        description: Whether to include taxon distance information in concentration list.
     summary: Get concentrations of Metabolites
     description: "Get concentration data for metabolites. The inchikeys parameter takes a list of inchikeys\n
     for which to get data. The consensus flag will return a consensus value instead of an array of observations.\n

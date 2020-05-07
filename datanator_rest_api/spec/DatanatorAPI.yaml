@@ -546,6 +546,18 @@ paths:
         required: true
         schema:
           type: string
+      - description: Target species
+        in: species
+        name: inchikey
+        schema:
+          example: Escherichia coli
+          type: string
+      - description: Whether to include taxon distance information in concentration
+          list.
+        in: query
+        name: taxon_distance
+        schema:
+          type: boolean
       responses:
         '200':
           content:

@@ -61,5 +61,5 @@ class ImplementationTestCase(unittest.TestCase):
         self.assertEqual(result_1.status_code, 200)
 
     def test_similar_concentrations(self):
-        result_1 = self.client.get("/metabolites/concentrations/similar_compounds/?inchikey=XJLXINKUBYWONI-NNYOXOHSSA-O")
+        result_1 = self.client.get("/metabolites/concentrations/similar_compounds/?inchikey=XJLXINKUBYWONI-NNYOXOHSSA-O&threshold=0.7")
         self.assertEqual(result_1.status_code, 200)                
