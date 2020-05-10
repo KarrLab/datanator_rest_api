@@ -1,8 +1,8 @@
 {
     "dev": {
-        "app_function": "datanator_rest_api.core.run",
-        "profile_name": null,
-        "project_name": "datanator-rest-",
+        "app_function": "datanator_rest_api.core.create_app",
+        "profile_name": "karrlab-zl",
+        "project_name": "datanator-rest-api",
         "runtime": "python3.7",
         "s3_bucket": "datanator-rest-api"
     }
