@@ -37,6 +37,8 @@ class concentrations:
     def get(inchikey, species='Escherichia coli', taxon_distance=False):
         query = {'inchikey': inchikey}
         result = m_manager.db_obj['metabolite_concentrations'].find_one(filter=query, projection={'_id': 0})
+        if not result:
+            return []
         if taxon_distance:
             for concentration in result["concentrations"]:
                 name = concentration['species_name']
