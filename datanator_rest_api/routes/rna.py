@@ -7,6 +7,8 @@
 """
 
 from datanator_query_python.config import query_manager
+import simplejson as json
+
 
 rna_manager = query_manager.RnaManager().rna_manager()
 
@@ -24,7 +26,6 @@ def get_kegg_meta(ko):
 
 class halflife:
 
-
     class get_info_by_name:
 
         def get(protein_name='Protein translocase subunit SecD', _from=0, size=10, 
@@ -35,6 +36,7 @@ class halflife:
             for doc in docs:
                 ko = doc.get('ko_number')
                 doc['kegg_meta'] = get_kegg_meta(ko)
+                doc = json.loads(json.dumps(doc, ignore_nan=True))
                 if taxon_distance:
                     append_taxon_distance(doc, result, species)
                 else:
@@ -51,6 +53,7 @@ class halflife:
                                                 size=size)
             for doc in docs:
                 doc['kegg_meta'] = get_kegg_meta(ko_number)
+                doc = json.loads(json.dumps(doc, ignore_nan=True))
                 if taxon_distance:
                     append_taxon_distance(doc, result, species)
                 else:
