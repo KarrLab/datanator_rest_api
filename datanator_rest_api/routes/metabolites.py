@@ -88,8 +88,12 @@ class meta:
 
     def get(inchikey, projection="{'_id': 0, 'kegg_meta.gene_ortholog': 0}"):
         projection = eval(projection)
-        return mm_manager._collection.find_one({'InChI_Key': inchikey}, projection=projection,
+        doc =  mm_manager._collection.find_one({'InChI_Key': inchikey}, projection=projection,
                                               collation=mm_manager.collation)
+        if doc:
+            return doc
+        else:
+            return []
 
 
 class concentration_only:
