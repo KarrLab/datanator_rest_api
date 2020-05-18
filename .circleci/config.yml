@@ -113,9 +113,9 @@ jobs:
               done < .circleci/requirements.txt
             fi
       - run:
-          name: Install package (Python 3)
+          name: Install package (Python 3) (https://github.com/pypa/pip/issues/4537#issuecomment-373386803)
           command: |
-            python3 setup.py install_egg_info (https://github.com/pypa/pip/issues/4537#issuecomment-373386803)
+            python3 setup.py install_egg_info 
             python3 -m pip install -U -e .[all]
       - save_cache:
           key:
