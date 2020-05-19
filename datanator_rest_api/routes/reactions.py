@@ -39,18 +39,19 @@ class kinlaw_by_name:
         projection = eval(projection)
         _, docs = r_manager.get_kinlaw_by_rxn_name(substrates, products, 
                                                    projection=projection, bound=bound, skip=_from, limit=size)
-        queried_species = deque()
-        distance_obj = {}
-        for doc in docs:
-            # try:
-            #     doc['kegg_meta'] = get_kegg_meta(doc['ec_meta']['ec_number'], {'_id': 0, 'gene_ortholog': 0})
-            # except TypeError:
-            #     doc['kegg_meta'] = []
-            if taxon_distance:
+        if taxon_distance:
+            queried_species = deque()
+            distance_obj = {}
+            for doc in docs:
+                # try:
+                #     doc['kegg_meta'] = get_kegg_meta(doc['ec_meta']['ec_number'], {'_id': 0, 'gene_ortholog': 0})
+                # except TypeError:
+                #     doc['kegg_meta'] = []
                 queried_species, distance_obj, doc = dist_manager.get_dist_object(doc, queried_species, distance_obj,
-                                                                                  species, tax_field='taxon_name', org_format='tax_name')
+                                                                                species, tax_field='taxon_name', org_format='tax_name')
                 result.append(doc)
-            else:
+        else:
+            for doc in docs:
                 result.append(doc)
         return result
 
