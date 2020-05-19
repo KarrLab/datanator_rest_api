@@ -10,6 +10,7 @@
 from datanator_query_python.config.query_manager import RxnManager
 from datanator_query_python.config import query_manager
 from datanator_rest_api.util import paginator
+from collections import deque
 
 
 r_manager = RxnManager().rxn_manager()
