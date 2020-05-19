@@ -10,6 +10,7 @@ Any subpaths are contained in an internal class
 :License: MIT
 """
 from datanator_query_python.config import query_manager
+from collections import deque
 from bson.objectid import ObjectId
 
 
@@ -48,8 +49,24 @@ class concentrations:
 
     class similar_compounds:
 
-        def get(inchikey, threshold=0.6):
-            return mc_manager.get_similar_concentrations(inchikey, threshold=threshold)
+        def get(inchikey, threshold=0.6, target_species='homo sapiens', taxon_distance=False):
+            docs = mc_manager.get_similar_concentrations(inchikey, threshold=threshold)
+            if not taxon_distance or docs == []:
+                return docs
+            else:
+                queried_species = deque()
+                distance_obj = {}
+                for doc in docs:
+                    for concentration in doc['concentrations']:
+                        name = concentration['species_name']
+                        if name not in queried_species:
+                            dist = query_manager.TaxonManager().txn_manager().get_canon_common_ancestor(name, target_species, org_format='tax_name')
+                            distance_obj[name] = dist
+                            queried_species.append(name)
+                            concentration['taxon_distance'] = dist
+                        else:
+                            concentration['taxon_distance'] = distance_obj[name]
+                return docs
 
 
 class summary:

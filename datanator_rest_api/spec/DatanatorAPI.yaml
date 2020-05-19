@@ -586,6 +586,19 @@ paths:
           example: 0.6
           minimum: 0.6
           type: number
+      - description: target species given by the user.
+        in: query
+        name: target_species
+        schema:
+          example: homo sapiens
+          type: string
+      - description: whether to include taxonomic distance information in concentration
+          object.
+        in: query
+        name: taxon_distance
+        schema:
+          example: false
+          type: boolean
       responses:
         '200':
           content:
@@ -1481,6 +1494,8 @@ paths:
           description: OK.
         '404':
           description: Api server not found.
+        5XX:
+          description: Unexpected error.
       summary: Pings the server to verfy connection
       tags:
       - Info

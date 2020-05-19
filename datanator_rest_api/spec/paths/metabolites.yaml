@@ -125,6 +125,18 @@ similar_compounds:
           minimum: 0.6
           example: 0.6
         description: Tanimoto similarity score threshold
+      - in: query
+        name: target_species
+        schema:
+          type: string
+          example: homo sapiens
+        description: target species given by the user.
+      - in: query
+        name: taxon_distance
+        schema:
+          type: boolean
+          example: false
+        description: whether to include taxonomic distance information in concentration object.
     summary: Get concentrations of Metabolites.
     description: "Get metabolite's chemically-similar metabolites' concentrations."
     responses:
