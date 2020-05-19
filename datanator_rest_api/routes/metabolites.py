@@ -10,6 +10,7 @@ Any subpaths are contained in an internal class
 :License: MIT
 """
 from datanator_query_python.config import query_manager
+from datanator_rest_api.util import taxon_distance
 from collections import deque
 from bson.objectid import ObjectId
 
@@ -18,6 +19,8 @@ ey_manager = query_manager.Manager().eymdb_manager()
 m_manager = query_manager.Manager().metabolite_manager()
 mm_manager = query_manager.metabolites_meta_manager()
 mc_manager = query_manager.Manager().metabolite_concentration_manager()
+dist_manager = taxon_distance.TaxonDist()
+
 
 def put(body):
     return ("test")
@@ -41,10 +44,12 @@ class concentrations:
         if not result:
             return {}
         if taxon_distance:
-            for concentration in result["concentrations"]:
-                name = concentration['species_name']
-                dist = query_manager.TaxonManager().txn_manager().get_canon_common_ancestor(name, species, org_format='tax_name')
-                concentration['taxon_distance'] = dist
+            queried_species = deque()
+            distance_obj = {}
+            for i, concentration in enumerate(result["concentrations"]):
+                queried_species, distance_obj, concentration = dist_manager.get_dist_object(concentration, queried_species, distance_obj,
+                                                                                    species, tax_field='species_name', org_format='tax_name')
+                result['concentrations'][i] = concentration
         return result
 
     class similar_compounds:
@@ -57,15 +62,10 @@ class concentrations:
                 queried_species = deque()
                 distance_obj = {}
                 for doc in docs:
-                    for concentration in doc['concentrations']:
-                        name = concentration['species_name']
-                        if name not in queried_species:
-                            dist = query_manager.TaxonManager().txn_manager().get_canon_common_ancestor(name, target_species, org_format='tax_name')
-                            distance_obj[name] = dist
-                            queried_species.append(name)
-                            concentration['taxon_distance'] = dist
-                        else:
-                            concentration['taxon_distance'] = distance_obj[name]
+                    for i, concentration in enumerate(doc['concentrations']):
+                        queried_species, distance_obj, concentration = dist_manager.get_dist_object(concentration, queried_species, distance_obj,
+                                                                                         target_species, tax_field='species_name', org_format='tax_name')
+                        doc['concentrations'][i] = concentration
                 return docs
 
 
