@@ -56,6 +56,8 @@ class concentrations:
 
         def get(inchikey, threshold=0.6, target_species='homo sapiens', taxon_distance=False):
             docs = mc_manager.get_similar_concentrations(inchikey, threshold=threshold)
+            doc = concentrations.get(inchikey, species=target_species, taxon_distance=taxon_distance)
+            docs.insert(0, doc)
             if not taxon_distance or docs == []:
                 return docs
             else:
