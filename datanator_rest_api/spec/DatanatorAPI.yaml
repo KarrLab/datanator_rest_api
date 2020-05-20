@@ -1026,7 +1026,8 @@ paths:
         name: species
         schema:
           type: string
-      - example: '{''_id'': 0, ''kegg_meta.gene_ortholog'': 0}'
+      - example: '{''kegg_meta.gene_ortholog'': 0, ''kegg_meta._id'': 0, ''_id'':
+          0}'
         in: query
         name: projection
         schema:
