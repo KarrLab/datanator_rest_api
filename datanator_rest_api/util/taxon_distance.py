@@ -14,7 +14,7 @@ class TaxonDist:
         Args:
             doc(:obj:`Obj`): documents that need to be processed.
             queried_species (:obj:`deque`): already queried species.
-            distance_obj (:obj:`Obj`): distance objects containing already queries species.
+            distance_obj (:obj:`Obj`): distance objects containing already queried species.
             target_species (:obj:`str` or :obj:`int`): target species.
             org_format (:obj:`str`, optional): format of species identifier (tax_id or tax_name). Defaults to 'tax_id'.
             tax_field(:obj:`str`, optional): field containing taxon information in documents.

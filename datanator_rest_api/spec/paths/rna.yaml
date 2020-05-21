@@ -110,6 +110,18 @@ get_modifications_by_ko:
           type: integer
         required: true
         example: 10
+      - in: query
+        name: target_organism
+        schema:
+          type: string
+        required: false
+        example: Escherichia coli
+      - in: query
+        name: taxon_distance
+        schema:
+          type: boolean
+        required: false
+        example: false
     summary: Get RNA modifications.
     description: "Get RNA modification information based on protein kegg ortholog group."
     responses:

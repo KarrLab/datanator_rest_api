@@ -8,9 +8,13 @@
 
 from datanator_query_python.config import query_manager
 import simplejson as json
+from collections import deque
+from datanator_rest_api.util import taxon_distance
 
 
 rna_manager = query_manager.RnaManager().rna_manager()
+dist_manager = taxon_distance.TaxonDist()
+
 
 def append_taxon_distance(doc, result, species):
     for sub_doc in doc['halflives']:
@@ -65,7 +69,7 @@ class modification:
 
 
     class get_modifications_by_ko:
-        def get(ko_number, _from=0, size=10):
+        def get(ko_number, _from=0, size=10, target_organism='Escherichia coli', taxon_distance=False):
             result = []
             query = {"kegg_orthology_id": ko_number}
             docs = rna_manager.db_obj['rna_modification'].find(filter=query, skip=_from,
@@ -73,8 +77,22 @@ class modification:
             if not docs:
                 return []
             else:
-                for doc in docs:
-                    result.append(doc)
+                if not taxon_distance:
+                    for doc in docs:
+                        result.append(doc)
+                else:
+                    queried_species = deque()
+                    distance_obj = {}
+                    for doc in docs: # iterate documents
+                        mods = doc.get('modifications')
+                        if not mods:  # document has no modifications field
+                            result.append(doc)
+                        else: # iterate modification field in document and calc taxon distance
+                            for i, mod in enumerate(mods):
+                                queried_species, distance_obj, mod = dist_manager.get_dist_object(mod, queried_species, distance_obj,
+                                                                                                  target_organism, tax_field='organism', org_format='tax_name')
+                                doc['modifications'][i] = mod
+                            result.append(doc)
                 return result
 
 

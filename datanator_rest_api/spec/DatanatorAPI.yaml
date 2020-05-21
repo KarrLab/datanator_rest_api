@@ -1450,6 +1450,18 @@ paths:
         required: true
         schema:
           type: integer
+      - example: Escherichia coli
+        in: query
+        name: target_organism
+        required: false
+        schema:
+          type: string
+      - example: false
+        in: query
+        name: taxon_distance
+        required: false
+        schema:
+          type: boolean
       responses:
         '200':
           content:
