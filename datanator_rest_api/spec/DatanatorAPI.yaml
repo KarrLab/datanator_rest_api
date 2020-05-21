@@ -273,6 +273,7 @@ paths:
           - taxon_tree
           - brenda_reactions
           - metabolite_concentrations
+          - rna_modification
           type: string
       - in: query
         name: from_
