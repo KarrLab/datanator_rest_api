@@ -1427,6 +1427,42 @@ paths:
       tags:
       - RNA
       - RNA Half-life
+  /rna/modification/get_modifications_by_ko/:
+    get:
+      description: Get RNA modification information based on protein kegg ortholog
+        group.
+      parameters:
+      - example: K14218
+        in: query
+        name: ko_number
+        required: true
+        schema:
+          type: string
+      - example: 0
+        in: query
+        name: _from
+        required: true
+        schema:
+          type: integer
+      - example: 10
+        in: query
+        name: size
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  type: object
+                type: array
+          description: OK
+      summary: Get RNA modifications.
+      tags:
+      - RNA
+      - RNA Modification
   /rna/summary/get_distinct/:
     get:
       description: Get number of distinct values in field.
