@@ -1099,6 +1099,25 @@ paths:
         schema:
           default: 0
           type: integer
+      - example: homo sapiens
+        in: query
+        name: species
+        required: false
+        schema:
+          type: string
+      - example: false
+        in: query
+        name: taxon_distance
+        required: false
+        schema:
+          type: boolean
+      - example: '{''kegg_meta.gene_ortholog'': 0, ''kegg_meta._id'': 0, ''_id'':
+          0}'
+        in: query
+        name: projection
+        required: false
+        schema:
+          type: string
       responses:
         '200':
           content:

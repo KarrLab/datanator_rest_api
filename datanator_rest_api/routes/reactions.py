@@ -23,12 +23,25 @@ def get_kegg_meta(ec, projection):
 
 class kinlaw_by_rxn:
 
-    def get(substrates, products, _from, size, bound, dof):
-        projection = {'_id': 0}
-        count, docs = r_manager.get_kinlaw_by_rxn(substrates, products, dof=dof, 
-                                                                   projection=projection, bound=bound)
-        manager = paginator.Paginator(count, docs)
-        return manager.page(_from=_from, size=size)
+    def get(substrates, products, _from, size, bound, dof,
+            taxon_distance=False, species='homo sapiens',
+            projection="{'kegg_meta.gene_ortholog': 0, 'kegg_meta._id': 0, '_id': 0}"):
+        result = []
+        projection = eval(projection)
+        _, docs = r_manager.get_kinlaw_by_rxn(substrates, products, dof=dof, 
+                                              projection=projection, bound=bound,
+                                              skip=_from, limit=size)
+        if taxon_distance:
+            queried_species = deque()
+            distance_obj = {}
+            for doc in docs:
+                queried_species, distance_obj, doc = dist_manager.get_dist_object(doc, queried_species, distance_obj,
+                                                                                species, tax_field='taxon_name', org_format='tax_name')
+                result.append(doc)
+        else:
+            for doc in docs:
+                result.append(doc)
+        return result
 
 
 class kinlaw_by_name:
@@ -43,10 +56,6 @@ class kinlaw_by_name:
             queried_species = deque()
             distance_obj = {}
             for doc in docs:
-                # try:
-                #     doc['kegg_meta'] = get_kegg_meta(doc['ec_meta']['ec_number'], {'_id': 0, 'gene_ortholog': 0})
-                # except TypeError:
-                #     doc['kegg_meta'] = []
                 queried_species, distance_obj, doc = dist_manager.get_dist_object(doc, queried_species, distance_obj,
                                                                                 species, tax_field='taxon_name', org_format='tax_name')
                 result.append(doc)

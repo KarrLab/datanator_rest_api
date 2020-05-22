@@ -46,6 +46,24 @@ kinlaw_by_rxn:
           default: 0
         required: false
         description: degree of freedom allowed (number of parts of inchikey to truncate); the default is 0
+      - in: query
+        name: species
+        schema:
+          type: string
+        example: 'homo sapiens'
+        required: false
+      - in: query
+        name: taxon_distance
+        schema:
+          type: boolean
+        example: false
+        required: false
+      - in: query
+        name: projection
+        schema:
+          type: string
+        example: "{'kegg_meta.gene_ortholog': 0, 'kegg_meta._id': 0, '_id': 0}"
+        required: false
     tags:
       - Reactions
     summary: Get reactions based on substrates' and products' inchikey
