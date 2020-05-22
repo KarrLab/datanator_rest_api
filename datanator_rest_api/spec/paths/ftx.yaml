@@ -224,7 +224,7 @@ frontend_num_of_index:
             schema:
               $ref: "#/components/schemas/FtxHitsInPage"
 
-protein_ranked_by_ko:
+gene_ranked_by_ko:
   get:
     parameters:
       - in: query

@@ -53,7 +53,7 @@ class text_search:
             return result
 
 
-    class protein_ranked_by_ko:
+    class gene_ranked_by_ko:
 
         def get(query_message, from_, size, fields=['*']):
             r = f_manager.get_genes_ko_count(query_message, size,
