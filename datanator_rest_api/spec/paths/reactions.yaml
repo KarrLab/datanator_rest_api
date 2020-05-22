@@ -43,6 +43,7 @@ kinlaw_by_rxn:
         name: dof
         schema:
           type: integer
+          enum: [0, 1, 2]
           default: 0
         required: false
         description: degree of freedom allowed (number of parts of inchikey to truncate); the default is 0

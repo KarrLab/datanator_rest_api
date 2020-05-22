@@ -1098,6 +1098,10 @@ paths:
         required: false
         schema:
           default: 0
+          enum:
+          - 0
+          - 1
+          - 2
           type: integer
       - example: homo sapiens
         in: query
