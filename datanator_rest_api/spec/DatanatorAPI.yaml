@@ -351,7 +351,7 @@ paths:
       - description: Fields in which the text search will be done
         in: query
         name: fields
-        required: true
+        required: false
         schema:
           default:
           - protein_name

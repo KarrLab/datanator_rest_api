@@ -55,7 +55,7 @@ class text_search:
 
     class protein_ranked_by_ko:
 
-        def get(query_message, from_, size, fields):
-            r = f_manager.get_protein_ko_count_abundance(query_message, size,
-                                                         fields=fields, from_=from_)
+        def get(query_message, from_, size, fields=['*']):
+            r = f_manager.get_genes_ko_count(query_message, size,
+                                             fields=fields, from_=from_)
             return r

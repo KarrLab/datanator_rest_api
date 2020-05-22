@@ -254,7 +254,7 @@ protein_ranked_by_ko:
             type: string
           default: ['protein_name', 'synonyms', 'enzymes', 'ko_name', 'gene_name', 'name',
                     'enzymes.enzyme.enzyme_name', 'enzymes.subunit.canonical_sequence', 'species']
-        required: true
+        required: false
         description: Fields in which the text search will be done
     tags:
       - FTX
