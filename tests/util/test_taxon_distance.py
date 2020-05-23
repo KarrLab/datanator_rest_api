@@ -11,7 +11,8 @@ class TestTaxonDist(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        cls.src.manager.client.close()
+        # cls.src.manager.client.close()
+        pass
 
     def test_get_dist_object(self):
         queried_species = deque()
