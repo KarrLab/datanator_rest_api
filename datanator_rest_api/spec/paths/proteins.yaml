@@ -7,7 +7,7 @@ precise_abundance:
           type: array
           items:
             type: string
-        example: Q54JE4
+        example: [Q54JE4]
         required: true
       - in: query
         name: taget_species

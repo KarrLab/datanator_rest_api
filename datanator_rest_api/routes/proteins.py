@@ -33,15 +33,18 @@ class precise_abundance:
 
     def get(uniprot_id=None, target_species='homo sapiens',
             taxon_distance=False):
-        doc =  p_manager.get_abundance_by_id(uniprot_id)
+        docs = p_manager.get_abundance_by_id(uniprot_id)
         if not taxon_distance:
-            return doc
+            return docs
         else:
+            result = []
             queried_species = deque()
             distance_obj = {}
-            _, _, doc = dist_manager.get_dist_object(doc, queried_species, distance_obj,
-                                                     target_species, tax_field='species_name', org_format='tax_name')
-            return doc
+            for doc in docs:
+                _, _, doc = dist_manager.get_dist_object(doc, queried_species, distance_obj,
+                                                        target_species, tax_field='species_name', org_format='tax_name')
+                result.append(doc)
+            return result
 
 
 class proximity_abundance:

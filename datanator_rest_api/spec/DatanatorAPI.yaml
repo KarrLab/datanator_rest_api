@@ -774,7 +774,8 @@ paths:
         If abundance value for the protein is not found, one can search for proximity proteins
          using proximity_abundance
       parameters:
-      - example: Q54JE4
+      - example:
+        - Q54JE4
         in: query
         name: uniprot_id
         required: true
