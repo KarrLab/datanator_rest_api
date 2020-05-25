@@ -774,18 +774,26 @@ paths:
         If abundance value for the protein is not found, one can search for proximity proteins
          using proximity_abundance
       parameters:
-      - in: query
+      - example: Q54JE4
+        in: query
         name: uniprot_id
-        required: false
+        required: true
         schema:
           items:
             type: string
           type: array
-      - in: query
-        name: kegg_orthology
+      - example: homo sapiens
+        in: query
+        name: taget_species
         required: false
         schema:
           type: string
+      - example: false
+        in: query
+        name: taxon_distance
+        required: false
+        schema:
+          type: boolean
       responses:
         '200':
           content:
@@ -2104,7 +2112,6 @@ components:
         - mass
         - abundances
         - ncbi_taxonomy_id
-        - species_name
         type: object
       type: array
     ProteinMetaSingle:

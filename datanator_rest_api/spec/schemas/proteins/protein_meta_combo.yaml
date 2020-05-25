@@ -10,7 +10,6 @@ items:
     - mass
     - abundances
     - ncbi_taxonomy_id
-    - species_name
   properties:
     uniprot_id:
       type: string

@@ -7,12 +7,20 @@ precise_abundance:
           type: array
           items:
             type: string
-        required: false
+        example: Q54JE4
+        required: true
       - in: query
-        name: kegg_orthology
+        name: taget_species
         schema:
           type: string
         required: false
+        example: homo sapiens
+      - in: query
+        name: taxon_distance
+        schema:
+          type: boolean
+        required: false
+        example: false
     tags:
       - Proteins
     summary: Get abundance values for proteins

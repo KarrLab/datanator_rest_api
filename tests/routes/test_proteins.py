@@ -22,10 +22,6 @@ class ImplementationTestCase(unittest.TestCase):
         self.assertEqual(result_1.status_code, 200)
         self.assertEqual(result_2.status_code, 200)
         self.assertEqual(result_0.status_code, 200)
-        result_3 = self.client.get('/proteins/precise_abundance/?kegg_orthology=K00940')
-        result_4 = self.client.get('/proteins/precise_abundance/?kegg_orthology=K00940&uniprot_id=Q9D0T1')
-        self.assertEqual(result_3.status_code, 200)
-        self.assertEqual(result_4.status_code, 200)
 
 
     # @unittest.skip('passed')

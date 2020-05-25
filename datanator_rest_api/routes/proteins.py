@@ -10,11 +10,12 @@
 
 from datanator_query_python.config import query_manager
 from datanator_rest_api.util import taxon_distance
+from collections import deque
 
 
 p_manager = query_manager.Manager().protein_manager()
 dist_manager = taxon_distance.TaxonDist()
-from collections import deque
+
 
 def get():
     return("")
@@ -30,14 +31,17 @@ def post(body):
 
 class precise_abundance:
 
-    def get(uniprot_id=None, kegg_orthology=None, target_species='homo sapiens',
+    def get(uniprot_id=None, target_species='homo sapiens',
             taxon_distance=False):
-        if uniprot_id is not None and kegg_orthology is None:
-            return p_manager.get_abundance_by_id(uniprot_id)
-        elif uniprot_id is None and kegg_orthology is not None:
-            return p_manager.get_abundance_by_ko(kegg_orthology)
-        else: 
-            return [{'uniprot_id': 'One and only one input option is allowed.', 'abundances': []}]
+        doc =  p_manager.get_abundance_by_id(uniprot_id)
+        if not taxon_distance:
+            return doc
+        else:
+            queried_species = deque()
+            distance_obj = {}
+            _, _, doc = dist_manager.get_dist_object(doc, queried_species, distance_obj,
+                                                     target_species, tax_field='species_name', org_format='tax_name')
+            return doc
 
 
 class proximity_abundance:
