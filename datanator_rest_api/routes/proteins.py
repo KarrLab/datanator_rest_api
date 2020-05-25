@@ -9,9 +9,12 @@
 
 
 from datanator_query_python.config import query_manager
+from datanator_rest_api.util import taxon_distance
 
 
 p_manager = query_manager.Manager().protein_manager()
+dist_manager = taxon_distance.TaxonDist()
+from collections import deque
 
 def get():
     return("")
@@ -27,7 +30,8 @@ def post(body):
 
 class precise_abundance:
 
-    def get(uniprot_id=None, kegg_orthology=None):
+    def get(uniprot_id=None, kegg_orthology=None, target_species='homo sapiens',
+            taxon_distance=False):
         if uniprot_id is not None and kegg_orthology is None:
             return p_manager.get_abundance_by_id(uniprot_id)
         elif uniprot_id is None and kegg_orthology is not None:
