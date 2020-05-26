@@ -73,7 +73,7 @@ class summary:
     class concentration_count():
     
         def get():
-            return ey_manager.get_concentration_count()
+            return mc_manager.get_conc_count()
 
     
     class ecmdb_doc_count():

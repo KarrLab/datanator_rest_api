@@ -1584,6 +1584,21 @@ paths:
       - RNA
       - RNA Half-life
       - Meta
+  /rna/summary/get_total_modifications/:
+    get:
+      description: Get total number of RNA modifications in database.
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: integer
+          description: OK
+      summary: Get total number of RNA modifications in database.
+      tags:
+      - RNA
+      - RNA Half-life
+      - Meta
   /status/:
     get:
       responses:

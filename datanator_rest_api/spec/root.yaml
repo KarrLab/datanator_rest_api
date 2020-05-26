@@ -119,6 +119,8 @@ paths:
     $ref: paths/rna.yaml#/get_publication_num/
   /rna/summary/get_distinct/:
     $ref: paths/rna.yaml#/get_distinct/
+  /rna/summary/get_total_modifications/:
+    $ref: paths/rna.yaml#/get_total_modifications/
   /taxon/canon_rank_distance/:
     $ref: paths/taxon.yaml#/canon_rank_distance/
   /taxon/canon_rank_distance_by_name/:

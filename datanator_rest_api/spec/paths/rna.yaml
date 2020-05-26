@@ -166,6 +166,22 @@ get_publication_num:
             schema:
               type: integer
 
+get_total_modifications:
+  get:
+    tags:
+      - RNA
+      - RNA Half-life
+      - Meta
+    summary: Get total number of RNA modifications in database.
+    description: Get total number of RNA modifications in database.
+    responses:
+      "200":
+        description: OK
+        content:
+          application/json:
+            schema:
+              type: integer
+
 get_distinct:
   get:
     parameters:

@@ -9,8 +9,8 @@ flask = ">= 1.1.0"
 mock = "*"
 prance = "*"
 pytest = "*"
-datanator-rest-api = {editable = true,path = "."}
-datanator-query-python = {editable = true,path = "./../datanator_query_python"}
+datanator_rest_api = {editable = true,path = "."}
+datanator_query_python = {editable = true,path = "./../datanator_query_python"}
 pylint = "*"
 zappa = "*"
 
@@ -19,7 +19,7 @@ git = "https://github.com/KarrLab/pkg_utils.git"
 editable = true
 
 [packages.datanator_query_python]
-git = "https://github.com/KarrLab/datanator_query_python.git"
+git = "https://github.com/KarrLab/datanator_query_python.git@testapi"
 editable = true
 
 [packages.connexion]

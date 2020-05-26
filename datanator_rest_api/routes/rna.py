@@ -7,6 +7,7 @@
 """
 
 from datanator_query_python.config import query_manager
+from datanator_query_python.aggregate import pipelines
 import simplejson as json
 from collections import deque
 from datanator_rest_api.util import taxon_distance
@@ -98,17 +99,24 @@ class modification:
 
 class summary:
 
-    class get_total_docs:
-        
+
+    class get_total_docs:        
         def get():
             return rna_manager.collection.count_documents({})
 
-    class get_publication_num:
 
+    class get_publication_num:
         def get():
             return len(rna_manager.collection.distinct('halflives.reference.doi'))
 
-    class get_distinct:
-        
+
+    class get_distinct:        
         def get(_input):
             return len(rna_manager.collection.distinct(_input))
+
+
+    class get_total_modifications:
+        def get():
+            pipeline = pipelines.Pipeline().aggregate_total_array_length("modifications")
+            for doc in rna_manager.db_obj['rna_modification'].aggregate(pipeline):
+                return doc['total']
