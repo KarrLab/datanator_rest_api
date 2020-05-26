@@ -9,8 +9,8 @@ flask = ">= 1.1.0"
 mock = "*"
 prance = "*"
 pytest = "*"
-datanator_rest_api = {editable = true,path = "."}
-datanator_query_python = {editable = true,path = "./../datanator_query_python"}
+datanator-rest-api = {editable = true,path = "."}
+datanator-query-python = {editable = true,path = "./../datanator_query_python"}
 pylint = "*"
 zappa = "*"
 
