@@ -47,10 +47,9 @@ class kinlaw_by_name:
         _, docs = r_manager.get_kinlaw_by_rxn_name(substrates, products, 
                                                    projection=projection, bound=bound, skip=_from, limit=size)
         if taxon_distance:
-            result = dist_manager.arrange_distance_objs(docs, target_species=species, tax_field='taxon_name', org_format='tax_name')
-        else:
-            for doc in docs:
-                result.append(doc)
+            docs = dist_manager.arrange_distance_objs(docs, target_species=species, tax_field='taxon_name', org_format='tax_name')
+        for doc in docs:
+            result.append(doc)
         return result
 
 

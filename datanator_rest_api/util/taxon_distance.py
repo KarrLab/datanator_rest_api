@@ -52,11 +52,9 @@ class TaxonDist:
         Return:
             (:obj:`list` of :obj:`Obj`): List of documents that have the taxon_distance objects.
         """
-        # result = []
         queried_species = deque()
         distance_obj = {}
         for doc in docs:
             queried_species, distance_obj, doc = self.get_dist_object(doc, queried_species, distance_obj,
                                                                       target_species, tax_field=tax_field, org_format=org_format)
-            # result.append(doc)
         return docs
