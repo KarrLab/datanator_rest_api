@@ -10,7 +10,6 @@
 from datanator_query_python.config.query_manager import RxnManager
 from datanator_query_python.config import query_manager
 from datanator_rest_api.util import paginator, taxon_distance
-from collections import deque
 
 
 r_manager = RxnManager().rxn_manager()
@@ -32,12 +31,7 @@ class kinlaw_by_rxn:
                                               projection=projection, bound=bound,
                                               skip=_from, limit=size)
         if taxon_distance:
-            queried_species = deque()
-            distance_obj = {}
-            for doc in docs:
-                queried_species, distance_obj, doc = dist_manager.get_dist_object(doc, queried_species, distance_obj,
-                                                                                  species, tax_field='taxon_name', org_format='tax_name')
-                result.append(doc)
+            result = dist_manager.arrange_distance_objs(docs, target_species=species, tax_field='taxon_name', org_format='tax_name')
         else:
             for doc in docs:
                 result.append(doc)
@@ -53,12 +47,7 @@ class kinlaw_by_name:
         _, docs = r_manager.get_kinlaw_by_rxn_name(substrates, products, 
                                                    projection=projection, bound=bound, skip=_from, limit=size)
         if taxon_distance:
-            queried_species = deque()
-            distance_obj = {}
-            for doc in docs:
-                queried_species, distance_obj, doc = dist_manager.get_dist_object(doc, queried_species, distance_obj,
-                                                                                species, tax_field='taxon_name', org_format='tax_name')
-                result.append(doc)
+            result = dist_manager.arrange_distance_objs(docs, target_species=species, tax_field='taxon_name', org_format='tax_name')
         else:
             for doc in docs:
                 result.append(doc)
