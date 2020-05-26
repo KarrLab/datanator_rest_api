@@ -216,6 +216,20 @@ summary:
             application/json:
               schema:
                 type: integer
+
+  num_obs_abundances:
+    get:
+      tags:
+        - Proteins
+      summary: Get number of observed abundance values
+      description: For about page
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: integer
                 
   num_publications:
     get:

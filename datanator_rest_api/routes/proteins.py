@@ -9,6 +9,7 @@
 
 
 from datanator_query_python.config import query_manager
+from datanator_query_python.aggregate import pipelines
 from datanator_rest_api.util import taxon_distance
 
 
@@ -94,6 +95,13 @@ class summary:
 
         def get():
             return p_manager.collection.count_documents({'abundances': {"$exists": True}})
+
+    
+    class num_obs_abundances():
+        def get():
+            pipeline = pipelines.Pipeline().aggregate_total_array_length("observation")
+            for doc in p_manager.db_obj['pax'].aggregate(pipeline):
+                return doc['total'] 
 
     
     class num_publications():

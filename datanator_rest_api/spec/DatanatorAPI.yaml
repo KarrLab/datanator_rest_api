@@ -961,6 +961,19 @@ paths:
       summary: Get number of proteins with abundance values
       tags:
       - Proteins
+  /proteins/summary/num_obs_abundances/:
+    get:
+      description: For about page
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: integer
+          description: OK
+      summary: Get number of observed abundance values
+      tags:
+      - Proteins
   /proteins/summary/num_organism/:
     get:
       description: For about page
