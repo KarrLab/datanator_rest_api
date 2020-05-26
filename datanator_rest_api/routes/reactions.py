@@ -36,7 +36,7 @@ class kinlaw_by_rxn:
             distance_obj = {}
             for doc in docs:
                 queried_species, distance_obj, doc = dist_manager.get_dist_object(doc, queried_species, distance_obj,
-                                                                                species, tax_field='taxon_name', org_format='tax_name')
+                                                                                  species, tax_field='taxon_name', org_format='tax_name')
                 result.append(doc)
         else:
             for doc in docs:

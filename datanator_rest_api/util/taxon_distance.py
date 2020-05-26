@@ -1,4 +1,5 @@
 from datanator_query_python.config import query_manager
+from collections import deque
 
 
 class TaxonDist:
@@ -37,3 +38,25 @@ class TaxonDist:
             if self.debugging:
                 doc['queried'] = False
         return queried_species, distance_obj, doc
+
+    def arrange_distance_objs(self, docs, target_species='homo sapiens',
+                              tax_field='taxon_name', org_format='tax_name'):
+        """Arrange the distance object returned into arrays.
+
+        Args:
+            docs(:obj:`Iter`): Documents that need calculation of taxon_distance and rearranging.
+            target_species(:obj:`str` or :obj:`int`, optional): User input for target species.
+            tax_field(:obj:`str`, optional): Field containing taxon information in documents.
+            org_format (:obj:`str`, optional): format of species identifier (tax_id or tax_name). Defaults to 'tax_id'.
+
+        Return:
+            (:obj:`list` of :obj:`Obj`): List of documents that have the taxon_distance objects.
+        """
+        result = []
+        queried_species = deque()
+        distance_obj = {}
+        for doc in docs:
+            queried_species, distance_obj, doc = self.get_dist_object(doc, queried_species, distance_obj,
+                                                                      target_species, tax_field=tax_field, org_format=org_format)
+            result.append(doc)
+        return result
