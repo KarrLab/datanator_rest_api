@@ -230,6 +230,20 @@ summary:
             application/json:
               schema:
                 type: integer
+
+  num_obs_modifications:
+    get:
+      tags:
+        - Proteins
+      summary: Get number of observed protein modifications
+      description: For about page
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: integer
                 
   num_publications:
     get:

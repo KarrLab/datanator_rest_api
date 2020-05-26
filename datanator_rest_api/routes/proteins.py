@@ -101,6 +101,13 @@ class summary:
         def get():
             pipeline = pipelines.Pipeline().aggregate_total_array_length("observation")
             for doc in p_manager.db_obj['pax'].aggregate(pipeline):
+                return doc['total']
+
+
+    class num_obs_modifications():
+        def get():
+            pipeline = pipelines.Pipeline().aggregate_total_array_length("modifications")
+            for doc in p_manager.db_obj['uniprot'].aggregate(pipeline):
                 return doc['total'] 
 
     

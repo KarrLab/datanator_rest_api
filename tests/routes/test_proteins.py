@@ -78,6 +78,10 @@ class ImplementationTestCase(unittest.TestCase):
         result = self.client.get('/proteins/summary/num_obs_abundances/')
         self.assertEqual(result.status_code, 200)
 
+    def test_summary_num_obs_modifications(self):
+        result = self.client.get('/proteins/summary/num_obs_modifications/')
+        self.assertEqual(result.status_code, 200)
+
     def test_similar_protein_refseq(self):
         result = self.client.get('/proteins/similar_protein/refseq/?uniprot_id=q9vb24&identity=90')
         self.assertEqual(result.status_code, 200)
