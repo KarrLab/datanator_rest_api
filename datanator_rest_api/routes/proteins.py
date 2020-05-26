@@ -10,7 +10,6 @@
 
 from datanator_query_python.config import query_manager
 from datanator_rest_api.util import taxon_distance
-from collections import deque
 
 
 p_manager = query_manager.Manager().protein_manager()
@@ -37,14 +36,7 @@ class precise_abundance:
         if not taxon_distance:
             return docs
         else:
-            result = []
-            queried_species = deque()
-            distance_obj = {}
-            for doc in docs:
-                _, _, doc = dist_manager.get_dist_object(doc, queried_species, distance_obj,
-                                                        target_species, tax_field='species_name', org_format='tax_name')
-                result.append(doc)
-            return result
+            return dist_manager.arrange_distance_objs(docs, target_species=target_species, tax_field='species_name', org_format='tax_name')
 
 
 class proximity_abundance:
