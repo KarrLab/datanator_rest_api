@@ -58,13 +58,7 @@ class concentrations:
             if not taxon_distance or docs == []:
                 return docs
             else:
-                queried_species = deque()
-                distance_obj = {}
-                for doc in docs:
-                    for i, concentration in enumerate(doc['concentrations']):
-                        queried_species, distance_obj, concentration = dist_manager.get_dist_object(concentration, queried_species, distance_obj,
-                                                                                         target_species, tax_field='species_name', org_format='tax_name')
-                        doc['concentrations'][i] = concentration
+                _ = dist_manager.arrange_distance_objs(docs["concentrations"], target_species=target_species, tax_field='species_name', org_format='tax_name')
                 return docs
 
 
