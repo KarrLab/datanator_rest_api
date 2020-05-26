@@ -263,7 +263,7 @@ similar_protein:
                   nullable: true
 
 related:
-  related_reactions:
+  related_reactions_by_kegg:
     get:
       parameters:
         - in: query
@@ -276,6 +276,29 @@ related:
         - Proteins
       summary: Get related reactions based on kegg ortholog groups 
       description: Finds all reactions catalyzed by proteins belonging to one kegg group
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  nullable: true
+  related_reactions_by_uniprot:
+    get:
+      parameters:
+        - in: query
+          name: uniprot_id
+          schema:
+            type: string
+          required: true
+          example: Q55804
+      tags:
+        - Proteins
+      summary: Get related reactions based on protein's uniprot_id 
+      description: Finds all reactions catalyzed by protein or the subunit of the enzyme contains protein
       responses:
         "200":
           description: OK

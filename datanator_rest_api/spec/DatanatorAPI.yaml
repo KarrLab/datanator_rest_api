@@ -865,7 +865,7 @@ paths:
       summary: Get abundance values for proteins along the taxonomic tree
       tags:
       - Proteins
-  /proteins/related/related_reactions/:
+  /proteins/related/related_reactions_by_kegg/:
     get:
       description: Finds all reactions catalyzed by proteins belonging to one kegg
         group
@@ -887,6 +887,30 @@ paths:
                 type: array
           description: OK
       summary: Get related reactions based on kegg ortholog groups
+      tags:
+      - Proteins
+  /proteins/related/related_reactions_by_uniprot/:
+    get:
+      description: Finds all reactions catalyzed by protein or the subunit of the
+        enzyme contains protein
+      parameters:
+      - example: Q55804
+        in: query
+        name: uniprot_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  nullable: true
+                  type: object
+                type: array
+          description: OK
+      summary: Get related reactions based on protein's uniprot_id
       tags:
       - Proteins
   /proteins/similar_protein/refseq/:
