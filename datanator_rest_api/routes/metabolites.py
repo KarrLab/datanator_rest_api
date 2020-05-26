@@ -44,12 +44,13 @@ class concentrations:
         if not result:
             return {}
         if taxon_distance:
-            queried_species = deque()
-            distance_obj = {}
-            for i, concentration in enumerate(result["concentrations"]):
-                queried_species, distance_obj, concentration = dist_manager.get_dist_object(concentration, queried_species, distance_obj,
-                                                                                    species, tax_field='species_name', org_format='tax_name')
-                result['concentrations'][i] = concentration
+            # queried_species = deque()
+            # distance_obj = {}
+            # for i, concentration in enumerate(result["concentrations"]):
+            #     queried_species, distance_obj, concentration = dist_manager.get_dist_object(concentration, queried_species, distance_obj,
+            #                                                                         species, tax_field='species_name', org_format='tax_name')
+            #     result['concentrations'][i] = concentration
+            _ = dist_manager.arrange_distance_objs(result["concentrations"], target_species=species, tax_field='species_name', org_format='tax_name')
         return result
 
     class similar_compounds:
