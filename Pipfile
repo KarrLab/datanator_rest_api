@@ -10,7 +10,7 @@ mock = "*"
 prance = "*"
 pytest = "*"
 datanator-rest-api = {editable = true,path = "."}
-datanator-query-python = {editable = true,path = "./../datanator_query_python"}
+datanator_query_python = {editable = true,path = "./../datanator_query_python"}
 pylint = "*"
 zappa = "*"
 
