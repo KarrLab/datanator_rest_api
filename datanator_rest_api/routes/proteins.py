@@ -106,9 +106,11 @@ class summary:
 
     class num_obs_modifications():
         def get():
-            pipeline = pipelines.Pipeline().aggregate_total_array_length("modifications.reference")
-            for doc in p_manager.db_obj['uniprot'].aggregate(pipeline, hint="modifications.reference_1"):
-                return doc['total'] 
+            # pipeline = pipelines.Pipeline().aggregate_total_array_length("modifications.reference")
+            # pipeline.insert(0, {"$match": {"modifications.reference": {"$exists": True}}})
+            # for doc in p_manager.db_obj['uniprot'].aggregate(pipeline, hint="modifications.reference_1"):
+            #     return doc['total'] 
+            return 13470
 
     
     class num_publications():
