@@ -55,6 +55,8 @@ paths:
     $ref: paths/metabolites.yaml#/ymdb_doc_count
   /metabolites/summary/get_ref_count/:
     $ref: paths/metabolites.yaml#/get_ref_count
+  /metabolites/summary/get_distinct/:
+    $ref: paths/metabolites.yaml#/get_distinct
   /metabolites/meta/:
     $ref: paths/metabolites.yaml#/meta
   /metabolites/concentration/:

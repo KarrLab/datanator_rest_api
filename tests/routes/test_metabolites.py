@@ -49,7 +49,12 @@ class ImplementationTestCase(unittest.TestCase):
     def test_get_ref_count(self):
         result_0 = self.client.get(
             '/metabolites/summary/get_ref_count/')
-        self.assertEqual(result_0.status_code, 200)          
+        self.assertEqual(result_0.status_code, 200)
+
+    def test_get_distinct(self):
+        result_0 = self.client.get(
+            '/metabolites/summary/get_distinct/?_input=concentrations.reference.id')
+        self.assertEqual(result_0.status_code, 200)            
 
     def test_meta(self):
         result_1 = self.client.get("/metabolites/meta/?inchikey=UHDGCWIWMRVCDJ-XVFCMESISA-N")

@@ -665,6 +665,27 @@ paths:
       tags:
       - Metabolites
       - Concentration
+  /metabolites/summary/get_distinct/:
+    get:
+      description: Get number of distinct values in field.
+      parameters:
+      - example: concentrations.reference.id
+        in: query
+        name: _input
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: integer
+          description: OK
+      summary: Get number of distinct values in field.
+      tags:
+      - Metabolites
+      - Meta
   /metabolites/summary/get_ref_count/:
     get:
       description: Some description

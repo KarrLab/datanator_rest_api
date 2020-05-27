@@ -87,6 +87,11 @@ class summary:
         def get():
             return ey_manager.collection_ymdb.count_documents({})
 
+    
+    class get_distinct():
+        def get(_input):
+            return len(m_manager.db_obj['metabolite_concentrations'].distinct(_input))
+
 
     class get_ref_count:
 
