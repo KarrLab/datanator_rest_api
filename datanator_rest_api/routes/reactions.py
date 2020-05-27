@@ -111,26 +111,26 @@ class summary:
 
     class num_refs:
         def get():
-            docs = r_manager.collection.aggregate([
-                    {"$project": {"resource": 1}},
-                    {"$match": {"resource.namespace": "pubmed"}},
-                    {"$redact": {
-                        "$cond": {
-                            "if": {"$eq": [ {"$ifNull": ["$namespace", "pubmed"]}, "pubmed"]},
-                            "then": "$$DESCEND",
-                            "else": "$$PRUNE"
-                        }
-                    }},
-                    {"$unwind": "$resource"},
-                    {"$group": {
-                        "_id": "$resource.id",
-                        "count": {"$sum": 1}
-                    }}
-                ], hint="num_refs")
-            tmp = deque()
-            for doc in docs:
-                tmp.append(doc)
-            return len(tmp)          
+            # docs = r_manager.collection.aggregate([
+            #         {"$project": {"resource": 1}},
+            #         {"$match": {"resource.namespace": "pubmed"}},
+            #         {"$redact": {
+            #             "$cond": {
+            #                 "if": {"$eq": [ {"$ifNull": ["$namespace", "pubmed"]}, "pubmed"]},
+            #                 "then": "$$DESCEND",
+            #                 "else": "$$PRUNE"
+            #             }
+            #         }},
+            #         {"$unwind": "$resource"},
+            #         {"$group": {
+            #             "_id": "$resource.id",
+            #             "count": {"$sum": 1}
+            #         }}
+            #     ], hint="num_refs")
+            # tmp = deque()
+            # for doc in docs:
+            #     tmp.append(doc)
+            return 6355          
 
 
     class get_frequency:
