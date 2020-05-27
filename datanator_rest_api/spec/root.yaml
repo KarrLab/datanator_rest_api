@@ -111,6 +111,8 @@ paths:
     $ref: paths/reactions.yaml#/summary/get_brenda_obs
   /reactions/summary/num_parameter_kcat/:
     $ref: paths/reactions.yaml#/summary/num_parameter_kcat
+  /reactions/summary/num_refs/:
+    $ref: paths/reactions.yaml#/summary/num_refs
   /reactions/summary/get_distinct/:
     $ref: paths/reactions.yaml#/summary/get_distinct
   /reactions/summary/get_frequency/:

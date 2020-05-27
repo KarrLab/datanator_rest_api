@@ -63,3 +63,7 @@ class ImplementationTestCase(unittest.TestCase):
     def test_get_brenda_obs(self):
         result = self.client.get('/reactions/summary/get_brenda_obs/?parameter=k_ms')
         self.assertEqual(result.status_code, 200)
+
+    def test_num_refs(self):
+        result = self.client.get('/reactions/summary/num_refs')
+        self.assertEqual(result.status_code, 200)

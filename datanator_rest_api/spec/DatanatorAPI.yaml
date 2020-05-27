@@ -1467,6 +1467,21 @@ paths:
       - Kinetics
       - Reactions
       - Organism
+  /reactions/summary/num_refs/:
+    get:
+      description: For about page
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: integer
+          description: OK
+      summary: Get total number of primary sources.
+      tags:
+      - Kinetics
+      - Reactions
+      - Meta
   /rna/halflife/get_info_by_ko/:
     get:
       description: Get RNA half-life information based on protein kegg ortholog group.

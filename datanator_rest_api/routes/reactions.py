@@ -11,6 +11,7 @@ from datanator_query_python.config.query_manager import RxnManager
 from datanator_query_python.aggregate import pipelines
 from datanator_query_python.config import query_manager
 from datanator_rest_api.util import paginator, taxon_distance
+from collections import deque
 
 
 r_manager = RxnManager().rxn_manager()
@@ -33,9 +34,8 @@ class kinlaw_by_rxn:
                                               skip=_from, limit=size)
         if taxon_distance:
             result = dist_manager.arrange_distance_objs(docs, target_species=species, tax_field='taxon_name', org_format='tax_name')
-        else:
-            for doc in docs:
-                result.append(doc)
+        for doc in docs:
+            result.append(doc)
         return result
 
 
@@ -107,6 +107,29 @@ class summary:
 
         def get(_input):
             return r_manager.collection.distinct(_input)
+
+
+    class num_refs:
+        def get():
+            docs = r_manager.collection.aggregate([
+                    { "$match": {"resource.namespace": "pubmed"}},
+                    { "$redact": {
+                        "$cond": {
+                            "if": {"$eq": [ {"$ifNull": ["$namespace", "pubmed"]}, "pubmed"]},
+                            "then": "$$DESCEND",
+                            "else": "$$PRUNE"
+                        }
+                    }},
+                    {"$unwind": "$resource"},
+                    {"$group": {
+                        "_id": "$resource.id",
+                        "count": {"$sum": 1}
+                    }}
+                ])
+            tmp = deque()
+            for doc in docs:
+                tmp.append(doc)
+            return len(tmp)          
 
 
     class get_frequency:

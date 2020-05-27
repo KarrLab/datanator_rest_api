@@ -345,6 +345,22 @@ summary:
               schema:
                 type: integer
 
+  num_refs:
+    get:
+      tags:
+        - Kinetics
+        - Reactions
+        - Meta
+      summary: Get total number of primary sources.
+      description: For about page
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: integer
+
   get_distinct:
     get:
       parameters:
