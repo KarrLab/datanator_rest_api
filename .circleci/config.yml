@@ -27,27 +27,13 @@ workflows:
       - Frontend Integration Test:
           requires:
             - Build
-      - Stage:
+      - Deploy:
           requires:
             - Unit Test
             - Validation Test
             - Implementation Test
             - Backend Integration Test
             - Frontend Integration Test
-      - Approve Deploy:
-          type: approval
-          requires:
-            - Stage
-      - Approve Test Shutdown:
-          type: approval
-          requires:
-            - Stage
-      - Deploy:
-          requires:
-            - Approve Deploy
-      - Shutdown Test:
-          requires:
-            - Approve Test Shutdown
   KarrLab:
     jobs:
       - karrlab
@@ -249,26 +235,6 @@ jobs:
     <<: *testJob
   Frontend Integration Test:
     <<: *testJob
-  Stage:
-    docker:
-      - image: buildpack-deps:trusty
-    steps:
-      - checkout
-      - run:
-          name: "Install Heroku CLI, if necessary"
-          command: |
-            if [[ $(command -v heroku) == "" ]]; then
-              curl https://cli-assets.heroku.com/install.sh | sh
-            else
-              echo "Heroku is already installed. No operation was performed."
-            fi
-      - run:
-          name: Enable Heroku Stage Container
-          command: heroku ps:scale web=1 -a $HEROKU_APP_NAME_STAGE
-      - run:
-          name: Stage Master to Heroku
-          command: |
-            git push --force https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME_STAGE.git master
   Deploy:
     docker:
       - image: buildpack-deps:trusty
@@ -283,26 +249,6 @@ jobs:
               echo "Heroku is already installed. No operation was performed."
             fi
       - run:
-          name: Disable Heroku Stage Container
-          command: |
-            heroku ps:stop -a $HEROKU_APP_NAME_STAGE web
-            heroku ps:scale web=0 -a $HEROKU_APP_NAME_STAGE
-      - run:
           name: Deploy Master to Heroku
           command: |
             git push --force https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git master
-  Shutdown Test:
-    docker:
-      - image: buildpack-deps:trusty
-    steps:
-      - run:
-          name: "Install Heroku CLI, if necessary"
-          command: |
-            if [[ $(command -v heroku) == "" ]]; then
-              curl https://cli-assets.heroku.com/install.sh | sh
-            else
-              echo "Heroku is already installed. No operation was performed."
-            fi
-      - run:
-          name: Disable Heroku Stage Container
-          command: heroku ps:scale web=0 -a $HEROKU_APP_NAME_STAGE
