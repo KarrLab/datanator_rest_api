@@ -208,6 +208,9 @@ jobs:
                 fi
               done < .circleci/requirements.txt
             fi
+      - run:
+          name: Install datanator_query_python package  #testapi branch
+          command: python3 -m pip install -U git+https://github.com/karrlab/datanator_query_python.git@testapi#egg=datanator_query_python
       #Get build configs
       - add_ssh_keys:
           fingerprints:
