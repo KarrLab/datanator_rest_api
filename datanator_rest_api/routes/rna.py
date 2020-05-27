@@ -120,3 +120,9 @@ class summary:
             pipeline = pipelines.Pipeline().aggregate_total_array_length("modifications")
             for doc in rna_manager.db_obj['rna_modification'].aggregate(pipeline):
                 return doc['total']
+
+    class get_total_halflife_obs:
+        def get():
+            pipeline = pipelines.Pipeline().aggregate_total_array_length("halflives")
+            for doc in rna_manager.collection.aggregate(pipeline):
+                return doc['total']

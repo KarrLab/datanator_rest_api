@@ -42,3 +42,7 @@ class ImplementationTestCase(unittest.TestCase):
     def test_get_total_modifications(self):
         docs_0 = self.client.get('/rna/summary/get_total_modifications/')
         self.assertEqual(docs_0.status_code, 200)
+
+    def test_get_total_halflife_obs(self):
+        docs_0 = self.client.get('/rna/summary/get_total_halflife_obs/')
+        self.assertEqual(docs_0.status_code, 200)

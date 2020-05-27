@@ -204,3 +204,19 @@ get_distinct:
           application/json:
             schema:
               type: integer
+
+get_total_halflife_obs:
+  get:
+    tags:
+      - RNA
+      - RNA Half-life
+      - Meta
+    summary: Get number of half-life observations.
+    description: Get number of half-life observations.
+    responses:
+      "200":
+        description: OK
+        content:
+          application/json:
+            schema:
+              type: integer

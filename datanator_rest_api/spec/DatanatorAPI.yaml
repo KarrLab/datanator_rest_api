@@ -1610,6 +1610,21 @@ paths:
       - RNA
       - RNA Half-life
       - Meta
+  /rna/summary/get_total_halflife_obs/:
+    get:
+      description: Get number of half-life observations.
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: integer
+          description: OK
+      summary: Get number of half-life observations.
+      tags:
+      - RNA
+      - RNA Half-life
+      - Meta
   /rna/summary/get_total_modifications/:
     get:
       description: Get total number of RNA modifications in database.
