@@ -49,6 +49,10 @@ paths:
     $ref: paths/metabolites.yaml#/similar_compounds
   /metabolites/summary/concentration_count/:
     $ref: paths/metabolites.yaml#/num_conc
+  /metabolites/summary/ecmdb_conc_count/:
+    $ref: paths/metabolites.yaml#/ecmdb_conc_count
+  /metabolites/summary/ymdb_conc_count/:
+    $ref: paths/metabolites.yaml#/ymdb_conc_count
   /metabolites/summary/ecmdb_doc_count/:
     $ref: paths/metabolites.yaml#/ecmdb_doc_count
   /metabolites/summary/ymdb_doc_count/:

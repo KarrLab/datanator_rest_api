@@ -46,6 +46,16 @@ class ImplementationTestCase(unittest.TestCase):
             '/metabolites/summary/ymdb_doc_count/')
         self.assertEqual(result_0.status_code, 200)
 
+    def test_summary_ymdb_conc_count(self):
+        result_0 = self.client.get(
+            '/metabolites/summary/ymdb_conc_count/')
+        self.assertEqual(result_0.status_code, 200)
+
+    def test_summary_ecmdb_conc_count(self):
+        result_0 = self.client.get(
+            '/metabolites/summary/ecmdb_conc_count/')
+        self.assertEqual(result_0.status_code, 200)
+
     def test_get_ref_count(self):
         result_0 = self.client.get(
             '/metabolites/summary/get_ref_count/')

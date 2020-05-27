@@ -75,6 +75,16 @@ class summary:
         def get():
             return mc_manager.get_conc_count()
 
+
+    class ymdb_conc_count():
+        def get():
+            return 1462
+
+
+    class ecmdb_conc_count():
+        def get():
+            return 1196
+
     
     class ecmdb_doc_count():
         
