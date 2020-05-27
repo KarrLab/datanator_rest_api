@@ -65,5 +65,5 @@ class ImplementationTestCase(unittest.TestCase):
         self.assertEqual(result.status_code, 200)
 
     def test_num_refs(self):
-        result = self.client.get('/reactions/summary/num_refs')
+        result = self.client.get('/reactions/summary/num_refs/')
         self.assertEqual(result.status_code, 200)
