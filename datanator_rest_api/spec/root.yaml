@@ -53,12 +53,16 @@ paths:
     $ref: paths/metabolites.yaml#/ecmdb_conc_count
   /metabolites/summary/ymdb_conc_count/:
     $ref: paths/metabolites.yaml#/ymdb_conc_count
+  /metabolites/summary/ecmdb_ref_count/:
+    $ref: paths/metabolites.yaml#/ecmdb_ref_count
+  /metabolites/summary/ymdb_ref_count/:
+    $ref: paths/metabolites.yaml#/ymdb_ref_count
+  /metabolites/summary/curated_ref_count/:
+    $ref: paths/metabolites.yaml#/curated_ref_count
   /metabolites/summary/ecmdb_doc_count/:
     $ref: paths/metabolites.yaml#/ecmdb_doc_count
   /metabolites/summary/ymdb_doc_count/:
     $ref: paths/metabolites.yaml#/ymdb_doc_count
-  /metabolites/summary/get_ref_count/:
-    $ref: paths/metabolites.yaml#/get_ref_count
   /metabolites/summary/get_distinct/:
     $ref: paths/metabolites.yaml#/get_distinct
   /metabolites/meta/:

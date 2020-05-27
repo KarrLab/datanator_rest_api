@@ -199,7 +199,7 @@ ymdb_conc_count:
     tags:
       - Metabolites
       - Concentration
-    summary: Get number of metabolites that have concenctration values
+    summary: Get number of concentrations observations in YMDB
     description: Some description
     responses:
       "200":
@@ -214,7 +214,52 @@ ecmdb_conc_count:
     tags:
       - Metabolites
       - Concentration
-    summary: Get number of metabolites that have concenctration values
+    summary: Get number of concentrations observations in ECMDB
+    description: Some description
+    responses:
+      "200":
+        description: OK
+        content:
+          application/json:
+            schema:
+              type: integer
+
+ecmdb_ref_count:
+  get:
+    tags:
+      - Metabolites
+      - Concentration
+    summary: Get number of references used to generate concentration values in ECMDB
+    description: Some description
+    responses:
+      "200":
+        description: OK
+        content:
+          application/json:
+            schema:
+              type: integer
+
+ymdb_ref_count:
+  get:
+    tags:
+      - Metabolites
+      - Concentration
+    summary: Get number of references used to generate concentration values in YMDB
+    description: Some description
+    responses:
+      "200":
+        description: OK
+        content:
+          application/json:
+            schema:
+              type: integer
+
+curated_ref_count:
+  get:
+    tags:
+      - Metabolites
+      - Concentration
+    summary: Get number of munaully curated articles used to generate concentration values.
     description: Some description
     responses:
       "200":

@@ -56,9 +56,14 @@ class ImplementationTestCase(unittest.TestCase):
             '/metabolites/summary/ecmdb_conc_count/')
         self.assertEqual(result_0.status_code, 200)
 
-    def test_get_ref_count(self):
+    def test_summary_ecmdb_ref_count(self):
         result_0 = self.client.get(
-            '/metabolites/summary/get_ref_count/')
+            '/metabolites/summary/ymdb_ref_count/')
+        self.assertEqual(result_0.status_code, 200)
+
+    def test_summary_ymdb_ref_count(self):
+        result_0 = self.client.get(
+            '/metabolites/summary/ymdb_ref_count/')
         self.assertEqual(result_0.status_code, 200)
 
     def test_get_distinct(self):

@@ -651,6 +651,21 @@ paths:
       tags:
       - Metabolites
       - Concentration
+  /metabolites/summary/curated_ref_count/:
+    get:
+      description: Some description
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: integer
+          description: OK
+      summary: Get number of munaully curated articles used to generate concentration
+        values.
+      tags:
+      - Metabolites
+      - Concentration
   /metabolites/summary/ecmdb_conc_count/:
     get:
       description: Some description
@@ -661,7 +676,7 @@ paths:
               schema:
                 type: integer
           description: OK
-      summary: Get number of metabolites that have concenctration values
+      summary: Get number of concentrations observations in ECMDB
       tags:
       - Metabolites
       - Concentration
@@ -676,6 +691,20 @@ paths:
                 type: integer
           description: OK
       summary: Get number of metabolites in ECMDB collection.
+      tags:
+      - Metabolites
+      - Concentration
+  /metabolites/summary/ecmdb_ref_count/:
+    get:
+      description: Some description
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: integer
+          description: OK
+      summary: Get number of references used to generate concentration values in ECMDB
       tags:
       - Metabolites
       - Concentration
@@ -700,20 +729,6 @@ paths:
       tags:
       - Metabolites
       - Meta
-  /metabolites/summary/get_ref_count/:
-    get:
-      description: Some description
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                type: integer
-          description: OK
-      summary: Get number of primary sources in metabolite collection.
-      tags:
-      - Metabolites
-      - Concentration
   /metabolites/summary/ymdb_conc_count/:
     get:
       description: Some description
@@ -724,7 +739,7 @@ paths:
               schema:
                 type: integer
           description: OK
-      summary: Get number of metabolites that have concenctration values
+      summary: Get number of concentrations observations in YMDB
       tags:
       - Metabolites
       - Concentration
@@ -739,6 +754,20 @@ paths:
                 type: integer
           description: OK
       summary: Get number of metabolites in YMDB collection.
+      tags:
+      - Metabolites
+      - Concentration
+  /metabolites/summary/ymdb_ref_count/:
+    get:
+      description: Some description
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: integer
+          description: OK
+      summary: Get number of references used to generate concentration values in YMDB
       tags:
       - Metabolites
       - Concentration
