@@ -24,12 +24,11 @@ class ImplementationTestCase(unittest.TestCase):
         self.assertEqual(result_0.status_code, 200)
 
 
-    # @unittest.skip('passed')
     def test_proximity_proteins(self):
         result_0 = self.client.get('/proteins/proximity_abundance/?uniprot_id=Q9D0T1&distance=100&depth=100')
         self.assertEqual(result_0.status_code, 200)
 
-    # @unittest.skip('passed')
+    @unittest.skip('passed')
     def test_meta(self):
         result_0 = self.client.get(
             '/proteins/meta/meta_combo/?uniprot_id=Q54ST0,Q9d0t1')       
@@ -66,6 +65,7 @@ class ImplementationTestCase(unittest.TestCase):
         result = self.client.get('/proteins/summary/num_protein/')
         self.assertEqual(result.status_code, 200)
 
+    @unittest.skip('too long')
     def test_summary_abundance_count(self):
         result = self.client.get('/proteins/summary/num_abundances/')
         self.assertEqual(result.status_code, 200)
@@ -74,6 +74,7 @@ class ImplementationTestCase(unittest.TestCase):
         result = self.client.get('/proteins/summary/num_publications/')
         self.assertEqual(result.status_code, 200)
 
+    @unittest.skip('too long')
     def test_summary_num_obs_abundances(self):
         result = self.client.get('/proteins/summary/num_obs_abundances/')
         self.assertEqual(result.status_code, 200)
