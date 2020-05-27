@@ -117,6 +117,8 @@ paths:
     $ref: paths/reactions.yaml#/summary/num_parameter_km
   /reactions/summary/get_brenda_obs/:
     $ref: paths/reactions.yaml#/summary/get_brenda_obs
+  /reactions/summary/get_sabio_obs/:
+    $ref: paths/reactions.yaml#/summary/get_sabio_obs
   /reactions/summary/num_parameter_kcat/:
     $ref: paths/reactions.yaml#/summary/num_parameter_kcat
   /reactions/summary/num_refs/:

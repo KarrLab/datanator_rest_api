@@ -1466,6 +1466,30 @@ paths:
       tags:
       - Kinetics
       - Reactions
+  /reactions/summary/get_sabio_obs/:
+    get:
+      description: For about page
+      parameters:
+      - in: query
+        name: parameter
+        required: true
+        schema:
+          enum:
+          - k_ms
+          - k_cats
+          - k_is
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: integer
+          description: OK
+      summary: Get number of observations from SabioRK based on parameter name.
+      tags:
+      - Kinetics
+      - Reactions
   /reactions/summary/num_entries/:
     get:
       description: For about page

@@ -171,3 +171,26 @@ class summary:
                 pipeline = pipelines.Pipeline().aggregate_total_array_length(parameter)
                 for doc in r_manager.db_obj['ec'].aggregate(pipeline):
                     return doc['total']
+
+    
+    class get_sabio_obs:
+        def get(parameter):
+            if parameter == 'k_is':
+                par = "Ki"
+            elif parameter == 'k_cats':
+                par = "kcat"
+            else:
+                par = "Km"
+            docs =r_manager.db_obj['sabio_rk_old'].aggregate([
+                    {"$project": {"parameter": 1}},
+                    {"$match": {"parameter.observed_name": par}},
+                    {"$unwind": "$parameter"},
+                    {"$group": {
+                        "_id": "$parameter.observed_name",
+                        "count": {"$sum": 1}
+                    }}
+                ])
+            count = 0
+            for doc in docs:
+                count += 1
+            return count

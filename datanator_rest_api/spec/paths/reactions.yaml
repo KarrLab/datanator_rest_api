@@ -430,3 +430,25 @@ summary:
             application/json:
               schema:
                 type: integer
+
+  get_sabio_obs:
+    get:
+      parameters:
+        - in: query
+          name: parameter
+          schema:
+            type: string
+            enum: [k_ms, k_cats, k_is]
+          required: true
+      tags:
+        - Kinetics
+        - Reactions
+      summary: Get number of observations from SabioRK based on parameter name.
+      description: For about page
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: integer
