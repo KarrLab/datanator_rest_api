@@ -107,7 +107,7 @@ class summary:
     class num_obs_modifications():
         def get():
             pipeline = pipelines.Pipeline().aggregate_total_array_length("modifications.reference")
-            for doc in p_manager.db_obj['uniprot'].aggregate(pipeline):
+            for doc in p_manager.db_obj['uniprot'].aggregate(pipeline, hint="modifications.reference_1"):
                 return doc['total'] 
 
     

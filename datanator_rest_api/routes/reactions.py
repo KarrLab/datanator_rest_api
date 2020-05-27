@@ -126,10 +126,9 @@ class summary:
                         "_id": "$resource.id",
                         "count": {"$sum": 1}
                     }}
-                ], hint="resource.namespace")
+                ], hint="num_refs")
             tmp = deque()
             for doc in docs:
-                print(doc)
                 tmp.append(doc)
             return len(tmp)          
 
