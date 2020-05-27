@@ -416,7 +416,7 @@ summary:
           name: parameter
           schema:
             type: string
-            enum: [k_ms, k_cats]
+            enum: [k_ms, k_cats, k_is]
           required: true
       tags:
         - Kinetics

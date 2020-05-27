@@ -153,6 +153,21 @@ class summary:
 
     class get_brenda_obs:
         def get(parameter):
-            pipeline = pipelines.Pipeline().aggregate_total_array_length(parameter)
-            for doc in r_manager.db_obj['ec'].aggregate(pipeline):
-                return doc['total']
+            if parameter == 'k_is':
+                docs =r_manager.db_obj['sabio_rk_old'].aggregate([
+                        {"$project": {"parameter": 1}},
+                        {"$match": {"parameter.observed_name": "Ki"}},
+                        {"$unwind": "$parameter"},
+                        {"$group": {
+                            "_id": "$parameter.observed_name",
+                            "count": {"$sum": 1}
+                        }}
+                    ])
+                count = 0
+                for doc in docs:
+                    count += 1
+                return count
+            else:
+                pipeline = pipelines.Pipeline().aggregate_total_array_length(parameter)
+                for doc in r_manager.db_obj['ec'].aggregate(pipeline):
+                    return doc['total']

@@ -1405,6 +1405,7 @@ paths:
           enum:
           - k_ms
           - k_cats
+          - k_is
           type: string
       responses:
         '200':
