@@ -33,7 +33,7 @@ class kinlaw_by_rxn:
                                               projection=projection, bound=bound,
                                               skip=_from, limit=size)
         if taxon_distance:
-            result = dist_manager.arrange_distance_objs(docs, target_species=species, tax_field='taxon_name', org_format='tax_name')
+            docs = dist_manager.arrange_distance_objs(docs, target_species=species, tax_field='taxon_name', org_format='tax_name')
         for doc in docs:
             result.append(doc)
         return result
@@ -112,8 +112,9 @@ class summary:
     class num_refs:
         def get():
             docs = r_manager.collection.aggregate([
-                    { "$match": {"resource.namespace": "pubmed"}},
-                    { "$redact": {
+                    {"$project": {"resource": 1}},
+                    {"$match": {"resource.namespace": "pubmed"}},
+                    {"$redact": {
                         "$cond": {
                             "if": {"$eq": [ {"$ifNull": ["$namespace", "pubmed"]}, "pubmed"]},
                             "then": "$$DESCEND",
@@ -125,9 +126,10 @@ class summary:
                         "_id": "$resource.id",
                         "count": {"$sum": 1}
                     }}
-                ])
+                ], hint="resource.namespace")
             tmp = deque()
             for doc in docs:
+                print(doc)
                 tmp.append(doc)
             return len(tmp)          
 
