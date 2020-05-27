@@ -8,6 +8,7 @@
 
 
 from datanator_query_python.config.query_manager import RxnManager
+from datanator_query_python.aggregate import pipelines
 from datanator_query_python.config import query_manager
 from datanator_rest_api.util import paginator, taxon_distance
 
@@ -124,3 +125,10 @@ class summary:
                      {"$sort": {"count": -1 }}
                     ]
                     )]
+
+
+    class get_brenda_obs:
+        def get(parameter):
+            pipeline = pipelines.Pipeline().aggregate_total_array_length(parameter)
+            for doc in r_manager.db_obj['ec'].aggregate(pipeline):
+                return doc['total']

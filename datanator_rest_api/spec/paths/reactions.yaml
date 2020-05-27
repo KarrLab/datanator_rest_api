@@ -392,3 +392,25 @@ summary:
             application/json:
               schema:
                 type: array
+
+  get_brenda_obs:
+    get:
+      parameters:
+        - in: query
+          name: parameter
+          schema:
+            type: string
+            enum: [k_ms, k_cats]
+          required: true
+      tags:
+        - Kinetics
+        - Reactions
+      summary: Get number of observations from BRENDA based on parameter name.
+      description: For about page
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: integer

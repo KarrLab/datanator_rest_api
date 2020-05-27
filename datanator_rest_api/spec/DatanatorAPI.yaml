@@ -1316,6 +1316,29 @@ paths:
       summary: Get reactions based on reaction entry id
       tags:
       - Reactions
+  /reactions/summary/get_brenda_obs/:
+    get:
+      description: For about page
+      parameters:
+      - in: query
+        name: parameter
+        required: true
+        schema:
+          enum:
+          - k_ms
+          - k_cats
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: integer
+          description: OK
+      summary: Get number of observations from BRENDA based on parameter name.
+      tags:
+      - Kinetics
+      - Reactions
   /reactions/summary/get_distinct/:
     get:
       description: Get number of distinct values in field.
