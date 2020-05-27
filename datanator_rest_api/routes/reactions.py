@@ -181,16 +181,19 @@ class summary:
                 par = "kcat"
             else:
                 par = "Km"
-            docs =r_manager.db_obj['sabio_rk_old'].aggregate([
-                    {"$project": {"parameter": 1}},
-                    {"$match": {"parameter.observed_name": par}},
-                    {"$unwind": "$parameter"},
-                    {"$group": {
-                        "_id": "$parameter.observed_name",
-                        "count": {"$sum": 1}
-                    }}
-                ])
-            count = 0
+            project = {
+                        "$project": {
+                            "poi": {
+                                "$filter": {
+                                    "input": "$parameter",
+                                    "as": "poi",
+                                    "cond": {"$eq": ["$$poi.observed_name", par]}
+                                }
+                            }
+                        }
+                      }
+            pipeline = pipelines.Pipeline().aggregate_total_array_length("poi")
+            pipeline.insert(0, project)
+            docs =r_manager.db_obj['sabio_rk_old'].aggregate(pipeline)
             for doc in docs:
-                count += 1
-            return count
+                return doc['total']
