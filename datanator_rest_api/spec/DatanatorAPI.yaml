@@ -1904,6 +1904,20 @@ paths:
       summary: Check if each source is the child of target.
       tags:
       - NCBI Taxonomy
+  /taxon/summary/taxon_distribution/:
+    get:
+      description: For about page
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+          description: OK
+      summary: Get taxon distribution for total observed instances.
+      tags:
+      - Meta
+      - NCBI Taxonomy
 components:
   parameters:
     limitParam:

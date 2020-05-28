@@ -30,3 +30,7 @@ class ImplementationTestCase(unittest.TestCase):
     def test_canon_rank_common_distance(self):
         result = self.client.get('/taxon/canon_rank_common_distance/?org_0=562&org_1=4464674')
         self.assertEqual(result.status_code, 200)
+
+    def test_taxon_distribution(self):
+        result = self.client.get('/taxon/summary/taxon_distribution/')
+        self.assertEqual(result.status_code, 200)

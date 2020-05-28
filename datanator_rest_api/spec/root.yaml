@@ -149,6 +149,8 @@ paths:
     $ref: paths/taxon.yaml#/canon_rank_distance_by_name/
   /taxon/is_child/:
     $ref: paths/taxon.yaml#/is_child/
+  /taxon/summary/taxon_distribution/:
+    $ref: paths/taxon.yaml#/summary/taxon_distribution/
   /taxon/canon_rank_common_distance/:
     $ref: paths/taxon.yaml#/canon_rank_common_distance/
   /ftx/text_search/:
