@@ -10,7 +10,7 @@ precise_abundance:
         example: [Q54JE4]
         required: true
       - in: query
-        name: taget_species
+        name: target_species
         schema:
           type: string
         required: false
