@@ -54,7 +54,9 @@ class TaxonDist:
         """
         queried_species = deque()
         distance_obj = {}
+        result = []
         for doc in docs:
             queried_species, distance_obj, doc = self.get_dist_object(doc, queried_species, distance_obj,
                                                                       target_species, tax_field=tax_field, org_format=org_format)
-        return docs
+            result.append(doc)
+        return result

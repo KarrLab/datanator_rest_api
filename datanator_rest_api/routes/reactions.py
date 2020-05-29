@@ -35,6 +35,7 @@ class kinlaw_by_rxn:
         if taxon_distance:
             docs = dist_manager.arrange_distance_objs(docs, target_species=species, tax_field='taxon_name', org_format='tax_name')
         for doc in docs:
+            print(doc)
             result.append(doc)
         return result
 
