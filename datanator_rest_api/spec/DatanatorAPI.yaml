@@ -863,7 +863,7 @@ paths:
           type: array
       - example: homo sapiens
         in: query
-        name: taget_species
+        name: target_species
         required: false
         schema:
           type: string
