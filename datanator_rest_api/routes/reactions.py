@@ -175,25 +175,28 @@ class summary:
     
     class get_sabio_obs:
         def get(parameter):
-            if parameter == 'k_is':
-                par = "Ki"
-            elif parameter == 'k_cats':
-                par = "kcat"
-            else:
-                par = "Km"
-            project = {
-                        "$project": {
-                            "poi": {
-                                "$filter": {
-                                    "input": "$parameter",
-                                    "as": "poi",
-                                    "cond": {"$eq": ["$$poi.observed_name", par]}
-                                }
-                            }
-                        }
-                      }
-            pipeline = pipelines.Pipeline().aggregate_total_array_length("poi")
-            pipeline.insert(0, project)
-            docs =r_manager.db_obj['sabio_rk_old'].aggregate(pipeline)
-            for doc in docs:
-                return doc['total']
+            # if parameter == 'k_is':
+            #     par = "Ki"
+            # elif parameter == 'k_cats':
+            #     par = "kcat"
+            # else:
+            #     par = "Km"
+            # project = {
+            #             "$project": {
+            #                 "poi": {
+            #                     "$filter": {
+            #                         "input": "$parameter",
+            #                         "as": "poi",
+            #                         "cond": {"$eq": ["$$poi.observed_name", par]}
+            #                     }
+            #                 }
+            #             }
+            #           }
+            # pipeline = pipelines.Pipeline().aggregate_total_array_length("poi")
+            # pipeline.insert(0, project)
+            # docs =r_manager.db_obj['sabio_rk_old'].aggregate(pipeline)
+            # for doc in docs:
+            #     return doc['total']
+            
+            # ki + km + kcat
+            return 6960 + 38576 + 22765
