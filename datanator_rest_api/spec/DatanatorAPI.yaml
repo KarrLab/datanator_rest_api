@@ -1650,6 +1650,49 @@ paths:
       tags:
       - RNA
       - RNA Half-life
+  /rna/halflife/get_info_by_uniprot/:
+    get:
+      description: Get RNA half-life information based on protein uniprot_id.
+      parameters:
+      - example: P09119
+        in: query
+        name: uniprot_id
+        required: true
+        schema:
+          type: string
+      - example: 0
+        in: query
+        name: _from
+        required: true
+        schema:
+          type: integer
+      - example: 10
+        in: query
+        name: size
+        required: true
+        schema:
+          type: integer
+      - example: true
+        in: query
+        name: taxon_distance
+        schema:
+          type: boolean
+      - example: homo sapiens
+        in: query
+        name: species
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RnaHalflifeDoc'
+          description: OK
+      summary: Get RNA half-life information based on protein uniprot_id.
+      tags:
+      - RNA
+      - RNA Half-life
   /rna/modification/get_modifications_by_ko/:
     get:
       description: Get RNA modification information based on protein kegg ortholog

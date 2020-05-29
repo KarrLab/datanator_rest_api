@@ -65,6 +65,22 @@ class halflife:
                     result.append(doc)
             return result
 
+
+    class get_info_by_uniprot:
+        def get(uniprot_id, _from=0, size=10, 
+                taxon_distance=True, species='homo sapiens'):
+            result = []
+            doc = rna_manager.collection.find_one(filter={"uniprot_id": uniprot_id}, skip=_from,
+                                                   limit=size, collation=rna_manager.collation,
+                                                   projection={"_id": 0})
+            doc['kegg_meta'] = get_kegg_meta(doc.get('ko_number'))
+            doc = json.loads(json.dumps(doc, ignore_nan=True))
+            if taxon_distance:
+                append_taxon_distance(doc, result, species)
+            else:
+                result.append(doc)
+            return result                
+
     
 class modification:
 

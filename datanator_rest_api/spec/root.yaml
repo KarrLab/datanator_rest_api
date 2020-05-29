@@ -131,6 +131,8 @@ paths:
     $ref: paths/rna.yaml#/get_info_by_name/
   /rna/halflife/get_info_by_ko/:
     $ref: paths/rna.yaml#/get_info_by_ko/
+  /rna/halflife/get_info_by_uniprot/:
+    $ref: paths/rna.yaml#/get_info_by_uniprot/
   /rna/modification/get_modifications_by_ko/:
     $ref: paths/rna.yaml#/get_modifications_by_ko/
   /rna/summary/get_total_docs/:
