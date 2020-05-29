@@ -11,6 +11,7 @@
 from datanator_query_python.config import query_manager
 from datanator_query_python.aggregate import pipelines
 from datanator_rest_api.util import taxon_distance
+import simplejson as json
 
 
 p_manager = query_manager.Manager().protein_manager()
@@ -34,10 +35,13 @@ class precise_abundance:
     def get(uniprot_id=None, target_species='homo sapiens',
             taxon_distance=False):
         docs = p_manager.get_abundance_by_id(uniprot_id)
-        if not taxon_distance:
-            return docs
-        else:
-            return dist_manager.arrange_distance_objs(docs, target_species=target_species, tax_field='species_name', org_format='tax_name')
+        result = []
+        if taxon_distance:
+            docs = dist_manager.arrange_distance_objs(docs, target_species=target_species, tax_field='species_name', org_format='tax_name')
+        for doc in docs:
+            doc = json.loads(json.dumps(doc, ignore_nan=True))
+            result.append(doc)
+        return result
 
 
 class proximity_abundance:
