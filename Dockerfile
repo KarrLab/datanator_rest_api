@@ -1,6 +1,13 @@
 FROM tiangolo/meinheld-gunicorn:python3.7
 
-COPY ./datanator_rest_api /datanator_rest_api
-WORKDIR /datanator_rest_api
 RUN pip install pipenv
-RUN pipenv install --system --deploy --ignore-pipfile
+
+COPY . /datanator_rest_api
+WORKDIR /datanator_rest_api
+
+# -- Adding Pipfiles
+ONBUILD COPY Pipfile Pipfile
+ONBUILD COPY Pipfile.lock Pipfile.lock
+
+# -- Install dependencies:
+ONBUILD RUN set -ex && pipenv install --deploy --system
