@@ -36,3 +36,4 @@ openapi_spec_validator = "*"
 setuptools = "*"
 pytest = "*"
 inflection = "*"
+requests
