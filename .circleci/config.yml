@@ -200,7 +200,7 @@ jobs:
       #Get build configs
       - add_ssh_keys:
           fingerprints:
-            - "d5:32:b5:ab:5c:f6:ba:f7:31:d0:98:2e:be:81:0c:70"
+            - "1d:0a:7e:fa:2a:76:13:84:8d:ff:0a:43:21:e4:10:d6"
       - run:
           name: Get Build config
           command: git clone git@github.com:KarrLab/karr_lab_build_config.git ../.wc

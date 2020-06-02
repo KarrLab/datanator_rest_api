@@ -1,16 +1,19 @@
 FROM python:3.7
 
-RUN pip install pipenv
-
-COPY . /datanator_rest_api
-WORKDIR /datanator_rest_api
+WORKDIR /app
 
 # -- Adding Pipfiles
-COPY Pipfile Pipfile
-COPY Pipfile.lock Pipfile.lock
+COPY Pipfile ./
+COPY Pipfile.lock ./
 
 # -- Install dependencies:
-RUN set -ex && pipenv install --deploy --system \
-    && pip install -e /datanator_rest_api 
+RUN pip install pipenv \
+    && set -ex && pipenv install --deploy --system
 
-CMD gunicorn --bind 0.0.0.0:8080 "datanator_rest_api.core:application"
+COPY . ./
+RUN pip install -e .
+
+ENV PORT=80
+
+# CMD gunicorn --bind 0.0.0.0:8080 "datanator_rest_api.core:application"
+ENTRYPOINT bash
