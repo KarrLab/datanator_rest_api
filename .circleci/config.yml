@@ -1,5 +1,10 @@
 version: 2.1
 
+orbs:
+  aws-ecr: circleci/aws-ecr@6.8.2
+  aws-ecs: circleci/aws-ecs@01.1.0
+
+
 parameters:
   upstream_repo_name:
     type: string
