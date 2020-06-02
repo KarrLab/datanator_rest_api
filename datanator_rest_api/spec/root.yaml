@@ -93,8 +93,8 @@ paths:
     $ref: paths/proteins.yaml#/summary/num_obs_abundances
   /proteins/summary/num_obs_modifications/:
     $ref: paths/proteins.yaml#/summary/num_obs_modifications
-  /proteins/similar_protein/refseq/:
-    $ref: paths/proteins.yaml#/similar_protein/refseq
+  # /proteins/similar_protein/refseq/:
+  #   $ref: paths/proteins.yaml#/similar_protein/refseq
   /proteins/related/related_reactions_by_kegg/:
     $ref: paths/proteins.yaml#/related/related_reactions_by_kegg/
   /proteins/related/related_reactions_by_uniprot/:
