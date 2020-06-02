@@ -26,7 +26,8 @@ RUN pip install -e .
 ENV PORT=80
 
 # Download public key for github.com
-RUN mkdir -p -m 0600 ~/.ssh && ssh-keyscan github.com >> ~/.ssh/known_hosts
+RUN mkdir -p -m 0600 ~/.ssh && ssh-keyscan github.com >> ~/.ssh/known_hosts \
+    && ls -l ~/.ssh
 
 # Clone private repository
 RUN --mount=type=ssh git clone git@github.com:KarrLab/karr_lab_build_config.git /.wc \
