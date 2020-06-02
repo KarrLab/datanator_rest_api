@@ -32,14 +32,6 @@ workflows:
       - Frontend Integration Test:
           requires:
             - Build
-      # - Deploy:
-      #     requires:
-      #       - Unit Test
-      #       - Validation Test
-      #       - Implementation Test
-      #       - Backend Integration Test
-      #       - Frontend Integration Test
-      - aws-ecr/build-and-push-image:  # push image to ECR
           requires:
             - Unit Test
             - Validation Test

@@ -15,8 +15,7 @@ COPY Pipfile ./
 COPY Pipfile.lock ./
 
 # -- Install dependencies:
-RUN ls -l . \
-    && pip install pipenv \
+RUN pip install pipenv \
     && set -ex && pipenv install --deploy --system
 
 COPY . ./

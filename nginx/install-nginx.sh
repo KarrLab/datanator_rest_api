@@ -10,7 +10,7 @@ export PKG_RELEASE=1~buster
 
 set -x \
     && apt-get update \
-    && apt-get install --no-install-recommends --no-install-suggests -y gnupg1 ca-certificates ssh git \
+    && apt-get install --no-install-recommends --no-install-suggests -y gnupg1 ca-certificates \
     && \
     NGINX_GPGKEY=573BFD6B3D8FBC641079A6ABABF5BD827BD9BF62; \
     found=''; \
@@ -68,7 +68,7 @@ set -x \
     && apt-get install --no-install-recommends --no-install-suggests -y \
                         $nginxPackages \
                         gettext-base \
-    && rm -rf /var/lib/apt/lists/* /etc/apt/sources.list.d/nginx.list \
+    && apt-get remove --purge --auto-remove -y ca-certificates && rm -rf /var/lib/apt/lists/* /etc/apt/sources.list.d/nginx.list \
     \
     && if [ -n "$tempDir" ]; then \
         apt-get purge -y --auto-remove \
