@@ -1,7 +1,7 @@
 #! /usr/bin/env bash
 
-# From official Nginx Docker image, as a script to re-use it, removing internal comments
 # Ref: https://github.com/nginxinc/docker-nginx/blob/594ce7a8bc26c85af88495ac94d5cd0096b306f7/mainline/buster/Dockerfile
+# added installation of ssh-keyscan
 
 # Standard set up Nginx
 export NGINX_VERSION=1.17.10
@@ -10,7 +10,7 @@ export PKG_RELEASE=1~buster
 
 set -x \
     && apt-get update \
-    && apt-get install --no-install-recommends --no-install-suggests -y gnupg1 ca-certificates \
+    && apt-get install --no-install-recommends --no-install-suggests -y gnupg1 ca-certificates ssh-keyscan \
     && \
     NGINX_GPGKEY=573BFD6B3D8FBC641079A6ABABF5BD827BD9BF62; \
     found=''; \
@@ -78,4 +78,3 @@ set -x \
 # forward request and error logs to docker log collector
 ln -sf /dev/stdout /var/log/nginx/access.log \
     && ln -sf /dev/stderr /var/log/nginx/error.log
-# Standard set up Nginx finished
