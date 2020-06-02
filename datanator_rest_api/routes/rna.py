@@ -38,6 +38,8 @@ class halflife:
             result = []
             docs, _ = rna_manager.get_doc_by_names(protein_name, _from=_from,
                                                    size=size)
+            if not docs:
+                return result
             for doc in docs:
                 ko = doc.get('ko_number')
                 doc['kegg_meta'] = get_kegg_meta(ko)
@@ -56,6 +58,8 @@ class halflife:
             result = []
             docs, _ = rna_manager.get_doc_by_ko(ko_number, _from=_from,
                                                 size=size)
+            if not docs:
+                return result
             for doc in docs:
                 doc['kegg_meta'] = get_kegg_meta(ko_number)
                 doc = json.loads(json.dumps(doc, ignore_nan=True))
@@ -73,6 +77,8 @@ class halflife:
             doc = rna_manager.collection.find_one(filter={"uniprot_id": uniprot_id}, skip=_from,
                                                    limit=size, collation=rna_manager.collation,
                                                    projection={"_id": 0})
+            if not doc:
+                return result
             doc['kegg_meta'] = get_kegg_meta(doc.get('ko_number'))
             doc = json.loads(json.dumps(doc, ignore_nan=True))
             if taxon_distance:
