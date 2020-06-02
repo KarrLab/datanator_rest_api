@@ -22,8 +22,6 @@ RUN ls -l . \
 COPY . ./
 RUN pip install -e .
 
-ENV PORT=80
-
 # # Download public key for github.com
 # RUN mkdir -m 700 /root/.ssh; \
 #   touch -m 600 /root/.ssh/known_hosts; \
@@ -31,6 +29,7 @@ ENV PORT=80
 
 # # Clone private repository
 # RUN --mount=type=ssh,id=github git clone git@github.com:KarrLab/karr_lab_build_config.git /.wc
+ENV  PORT=${PORT}
 ENV  PRODUCTION=${PRODUCTION}
 ENV  MONGO_USERNAME=${MONGO_USERNAME}
 ENV  MONGO_PASSWORD=${MONGO_PASSWORD}
