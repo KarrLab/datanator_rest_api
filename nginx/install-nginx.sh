@@ -68,7 +68,7 @@ set -x \
     && apt-get install --no-install-recommends --no-install-suggests -y \
                         $nginxPackages \
                         gettext-base \
-    && apt-get remove --purge --auto-remove -y ca-certificates && rm -rf /var/lib/apt/lists/* /etc/apt/sources.list.d/nginx.list \
+    && rm -rf /var/lib/apt/lists/* /etc/apt/sources.list.d/nginx.list \
     \
     && if [ -n "$tempDir" ]; then \
         apt-get purge -y --auto-remove \
