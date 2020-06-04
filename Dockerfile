@@ -4,7 +4,7 @@ COPY ./nginx/install-nginx.sh .
 
 RUN bash install-nginx.sh
 
-COPY ./nginx/default.conf /etc/nginx/conf.d/default.conf
+COPY ./nginx/default.conf /etc/nginx/nginx.conf
 
 # -- Adding Pipfiles
 COPY Pipfile ./
