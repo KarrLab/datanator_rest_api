@@ -1,10 +1,13 @@
 FROM python:3.7-slim-buster
 
+WORKDIR /ecs
+
 COPY ./nginx/install-nginx.sh .
 
 RUN bash install-nginx.sh
 
 COPY ./nginx/default.conf /etc/nginx/nginx.conf
+RUN rm -rf /etc/nginx/conf.d
 
 # -- Adding Pipfiles
 COPY Pipfile ./
@@ -30,7 +33,8 @@ ENV  REST_FTX_AWS_SECRET_ACCESS_KEY=$REST_FTX_AWS_SECRET_ACCESS_KEY
 ENV  REST_FTX_AWS_DEFAULT_REGION=$REST_FTX_AWS_DEFAULT_REGION
 
 EXPOSE 80/tcp
+EXPOSE 8080/tcp
 
 CMD gunicorn --bind 127.0.0.1:8080 "datanator_rest_api.core:application" --daemon \
-    && sed -i -e 's/$PORT/'"$PORT"'/g' /etc/nginx/conf.d/default.conf \
+    && sed -i -e 's/$PORT/'"$PORT"'/g' /etc/nginx/nginx.conf \
     && nginx -g 'daemon off;'
