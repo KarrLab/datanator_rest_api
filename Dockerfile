@@ -33,7 +33,7 @@ ENV  REST_FTX_AWS_SECRET_ACCESS_KEY=$REST_FTX_AWS_SECRET_ACCESS_KEY
 ENV  REST_FTX_AWS_DEFAULT_REGION=$REST_FTX_AWS_DEFAULT_REGION
 
 EXPOSE 80/tcp
-EXPOSE 8080/tcp
+EXPOSE 8001/tcp
 
 CMD gunicorn --bind 0.0.0.0:8001 "datanator_rest_api.core:application" --daemon \
     && sed -i -e 's/$PORT/'"$PORT"'/g' /etc/nginx/nginx.conf \
