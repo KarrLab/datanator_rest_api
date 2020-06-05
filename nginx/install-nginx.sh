@@ -10,7 +10,7 @@ export PKG_RELEASE=1~buster
 
 set -x \
     && apt-get update \
-    && apt-get install --no-install-recommends --no-install-suggests -y gnupg1 ca-certificates ssh git \
+    && apt-get install --no-install-recommends --no-install-suggests -y gnupg1 ca-certificates git \
     && \
     NGINX_GPGKEY=573BFD6B3D8FBC641079A6ABABF5BD827BD9BF62; \
     found=''; \
