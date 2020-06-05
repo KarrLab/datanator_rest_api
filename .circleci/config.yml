@@ -39,14 +39,14 @@ workflows:
             - Implementation Test
             - Backend Integration Test
             - Frontend Integration Test
-          repo: "${AWS_RESOURCE_NAME_PREFIX}"
+          repo: "${AWS_RESOURCE_NAME_PREFIX_TEST}"
           tag: "${CIRCLE_SHA1}"
       - aws-ecs/deploy-service-update: # update ECS
           requires:
             - aws-ecr/build-and-push-image 
-          family: "${AWS_RESOURCE_NAME_PREFIX}-service"
-          cluster-name: "${AWS_RESOURCE_NAME_PREFIX}-cluster"
-          container-image-name-updates: "container=${AWS_RESOURCE_NAME_PREFIX}-service,tag=latest-test"
+          family: "${AWS_RESOURCE_NAME_PREFIX_TEST}-service"
+          cluster-name: "${AWS_RESOURCE_NAME_PREFIX_TEST}-cluster"
+          container-image-name-updates: "container=${AWS_RESOURCE_NAME_PREFIX_TEST}-service,tag=${CIRCLE_SHA1}"
   KarrLab:
     jobs:
       - karrlab
