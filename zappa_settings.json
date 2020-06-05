@@ -1,9 +1,0 @@
-{
-    "dev": {
-        "app_function": "datanator_rest_api.core.application",
-        "profile_name": "karrlab-zl",
-        "project_name": "datanator-rest-api",
-        "runtime": "python3.7",
-        "s3_bucket": "datanator-rest-api"
-    }
-}

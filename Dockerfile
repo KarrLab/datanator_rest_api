@@ -2,12 +2,15 @@ FROM python:3.7-slim-buster
 
 WORKDIR /ecs
 
-COPY ./nginx/install-nginx.sh .
+# COPY ./nginx/install-nginx.sh .
 
-RUN bash install-nginx.sh
+# RUN bash install-nginx.sh
 
-COPY ./nginx/default.conf /etc/nginx/nginx.conf
-RUN rm -rf /etc/nginx/conf.d
+RUN apt-get update \
+    && apt-get install --no-install-recommends --no-install-suggests -y gnupg1 ca-certificates git
+
+# COPY ./nginx/default.conf /etc/nginx/nginx.conf
+# RUN rm -rf /etc/nginx/conf.d
 
 # -- Adding Pipfiles
 COPY Pipfile ./
@@ -33,8 +36,15 @@ ENV  REST_FTX_AWS_SECRET_ACCESS_KEY=$REST_FTX_AWS_SECRET_ACCESS_KEY
 ENV  REST_FTX_AWS_DEFAULT_REGION=$REST_FTX_AWS_DEFAULT_REGION
 
 EXPOSE 80/tcp
-EXPOSE 8001/tcp
 
-CMD gunicorn --bind 0.0.0.0:8001 "datanator_rest_api.core:application" --daemon \
-    && sed -i -e 's/$PORT/'"$PORT"'/g' /etc/nginx/nginx.conf \
-    && nginx -g 'daemon off;'
+# clean up
+RUN  apt-get purge -y --autoremove git ca-certificates \
+     && rm -rf /var/lib/apt/lists/* /etc/apt/sources.list.d/nginx.list \
+     && if [ -n "$tempDir" ]; then \
+        apt-get purge -y --auto-remove \
+        && rm -rf "$tempDir" /etc/apt/sources.list.d/temp.list; \
+     fi 
+
+CMD gunicorn --log-level info --bind 0.0.0.0:80 "datanator_rest_api.core"
+    # && sed -i -e 's/$PORT/'"$PORT"'/g' /etc/nginx/nginx.conf \
+    # && nginx -g 'daemon off;'
