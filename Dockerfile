@@ -46,6 +46,6 @@ RUN  apt-get purge -y --autoremove git ca-certificates \
         && rm -rf "$tempDir" /etc/apt/sources.list.d/temp.list; \
      fi 
 
-CMD gunicorn --bind 127.0.0.1:8001 "datanator_rest_api.core:application" 
+CMD gunicorn --bind 127.0.0.1:80 "datanator_rest_api.core:application" 
     # && sed -i -e 's/$PORT/'"$PORT"'/g' /etc/nginx/nginx.conf \
     # && nginx -g 'daemon off;'
