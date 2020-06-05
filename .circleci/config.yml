@@ -46,7 +46,7 @@ workflows:
             - aws-ecr/build-and-push-image 
           family: "${AWS_RESOURCE_NAME_PREFIX_TEST}-service"
           cluster-name: "${AWS_RESOURCE_NAME_PREFIX_TEST}-cluster"
-          container-image-name-updates: "container=${AWS_RESOURCE_NAME_PREFIX_TEST}-service,tag=${CIRCLE_SHA1}"
+          container-image-name-updates: "container=${AWS_RESOURCE_NAME_PREFIX_TEST}-service,image-and-tag=${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com/${AWS_RESOURCE_NAME_PREFIX_TEST}:${CIRCLE_SHA1}"
   KarrLab:
     jobs:
       - karrlab
