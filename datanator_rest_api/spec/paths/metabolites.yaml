@@ -194,6 +194,81 @@ num_conc:
             schema:
               type: integer
 
+ymdb_conc_count:
+  get:
+    tags:
+      - Metabolites
+      - Concentration
+    summary: Get number of concentrations observations in YMDB
+    description: Some description
+    responses:
+      "200":
+        description: OK
+        content:
+          application/json:
+            schema:
+              type: integer
+
+ecmdb_conc_count:
+  get:
+    tags:
+      - Metabolites
+      - Concentration
+    summary: Get number of concentrations observations in ECMDB
+    description: Some description
+    responses:
+      "200":
+        description: OK
+        content:
+          application/json:
+            schema:
+              type: integer
+
+ecmdb_ref_count:
+  get:
+    tags:
+      - Metabolites
+      - Concentration
+    summary: Get number of references used to generate concentration values in ECMDB
+    description: Some description
+    responses:
+      "200":
+        description: OK
+        content:
+          application/json:
+            schema:
+              type: integer
+
+ymdb_ref_count:
+  get:
+    tags:
+      - Metabolites
+      - Concentration
+    summary: Get number of references used to generate concentration values in YMDB
+    description: Some description
+    responses:
+      "200":
+        description: OK
+        content:
+          application/json:
+            schema:
+              type: integer
+
+curated_ref_count:
+  get:
+    tags:
+      - Metabolites
+      - Concentration
+    summary: Get number of munaully curated articles used to generate concentration values.
+    description: Some description
+    responses:
+      "200":
+        description: OK
+        content:
+          application/json:
+            schema:
+              type: integer
+
 ecmdb_doc_count:
   get:
     tags:
@@ -263,6 +338,28 @@ meta:
           application/json:
             schema:
               type: object
+
+get_distinct:
+  get:
+    parameters:
+      - in: query
+        name: _input
+        schema:
+          type: string
+        example: 'concentrations.reference.id'
+        required: true
+    tags:
+      - Metabolites
+      - Meta
+    summary: Get number of distinct values in field.
+    description: Get number of distinct values in field.
+    responses:
+      "200":
+        description: OK
+        content:
+          application/json:
+            schema:
+              type: integer
 
 concentration_only:
   get:

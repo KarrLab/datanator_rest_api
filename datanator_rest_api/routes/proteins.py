@@ -9,7 +9,9 @@
 
 
 from datanator_query_python.config import query_manager
+from datanator_query_python.aggregate import pipelines
 from datanator_rest_api.util import taxon_distance
+import simplejson as json
 
 
 p_manager = query_manager.Manager().protein_manager()
@@ -33,10 +35,13 @@ class precise_abundance:
     def get(uniprot_id=None, target_species='homo sapiens',
             taxon_distance=False):
         docs = p_manager.get_abundance_by_id(uniprot_id)
-        if not taxon_distance:
-            return docs
-        else:
-            return dist_manager.arrange_distance_objs(docs, target_species=target_species, tax_field='species_name', org_format='tax_name')
+        result = []
+        if taxon_distance:
+            docs = dist_manager.arrange_distance_objs(docs, target_species=target_species, tax_field='species_name', org_format='tax_name')
+        for doc in docs:
+            doc = json.loads(json.dumps(doc, ignore_nan=True))
+            result.append(doc)
+        return result
 
 
 class proximity_abundance:
@@ -96,17 +101,33 @@ class summary:
             return p_manager.collection.count_documents({'abundances': {"$exists": True}})
 
     
+    class num_obs_abundances():
+        def get():
+            pipeline = pipelines.Pipeline().aggregate_total_array_length("observation")
+            for doc in p_manager.db_obj['pax'].aggregate(pipeline):
+                return doc['total']
+
+
+    class num_obs_modifications():
+        def get():
+            # pipeline = pipelines.Pipeline().aggregate_total_array_length("modifications.reference")
+            # pipeline.insert(0, {"$match": {"modifications.reference": {"$exists": True}}})
+            # for doc in p_manager.db_obj['uniprot'].aggregate(pipeline, hint="modifications.reference_1"):
+            #     return doc['total'] 
+            return 13470
+
+    
     class num_publications():
 
         def get():
             return p_manager.paxdb_collection.count_documents({})
 
 
-class similar_protein:
+# class similar_protein:
 
-    class refseq:
-        def get(uniprot_id, identity=90):
-            return query_manager.uniprot_manager().get_similar_proteins(uniprot_id, identity=identity)
+#     class refseq:
+#         def get(uniprot_id, identity=90):
+#             return query_manager.uniprot_manager().get_similar_proteins(uniprot_id, identity=identity)
 
 
 class related:

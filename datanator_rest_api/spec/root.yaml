@@ -49,12 +49,22 @@ paths:
     $ref: paths/metabolites.yaml#/similar_compounds
   /metabolites/summary/concentration_count/:
     $ref: paths/metabolites.yaml#/num_conc
+  /metabolites/summary/ecmdb_conc_count/:
+    $ref: paths/metabolites.yaml#/ecmdb_conc_count
+  /metabolites/summary/ymdb_conc_count/:
+    $ref: paths/metabolites.yaml#/ymdb_conc_count
+  /metabolites/summary/ecmdb_ref_count/:
+    $ref: paths/metabolites.yaml#/ecmdb_ref_count
+  /metabolites/summary/ymdb_ref_count/:
+    $ref: paths/metabolites.yaml#/ymdb_ref_count
+  /metabolites/summary/curated_ref_count/:
+    $ref: paths/metabolites.yaml#/curated_ref_count
   /metabolites/summary/ecmdb_doc_count/:
     $ref: paths/metabolites.yaml#/ecmdb_doc_count
   /metabolites/summary/ymdb_doc_count/:
     $ref: paths/metabolites.yaml#/ymdb_doc_count
-  /metabolites/summary/get_ref_count/:
-    $ref: paths/metabolites.yaml#/get_ref_count
+  /metabolites/summary/get_distinct/:
+    $ref: paths/metabolites.yaml#/get_distinct
   /metabolites/meta/:
     $ref: paths/metabolites.yaml#/meta
   /metabolites/concentration/:
@@ -79,8 +89,12 @@ paths:
     $ref: paths/proteins.yaml#/summary/num_abundances
   /proteins/summary/num_publications/:
     $ref: paths/proteins.yaml#/summary/num_publications
-  /proteins/similar_protein/refseq/:
-    $ref: paths/proteins.yaml#/similar_protein/refseq
+  /proteins/summary/num_obs_abundances/:
+    $ref: paths/proteins.yaml#/summary/num_obs_abundances
+  /proteins/summary/num_obs_modifications/:
+    $ref: paths/proteins.yaml#/summary/num_obs_modifications
+  # /proteins/similar_protein/refseq/:
+  #   $ref: paths/proteins.yaml#/similar_protein/refseq
   /proteins/related/related_reactions_by_kegg/:
     $ref: paths/proteins.yaml#/related/related_reactions_by_kegg/
   /proteins/related/related_reactions_by_uniprot/:
@@ -101,8 +115,14 @@ paths:
     $ref: paths/reactions.yaml#/summary/num_entries
   /reactions/summary/num_parameter_km/:
     $ref: paths/reactions.yaml#/summary/num_parameter_km
+  /reactions/summary/get_brenda_obs/:
+    $ref: paths/reactions.yaml#/summary/get_brenda_obs
+  /reactions/summary/get_sabio_obs/:
+    $ref: paths/reactions.yaml#/summary/get_sabio_obs
   /reactions/summary/num_parameter_kcat/:
     $ref: paths/reactions.yaml#/summary/num_parameter_kcat
+  /reactions/summary/num_refs/:
+    $ref: paths/reactions.yaml#/summary/num_refs
   /reactions/summary/get_distinct/:
     $ref: paths/reactions.yaml#/summary/get_distinct
   /reactions/summary/get_frequency/:
@@ -111,6 +131,8 @@ paths:
     $ref: paths/rna.yaml#/get_info_by_name/
   /rna/halflife/get_info_by_ko/:
     $ref: paths/rna.yaml#/get_info_by_ko/
+  /rna/halflife/get_info_by_uniprot/:
+    $ref: paths/rna.yaml#/get_info_by_uniprot/
   /rna/modification/get_modifications_by_ko/:
     $ref: paths/rna.yaml#/get_modifications_by_ko/
   /rna/summary/get_total_docs/:
@@ -119,12 +141,18 @@ paths:
     $ref: paths/rna.yaml#/get_publication_num/
   /rna/summary/get_distinct/:
     $ref: paths/rna.yaml#/get_distinct/
+  /rna/summary/get_total_modifications/:
+    $ref: paths/rna.yaml#/get_total_modifications/
+  /rna/summary/get_total_halflife_obs/:
+    $ref: paths/rna.yaml#/get_total_halflife_obs/
   /taxon/canon_rank_distance/:
     $ref: paths/taxon.yaml#/canon_rank_distance/
   /taxon/canon_rank_distance_by_name/:
     $ref: paths/taxon.yaml#/canon_rank_distance_by_name/
   /taxon/is_child/:
     $ref: paths/taxon.yaml#/is_child/
+  /taxon/summary/taxon_distribution/:
+    $ref: paths/taxon.yaml#/summary/taxon_distribution/
   /taxon/canon_rank_common_distance/:
     $ref: paths/taxon.yaml#/canon_rank_common_distance/
   /ftx/text_search/:

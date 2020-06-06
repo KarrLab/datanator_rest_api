@@ -651,6 +651,35 @@ paths:
       tags:
       - Metabolites
       - Concentration
+  /metabolites/summary/curated_ref_count/:
+    get:
+      description: Some description
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: integer
+          description: OK
+      summary: Get number of munaully curated articles used to generate concentration
+        values.
+      tags:
+      - Metabolites
+      - Concentration
+  /metabolites/summary/ecmdb_conc_count/:
+    get:
+      description: Some description
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: integer
+          description: OK
+      summary: Get number of concentrations observations in ECMDB
+      tags:
+      - Metabolites
+      - Concentration
   /metabolites/summary/ecmdb_doc_count/:
     get:
       description: Some description
@@ -665,7 +694,7 @@ paths:
       tags:
       - Metabolites
       - Concentration
-  /metabolites/summary/get_ref_count/:
+  /metabolites/summary/ecmdb_ref_count/:
     get:
       description: Some description
       responses:
@@ -675,7 +704,42 @@ paths:
               schema:
                 type: integer
           description: OK
-      summary: Get number of primary sources in metabolite collection.
+      summary: Get number of references used to generate concentration values in ECMDB
+      tags:
+      - Metabolites
+      - Concentration
+  /metabolites/summary/get_distinct/:
+    get:
+      description: Get number of distinct values in field.
+      parameters:
+      - example: concentrations.reference.id
+        in: query
+        name: _input
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: integer
+          description: OK
+      summary: Get number of distinct values in field.
+      tags:
+      - Metabolites
+      - Meta
+  /metabolites/summary/ymdb_conc_count/:
+    get:
+      description: Some description
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: integer
+          description: OK
+      summary: Get number of concentrations observations in YMDB
       tags:
       - Metabolites
       - Concentration
@@ -690,6 +754,20 @@ paths:
                 type: integer
           description: OK
       summary: Get number of metabolites in YMDB collection.
+      tags:
+      - Metabolites
+      - Concentration
+  /metabolites/summary/ymdb_ref_count/:
+    get:
+      description: Some description
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: integer
+          description: OK
+      summary: Get number of references used to generate concentration values in YMDB
       tags:
       - Metabolites
       - Concentration
@@ -785,7 +863,7 @@ paths:
           type: array
       - example: homo sapiens
         in: query
-        name: taget_species
+        name: target_species
         required: false
         schema:
           type: string
@@ -913,41 +991,6 @@ paths:
       summary: Get related reactions based on protein's uniprot_id
       tags:
       - Proteins
-  /proteins/similar_protein/refseq/:
-    get:
-      description: This section provides links to proteins that are similar to the
-        protein sequence(s) described in this entry at different levels of sequence
-        identity thresholds (100%, 90% and 50%) based on their membership in UniProt
-        Reference Clusters.
-      parameters:
-      - in: query
-        name: uniprot_id
-        required: true
-        schema:
-          type: string
-      - in: query
-        name: identity
-        required: false
-        schema:
-          default: 90
-          enum:
-          - 100
-          - 90
-          - 50
-          type: integer
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                items:
-                  nullable: true
-                  type: string
-                type: array
-          description: OK
-      summary: Get similar proteins based on refseq
-      tags:
-      - Proteins
   /proteins/summary/num_abundances/:
     get:
       description: For about page
@@ -959,6 +1002,32 @@ paths:
                 type: integer
           description: OK
       summary: Get number of proteins with abundance values
+      tags:
+      - Proteins
+  /proteins/summary/num_obs_abundances/:
+    get:
+      description: For about page
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: integer
+          description: OK
+      summary: Get number of observed abundance values
+      tags:
+      - Proteins
+  /proteins/summary/num_obs_modifications/:
+    get:
+      description: For about page
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: integer
+          description: OK
+      summary: Get number of observed protein modifications
       tags:
       - Proteins
   /proteins/summary/num_organism/:
@@ -1290,6 +1359,30 @@ paths:
       summary: Get reactions based on reaction entry id
       tags:
       - Reactions
+  /reactions/summary/get_brenda_obs/:
+    get:
+      description: For about page
+      parameters:
+      - in: query
+        name: parameter
+        required: true
+        schema:
+          enum:
+          - k_ms
+          - k_cats
+          - k_is
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: integer
+          description: OK
+      summary: Get number of observations from BRENDA based on parameter name.
+      tags:
+      - Kinetics
+      - Reactions
   /reactions/summary/get_distinct/:
     get:
       description: Get number of distinct values in field.
@@ -1335,6 +1428,30 @@ paths:
                 type: array
           description: OK
       summary: Get pH distribution.
+      tags:
+      - Kinetics
+      - Reactions
+  /reactions/summary/get_sabio_obs/:
+    get:
+      description: For about page
+      parameters:
+      - in: query
+        name: parameter
+        required: true
+        schema:
+          enum:
+          - k_ms
+          - k_cats
+          - k_is
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: integer
+          description: OK
+      summary: Get number of observations from SabioRK based on parameter name.
       tags:
       - Kinetics
       - Reactions
@@ -1397,6 +1514,21 @@ paths:
       - Kinetics
       - Reactions
       - Organism
+  /reactions/summary/num_refs/:
+    get:
+      description: For about page
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: integer
+          description: OK
+      summary: Get total number of primary sources.
+      tags:
+      - Kinetics
+      - Reactions
+      - Meta
   /rna/halflife/get_info_by_ko/:
     get:
       description: Get RNA half-life information based on protein kegg ortholog group.
@@ -1480,6 +1612,49 @@ paths:
                 $ref: '#/components/schemas/RnaHalflifeDoc'
           description: OK
       summary: Get RNA half-life information based on protein name.
+      tags:
+      - RNA
+      - RNA Half-life
+  /rna/halflife/get_info_by_uniprot/:
+    get:
+      description: Get RNA half-life information based on protein uniprot_id.
+      parameters:
+      - example: P09119
+        in: query
+        name: uniprot_id
+        required: true
+        schema:
+          type: string
+      - example: 0
+        in: query
+        name: _from
+        required: true
+        schema:
+          type: integer
+      - example: 10
+        in: query
+        name: size
+        required: true
+        schema:
+          type: integer
+      - example: true
+        in: query
+        name: taxon_distance
+        schema:
+          type: boolean
+      - example: homo sapiens
+        in: query
+        name: species
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RnaHalflifeDoc'
+          description: OK
+      summary: Get RNA half-life information based on protein uniprot_id.
       tags:
       - RNA
       - RNA Half-life
@@ -1580,6 +1755,36 @@ paths:
                 type: integer
           description: OK
       summary: Get number of proteins and non-coding DNAs that have half-life values
+      tags:
+      - RNA
+      - RNA Half-life
+      - Meta
+  /rna/summary/get_total_halflife_obs/:
+    get:
+      description: Get number of half-life observations.
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: integer
+          description: OK
+      summary: Get number of half-life observations.
+      tags:
+      - RNA
+      - RNA Half-life
+      - Meta
+  /rna/summary/get_total_modifications/:
+    get:
+      description: Get total number of RNA modifications in database.
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: integer
+          description: OK
+      summary: Get total number of RNA modifications in database.
       tags:
       - RNA
       - RNA Half-life
@@ -1706,6 +1911,20 @@ paths:
           description: OK
       summary: Check if each source is the child of target.
       tags:
+      - NCBI Taxonomy
+  /taxon/summary/taxon_distribution/:
+    get:
+      description: For about page
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+          description: OK
+      summary: Get taxon distribution for total observed instances.
+      tags:
+      - Meta
       - NCBI Taxonomy
 components:
   parameters:

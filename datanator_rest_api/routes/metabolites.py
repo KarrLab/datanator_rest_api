@@ -73,7 +73,56 @@ class summary:
     class concentration_count():
     
         def get():
-            return ey_manager.get_concentration_count()
+            return mc_manager.get_conc_count()
+
+
+    class ymdb_conc_count():
+        def get():
+            return 1462
+
+
+    class ecmdb_conc_count():
+        def get():
+            return 1196
+
+
+    class ecmdb_ref_count():
+        def get():
+            docs = ey_manager.collection_ecmdb.aggregate([
+                    {"$project": {"concentrations": 1}},
+                    {"$match": {"concentrations": {"$ne": None}}},
+                    {"$unwind": "$concentrations"},
+                    {"$group": {
+                        "_id": "$concentrations.reference.pubmed_id",
+                        "count": {"$sum": 1}
+                    }}
+                ])
+            count = 0
+            for doc in docs:
+                count += 1
+            return count
+
+
+    class ymdb_ref_count():
+        def get():
+            docs = ey_manager.collection_ymdb.aggregate([
+                    {"$project": {"concentrations": 1}},
+                    {"$match": {"concentrations": {"$ne": None}}},
+                    {"$unwind": "$concentrations"},
+                    {"$group": {
+                        "_id": "$concentrations.reference.pubmed_id",
+                        "count": {"$sum": 1}
+                    }}
+                ])
+            count = 0
+            for doc in docs:
+                count += 1
+            return count
+
+
+    class curated_ref_count():
+        def get():
+            return 4
 
     
     class ecmdb_doc_count():
@@ -87,11 +136,11 @@ class summary:
         def get():
             return ey_manager.collection_ymdb.count_documents({})
 
+    
+    class get_distinct():
+        def get(_input):
+            return len(m_manager.db_obj['metabolite_concentrations'].distinct(_input))
 
-    class get_ref_count:
-
-        def get():
-            return len(ey_manager.collection_ecmdb.distinct('syntehsis_reference')) + len(ey_manager.collection_ymdb.distinct('syntehsis_reference'))
 
 
 class concentration:

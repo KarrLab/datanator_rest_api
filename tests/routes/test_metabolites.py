@@ -46,10 +46,30 @@ class ImplementationTestCase(unittest.TestCase):
             '/metabolites/summary/ymdb_doc_count/')
         self.assertEqual(result_0.status_code, 200)
 
-    def test_get_ref_count(self):
+    def test_summary_ymdb_conc_count(self):
         result_0 = self.client.get(
-            '/metabolites/summary/get_ref_count/')
-        self.assertEqual(result_0.status_code, 200)          
+            '/metabolites/summary/ymdb_conc_count/')
+        self.assertEqual(result_0.status_code, 200)
+
+    def test_summary_ecmdb_conc_count(self):
+        result_0 = self.client.get(
+            '/metabolites/summary/ecmdb_conc_count/')
+        self.assertEqual(result_0.status_code, 200)
+
+    def test_summary_ecmdb_ref_count(self):
+        result_0 = self.client.get(
+            '/metabolites/summary/ymdb_ref_count/')
+        self.assertEqual(result_0.status_code, 200)
+
+    def test_summary_ymdb_ref_count(self):
+        result_0 = self.client.get(
+            '/metabolites/summary/ymdb_ref_count/')
+        self.assertEqual(result_0.status_code, 200)
+
+    def test_get_distinct(self):
+        result_0 = self.client.get(
+            '/metabolites/summary/get_distinct/?_input=concentrations.reference.id')
+        self.assertEqual(result_0.status_code, 200)            
 
     def test_meta(self):
         result_1 = self.client.get("/metabolites/meta/?inchikey=UHDGCWIWMRVCDJ-XVFCMESISA-N")

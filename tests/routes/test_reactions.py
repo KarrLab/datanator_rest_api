@@ -49,6 +49,7 @@ class ImplementationTestCase(unittest.TestCase):
         result = self.client.get('/reactions/summary/num_parameter_kcat/')
         self.assertEqual(result.status_code, 200)
 
+    @unittest.skip("takes 24.7s")
     def test_get_distinct(self):
         result = self.client.get('/reactions/summary/get_distinct/?_input=pH')
         self.assertEqual(result.status_code, 200)
@@ -57,4 +58,16 @@ class ImplementationTestCase(unittest.TestCase):
         result = self.client.get('/reactions/summary/get_frequency/?field=ph')
         self.assertEqual(result.status_code, 200)
         result = self.client.get('/reactions/summary/get_frequency/?field=temperature')
+        self.assertEqual(result.status_code, 200)
+
+    def test_get_brenda_obs(self):
+        result = self.client.get('/reactions/summary/get_brenda_obs/?parameter=k_ms')
+        self.assertEqual(result.status_code, 200)
+
+    def test_num_refs(self):
+        result = self.client.get('/reactions/summary/num_refs/')
+        self.assertEqual(result.status_code, 200)
+
+    def test_get_sabio_obs(self):
+        result = self.client.get('/reactions/summary/get_sabio_obs/?parameter=k_ms')
         self.assertEqual(result.status_code, 200)

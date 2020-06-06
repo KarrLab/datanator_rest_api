@@ -23,6 +23,10 @@ class ImplementationTestCase(unittest.TestCase):
         docs_0 = self.client.get('/rna/halflife/get_info_by_ko/?ko_number=K13280&_from=0&size=10')
         self.assertEqual(docs_0.status_code, 200)
 
+    def test_get_info_by_uniprot(self):
+        docs_0 = self.client.get('/rna/halflife/get_info_by_uniprot/?uniprot_id=P09119&_from=0&size=10')
+        self.assertEqual(docs_0.status_code, 200)
+
     def test_get_total_docs(self):
         result = self.client.get('/rna/summary/get_total_docs/')
         self.assertEqual(result.status_code, 200)
@@ -37,4 +41,12 @@ class ImplementationTestCase(unittest.TestCase):
 
     def test_get_modifications_by_ko(self):
         docs_0 = self.client.get('/rna/modification/get_modifications_by_ko/?ko_number=K14218&_from=0&size=10')
+        self.assertEqual(docs_0.status_code, 200)
+
+    def test_get_total_modifications(self):
+        docs_0 = self.client.get('/rna/summary/get_total_modifications/')
+        self.assertEqual(docs_0.status_code, 200)
+
+    def test_get_total_halflife_obs(self):
+        docs_0 = self.client.get('/rna/summary/get_total_halflife_obs/')
         self.assertEqual(docs_0.status_code, 200)

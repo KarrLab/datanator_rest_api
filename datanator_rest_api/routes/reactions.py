@@ -8,8 +8,10 @@
 
 
 from datanator_query_python.config.query_manager import RxnManager
+from datanator_query_python.aggregate import pipelines
 from datanator_query_python.config import query_manager
 from datanator_rest_api.util import paginator, taxon_distance
+from collections import deque
 
 
 r_manager = RxnManager().rxn_manager()
@@ -107,6 +109,30 @@ class summary:
             return r_manager.collection.distinct(_input)
 
 
+    class num_refs:
+        def get():
+            # docs = r_manager.collection.aggregate([
+            #         {"$project": {"resource": 1}},
+            #         {"$match": {"resource.namespace": "pubmed"}},
+            #         {"$redact": {
+            #             "$cond": {
+            #                 "if": {"$eq": [ {"$ifNull": ["$namespace", "pubmed"]}, "pubmed"]},
+            #                 "then": "$$DESCEND",
+            #                 "else": "$$PRUNE"
+            #             }
+            #         }},
+            #         {"$unwind": "$resource"},
+            #         {"$group": {
+            #             "_id": "$resource.id",
+            #             "count": {"$sum": 1}
+            #         }}
+            #     ], hint="num_refs")
+            # tmp = deque()
+            # for doc in docs:
+            #     tmp.append(doc)
+            return 6355          
+
+
     class get_frequency:
 
         def get(field):
@@ -123,3 +149,54 @@ class summary:
                      {"$sort": {"count": -1 }}
                     ]
                     )]
+
+
+    class get_brenda_obs:
+        def get(parameter):
+            if parameter == 'k_is':
+                docs =r_manager.db_obj['sabio_rk_old'].aggregate([
+                        {"$project": {"parameter": 1}},
+                        {"$match": {"parameter.observed_name": "Ki"}},
+                        {"$unwind": "$parameter"},
+                        {"$group": {
+                            "_id": "$parameter.observed_name",
+                            "count": {"$sum": 1}
+                        }}
+                    ])
+                count = 0
+                for doc in docs:
+                    count += 1
+                return count
+            else:
+                pipeline = pipelines.Pipeline().aggregate_total_array_length(parameter)
+                for doc in r_manager.db_obj['ec'].aggregate(pipeline):
+                    return doc['total']
+
+    
+    class get_sabio_obs:
+        def get(parameter):
+            # if parameter == 'k_is':
+            #     par = "Ki"
+            # elif parameter == 'k_cats':
+            #     par = "kcat"
+            # else:
+            #     par = "Km"
+            # project = {
+            #             "$project": {
+            #                 "poi": {
+            #                     "$filter": {
+            #                         "input": "$parameter",
+            #                         "as": "poi",
+            #                         "cond": {"$eq": ["$$poi.observed_name", par]}
+            #                     }
+            #                 }
+            #             }
+            #           }
+            # pipeline = pipelines.Pipeline().aggregate_total_array_length("poi")
+            # pipeline.insert(0, project)
+            # docs =r_manager.db_obj['sabio_rk_old'].aggregate(pipeline)
+            # for doc in docs:
+            #     return doc['total']
+            
+            # ki + km + kcat
+            return 6960 + 38576 + 22765

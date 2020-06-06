@@ -99,3 +99,19 @@ canon_rank_common_distance:
           application/json:
             schema:
               type: object
+
+summary:
+  taxon_distribution:
+    get:
+      tags:
+        - Meta
+        - NCBI Taxonomy
+      summary: Get taxon distribution for total observed instances.
+      description: For about page
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object

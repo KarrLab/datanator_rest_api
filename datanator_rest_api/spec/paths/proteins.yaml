@@ -10,7 +10,7 @@ precise_abundance:
         example: [Q54JE4]
         required: true
       - in: query
-        name: taget_species
+        name: target_species
         schema:
           type: string
         required: false
@@ -216,6 +216,34 @@ summary:
             application/json:
               schema:
                 type: integer
+
+  num_obs_abundances:
+    get:
+      tags:
+        - Proteins
+      summary: Get number of observed abundance values
+      description: For about page
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: integer
+
+  num_obs_modifications:
+    get:
+      tags:
+        - Proteins
+      summary: Get number of observed protein modifications
+      description: For about page
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: integer
                 
   num_publications:
     get:
@@ -231,36 +259,36 @@ summary:
               schema:
                 type: integer 
 
-similar_protein:
-  refseq:
-    get:
-      parameters:
-        - in: query
-          name: uniprot_id
-          schema:
-            type: string
-          required: true
-        - in: query
-          name: identity
-          schema:
-            type: integer
-            enum: [100, 90, 50]
-            default: 90
-          required: false
-      tags:
-        - Proteins
-      summary: Get similar proteins based on refseq 
-      description: This section provides links to proteins that are similar to the protein sequence(s) described in this entry at different levels of sequence identity thresholds (100%, 90% and 50%) based on their membership in UniProt Reference Clusters.
-      responses:
-        "200":
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  type: string
-                  nullable: true
+# similar_protein:
+#   refseq:
+#     get:
+#       parameters:
+#         - in: query
+#           name: uniprot_id
+#           schema:
+#             type: string
+#           required: true
+#         - in: query
+#           name: identity
+#           schema:
+#             type: integer
+#             enum: [100, 90, 50]
+#             default: 90
+#           required: false
+#       tags:
+#         - Proteins
+#       summary: Get similar proteins based on refseq 
+#       description: This section provides links to proteins that are similar to the protein sequence(s) described in this entry at different levels of sequence identity thresholds (100%, 90% and 50%) based on their membership in UniProt Reference Clusters.
+#       responses:
+#         "200":
+#           description: OK
+#           content:
+#             application/json:
+#               schema:
+#                 type: array
+#                 items:
+#                   type: string
+#                   nullable: true
 
 related:
   related_reactions_by_kegg:
