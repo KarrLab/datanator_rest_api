@@ -46,6 +46,7 @@ workflows:
             - aws-ecr/build-and-push-image 
           family: "${AWS_RESOURCE_NAME_PREFIX_TEST}-service"
           cluster-name: "${AWS_RESOURCE_NAME_PREFIX_TEST}-cluster"
+          force-new-deployment: true
           container-image-name-updates: "container=${AWS_RESOURCE_NAME_PREFIX_TEST}-service,image-and-tag=${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com/${AWS_RESOURCE_NAME_PREFIX_TEST}:${CIRCLE_SHA1}"
   KarrLab:
     jobs:
