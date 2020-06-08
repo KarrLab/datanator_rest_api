@@ -88,36 +88,38 @@ class summary:
 
     class ecmdb_ref_count():
         def get():
-            docs = ey_manager.collection_ecmdb.aggregate([
-                    {"$project": {"concentrations": 1}},
-                    {"$match": {"concentrations": {"$ne": None}}},
-                    {"$unwind": "$concentrations"},
-                    {"$group": {
-                        "_id": "$concentrations.reference.pubmed_id",
-                        "count": {"$sum": 1}
-                    }}
-                ])
-            count = 0
-            for doc in docs:
-                count += 1
-            return count
+            # docs = ey_manager.collection_ecmdb.aggregate([
+            #         {"$project": {"concentrations": 1}},
+            #         {"$match": {"concentrations": {"$ne": None}}},
+            #         {"$unwind": "$concentrations"},
+            #         {"$group": {
+            #             "_id": "$concentrations.reference.pubmed_id",
+            #             "count": {"$sum": 1}
+            #         }}
+            #     ])
+            # count = 0
+            # for doc in docs:
+            #     count += 1
+            # return count
+            return 43
 
 
     class ymdb_ref_count():
         def get():
-            docs = ey_manager.collection_ymdb.aggregate([
-                    {"$project": {"concentrations": 1}},
-                    {"$match": {"concentrations": {"$ne": None}}},
-                    {"$unwind": "$concentrations"},
-                    {"$group": {
-                        "_id": "$concentrations.reference.pubmed_id",
-                        "count": {"$sum": 1}
-                    }}
-                ])
-            count = 0
-            for doc in docs:
-                count += 1
-            return count
+            # docs = ey_manager.collection_ymdb.aggregate([
+            #         {"$project": {"concentrations": 1}},
+            #         {"$match": {"concentrations": {"$ne": None}}},
+            #         {"$unwind": "$concentrations"},
+            #         {"$group": {
+            #             "_id": "$concentrations.reference.pubmed_id",
+            #             "count": {"$sum": 1}
+            #         }}
+            #     ])
+            # count = 0
+            # for doc in docs:
+            #     count += 1
+            # return count
+            return 1462
 
 
     class curated_ref_count():
