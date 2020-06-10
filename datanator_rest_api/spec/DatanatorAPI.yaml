@@ -482,37 +482,6 @@ paths:
       summary: Add a new metabolite
       tags:
       - Metabolites
-  /metabolites/concentration/:
-    get:
-      description: Some description
-      parameters:
-      - in: query
-        name: abstract
-        required: false
-        schema:
-          type: boolean
-      - in: query
-        name: species
-        required: false
-        schema:
-          default: Escherichia coli
-          type: string
-      - in: query
-        name: metabolite
-        required: true
-        schema:
-          type: string
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/MetaboliteConcentration'
-          description: OK
-      summary: Get metabolite concentration based on species and metabolite name
-      tags:
-      - Metabolites
-      - Concentration
   /metabolites/concentration_only/:
     get:
       description: see summary

@@ -147,38 +147,6 @@ similar_compounds:
             schema:
               $ref: "#/components/schemas/SimilarMetaboliteConcentration"
 
-concentration:
-  get:
-    parameters:
-      - in: query
-        name: abstract
-        schema:
-          type: boolean
-        required: false
-      - in: query
-        name: species
-        schema:
-          type: string
-          default: Escherichia coli
-        required: false
-      - in: query
-        name: metabolite
-        schema:
-          type: string
-        required: true
-    tags:
-      - Metabolites
-      - Concentration
-    summary: Get metabolite concentration based on species and metabolite name
-    description: Some description
-    responses:
-      "200":
-        description: OK
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/MetaboliteConcentration"
-
 num_conc:
   get:
     tags:

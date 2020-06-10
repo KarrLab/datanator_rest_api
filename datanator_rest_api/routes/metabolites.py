@@ -144,13 +144,6 @@ class summary:
             return len(m_manager.db_obj['metabolite_concentrations'].distinct(_input))
 
 
-
-class concentration:
-
-    def get(metabolite, species='Escherichia coli', abstract=False):
-        return m_manager.molecule_name_query(metabolite, species, abstract_default=abstract)
-
-
 class meta:
 
     def get(inchikey, projection="{'_id': 0, 'kegg_meta.gene_ortholog': 0}"):
