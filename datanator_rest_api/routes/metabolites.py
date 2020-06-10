@@ -16,7 +16,6 @@ from bson.objectid import ObjectId
 
 
 ey_manager = query_manager.Manager().eymdb_manager()
-m_manager = query_manager.Manager().metabolite_manager()
 mm_manager = query_manager.metabolites_meta_manager()
 mc_manager = query_manager.Manager().metabolite_concentration_manager()
 dist_manager = taxon_distance.TaxonDist()
@@ -40,7 +39,7 @@ class concentrations:
 
     def get(inchikey, species='Escherichia coli', taxon_distance=False):
         query = {'inchikey': inchikey}
-        result = m_manager.db_obj['metabolite_concentrations'].find_one(filter=query, projection={'_id': 0})
+        result = mm_manager.db_obj['metabolite_concentrations'].find_one(filter=query, projection={'_id': 0})
         if not result:
             return {}
         if taxon_distance:
@@ -141,7 +140,7 @@ class summary:
     
     class get_distinct():
         def get(_input):
-            return len(m_manager.db_obj['metabolite_concentrations'].distinct(_input))
+            return len(mm_manager.db_obj['metabolite_concentrations'].distinct(_input))
 
 
 class meta:
