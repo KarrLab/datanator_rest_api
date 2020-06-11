@@ -44,7 +44,7 @@ ENV  MONGO_ATLAS_AUTHDB=$MONGO_ATLAS_AUTHDB
 EXPOSE 80/tcp
 
 # clean up
-RUN  apt-get purge -y --autoremove git ca-certificates \
+RUN  apt-get purge -y --autoremove git \
      && rm -rf /var/lib/apt/lists/* /etc/apt/sources.list.d/nginx.list \
      && if [ -n "$tempDir" ]; then \
         apt-get purge -y --auto-remove \
