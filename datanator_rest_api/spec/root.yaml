@@ -67,8 +67,6 @@ paths:
     $ref: paths/metabolites.yaml#/get_distinct
   /metabolites/meta/:
     $ref: paths/metabolites.yaml#/meta
-  /metabolites/concentration/:
-    $ref: paths/metabolites.yaml#/concentration
   /metabolites/concentration_only/:
     $ref: paths/metabolites.yaml#/concentration_only
   /proteins/precise_abundance/:

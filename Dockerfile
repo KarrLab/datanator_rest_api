@@ -35,11 +35,16 @@ ENV  REST_FTX_AWS_ACCESS_KEY_ID=$REST_FTX_AWS_ACCESS_KEY_ID
 ENV  REST_FTX_AWS_SECRET_ACCESS_KEY=$REST_FTX_AWS_SECRET_ACCESS_KEY
 ENV  REST_FTX_AWS_DEFAULT_REGION=$REST_FTX_AWS_DEFAULT_REGION
 ENV  READ_PREFERENCE=$READ_PREFERENCE
+ENV  MONGO_ATLAS_SERVER=$MONGO_ATLAS_SERVER
+ENV  MONGO_ATLAS_PORT=$MONGO_ATLAS_PORT
+ENV  MONGO_ATLAS_REPL=$MONGO_ATLAS_REPL
+ENV  MONGO_ATLAS_READPREFERENCE=$MONGO_ATLAS_READPREFERENCE
+ENV  MONGO_ATLAS_AUTHDB=$MONGO_ATLAS_AUTHDB
 
 EXPOSE 80/tcp
 
 # clean up
-RUN  apt-get purge -y --autoremove git ca-certificates \
+RUN  apt-get purge -y --autoremove git \
      && rm -rf /var/lib/apt/lists/* /etc/apt/sources.list.d/nginx.list \
      && if [ -n "$tempDir" ]; then \
         apt-get purge -y --auto-remove \

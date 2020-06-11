@@ -16,7 +16,6 @@ from bson.objectid import ObjectId
 
 
 ey_manager = query_manager.Manager().eymdb_manager()
-m_manager = query_manager.Manager().metabolite_manager()
 mm_manager = query_manager.metabolites_meta_manager()
 mc_manager = query_manager.Manager().metabolite_concentration_manager()
 dist_manager = taxon_distance.TaxonDist()
@@ -40,7 +39,7 @@ class concentrations:
 
     def get(inchikey, species='Escherichia coli', taxon_distance=False):
         query = {'inchikey': inchikey}
-        result = m_manager.db_obj['metabolite_concentrations'].find_one(filter=query, projection={'_id': 0})
+        result = mm_manager.db_obj['metabolite_concentrations'].find_one(filter=query, projection={'_id': 0})
         if not result:
             return {}
         if taxon_distance:
@@ -88,36 +87,38 @@ class summary:
 
     class ecmdb_ref_count():
         def get():
-            docs = ey_manager.collection_ecmdb.aggregate([
-                    {"$project": {"concentrations": 1}},
-                    {"$match": {"concentrations": {"$ne": None}}},
-                    {"$unwind": "$concentrations"},
-                    {"$group": {
-                        "_id": "$concentrations.reference.pubmed_id",
-                        "count": {"$sum": 1}
-                    }}
-                ])
-            count = 0
-            for doc in docs:
-                count += 1
-            return count
+            # docs = ey_manager.collection_ecmdb.aggregate([
+            #         {"$project": {"concentrations": 1}},
+            #         {"$match": {"concentrations": {"$ne": None}}},
+            #         {"$unwind": "$concentrations"},
+            #         {"$group": {
+            #             "_id": "$concentrations.reference.pubmed_id",
+            #             "count": {"$sum": 1}
+            #         }}
+            #     ])
+            # count = 0
+            # for doc in docs:
+            #     count += 1
+            # return count
+            return 43
 
 
     class ymdb_ref_count():
         def get():
-            docs = ey_manager.collection_ymdb.aggregate([
-                    {"$project": {"concentrations": 1}},
-                    {"$match": {"concentrations": {"$ne": None}}},
-                    {"$unwind": "$concentrations"},
-                    {"$group": {
-                        "_id": "$concentrations.reference.pubmed_id",
-                        "count": {"$sum": 1}
-                    }}
-                ])
-            count = 0
-            for doc in docs:
-                count += 1
-            return count
+            # docs = ey_manager.collection_ymdb.aggregate([
+            #         {"$project": {"concentrations": 1}},
+            #         {"$match": {"concentrations": {"$ne": None}}},
+            #         {"$unwind": "$concentrations"},
+            #         {"$group": {
+            #             "_id": "$concentrations.reference.pubmed_id",
+            #             "count": {"$sum": 1}
+            #         }}
+            #     ])
+            # count = 0
+            # for doc in docs:
+            #     count += 1
+            # return count
+            return 1462 
 
 
     class curated_ref_count():
@@ -139,14 +140,7 @@ class summary:
     
     class get_distinct():
         def get(_input):
-            return len(m_manager.db_obj['metabolite_concentrations'].distinct(_input))
-
-
-
-class concentration:
-
-    def get(metabolite, species='Escherichia coli', abstract=False):
-        return m_manager.molecule_name_query(metabolite, species, abstract_default=abstract)
+            return len(mm_manager.db_obj['metabolite_concentrations'].distinct(_input))
 
 
 class meta:
