@@ -30,9 +30,12 @@ class text_search:
     
     class num_of_index:
 
-        def get(query_message, index, from_, size, fields):
+        def get(query_message, index, from_, size, fields,
+                includes, excludes):
+            print(includes)
             r = f_manager.get_single_index_count(query_message, index, size,
-                                                 fields=fields, from_=from_)
+                                                 fields=fields, from_=from_,
+                                                 includes=includes, excludes=excludes)
             return r
 
 

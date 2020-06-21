@@ -366,6 +366,25 @@ paths:
           items:
             type: string
           type: array
+      - description: Fields to be included in returned data object
+        in: query
+        name: includes
+        required: false
+        schema:
+          default: []
+          items:
+            type: string
+          type: array
+      - description: Fields to be excluded from returned data object
+        in: query
+        name: excludes
+        required: false
+        schema:
+          default:
+          - s
+          items:
+            type: string
+          type: array
       responses:
         '200':
           content:
