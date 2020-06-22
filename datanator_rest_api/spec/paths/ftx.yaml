@@ -160,6 +160,24 @@ num_of_index:
                     'halflives.accession_id', 'identifier']
         required: true
         description: Fields in which the text search will be done
+      - in: query
+        name: includes
+        schema:
+          type: array
+          items:
+            type: string
+          default: []
+        required: false
+        description: Fields to be included in returned data object
+      - in: query
+        name: excludes
+        schema:
+          type: array
+          items:
+            type: string
+          default: ["s"]
+        required: false
+        description: Fields to be excluded from returned data object
     tags:
       - FTX
     summary: Search for number hits in a particular index
