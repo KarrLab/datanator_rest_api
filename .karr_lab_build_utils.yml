@@ -1,5 +1,9 @@
 static_analyses:
   ignore_files: []
+  ignore_unused_requirements: []
+  ignore_missing_requirements:
+    - configobj
+    - pymongo
 downstream_dependencies:
   - datanator_frontend
 email_notifications: []
