@@ -16,4 +16,4 @@ class TestPaginator(unittest.TestCase):
         result_1 = self.src.page(1, 10)
         self.assertEqual(result_1, [10, 11])
         result_2 = self.src.page(2, 10)
-        self.assertEqual(result_2, 'Record request exceeds limit')
+        self.assertEqual(result_2, [])
