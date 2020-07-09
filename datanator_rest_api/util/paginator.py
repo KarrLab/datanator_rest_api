@@ -31,4 +31,4 @@ class Paginator:
                 result.append(doc)
             return result 
         else:
-            return 'Record request exceeds limit'
+            return result
