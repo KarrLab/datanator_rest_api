@@ -29,8 +29,8 @@ The *Datanator* toolkit is composed of the following packages:
 - *Datanator-db*: MongoDB server for *Datanator-data*
 - *Datanator-fulltext-db*: ElasticSearch server for *Datanator-data*
 - [*Datanator-query-python*](https://github.com/KarrLab/datanator_query_python): Tools for querying *Datanator-db* and *Datanator-fulltext-db*
-- [*Datanator-rest-api*](https://github.com/KarrLab/datanator_rest_api): REST interface for *Datanator-query-python*
-- *Datanator-frontend*: This package, a web-based graphical user interface to *Datanator-db*.
+- *Datanator-rest-api*: This package, REST interface for *Datanator-query-python*
+- [*Datanator-frontend*](https://github.com/KarrLab/datanator_frontend): A web-based graphical user interface to *Datanator-db*.
 
 This package provides a pythonic interface to programmatically access data stored in *Datanator-db* and *Datanator-fulltext-db*.
 
