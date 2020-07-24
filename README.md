@@ -2,6 +2,7 @@
 [![Test results](https://circleci.com/gh/KarrLab/datanator_rest_api.svg?style=shield)](https://circleci.com/gh/KarrLab/datanator_rest_api)
 [![Test coverage](https://coveralls.io/repos/github/KarrLab/datanator_rest_api/badge.svg)](https://coveralls.io/github/KarrLab/datanator_rest_api)
 [![Code analysis](https://api.codeclimate.com/v1/badges/10bcdc95a7a940c729be/maintainability)](https://codeclimate.com/github/KarrLab/datanator_rest_api)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
 # Datanator-rest-api
 REST API (OpenAPI 3) interface of [Datanator](https://datanator.info), a toolkit for discovering the data needed for modeling the biochemistry of cells.
