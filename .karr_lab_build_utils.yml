@@ -4,4 +4,6 @@ static_analyses:
   ignore_missing_requirements:
     - configobj
     - pymongo
+downstream_dependencies:
+  - datanator_frontend
 email_notifications: []
