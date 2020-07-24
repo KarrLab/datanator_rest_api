@@ -57,7 +57,6 @@ We recommend that developers install and run *Datanator-rest-api* locally. Below
 4. Install this package
   ```    
   cd /path/to/datanator_rest_api
-  pip install pipenv
   pipenv install -e .
   ```
 
