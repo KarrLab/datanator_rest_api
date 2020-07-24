@@ -29,9 +29,11 @@ class kinlaw_by_rxn:
             projection="{'kegg_meta.gene_ortholog': 0, 'kegg_meta._id': 0, '_id': 0}"):
         result = []
         projection = eval(projection)
-        _, docs = r_manager.get_kinlaw_by_rxn(substrates, products, dof=dof, 
+        count, docs = r_manager.get_kinlaw_by_rxn(substrates, products, dof=dof, 
                                               projection=projection, bound=bound,
                                               skip=_from, limit=size)
+        if count == 0:
+            return []
         if taxon_distance:
             docs = dist_manager.arrange_distance_objs(docs, target_species=species, tax_field='taxon_name', org_format='tax_name')
         for doc in docs:
