@@ -1865,6 +1865,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/TxnCanonRankDistance'
           description: OK
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GeneralError'
+          description: Not found
       summary: |-
         Given the species name, return canonically-ranked ancestors
          along the lineage and their non-canonical distances.
