@@ -23,6 +23,8 @@ class canon_rank_distance_by_name:
 
     def get(name):
         results = t_manager.get_canon_rank_distance_by_name(name, front_end=True)
+        if results == [{name: 0}]:
+            return {"code": 404, "message": "Taxon not found."}, 404
         return results
 
 

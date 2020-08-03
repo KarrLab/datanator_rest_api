@@ -39,6 +39,12 @@ canon_rank_distance_by_name:
           application/json:
             schema:
               $ref: "#/components/schemas/TxnCanonRankDistance"
+      "404":
+        description: Not found
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/GeneralError"
 
 is_child:
   get:
