@@ -1,0 +1,24 @@
+{
+    "bsonType": "object",
+    "type": "object",
+    "required": ["entity", "source", "schema_version", "identifier"],
+    "properties": {
+        "entity": {"$ref": "entity.json"},
+        "values": {
+            "bsonType": "array",
+            "type": "array",
+            "items": {"$ref": "value.json"}
+        },
+        "genotype": {"$ref": "genotype.json"},
+        "environment": {"$ref": "environment.json"},
+        "source": {
+            "bsonType": "array",
+            "type": "array",
+            "items": {"$ref": "identifier.json"}},
+        "identifier": {"$ref": "identifier.json"},
+        "schema_version": {
+            "bsonType": "string",
+            "type": "string"
+        }
+    }
+}

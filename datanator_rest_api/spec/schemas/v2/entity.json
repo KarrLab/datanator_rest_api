@@ -1,0 +1,48 @@
+{
+    "bsonType": "object",
+    "type": "object",
+    "required": ["type", "name", "identifiers", "schema_version"],
+    "properties": {
+        "type": {
+            "bsonType": "string",
+            "type": "string",
+            "enum": ["metabolite", "protein", "reaction", "RNA"]
+        },
+        "name": {
+            "bsonType": "string",
+            "type": "string",
+            "description": "Name of protein, RNA, etc."
+        },
+        "synonyms": {
+            "bsonType": "array",
+            "type": "array",
+            "items": {
+                "bsonType": "string",
+                "type": "string"
+            }
+        },
+        "identifiers": {
+            "bsonType": "array",
+            "type": "array",
+            "items": {"$ref": "identifier.json"}
+        },
+        "structures": {
+            "bsonType": "array",
+            "type": "array",
+            "items": {"$ref": "structure.json"}
+        },
+        "related": {
+            "bsonType": "array",
+            "type": "array",
+            "items": {"$ref": "identifier.json"}            
+        },
+        "description": {
+            "bsonType": ["string", "null"],
+            "type": ["string", "null"]
+        },
+        "schema_version": {
+            "bsonType": ["string", "null"],
+            "type": ["string", "null"]
+        }
+    }
+}

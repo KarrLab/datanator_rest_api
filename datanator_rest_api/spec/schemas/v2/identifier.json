@@ -1,0 +1,17 @@
+{
+    "bsonType": "object",
+    "type": "object",
+    "required": ["namespace", "value"],
+    "properties": {
+        "namespace": {
+            "bsonType": "string",
+            "type": "string",
+            "description": "name of the identifier"
+        },
+        "value": {
+            "bsonType": ["string", "null"],
+            "type": ["string", "null"],
+            "description": "id"
+        }
+    }
+}

@@ -1,0 +1,15 @@
+{
+    "bsonType": "object",
+    "type": "object",
+    "required": ["format", "value"],
+    "properties": {
+        "format": {
+            "bsonType": ["string", "null"],
+            "type": ["string", "null"]
+        },
+        "value": {
+            "bsonType": ["string", "null"],
+            "type": ["string", "null"]                    
+        }
+    }
+}
