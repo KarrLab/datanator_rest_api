@@ -1,0 +1,62 @@
+get_protein_datatype:
+  get:
+    parameters:
+      - in: query
+        required: true
+        name: identifier
+        style: deepObject
+        schema:
+          type: object
+          properties:
+            namespace:
+              type: string
+            value:
+              type: string
+          required:
+            - namespace
+            - value
+          example:
+            namespace: gene_symbol
+            value: BAG1
+      - in: query
+        required: true
+        name: datatype
+        schema:
+          type: string
+          enum: ["half-life", "localization"]
+          default: "half-life"
+      - in: query
+        required: false
+        name: limit
+        description: max number of records to return
+        schema:
+          type: integer
+          default: 10
+      - in: query
+        required: false
+        description: beginning point among records
+        name: skip
+        schema:
+          type: integer
+          default: 0
+    tags:
+      - Observation
+      - Schema V2.0
+    summary: Search for protein halflife in observation collection
+    description: Search for protein halflife in observation collection
+    responses:
+      "200":
+        description: OK
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: object
+      '404':
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GeneralError'
+        description: Not found
+
