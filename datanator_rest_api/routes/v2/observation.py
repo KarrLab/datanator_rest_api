@@ -15,6 +15,6 @@ class get_protein_datatype:
         identifier = {"namespace": identifier["namespace"],
                       "value": identifier["value"]}
         return o_manager.get_protein_datatype(identifier,
-                                              datatype=localization,
+                                              datatype=datatype,
                                               limit=limit,
                                               skip=skip)
