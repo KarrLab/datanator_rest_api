@@ -579,7 +579,7 @@ paths:
         in: query
         name: target_species
         schema:
-          example: homo sapiens
+          example: Homo sapiens
           type: string
       - description: whether to include taxonomic distance information in concentration
           object.
@@ -849,7 +849,7 @@ paths:
           items:
             type: string
           type: array
-      - example: homo sapiens
+      - example: Homo sapiens
         in: query
         name: target_species
         required: false
@@ -914,7 +914,7 @@ paths:
         name: anchor
         required: false
         schema:
-          default: homo sapiens
+          default: Homo sapiens
           type: string
       - in: query
         name: distance
@@ -1112,7 +1112,7 @@ paths:
         name: taxon_distance
         schema:
           type: boolean
-      - example: homo sapiens
+      - example: Homo sapiens
         in: query
         name: species
         schema:
@@ -1193,7 +1193,7 @@ paths:
           - 1
           - 2
           type: integer
-      - example: homo sapiens
+      - example: Homo sapiens
         in: query
         name: species
         required: false
@@ -1544,7 +1544,7 @@ paths:
         name: taxon_distance
         schema:
           type: boolean
-      - example: homo sapiens
+      - example: Homo sapiens
         in: query
         name: species
         schema:
@@ -1587,7 +1587,7 @@ paths:
         name: taxon_distance
         schema:
           type: boolean
-      - example: homo sapiens
+      - example: Homo sapiens
         in: query
         name: species
         schema:
@@ -1630,7 +1630,7 @@ paths:
         name: taxon_distance
         schema:
           type: boolean
-      - example: homo sapiens
+      - example: Homo sapiens
         in: query
         name: species
         schema:
