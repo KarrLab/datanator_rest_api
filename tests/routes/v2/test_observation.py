@@ -15,7 +15,10 @@ class ImplementationTestCase(unittest.TestCase):
         self.client = self.app.app.test_client()
         self.client.testing = True
 
-    def test_get_protein_datatype(self):
+    def test_get_entity_datatype(self):
         result_0 = self.client.get(
-            '/v2/observation/get_protein_datatype/?identifier[namespace]=gene_name&identifier[value]=EMC3&datatype=localization&limit=10')
+            '/v2/observation/get_entity_datatype/?identifier[namespace]=gene_name&identifier[value]=EMC3&entity=protein&datatype=localization&limit=10')
+        self.assertEqual(result_0.status_code, 200)
+        result_0 = self.client.get(
+            '/v2/observation/get_entity_datatype/?identifier[namespace]=gene_id&identifier[value]=100003563&entity=RNA&datatype=localization&limit=10')
         self.assertEqual(result_0.status_code, 200)

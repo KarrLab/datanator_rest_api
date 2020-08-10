@@ -1,4 +1,4 @@
-get_protein_datatype:
+get_entity_datatype:
   get:
     parameters:
       - in: query
@@ -18,6 +18,13 @@ get_protein_datatype:
           example:
             namespace: gene_symbol
             value: BAG1
+      - in: query
+        required: true
+        name: entity
+        schema:
+          type: string
+          enum: ["protein", "RNA"]
+          default: "protein"
       - in: query
         required: true
         name: datatype

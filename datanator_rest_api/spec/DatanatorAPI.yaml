@@ -1920,7 +1920,7 @@ paths:
       tags:
       - Meta
       - NCBI Taxonomy
-  /v2/observation/get_protein_datatype/:
+  /v2/observation/get_entity_datatype/:
     get:
       description: Search for protein halflife in observation collection
       parameters:
@@ -1941,6 +1941,15 @@ paths:
           - value
           type: object
         style: deepObject
+      - in: query
+        name: entity
+        required: true
+        schema:
+          default: protein
+          enum:
+          - protein
+          - RNA
+          type: string
       - in: query
         name: datatype
         required: true

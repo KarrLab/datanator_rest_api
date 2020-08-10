@@ -165,8 +165,8 @@ paths:
     $ref: paths/ftx.yaml#/frontend_num_of_index/
   /kegg/get_meta/:
     $ref: paths/kegg.yaml#/get_meta/
-  /v2/observation/get_protein_datatype/:
-    $ref: paths/v2/observation.yml#/get_protein_datatype
+  /v2/observation/get_entity_datatype/:
+    $ref: paths/v2/observation.yml#/get_entity_datatype
     
 components:
   schemas:

@@ -10,11 +10,12 @@ from datanator_query_python.query_schema_2 import query_observation
 
 o_manager = query_observation.QueryObs()
 
-class get_protein_datatype:
-    def get(identifier, datatype="half-life", limit=10, skip=0):
+class get_entity_datatype:
+    def get(identifier, entity="protein", datatype="half-life", limit=10, skip=0):
         identifier = {"namespace": identifier["namespace"],
                       "value": identifier["value"]}
-        return o_manager.get_protein_datatype(identifier,
+        return o_manager.get_entity_datatype(identifier,
+                                              entity=entity,
                                               datatype=datatype,
                                               limit=limit,
                                               skip=skip)
