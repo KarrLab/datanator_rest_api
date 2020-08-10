@@ -15,7 +15,7 @@ class get_entity_datatype:
         identifier = {"namespace": identifier["namespace"],
                       "value": identifier["value"]}
         return o_manager.get_entity_datatype(identifier,
-                                              entity=entity,
-                                              datatype=datatype,
-                                              limit=limit,
-                                              skip=skip)
+                                             entity=entity,
+                                             datatype=datatype,
+                                             limit=limit,
+                                             skip=skip)
