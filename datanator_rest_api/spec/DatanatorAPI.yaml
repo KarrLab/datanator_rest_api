@@ -1920,7 +1920,7 @@ paths:
       tags:
       - Meta
       - NCBI Taxonomy
-  /v2/observation/get_entity_datatype/:
+  /v2/observation/get_entity_value/:
     get:
       description: Search for protein halflife in observation collection
       parameters:

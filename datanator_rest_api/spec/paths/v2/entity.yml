@@ -1,4 +1,4 @@
-get_entity_value:
+get_entity_meta:
   get:
     parameters:
       - in: query
@@ -16,22 +16,15 @@ get_entity_value:
             - namespace
             - value
           example:
-            namespace: gene_symbol
-            value: BAG1
+            namespace: inchikey
+            value: TYEYBOSBBBHJIV-UHFFFAOYSA-N
       - in: query
         required: true
         name: entity
         schema:
           type: string
-          enum: ["protein", "RNA"]
+          enum: ["protein", "RNA", "metabolite", "reaction"]
           default: "protein"
-      - in: query
-        required: true
-        name: datatype
-        schema:
-          type: string
-          enum: ["half-life", "localization"]
-          default: "half-life"
       - in: query
         required: false
         name: limit
@@ -47,7 +40,7 @@ get_entity_value:
           type: integer
           default: 0
     tags:
-      - Observation
+      - Entity
       - Schema V2.0
     summary: Search for protein halflife in observation collection
     description: Search for protein halflife in observation collection
