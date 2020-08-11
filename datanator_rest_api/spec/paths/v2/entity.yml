@@ -24,7 +24,7 @@ get_entity_meta:
         schema:
           type: string
           enum: ["protein", "RNA", "metabolite", "reaction"]
-          default: "protein"
+          default: "metabolite"
       - in: query
         required: false
         name: limit
