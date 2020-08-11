@@ -17,5 +17,5 @@ class ImplementationTestCase(unittest.TestCase):
 
     def test_get_entity_value(self):
         result_0 = self.client.get(
-            '/v2/entity/get_entity_meta/?identifier[namespace]=inchikey&identifier[value]=TYEYBOSBBBHJIV-UHFFFAOYSA-N&entity=metabolite&limit=10')
+            '/v2/entity/get_entity_meta/?identifier[namespace]=inchikey&identifier[value]=TYEYBOSBBBHJIV-UHFFFAOYSA-N&datatype=metabolite&limit=10')
         self.assertEqual(result_0.status_code, 200)

@@ -20,7 +20,7 @@ get_entity_meta:
             value: TYEYBOSBBBHJIV-UHFFFAOYSA-N
       - in: query
         required: true
-        name: entity
+        name: datatype
         schema:
           type: string
           enum: ["protein", "RNA", "metabolite", "reaction"]

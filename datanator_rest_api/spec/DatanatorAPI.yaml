@@ -1942,7 +1942,7 @@ paths:
           type: object
         style: deepObject
       - in: query
-        name: entity
+        name: datatype
         required: true
         schema:
           default: metabolite
