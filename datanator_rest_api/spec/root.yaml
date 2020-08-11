@@ -168,7 +168,7 @@ paths:
   /v2/observation/get_entity_value/:
     $ref: paths/v2/observation.yml#/get_entity_value
   /v2/entity/get_entity_meta/:
-    $ref: paths/v2/observation.yml#/get_entity_meta
+    $ref: paths/v2/entity.yml#/get_entity_meta
     
 components:
   schemas:
