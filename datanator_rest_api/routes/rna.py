@@ -94,7 +94,7 @@ class modification:
     class get_modifications_by_ko:
         def get(ko_number, _from=0, size=10, target_organism='Escherichia coli', taxon_distance=False):
             result = []
-            query = {"kegg_orthology_id": ko_number}
+            query = {"orthodb_id": ko_number}
             docs = rna_manager.db_obj['rna_modification'].find(filter=query, skip=_from,
                                                                 limit=size, projection={'_id': 0})
             if not docs:
