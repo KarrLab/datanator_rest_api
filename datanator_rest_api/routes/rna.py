@@ -56,8 +56,8 @@ class halflife:
         def get(ko_number, _from=0, size=10, 
                 taxon_distance=True, species='homo sapiens'):
             result = []
-            docs, _ = rna_manager.get_doc_by_ko(ko_number, _from=_from,
-                                                size=size)
+            docs, _ = rna_manager.get_doc_by_orthodb(ko_number, _from=_from,
+                                                    size=size)
             if not docs:
                 return result
             for doc in docs:
