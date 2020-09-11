@@ -15,6 +15,7 @@ import simplejson as json
 
 
 p_manager = query_manager.Manager().protein_manager()
+p_manager_new = query_manager.Manager().protein_manager(database="datanator-test")
 dist_manager = taxon_distance.TaxonDist()
 
 
@@ -53,7 +54,7 @@ class proximity_abundance:
     class proximity_abundance_kegg:
 
         def get(kegg_id, distance, anchor='homo sapiens'):
-            return p_manager.get_all_kegg(kegg_id, anchor, distance)
+            return p_manager_new.get_all_ortho(kegg_id, anchor, distance)
 
 
 class meta:
