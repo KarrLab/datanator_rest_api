@@ -270,7 +270,7 @@ gene_ranked_by_ko:
           type: array
           items:
             type: string
-          default: ['protein_name', 'synonyms', 'enzymes', 'ko_name', 'gene_name', 'name',
+          default: ['protein_name', 'synonyms', 'enzymes', 'orthodb_name', 'gene_name', 'name',
                     'enzymes.enzyme.enzyme_name', 'enzymes.subunit.canonical_sequence', 'species']
         required: false
         description: Fields in which the text search will be done
