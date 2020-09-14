@@ -64,7 +64,7 @@ paths:
         name: index
         required: true
         schema:
-          default: ecmdb,ymdb,metabolites_meta,protein,sabio_rk
+          default: ecmdb,ymdb,metabolites_meta,protein,sabio_rk,rna_halflife,rna_modification
           type: string
       - in: query
         name: from_
@@ -245,7 +245,7 @@ paths:
         name: index
         required: true
         schema:
-          default: ecmdb,ymdb,metabolites_meta,protein,sabio_rk
+          default: ecmdb,ymdb,metabolites_meta,protein,sabio_rk,rna_halflife,rna_modification
           type: string
       - description: indices of interest in page
         in: query

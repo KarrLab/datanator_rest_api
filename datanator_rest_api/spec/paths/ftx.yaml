@@ -10,7 +10,7 @@ text_search:
         name: index
         schema:
           type: string
-          default: "ecmdb,ymdb,metabolites_meta,protein,sabio_rk"
+          default: "ecmdb,ymdb,metabolites_meta,protein,sabio_rk,rna_halflife,rna_modification"
         required: true
         description: ES indices on which ftx will be performed
       - in: query
@@ -69,7 +69,7 @@ indices_in_page:
         name: index
         schema:
           type: string
-          default: "ecmdb,ymdb,metabolites_meta,protein,sabio_rk"
+          default: "ecmdb,ymdb,metabolites_meta,protein,sabio_rk,rna_halflife,rna_modification"
         required: true
         description: ES indices on which ftx will be performed
       - in: query
