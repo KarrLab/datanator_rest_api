@@ -212,7 +212,7 @@ paths:
           - protein_name
           - synonyms
           - enzymes
-          - ko_name
+          - orthodb_name
           - gene_name
           - name
           - enzymes.enzyme.enzyme_name
