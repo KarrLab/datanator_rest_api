@@ -87,7 +87,7 @@ paths:
           - protein_name
           - synonyms
           - enzymes
-          - ko_name
+          - orthodb_name
           - gene_name
           - name
           - reaction_participant.substrate.substrate_name
@@ -157,7 +157,7 @@ paths:
           - protein_name
           - synonyms
           - enzymes
-          - ko_name
+          - orthodb_name
           - gene_name
           - name
           - enzyme_name
@@ -276,7 +276,7 @@ paths:
           - protein_name
           - synonyms
           - enzymes
-          - ko_name
+          - orthodb_name
           - gene_name
           - name
           - reaction_participant.substrate.substrate_name
@@ -350,7 +350,7 @@ paths:
           - protein_name
           - synonyms
           - enzymes
-          - ko_name
+          - orthodb_name
           - gene_name
           - name
           - reaction_participant.substrate.substrate_name
