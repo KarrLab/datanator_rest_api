@@ -137,6 +137,7 @@ class related:
         def get(ko):
             lists = p_manager.get_info_by_orthodb(ko)
             uniprot_ids = lists[0]['uniprot_ids']
+            print(uniprot_ids)
             kinlaw_ids = query_manager.RxnManager().rxn_manager().get_reaction_by_subunit(uniprot_ids)
             return list(kinlaw_ids)
 
