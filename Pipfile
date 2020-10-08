@@ -9,33 +9,10 @@ flask = ">= 1.1.0"
 mock = "*"
 prance = "*"
 pytest = "*"
+datanator-rest-api = {editable = true,path = "."}
+datanator_query_python = {editable = true,path = "./../datanator_query_python"}
 pylint = "*"
 zappa = "*"
-
-[packages]
-cement = ">= 3.0.4"
-flask_cors = "*"
-flask_profiler = "*"
-gunicorn = "*"
-openapi_resolver = "*"
-openapi_spec_validator = "*"
-setuptools = "*"
-pytest = "*"
-inflection = "*"
-requests = "*"
-python-dotenv = "*"
-
-[dev-packages.datanator-rest-api]
-editable = true
-path = "."
-
-[dev-packages.datanator_query_python]
-editable = true
-path = "./../datanator_query_python"
-
-[dev-packages.e1839a8]
-path = "."
-editable = true
 
 [packages.pkg_utils]
 git = "https://github.com/KarrLab/pkg_utils.git"
@@ -48,5 +25,16 @@ editable = true
 [packages.connexion]
 extras = [ "swagger-ui",]
 
-[packages.swagger_ui_bundle]
-git = "https://github.com/KarrLab/datanator_swagger_ui_bundle.git"
+[packages]
+swagger_ui_bundle = {git = "https://github.com/KarrLab/datanator_swagger_ui_bundle.git"}
+cement = ">= 3.0.4"
+flask_cors = "*"
+flask_profiler = "*"
+gunicorn = "*"
+openapi_resolver = "*"
+openapi_spec_validator = "*"
+setuptools = "*"
+pytest = "*"
+inflection = "*"
+requests = "*"
+python-dotenv = "*"
