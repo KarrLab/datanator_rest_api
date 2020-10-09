@@ -63,7 +63,7 @@ class meta:
 
         def get(uniprot_id=None, ncbi_taxon_id=None, species_name=None, name=None):
             if uniprot_id is not None:   # uniprot_id
-                return p_manager.get_ortho_by_id(uniprot_id)
+                return p_manager_new.get_ortho_by_id(uniprot_id[0])
             elif name is not None and ncbi_taxon_id is not None and species_name is None:  # name + taxon_id
                 return p_manager.get_meta_by_name_taxon(name, ncbi_taxon_id)
             elif name is not None and species_name is not None:   # name + species_name
