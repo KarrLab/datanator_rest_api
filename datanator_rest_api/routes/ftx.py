@@ -59,6 +59,6 @@ class text_search:
     class gene_ranked_by_ko:
 
         def get(query_message, from_, size, fields=['*']):
-            r = f_manager.get_genes_ko_count(query_message, size,
-                                             fields=fields, from_=from_)
+            r = f_manager.get_genes_orthodb_count(query_message, size,
+                                                  fields=fields, from_=from_)
             return r

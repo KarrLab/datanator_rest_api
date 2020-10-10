@@ -10,7 +10,7 @@ text_search:
         name: index
         schema:
           type: string
-          default: "ecmdb,ymdb,metabolites_meta,protein,sabio_rk"
+          default: "ecmdb,ymdb,metabolites_meta,protein,sabio_rk,rna_halflife,rna_modification"
         required: true
         description: ES indices on which ftx will be performed
       - in: query
@@ -31,7 +31,7 @@ text_search:
           type: array
           items:
             type: string
-          default: ['protein_name', 'synonyms', 'enzymes', 'ko_name', 'gene_name', 'name',
+          default: ['protein_name', 'synonyms', 'enzymes', 'orthodb_name', 'gene_name', 'name',
                     'reaction_participant.substrate.substrate_name', 'reaction_participant.substrate.substrate_synonym',
                     'reaction_participant.product.product_name', 'reaction_participant.product.substrate_synonym',
                     'enzymes.enzyme.enzyme_name', 'enzymes.subunit.canonical_sequence', 'species']
@@ -69,7 +69,7 @@ indices_in_page:
         name: index
         schema:
           type: string
-          default: "ecmdb,ymdb,metabolites_meta,protein,sabio_rk"
+          default: "ecmdb,ymdb,metabolites_meta,protein,sabio_rk,rna_halflife,rna_modification"
         required: true
         description: ES indices on which ftx will be performed
       - in: query
@@ -98,7 +98,7 @@ indices_in_page:
           type: array
           items:
             type: string
-          default: ['protein_name', 'synonyms', 'enzymes', 'ko_name', 'gene_name', 'name',
+          default: ['protein_name', 'synonyms', 'enzymes', 'orthodb_name', 'gene_name', 'name',
                     'reaction_participant.substrate.substrate_name', 'reaction_participant.substrate.substrate_synonym',
                     'reaction_participant.product.product_name', 'reaction_participant.product.substrate_synonym',
                     'enzymes.enzyme.enzyme_name', 'enzymes.subunit.canonical_sequence', 'species']
@@ -153,7 +153,7 @@ num_of_index:
           type: array
           items:
             type: string
-          default: ['protein_name', 'synonyms', 'enzymes', 'ko_name', 'gene_name', 'name',
+          default: ['protein_name', 'synonyms', 'enzymes', 'orthodb_name', 'gene_name', 'name',
                     'reaction_participant.substrate.substrate_name', 'reaction_participant.substrate.substrate_synonym',
                     'reaction_participant.product.product_name', 'reaction_participant.product.substrate_synonym',
                     'enzymes.enzyme.enzyme_name', 'enzymes.subunit.canonical_sequence', 'species', 'protein_names',
@@ -225,7 +225,7 @@ frontend_num_of_index:
           type: array
           items:
             type: string
-          default: ['protein_name', 'synonyms', 'enzymes', 'ko_name', 'gene_name', 'name',
+          default: ['protein_name', 'synonyms', 'enzymes', 'orthodb_name', 'gene_name', 'name',
                     'enzyme_name', 'product_names', 'substrate_names',
                     'enzymes.subunit.canonical_sequence', 'species', 'protein_names']
         required: true
@@ -270,7 +270,7 @@ gene_ranked_by_ko:
           type: array
           items:
             type: string
-          default: ['protein_name', 'synonyms', 'enzymes', 'ko_name', 'gene_name', 'name',
+          default: ['protein_name', 'synonyms', 'enzymes', 'orthodb_name', 'gene_name', 'name',
                     'enzymes.enzyme.enzyme_name', 'enzymes.subunit.canonical_sequence', 'species']
         required: false
         description: Fields in which the text search will be done

@@ -27,7 +27,7 @@ class TaxonDist:
         manager = query_manager.TaxonManager().txn_manager()
         name = doc[tax_field]
         if name not in queried_species:
-            dist = manager.get_canon_common_ancestor(name, target_species, org_format=org_format)
+            dist = manager.get_canon_common_ancestor_fast(name, target_species, org_format=org_format)
             distance_obj[name] = dist
             queried_species.append(name)
             doc[obj_name] = dist

@@ -17,6 +17,6 @@ k_manager = KeggManager().kegg_manager()
 class get_meta:
 
     def get(kegg_ids, _from=0, size=10):
-        docs, count = k_manager.get_meta_by_kegg_ids(kegg_ids)
+        docs, count = k_manager.get_meta_by_ortho_ids(kegg_ids, limit=size)
         manager = paginator.Paginator(count, list(docs))
         return manager.page(_from=_from, size=size)

@@ -56,8 +56,8 @@ class halflife:
         def get(ko_number, _from=0, size=10, 
                 taxon_distance=True, species='homo sapiens'):
             result = []
-            docs, _ = rna_manager.get_doc_by_ko(ko_number, _from=_from,
-                                                size=size)
+            docs, _ = rna_manager.get_doc_by_orthodb(ko_number, _from=_from,
+                                                    size=size)
             if not docs:
                 return result
             for doc in docs:
@@ -94,7 +94,7 @@ class modification:
     class get_modifications_by_ko:
         def get(ko_number, _from=0, size=10, target_organism='Escherichia coli', taxon_distance=False):
             result = []
-            query = {"kegg_orthology_id": ko_number}
+            query = {"orthodb_id": ko_number}
             docs = rna_manager.db_obj['rna_modification'].find(filter=query, skip=_from,
                                                                 limit=size, projection={'_id': 0})
             if not docs:

@@ -15,6 +15,7 @@ import simplejson as json
 
 
 p_manager = query_manager.Manager().protein_manager()
+p_manager_new = query_manager.Manager().protein_manager(database="datanator-test")
 dist_manager = taxon_distance.TaxonDist()
 
 
@@ -53,7 +54,7 @@ class proximity_abundance:
     class proximity_abundance_kegg:
 
         def get(kegg_id, distance, anchor='homo sapiens'):
-            return p_manager.get_all_kegg(kegg_id, anchor, distance)
+            return p_manager_new.get_all_ortho(kegg_id, anchor, distance)
 
 
 class meta:
@@ -62,7 +63,7 @@ class meta:
 
         def get(uniprot_id=None, ncbi_taxon_id=None, species_name=None, name=None):
             if uniprot_id is not None:   # uniprot_id
-                return p_manager.get_meta_by_id(uniprot_id)
+                return p_manager_new.get_ortho_by_id(uniprot_id[0])
             elif name is not None and ncbi_taxon_id is not None and species_name is None:  # name + taxon_id
                 return p_manager.get_meta_by_name_taxon(name, ncbi_taxon_id)
             elif name is not None and species_name is not None:   # name + species_name
@@ -134,7 +135,7 @@ class related:
 
     class related_reactions_by_kegg:
         def get(ko):
-            lists = p_manager.get_info_by_ko(ko)
+            lists = p_manager_new.get_info_by_orthodb(ko)
             uniprot_ids = lists[0]['uniprot_ids']
             kinlaw_ids = query_manager.RxnManager().rxn_manager().get_reaction_by_subunit(uniprot_ids)
             return list(kinlaw_ids)

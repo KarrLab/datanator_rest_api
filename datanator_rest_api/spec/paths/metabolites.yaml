@@ -129,7 +129,7 @@ similar_compounds:
         name: target_species
         schema:
           type: string
-          example: homo sapiens
+          example: Homo sapiens
         description: target species given by the user.
       - in: query
         name: taxon_distance

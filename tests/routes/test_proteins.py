@@ -88,7 +88,7 @@ class ImplementationTestCase(unittest.TestCase):
     #     self.assertEqual(result.status_code, 200)
 
     def test_related_reactions_by_kegg(self):
-        result = self.client.get('/proteins/related/related_reactions_by_kegg/?ko=K00426')
+        result = self.client.get('/proteins/related/related_reactions_by_kegg/?ko=643917at2')
         self.assertEqual(result.status_code, 200)
 
     def test_related_reactions_by_uniprot(self):

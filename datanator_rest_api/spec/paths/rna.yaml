@@ -31,7 +31,7 @@ get_info_by_name:
           name: species
           schema:
             type: string
-          example: 'homo sapiens'
+          example: 'Homo sapiens'
       summary: Get RNA half-life information based on protein name.
       description: "Get RNA half-life information based on protein name."
       responses:
@@ -75,7 +75,7 @@ get_info_by_ko:
           name: species
           schema:
             type: string
-          example: 'homo sapiens'
+          example: 'Homo sapiens'
       summary: Get RNA half-life information based on protein kegg ortholog group.
       description: "Get RNA half-life information based on protein kegg ortholog group."
       responses:
@@ -119,7 +119,7 @@ get_info_by_uniprot:
         name: species
         schema:
           type: string
-        example: 'homo sapiens'
+        example: 'Homo sapiens'
     summary: Get RNA half-life information based on protein uniprot_id.
     description: "Get RNA half-life information based on protein uniprot_id."
     responses:
