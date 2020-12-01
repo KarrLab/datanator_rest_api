@@ -147,8 +147,7 @@ class meta:
 
     def get(inchikey, projection="{'_id': 0, 'kegg_meta.gene_ortholog': 0}"):
         projection = eval(projection)
-        doc =  mm_manager._collection.find_one({'InChI_Key': inchikey}, projection=projection,
-                                              collation=mm_manager.collation)
+        doc =  mm_manager.db_obj['metabolite_concentrations'].find_one({'InChI_Key': inchikey}, projection=projection)
         if doc:
             return doc
         else:
